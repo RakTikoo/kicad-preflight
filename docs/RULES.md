@@ -1,6 +1,6 @@
 # KiCad Preflight — Rule Reference
 
-Every deterministic rule in v0.2, its severity, and what triggers it.
+Every deterministic rule in v0.3, its severity, and what triggers it.
 Verdicts: any BLOCK → BLOCK (exit 2); else any CAUTION → CAUTION
 (exit 1); else PASS (exit 0). NOTE findings never change the verdict.
 Rules marked ◆ run in standalone BOM mode too (no schematic needed).
@@ -54,10 +54,48 @@ Rules marked ◆ run in standalone BOM mode too (no schematic needed).
 | BOM_ROW_WITHOUT_REFERENCES ◆ | CAUTION | Row carries quantity/part data but no designators. |
 | SCHEMATIC_PART_MISSING_FROM_BOM | CAUTION | A BOM-expected schematic part appears on no BOM row. |
 | BOM_VALUE_DIFFERS | NOTE | BOM value and schematic value share no containment either way (values are often normalised, so this informs, never blocks). |
+| BOM_PART_NUMBER_CONFLICT ◆ | CAUTION | The same MPN (or LCSC number) appears on 2+ BOM rows describing different parts (different value or footprint) — one part number cannot be two parts; a copy-paste error would order the wrong part. Identical part split across rows is fine. Part numbers are grouped ignoring dashes and spaces (distributor spellings vary), and values/footprints compare whitespace-insensitively (`10k` = `10 k`). (v0.3) |
 
 BOM parsing notes: header aliases cover KiCad, JLCPCB (`Comment /
 Designator / Footprint / LCSC Part #`) and generic spellings; reference
 ranges `R1-R3`, `R1-3` and `R1 - R3` are expanded (≤200 per range).
+A position/CPL file is never mistaken for the BOM: a CSV whose header
+is a position header (designator + X/Y columns) is skipped during
+BOM discovery — unless it also carries BOM-only columns (quantity,
+MPN, LCSC), in which case it is treated as a BOM that happens to
+include coordinates, because position files never carry part
+numbers.
+
+## KiCad file-format version (v0.3)
+
+| Rule | Severity | Trigger |
+| --- | --- | --- |
+| KICAD_VERSION_UNTESTED | CAUTION | A schematic/PCB file's format stamp is newer than the tested range (KiCad 6–8): schematic format > 20231120, PCB format > 20240108, or generator_version 9+. Checked on the root sheet, every loaded sub-sheet, and the PCB. The file is still parsed, but KiCad 9's embedded files/tables/pad stacks and KiCad 10's design variants, jumpers and back-drilling are not fully understood, so a PASS deserves a hand check. Also fires for pre-KiCad-6 format stamps, and for a stamp that is present but unreadable (malformed) — unreadable format evidence warns rather than passing silently. Detected versions are always listed in Coverage. |
+
+## Fabrication readiness (v0.3)
+
+Thresholds are the published standard-process minimums of JLCPCB and
+PCBWay (official capability pages, checked 2026-11-10; sources in
+docs/COVERAGE.md). A value below a *standard* minimum is a CAUTION —
+fabs raise an engineering question or offer an advanced process; it
+is not an automatic rejection. Every rule fires only on a measured
+value: a board with no tracks (or no vias, no drilled pads) abstains,
+and Coverage reports the zero counts.
+
+| Rule | Severity | Trigger |
+| --- | --- | --- |
+| BOARD_OUTLINE_MISSING | BLOCK | PCB has footprints but no root-level drawing item on the Edge.Cuts layer (graphics or segments; footprint-internal graphics are not counted). No outline = nothing to cut; the most common cause of a held order. |
+| ZONE_UNFILLED | CAUTION | A root-level copper zone has no usable filled polygon stored in the file (no fill node, an empty one, or a declared layer left unfilled) — it exports as missing copper. Refill zones and save before exporting. Keepout/rule-area zones are not pours and are never counted. |
+| TRACK_WIDTH_BELOW_FAB_MIN | CAUTION | A copper track (straight segment or arc) is narrower than 0.10 mm, both fabs' standard minimum trace width (1–2 layer, 1 oz). |
+| DRILL_BELOW_FAB_MIN | CAUTION | Smallest plated pad drill < 0.20 mm (PCBWay's standard minimum); the message says so when it is also < 0.15 mm (JLCPCB's minimum). Non-plated holes excluded. |
+| VIA_BELOW_FAB_MIN | CAUTION | Smallest via drill < 0.20 mm (tiers as above), or smallest via diameter < 0.25 mm (JLCPCB). |
+| ANNULAR_RING_BELOW_FAB_MIN | CAUTION | A plated pad's annular ring (pad min dimension − drill) / 2 is < 0.15 mm — below every published standard/tight-tier minimum (0.15–0.20 mm). Non-plated holes excluded (their ring is zero by design). |
+| SLOT_BELOW_FAB_MIN | CAUTION | A plated oval slot's narrow dimension is < 0.50 mm, both fabs' minimum plated slot width. |
+| DIMENSION_UNREADABLE | CAUTION | Dimension values are present in the PCB (track widths, via/pad drills) but could not be read as numbers, so those items were not measured against the minimums. Nothing unmeasured passes silently. |
+| CPL_UNREADABLE | CAUTION | A position/CPL file was found but could not be parsed, so CPL agreement was not checked for it. Discovery records failures for position-named files and for any file with a position-shaped header, whatever its name. |
+| CPL_UNKNOWN_REFERENCE | CAUTION | The position file lists designator(s) that do not exist on the PCB (any footprint, furniture included). A standard cause of a held assembly order. |
+| CPL_PART_MISSING | CAUTION | Board part(s) have no row in the position file — unplaced if assembly is ordered. Footprints flagged `exclude_from_pos_files` are not expected and never blamed. An existing but empty position file blames every part. Only matters for assembly orders. |
+| CPL_DUPLICATE_REFERENCE | CAUTION | The position file lists the same designator more than once (across all merged position files — per-side files are merged before checking). |
 
 ## Part risk ◆ (offline sample dataset — findings cite it)
 
