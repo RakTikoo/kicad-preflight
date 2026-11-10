@@ -53,6 +53,46 @@ files, tables, pad stacks, design variants) the parser does not fully
 understand. A silent PASS here would be a lie; a BLOCK would be one
 too.
 
+## `geo-ok/` — v0.4 geometry-lite: silence expected from the geometry rules
+
+A PCB-only fixture (other layers' findings are not asserted): two
+1×1 mm pads of different nets exactly 0.200 mm apart — the clearance
+the fixture's own `.kicad_pro` states — a closed rectangular
+outline, and one lone Edge.Cuts line (a routed slot). No
+GEOMETRY_* finding and no BOARD_OUTLINE_OPEN may fire.
+
+## `geo-violation/` — v0.4: GEOMETRY_CLEARANCE_BELOW_MIN + GEOMETRY_COPPER_TO_EDGE
+
+Same board with the pads 0.05 mm apart, plus a third pad 0.10 mm
+from the west edge (below the 0.20 mm published minimum the board
+falls back to, stating no edge clearance of its own).
+
+## `geo-open/` — v0.4: BOARD_OUTLINE_OPEN (BLOCK)
+
+The geo-ok board with the west side of the outline deleted: three
+chained lines whose endpoints do not pair up.
+
+## `gerber-good/` — v0.4 package mode: PASS, zero findings
+
+A complete KiCad-style fabrication package (top/bottom copper,
+masks, silkscreens, outline, drill file, job file) with dummy
+one-line contents — package checks are file-level, so contents are
+never read. Auto-detected as a package (no KiCad files present).
+
+## `gerber-incomplete/` — v0.4: exactly 4 CAUTIONs
+
+Top copper, outline and drill present; the top mask file is
+zero-byte (GERBER_EMPTY_FILE), and bottom copper, bottom mask and
+silkscreen are absent (GERBER_BOTTOM_COPPER_MISSING,
+GERBER_MASK_MISSING, GERBER_SILKSCREEN_MISSING).
+
+## `gerber-inner-broken/` — v0.4: BLOCK
+
+Protel-style package with inner copper (.g1/.g2) but no bottom
+copper and no outline: GERBER_INNER_WITHOUT_BOTTOM +
+GERBER_OUTLINE_MISSING (BLOCKs) plus drill/mask/silkscreen
+cautions.
+
 ## `real/` — optional, not asserted
 
 If real open-source KiCad projects were fetched during development, they
