@@ -97,6 +97,76 @@ and Coverage reports the zero counts.
 | CPL_PART_MISSING | CAUTION | Board part(s) have no row in the position file — unplaced if assembly is ordered. Footprints flagged `exclude_from_pos_files` are not expected and never blamed. An existing but empty position file blames every part. Only matters for assembly orders. |
 | CPL_DUPLICATE_REFERENCE | CAUTION | The position file lists the same designator more than once (across all merged position files — per-side files are merged before checking). |
 
+## Geometry-lite (v0.4)
+
+A conservative distance-checking subset over the copper objects the
+parser extracts (pads, tracks, arcs, vias) — explicitly NOT KiCad
+DRC. Shapes are exact (circles, rectangles at their real rotation,
+ovals, arcs subdivided with a bounded error that is only ever
+counted against the measurement, roundrects as their true core
+rectangle + corner radius). Thresholds come first from the board
+itself — the `.kicad_pro` design-rule `min_clearance` /
+`min_copper_edge_clearance` and per-netclass clearances with KiCad's
+pattern assignments (the pattern list is priority-ordered: the
+FIRST pattern matching a net name assigns its class; net names are
+resolved for every object from the board's net table, since tracks
+and vias store only net ids) — and only when the board states
+nothing, from
+the published fab minimums above: 0.10 mm trace spacing and 0.20 mm
+copper-to-edge (JLCPCB/PCBWay standard process; sources in
+docs/COVERAGE.md). A pair is reported only when it is below its
+threshold by more than 0.002 mm, so boards routed exactly at their
+design rule (whose file coordinates are decimal roundings) do not
+drown in sub-micron noise.
+
+Never measured, always stated in Coverage: zones (their clearance
+is set by KiCad's zone filler, not netclass rules), custom and
+trapezoid pads (no exact outline is derivable), footprint-internal
+graphics, and any pair where either object's net is unknown — an
+unstated net or net 0 is never guessed, so same-footprint pins with
+no assigned net cannot produce a finding. Pad positions and
+orientations use KiCad's own conventions as written in the file
+(pad orientation is stored board-absolute; back-side footprints are
+saved pre-mirrored) — both verified against same-net track
+endpoints and design-clearance landings on real boards.
+
+| Rule | Severity | Trigger |
+| --- | --- | --- |
+| GEOMETRY_CLEARANCE_BELOW_MIN | CAUTION | Copper objects on the same layer belonging to different nets sit closer than the applicable clearance (board rules first, else the 0.10 mm fab minimum). One aggregated finding naming the worst pair. |
+| GEOMETRY_COPPER_TO_EDGE | CAUTION | A copper object sits closer to the Edge.Cuts outline than the applicable minimum (board's stated edge clearance, else 0.20 mm). Edge-mounted connectors are the classic intentional case — the finding asks for a look, it does not claim an error. |
+| BOARD_OUTLINE_OPEN | BLOCK | Root-level Edge.Cuts lines/arcs/curves whose endpoints do not pair up within 0.01 mm, with no closed loop anywhere on the layer — the outline does not close and cannot be cut as drawn (this includes an outline shattered at every corner into near-miss fragments). Self-closed items (circles, rects, polys) always pass; open chains ALONGSIDE a closed loop never fire (they are routed slots, a legal construct), nor does a lone open element; an endpoint pattern too close to the tolerance to judge abstains instead of firing. Legacy `(angle ...)` arcs are chained under every reading real files use (centre-in-`(start)`, both sweep directions, and endpoints-in-`(start)`); conflicting readings abstain. |
+| GEOMETRY_SKIPPED | CAUTION | The geometry layer abstained: more than 40,000 copper objects, or the pair-measurement budget (2,000,000) was exceeded. The other layers are unaffected; KiCad DRC covers the board. |
+
+## Gerber package (v0.4)
+
+File-level checks on a folder of fabrication outputs — the moment
+after export, before upload. Auto-detected when a folder holds
+Gerber/drill files and no KiCad project; forced with `--gerber`.
+File contents are never parsed (one exception: an uninformative
+`.txt` name is checked for an Excellon `M48` header, reading at
+most 4 KB). Naming schemes recognised: KiCad default exports
+(layer tokens in the file stem), Protel extensions (.gtl/.gbl/
+.gts/.gbs/.gto/.gbo/.gtp/.gbp/.gko/.gm1, inners .g1…, legacy
+.cmp/.sol/.stc/.sts/.crc/.crs/.smt/.smb), and generic word naming
+(`top_copper.gbr`, `bottom.gbr`, …). A file with a fab extension
+whose role cannot be determined is reported, never guessed.
+
+| Rule | Severity | Trigger |
+| --- | --- | --- |
+| GERBER_TOP_COPPER_MISSING | BLOCK | No file classifies as top copper — the package cannot be fabricated. |
+| GERBER_OUTLINE_MISSING | BLOCK | No board-outline file (Edge.Cuts / .gko / outline) is recognised. |
+| GERBER_INNER_WITHOUT_BOTTOM | BLOCK | Inner copper layers exist but no bottom copper — the stack is inconsistent (inners count from the top). |
+| GERBER_BOTTOM_COPPER_MISSING | CAUTION | No bottom copper and no inners — correct only for a genuinely single-sided board. |
+| GERBER_MASK_MISSING | CAUTION | Top (or bottom) solder mask not recognised while copper exists (one finding per side). |
+| GERBER_SILKSCREEN_MISSING | CAUTION | No top silkscreen recognised. |
+| GERBER_DRILL_MISSING | CAUTION | Copper present but no Excellon drill file recognised. |
+| GERBER_DRILL_WITHOUT_COPPER | CAUTION | A drill file is present but no copper layer at all — a partial export. |
+| GERBER_EMPTY_FILE | CAUTION | A classified layer file is zero bytes (one finding per file). |
+| GERBER_DUPLICATE_LAYER | CAUTION | Two or more files claim the same layer role — a fab viewer will pick one, possibly the stale one. (KiCad's standard drill split — one `-PTH` file plus one `-NPTH` file — is one deliverable in two files and does NOT trigger this.) |
+| GERBER_INNER_LAYER_GAP | CAUTION | Inner copper layers are not consecutive (e.g. .g1 and .g3 but no .g2). |
+| GERBER_MIXED_SCHEMES | NOTE | Layer files were classified via more than one naming scheme (drill/job files do not count) — usually two exports merged. |
+| GERBER_UNRECOGNISED_FILE | NOTE | A file has a Gerber/drill-style extension but its layer role could not be determined from its name (one per file). |
+
 ## Part risk ◆ (offline sample dataset — findings cite it)
 
 | Rule | Severity | Trigger |
