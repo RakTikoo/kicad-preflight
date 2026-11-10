@@ -1,0 +1,5 @@
+{
+  "board": {"design_settings": {"rules": {"min_clearance": 0.2}}},
+  "net_settings": {"classes": [{"name": "Default", "clearance": 0.2}]},
+  "meta": {"filename": "geo.kicad_pro", "version": 1}
+}
