@@ -1,0 +1,5 @@
+Reference,Quantity,Value,Footprint,MPN,Manufacturer,Description
+J1,1,Battery,Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical,B2B-PH-K-S,JST,Battery connector PH 2P vertical
+R1,1,330R,Resistor_SMD:R_0805_2012Metric,RC0805FR-07330RL,Yageo,Chip resistor 330 ohm 0805
+"D1,D2",2,LED Red,LED_SMD:LED_0805_2012Metric,LTST-C170KRKT,Lite-On,LED red 0805
+SW1,1,SW Slide,Switch_SMD:SW_SPST_CK_JS102011SAQN,JS102011SAQN,C&K,Slide switch SPST SMD
