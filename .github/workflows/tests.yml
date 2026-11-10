@@ -16,7 +16,7 @@ jobs:
       # balance this zero-dependency project uses: security fixes flow in
       # via Dependabot PRs (see .github/dependabot.yml) without the
       # maintenance cost of full SHA pinning.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
