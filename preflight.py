@@ -1,1 +1,10 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJTaGltIHNvIGBweXRob24zIHByZWZsaWdodC5weSA8cHJvamVjdD5gIHdvcmtzIGFzIHdlbGwgYXMKYHB5dGhvbjMgLW0gcHJlZmxpZ2h0IDxwcm9qZWN0PmAuIiIiCgppbXBvcnQgc3lzCgpmcm9tIHByZWZsaWdodC5fX21haW5fXyBpbXBvcnQgbWFpbgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIHN5cy5leGl0KG1haW4oKSkK
+#!/usr/bin/env python3
+"""Shim so `python3 preflight.py <project>` works as well as
+`python3 -m preflight <project>`."""
+
+import sys
+
+from preflight.__main__ import main
+
+if __name__ == "__main__":
+    sys.exit(main())
