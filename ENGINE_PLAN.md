@@ -1,1 +1,34 @@
-IyBLaUNhZCBQcmVmbGlnaHQg4oCUIEVuZ2luZSBTdGFydGluZyBQbGFuCgpDaGF0OiB0aGlzIHdvcmsgbGl2ZXMgaW4gdGhlICJLaUNhZCBQcmVmbGlnaHQiIHNpZGUgY2hhdCAoZGVzaWduYXRlZCAyMDI2LTExLTA5KS4KTWFzdGVyIHBsYW46IH4vd29ya3NwYWNlL2FnZW50aWMtc3Bpa2VzL1NQSUtFX1BMQU4ubWQgKFdlZWsgMjogTW9uIE5vdiAxNiDigJMgU3VuIE5vdiAyMiwgMjAyNiwKc3RhcnRlZCBlYXJseSBhdCBSYWtzaGl0J3Mgc2F5LXNvIG9uIE5vdiA5IOKAlCBubyBkZWFkbGluZSBwcmVzc3VyZSkuCgojIyBBcmNoaXRlY3R1cmUgKFJha3NoaXQncyBjYWxsLCAyMDI2LTExLTA5KQpPbmUgc2hhcmVkIGNoZWNrcyBlbmdpbmUsIHR3byBmcm9udCBkb29yczoKMS4gQ0xJIGZpcnN0IOKAlCB0ZXN0YWJsZSBvbiBzYW1wbGUgcHJvamVjdHMgd2l0aG91dCBhIEdVSS4KMi4gS2lDYWQgcGx1Z2luL2V4dGVuc2lvbiBzZWNvbmQg4oCUIG9uZSBjbGljayBpbnNpZGUgS2lDYWQgYmVmb3JlIEdlcmJlciBleHBvcnQgLyBvcmRlcmluZywKICAgbGF0ZXIgbGlzdGVkIGluIEtpQ2FkJ3MgUGx1Z2luIGFuZCBDb250ZW50IE1hbmFnZXIgKHRoZSBkaXNjb3ZlcnkgY2hhbm5lbCkuCkxhdGVyIGV4cGFuc2lvbiBvbmx5OiBicm93c2VyIGV4dGVuc2lvbiBvbiB0aGUgSkxDUENCL1BDQldheSBvcmRlciBwYWdlLiBOb3Qgc3Bpa2Ugc2NvcGUuCgojIyBFbnZpcm9ubWVudCBjaGVjayAoMjAyNi0xMS0wOSwgdGhpcyBWTSkKLSBQeXRob24gMy4xMiBhdmFpbGFibGUuIE5vIGtpY2FkLWNsaSBvbiB0aGlzIFZNLgotIEtpQ2FkIHByb2plY3QgZmlsZXMgKC5raWNhZF9zY2ggLyAua2ljYWRfcGNiKSBhcmUgdGV4dCBzLWV4cHJlc3Npb25zLCBhbmQgQk9NcyBleHBvcnQgYXMgQ1NWLAogIHNvIHRoZSBlbmdpbmUgY2FuIHN0YXJ0IGFzIHB1cmUtUHl0aG9uIHBhcnNpbmcgKyBCT00gY2hlY2tzIHdpdGggbm8gS2lDYWQgaW5zdGFsbC4KLSBEUkMvRVJDIHZpYSB0aGUgb2ZmaWNpYWwga2ljYWQtY2xpIHBsdWdzIGluIGFzIGFuIG9wdGlvbmFsIHN0ZXAgd2hlbiBLaUNhZCBpcyBwcmVzZW50CiAgKFJha3NoaXQncyBXaW5kb3dzIDExIFBDLCB3aGVyZSBoaXMgcHJhY3RpY2UgbGFkZGVyIHJ1bnMsIG9yIGFuIGluc3RhbGwgaGVyZSBsYXRlcikuCgojIyBGaXJzdCBidWlsZCBzdGVwcwoxLiBTLWV4cHJlc3Npb24gcGFyc2VyIGZvciAua2ljYWRfc2NoIC8gLmtpY2FkX3BjYjsgZXh0cmFjdCBjb21wb25lbnRzLCBmb290cHJpbnRzLCBuZXRzLgoyLiBCT00gQ1NWIHBhcnNlcjsgY2hlY2tzOiBtaXNzaW5nIGZvb3RwcmludCwgbWlzc2luZy9wbGFjZWhvbGRlciBwYXJ0IG51bWJlcnMsCiAgIHF1YW50aXR5IG1pc21hdGNoZXMgYmV0d2VlbiBzY2hlbWF0aWMgYW5kIEJPTS4KMy4gU2FtcGxlIGNvcnB1czogb25lIGNsZWFuIG1pbmkgcHJvamVjdCArIG9uZSBkZWxpYmVyYXRlbHkgYnJva2VuIHByb2plY3QKICAgKHdyb25nIGZvb3RwcmludCwgdW5jb25uZWN0ZWQgcGluLCBvYnNvbGV0ZSBwYXJ0KSDigJQgc2FtZSBkaXNjaXBsaW5lIGFzIFNraWxsU2Nhbi4KNC4gT25lLXBhZ2UgcmVwb3J0ICh0ZXJtaW5hbCArIE1hcmtkb3duKTogUEFTUyAvIENBVVRJT04gLyBCTE9DSyBzdHlsZSB2ZXJkaWN0cy4KNS4gVGhlbjoga2ljYWQtY2xpIERSQy9FUkMgaW50ZWdyYXRpb24gKyBwYXJ0LXJpc2sgY2hlY2tzLCBwbHVnaW4gd3JhcHBlci4KCiMjIFJha3NoaXQncyBwcmFjdGljZSBsYWRkZXIgKGhpcyBwYWNlLCBubyBkZWFkbGluZSkKQm9hcmQgMTogTEVEICsgcmVzaXN0b3IgKyBiYXR0ZXJ5LCBmdWxsIHNjaGVtYXRpYyAtPiBQQ0IgLT4gRFJDIGNsZWFuIC0+IEdlcmJlcnMuCkJvYXJkIDI6IGNvcHkgb2YgYSBzaW1wbGUgYm9hcmQsIGRlbGliZXJhdGVseSBicm9rZW4gPSBQcmVmbGlnaHQgdGVzdCBjb3JwdXMuCkJvYXJkIDM6IGEgcmVhbC1pc2ggRElZIGJvYXJkICg1NTUgLyBUVEwgbW9kdWxlIG9yIEVTUDMyIGJyZWFrb3V0KS4KT3JkZXJpbmcgYSByZWFsIGZhYiBib2FyZCBvbmx5IG9uIGhpcyBleHBsaWNpdCBzYXktc28uCg==
+# KiCad Preflight — Engine Starting Plan
+
+Chat: this work lives in the "KiCad Preflight" side chat (designated 2026-11-09).
+Master plan: ~/workspace/agentic-spikes/SPIKE_PLAN.md (Week 2: Mon Nov 16 – Sun Nov 22, 2026,
+started early at Rakshit's say-so on Nov 9 — no deadline pressure).
+
+## Architecture (Rakshit's call, 2026-11-09)
+One shared checks engine, two front doors:
+1. CLI first — testable on sample projects without a GUI.
+2. KiCad plugin/extension second — one click inside KiCad before Gerber export / ordering,
+   later listed in KiCad's Plugin and Content Manager (the discovery channel).
+Later expansion only: browser extension on the JLCPCB/PCBWay order page. Not spike scope.
+
+## Environment check (2026-11-09, this VM)
+- Python 3.12 available. No kicad-cli on this VM.
+- KiCad project files (.kicad_sch / .kicad_pcb) are text s-expressions, and BOMs export as CSV,
+  so the engine can start as pure-Python parsing + BOM checks with no KiCad install.
+- DRC/ERC via the official kicad-cli plugs in as an optional step when KiCad is present
+  (Rakshit's Windows 11 PC, where his practice ladder runs, or an install here later).
+
+## First build steps
+1. S-expression parser for .kicad_sch / .kicad_pcb; extract components, footprints, nets.
+2. BOM CSV parser; checks: missing footprint, missing/placeholder part numbers,
+   quantity mismatches between schematic and BOM.
+3. Sample corpus: one clean mini project + one deliberately broken project
+   (wrong footprint, unconnected pin, obsolete part) — same discipline as SkillScan.
+4. One-page report (terminal + Markdown): PASS / CAUTION / BLOCK style verdicts.
+5. Then: kicad-cli DRC/ERC integration + part-risk checks, plugin wrapper.
+
+## Rakshit's practice ladder (his pace, no deadline)
+Board 1: LED + resistor + battery, full schematic -> PCB -> DRC clean -> Gerbers.
+Board 2: copy of a simple board, deliberately broken = Preflight test corpus.
+Board 3: a real-ish DIY board (555 / TTL module or ESP32 breakout).
+Ordering a real fab board only on his explicit say-so.

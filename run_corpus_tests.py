@@ -1,1 +1,104 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJDb3JwdXMgdGVzdHM6IHJlYWwgb3Blbi1zb3VyY2UgYm9hcmRzICsgbGFiZWxsZWQgYnJva2VuIG11dGF0aW9ucy4KCkNsZWFuLWNvcnB1cyBleHBlY3RhdGlvbnMgY29tZSBmcm9tIHRoZSAyMDI2LTExLTA5IGFkdmVyc2FyaWFsIHJldmlldwooc2VlIHRoZSByZXZpZXcgZm9sZGVyJ3MgRkFMU0VQT1MubWQpOiBhZnRlciB0aGUgdjAuMiBmaXhlcywgbm8gY2xlYW4KYm9hcmQgbWF5IGNhcnJ5IGEgQkxPQ0sgZmluZGluZyB0aGF0IHRoZSBjZW5zdXMgc2hvd2VkIHRvIGJlIGZhbHNlLgpQaWFudG9yIGlzIHRoZSBkZWxpYmVyYXRlIGV4Y2VwdGlvbiDigJQgaXRzIHNjaGVtYXRpYyBnZW51aW5lbHkKZGlzYWdyZWVzIHdpdGggaXRzIFBDQiAodmVyaWZpZWQgYnkgaGFuZCksIHNvIGl0IGlzIGV4cGVjdGVkIHRvIEJMT0NLCndpdGggZXhhY3RseSB0aGUgdHJ1ZSBmaW5kaW5ncywgYW5kIHRoaXMgdGVzdCBwaW5zIHRoYXQgc2V0IHNvIHBhcnNlcgpyZWdyZXNzaW9ucyBjYW4ndCBxdWlldGx5IGNoYW5nZSBpdC4KClRoZSBjb3JwdXMgaXMgZG93bmxvYWRlZCBzZXBhcmF0ZWx5IChzZWUgY29ycHVzL1NPVVJDRVMubWQgZm9yIFVSTHMsCmNvbW1pdHMgYW5kIGxpY2VuY2VzKTsgd2hlbiBpdCBpcyBhYnNlbnQgdGhpcyBzdWl0ZSBTS0lQUyBjbGVhbmx5LgoKVXNhZ2U6IHB5dGhvbjMgcnVuX2NvcnB1c190ZXN0cy5weSAgIChleGl0IDAgPSBwYXNzL3NraXAsIDEgPSBmYWlsKQoiIiIKCmltcG9ydCBqc29uCmltcG9ydCBzdWJwcm9jZXNzCmltcG9ydCBzeXMKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCgpST09UID0gUGF0aChfX2ZpbGVfXykucGFyZW50CkNPUlBVUyA9IFJPT1QgLyAiY29ycHVzIgoKIyB0YXJnZXQgLT4gKHZlcmRpY3QsIGV4aXQsIHtydWxlOiBjb3VudH0pIOKAlCBleGFjdCwgZnJvbSBoYW5kLXZlcmlmaWVkIHJ1bnMKQ0xFQU4gPSB7CiAgICAicHJvamVjdHMvdXBzeS1kZXNreS9wY2IiOgogICAgICAgICgiQ0FVVElPTiIsIDEsIHsiQk9NX01JU1NJTkciOiAxfSksCiAgICAicHJvamVjdHMvZXNwLXJ1c3QtYm9hcmQvaGFyZHdhcmUvZXNwLXJ1c3QtYm9hcmQiOgogICAgICAgICgiQ0FVVElPTiIsIDEsIHsiQk9NX01JU1NJTkdfTVBOIjogMSwKICAgICAgICAgICAgICAgICAgICAgICAgIlNDSEVNQVRJQ19EQVRBU0hFRVRfTUlTU0lORyI6IDF9KSwKICAgICJwcm9qZWN0cy9waWFudG9yL3BjYi9sZWZ0IjoKICAgICAgICAoIkJMT0NLIiwgMiwgeyJEVVBMSUNBVEVfUkVGRVJFTkNFX1BDQiI6IDIsCiAgICAgICAgICAgICAgICAgICAgICAiRk9PVFBSSU5UX01JU01BVENIIjogNCwKICAgICAgICAgICAgICAgICAgICAgICJCT01fTUlTU0lORyI6IDEsCiAgICAgICAgICAgICAgICAgICAgICAiU0NIRU1BVElDX0RBVEFTSEVFVF9NSVNTSU5HIjogMX0pLAogICAgInByb2plY3RzL3BpYW50b3IvcGNiL3JpZ2h0IjoKICAgICAgICAoIkJMT0NLIiwgMiwgeyJEVVBMSUNBVEVfUkVGRVJFTkNFX1BDQiI6IDIsCiAgICAgICAgICAgICAgICAgICAgICAiRk9PVFBSSU5UX01JU01BVENIIjogNCwKICAgICAgICAgICAgICAgICAgICAgICJCT01fTUlTU0lORyI6IDEsCiAgICAgICAgICAgICAgICAgICAgICAiU0NIRU1BVElDX0RBVEFTSEVFVF9NSVNTSU5HIjogMX0pLAp9CgpCUk9LRU4gPSB7CiAgICAiYnJva2VuL2VzcC1ib20tcm93LWRlbGV0ZWQiOiAiU0NIRU1BVElDX1BBUlRfTUlTU0lOR19GUk9NX0JPTSIsCiAgICAiYnJva2VuL2VzcC1ib20tcXR5LWNoYW5nZWQiOiAiQk9NX1FVQU5USVRZX01JU01BVENIIiwKICAgICJicm9rZW4vZXNwLWJvbS11bmtub3duLXJlZiI6ICJCT01fVU5LTk9XTl9SRUZFUkVOQ0UiLAogICAgImJyb2tlbi91cHN5LXNjaC1mb290cHJpbnQtYmxhbmtlZCI6ICJTQ0hFTUFUSUNfRk9PVFBSSU5UX01JU1NJTkciLAogICAgImJyb2tlbi91cHN5LXBjYi1mb290cHJpbnQtc3dhcHBlZCI6ICJGT09UUFJJTlRfTUlTTUFUQ0giLAogICAgImJyb2tlbi91cHN5LXBjYi1mb290cHJpbnQtZGVsZXRlZCI6ICJTQ0hfUEFSVF9OT1RfT05fUENCIiwKfQoKCmRlZiBydW5fanNvbih0YXJnZXQpOgogICAgcHJvYyA9IHN1YnByb2Nlc3MucnVuKAogICAgICAgIFtzeXMuZXhlY3V0YWJsZSwgIi1tIiwgInByZWZsaWdodCIsIHN0cih0YXJnZXQpLAogICAgICAgICAiLS1mb3JtYXQiLCAianNvbiJdLAogICAgICAgIGN3ZD1ST09ULCBjYXB0dXJlX291dHB1dD1UcnVlLCB0ZXh0PVRydWUsIHRpbWVvdXQ9MzAwKQogICAgcmV0dXJuIHByb2MsIGpzb24ubG9hZHMocHJvYy5zdGRvdXQpCgoKZGVmIG1haW4oKToKICAgIGlmIG5vdCAoQ09SUFVTIC8gInByb2plY3RzIikuaXNfZGlyKCk6CiAgICAgICAgcHJpbnQoIlNLSVA6IG9wZW4tc291cmNlIGNvcnB1cyBub3QgZG93bmxvYWRlZCAiCiAgICAgICAgICAgICAgIihzZWUgY29ycHVzL1NPVVJDRVMubWQpIOKAlCBjb3JwdXMgdGVzdHMgbm90IHJ1bi4iKQogICAgICAgIHJldHVybiAwCiAgICBmYWlsdXJlcyA9IDAKICAgIGZyb20gY29sbGVjdGlvbnMgaW1wb3J0IENvdW50ZXIKICAgIGZvciByZWwsICh2ZXJkaWN0LCBjb2RlLCBydWxlcykgaW4gQ0xFQU4uaXRlbXMoKToKICAgICAgICB0YXJnZXQgPSBDT1JQVVMgLyByZWwKICAgICAgICBpZiBub3QgdGFyZ2V0LmlzX2RpcigpOgogICAgICAgICAgICBwcmludChmIkZBSUwge3JlbH06IG1pc3NpbmcgZnJvbSBjb3JwdXMiKQogICAgICAgICAgICBmYWlsdXJlcyArPSAxCiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgcHJvYywgcmVwb3J0ID0gcnVuX2pzb24odGFyZ2V0KQogICAgICAgIGdvdCA9IENvdW50ZXIoZlsicnVsZSJdIGZvciBmIGluIHJlcG9ydFsiZmluZGluZ3MiXSkKICAgICAgICBvayA9IChyZXBvcnRbInZlcmRpY3QiXSA9PSB2ZXJkaWN0IGFuZCBwcm9jLnJldHVybmNvZGUgPT0gY29kZQogICAgICAgICAgICAgIGFuZCBnb3QgPT0gQ291bnRlcihydWxlcykpCiAgICAgICAgcHJpbnQoZiJ7J1BBU1MnIGlmIG9rIGVsc2UgJ0ZBSUwnfSBjbGVhbiB7cmVsfTogIgogICAgICAgICAgICAgIGYidmVyZGljdD17cmVwb3J0Wyd2ZXJkaWN0J119IGV4aXQ9e3Byb2MucmV0dXJuY29kZX0gIgogICAgICAgICAgICAgIGYicnVsZXM9e2RpY3QoZ290KX0iKQogICAgICAgIGZhaWx1cmVzICs9IDAgaWYgb2sgZWxzZSAxCiAgICBmb3IgcmVsLCBydWxlIGluIEJST0tFTi5pdGVtcygpOgogICAgICAgIHRhcmdldCA9IENPUlBVUyAvIHJlbAogICAgICAgIGlmIG5vdCB0YXJnZXQuaXNfZGlyKCk6CiAgICAgICAgICAgIHByaW50KGYiRkFJTCB7cmVsfTogbWlzc2luZyAocnVuIGNvcnB1cy9idWlsZF9icm9rZW4ucHkpIikKICAgICAgICAgICAgZmFpbHVyZXMgKz0gMQogICAgICAgICAgICBjb250aW51ZQogICAgICAgIHByb2MsIHJlcG9ydCA9IHJ1bl9qc29uKHRhcmdldCkKICAgICAgICBmaXJlZCA9IHtmWyJydWxlIl0gZm9yIGYgaW4gcmVwb3J0WyJmaW5kaW5ncyJdfQogICAgICAgIG9rID0gcnVsZSBpbiBmaXJlZCBhbmQgcHJvYy5yZXR1cm5jb2RlIGluICgxLCAyKQogICAgICAgIHByaW50KGYieydQQVNTJyBpZiBvayBlbHNlICdGQUlMJ30gYnJva2VuIHtyZWx9OiAiCiAgICAgICAgICAgICAgZiJleHBlY3RlZCB7cnVsZX0sIHZlcmRpY3Q9e3JlcG9ydFsndmVyZGljdCddfSIpCiAgICAgICAgZmFpbHVyZXMgKz0gMCBpZiBvayBlbHNlIDEKICAgIGlmIGZhaWx1cmVzOgogICAgICAgIHByaW50KGYiXG57ZmFpbHVyZXN9IGNvcnB1cyB0ZXN0KHMpIEZBSUxFRCIpCiAgICAgICAgcmV0dXJuIDEKICAgIHByaW50KCJcbkFsbCBjb3JwdXMgdGVzdHMgcGFzc2VkLiIpCiAgICByZXR1cm4gMAoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBzeXMuZXhpdChtYWluKCkpCg==
+#!/usr/bin/env python3
+"""Corpus tests: real open-source boards + labelled broken mutations.
+
+Clean-corpus expectations come from the 2026-11-09 adversarial review
+(see the review folder's FALSEPOS.md): after the v0.2 fixes, no clean
+board may carry a BLOCK finding that the census showed to be false.
+Piantor is the deliberate exception — its schematic genuinely
+disagrees with its PCB (verified by hand), so it is expected to BLOCK
+with exactly the true findings, and this test pins that set so parser
+regressions can't quietly change it.
+
+The corpus is downloaded separately (see corpus/SOURCES.md for URLs,
+commits and licences); when it is absent this suite SKIPS cleanly.
+
+Usage: python3 run_corpus_tests.py   (exit 0 = pass/skip, 1 = fail)
+"""
+
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).parent
+CORPUS = ROOT / "corpus"
+
+# target -> (verdict, exit, {rule: count}) — exact, from hand-verified runs
+CLEAN = {
+    "projects/upsy-desky/pcb":
+        ("CAUTION", 1, {"BOM_MISSING": 1}),
+    "projects/esp-rust-board/hardware/esp-rust-board":
+        ("CAUTION", 1, {"BOM_MISSING_MPN": 1,
+                        "SCHEMATIC_DATASHEET_MISSING": 1}),
+    "projects/piantor/pcb/left":
+        ("BLOCK", 2, {"DUPLICATE_REFERENCE_PCB": 2,
+                      "FOOTPRINT_MISMATCH": 4,
+                      "BOM_MISSING": 1,
+                      "SCHEMATIC_DATASHEET_MISSING": 1}),
+    "projects/piantor/pcb/right":
+        ("BLOCK", 2, {"DUPLICATE_REFERENCE_PCB": 2,
+                      "FOOTPRINT_MISMATCH": 4,
+                      "BOM_MISSING": 1,
+                      "SCHEMATIC_DATASHEET_MISSING": 1}),
+}
+
+BROKEN = {
+    "broken/esp-bom-row-deleted": "SCHEMATIC_PART_MISSING_FROM_BOM",
+    "broken/esp-bom-qty-changed": "BOM_QUANTITY_MISMATCH",
+    "broken/esp-bom-unknown-ref": "BOM_UNKNOWN_REFERENCE",
+    "broken/upsy-sch-footprint-blanked": "SCHEMATIC_FOOTPRINT_MISSING",
+    "broken/upsy-pcb-footprint-swapped": "FOOTPRINT_MISMATCH",
+    "broken/upsy-pcb-footprint-deleted": "SCH_PART_NOT_ON_PCB",
+}
+
+
+def run_json(target):
+    proc = subprocess.run(
+        [sys.executable, "-m", "preflight", str(target),
+         "--format", "json"],
+        cwd=ROOT, capture_output=True, text=True, timeout=300)
+    return proc, json.loads(proc.stdout)
+
+
+def main():
+    if not (CORPUS / "projects").is_dir():
+        print("SKIP: open-source corpus not downloaded "
+              "(see corpus/SOURCES.md) — corpus tests not run.")
+        return 0
+    failures = 0
+    from collections import Counter
+    for rel, (verdict, code, rules) in CLEAN.items():
+        target = CORPUS / rel
+        if not target.is_dir():
+            print(f"FAIL {rel}: missing from corpus")
+            failures += 1
+            continue
+        proc, report = run_json(target)
+        got = Counter(f["rule"] for f in report["findings"])
+        ok = (report["verdict"] == verdict and proc.returncode == code
+              and got == Counter(rules))
+        print(f"{'PASS' if ok else 'FAIL'} clean {rel}: "
+              f"verdict={report['verdict']} exit={proc.returncode} "
+              f"rules={dict(got)}")
+        failures += 0 if ok else 1
+    for rel, rule in BROKEN.items():
+        target = CORPUS / rel
+        if not target.is_dir():
+            print(f"FAIL {rel}: missing (run corpus/build_broken.py)")
+            failures += 1
+            continue
+        proc, report = run_json(target)
+        fired = {f["rule"] for f in report["findings"]}
+        ok = rule in fired and proc.returncode in (1, 2)
+        print(f"{'PASS' if ok else 'FAIL'} broken {rel}: "
+              f"expected {rule}, verdict={report['verdict']}")
+        failures += 0 if ok else 1
+    if failures:
+        print(f"\n{failures} corpus test(s) FAILED")
+        return 1
+    print("\nAll corpus tests passed.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

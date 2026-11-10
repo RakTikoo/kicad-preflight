@@ -1,1 +1,63 @@
-IyBSYWtzaGl0J3MgS2lDYWQgTGVhcm5pbmcgUGxhbgoKRm9yOiBhIGNoaXAgZGVzaWduIGVuZ2luZWVyIHdobyBoYXMgbWFkZSBDUFVzLCBrbm93cyBlbGVjdHJvbmljcyBkZWVwbHksIGNvZGVzIGluCkMgLyBDKysgLyBQeXRob24g4oCUIGJ1dCBoYXMgbmV2ZXIgdXNlZCBLaUNhZC4gU28gdGhpcyBwbGFuIHRlYWNoZXMgdGhlICp0b29sKiwgbm90CmVsZWN0cm9uaWNzLiBFdmVyeSBuZXcgS2lDYWQgdGVybSBnZXRzIG1hcHBlZCB0byBzb21ldGhpbmcgaGUgYWxyZWFkeSBrbm93cy4KUGFjZTogaGlzIG93biDigJQgbm8gZGVhZGxpbmUgKCJub3QgbGlrZSB3ZSBoYXZlIGEgcHJvZHVjdCBtZWV0aW5nIHRvbW9ycm93IikuCkdvbGRlbiBydWxlOiBldmVyeSBwcmFjdGljZSBib2FyZCBkb3VibGVzIGFzIHRlc3QgZGF0YSBmb3IgS2lDYWQgUHJlZmxpZ2h0LgoKIyMgU3RhZ2UgMCDigJQgU2V0dXAgKDMwIG1pbnV0ZXMsIG9uZSBldmVuaW5nKQotIEluc3RhbGwgS2lDYWQgKGN1cnJlbnQgc3RhYmxlKSBvbiB0aGUgV2luZG93cyAxMSBQQyDigJQgZnJlZSwgZnJvbSBraWNhZC5vcmcuCi0gVG91ciB0aGUgNCB3aW5kb3dzOiBQcm9qZWN0IE1hbmFnZXIsIFNjaGVtYXRpYyBFZGl0b3IsIFBDQiBFZGl0b3IsIFN5bWJvbC9Gb290cHJpbnQgbGlicmFyaWVzLgogIEFuYWxvZ3k6IHNjaGVtYXRpYyA9IHRoZSBSVEwvbmV0bGlzdCBpbnRlbnQ7IFBDQiA9IHBoeXNpY2FsIGRlc2lnbiAvIGxheW91dDsKICBEUkMgPSBkZXNpZ24gcnVsZSBjaGVjayAoc2FtZSBpZGVhIGFzIGluIGNoaXAgUEQsIGZyaWVuZGxpZXIpOyBFUkMgPSBlbGVjdHJpY2FsIHJ1bGUgY2hlY2suCi0gU2V0IHVuaXRzIHRvIG1tLCBncmlkLCBhbmQgdHVybiBvbiB0aGUgbmV0bGlzdCB2aWV3LiBOb3RoaW5nIHRvIGRlc2lnbiB5ZXQuCgojIyBTdGFnZSAxIOKAlCBCb2FyZCAxOiB0aGUgZnVsbCBsb29wIGluIG9uZSBldmVuaW5nCkxFRCArIHJlc2lzdG9yICsgYmF0dGVyeSAoY29pbiBjZWxsKSwgc3RhcnQgdG8gZmluaXNoOgoxLiBTY2hlbWF0aWM6IHBsYWNlIHN5bWJvbHMsIHdpcmUgdGhlbSwgYW5ub3RhdGUgcmVmZXJlbmNlcyAoUjEsIEQxLCBCVDEpLgoyLiBBc3NpZ24gZm9vdHByaW50cyDigJQgdGhlIG1vbWVudCAic3ltYm9sIHZzIGZvb3RwcmludCIgY2xpY2tzIChsb2dpY2FsIHBpbiB2cyBwaHlzaWNhbCBwYWQpLgozLiBQQ0I6IHBsYWNlLCByb3V0ZSB0d28gY29wcGVyIGxheWVycywgYWRkIGJvYXJkIG91dGxpbmUuCjQuIFJ1biBEUkMgdW50aWwgY2xlYW4uIEV4cG9ydCBHZXJiZXJzICsgZHJpbGwgZmlsZXMg4oCUIHRoZSBleGFjdCBmaWxlcyBhIGZhYiBob3VzZSB0YWtlcy4KTWlsZXN0b25lOiBhIEdlcmJlciB6aXAgaGUgY291bGQgdXBsb2FkIHRvIEpMQ1BDQi4gKE9yZGVyaW5nIGl0IGlzIG9wdGlvbmFsLCBoaXMgc2F5LXNvIG9ubHkuKQpQcmVmbGlnaHQgdGllLWluOiBydW4gUHJlZmxpZ2h0IG9uIHRoaXMgYm9hcmQg4oCUIGl0IHNob3VsZCBQQVNTLiBIaXMgZmlyc3QgY2xlYW4gdGVzdCBjYXNlLgoKIyMgU3RhZ2UgMiDigJQgUmVhZGluZyBib2FyZHMsIGxpYnJhcmllcywgYW5kIGJyZWFraW5nIHRoaW5ncyBvbiBwdXJwb3NlCi0gT3BlbiAy4oCTMyBzbWFsbCBvcGVuLXNvdXJjZSBLaUNhZCBwcm9qZWN0cyAodGhlIHNhbWUgY29ycHVzIFByZWZsaWdodCBpcyB0ZXN0ZWQgb24pCiAgYW5kIHJlYWQgdGhlbTogaG93IG90aGVyIHBlb3BsZSBvcmdhbmlzZSBzaGVldHMsIHBvd2VyIHN5bWJvbHMsIG5ldCBsYWJlbHMuCi0gTGlicmFyaWVzIHByb3Blcmx5OiBidWlsdC1pbiBzeW1ib2wvZm9vdHByaW50IGxpYnJhcmllcywgYW5kIGhvdyB0byBhZGQgb25lIHBhcnQKICBmcm9tIGEgZGF0YXNoZWV0IChwaW5vdXQg4oaSIHN5bWJvbCwgcGFja2FnZSBkcmF3aW5nIOKGkiBmb290cHJpbnQgcGFkcykuCi0gQm9hcmQgMjogY29weSBCb2FyZCAxIGFuZCBkZWxpYmVyYXRlbHkgYnJlYWsgaXQsIG9uZSBmYXVsdCBhdCBhIHRpbWU6CiAgd3JvbmcgZm9vdHByaW50LCB1bmNvbm5lY3RlZCBwaW4sIG1pc3NpbmcgcGFydCBudW1iZXIgaW4gdGhlIEJPTSwgc3dhcHBlZCBwaW5zLgpNaWxlc3RvbmU6IFByZWZsaWdodCBtdXN0IGZsYWcgZWFjaCBwbGFudGVkIGZhdWx0LiBBbnl0aGluZyBpdCBtaXNzZXMgaXMgYSBidWcgcmVwb3J0CmhlIGp1c3QgYXV0aG9yZWQg4oCUIHRoaXMgaXMgaG93IHRoZSB0ZXN0IGNvcnB1cyBncm93cy4KCiMjIFN0YWdlIDMg4oCUIEEgcmVhbCBib2FyZCBpbiBoaXMgc3R5bGUKQSBzbWFsbCBCZW4gRWF0ZXItZmxhdm91cmVkIG1vZHVsZSDigJQgZS5nLiBhIDU1NSB0aW1lciBib2FyZCwgYSBUVEwgbG9naWMgYnJlYWtvdXQsCm9yIGFuIEVTUDMyIGJyZWFrb3V0OgotIE11bHRpLXBhcnQgc2NoZW1hdGljIHdpdGggbmV0IGxhYmVscyBhbmQgYSBwb3dlciBmbGFnIGRvbmUgcHJvcGVybHkuCi0gMi1sYXllciByb3V0aW5nIHdpdGggZ3JvdW5kIHBvdXIsIHNpbGtzY3JlZW4gdGhhdCBhY3R1YWxseSBoZWxwcyBhc3NlbWJseS4KLSBHZW5lcmF0ZSB0aGUgQk9NIChDU1YpIGFuZCBwbGFjZW1lbnQgZmlsZSDigJQgdGhlIHR3byBmaWxlcyBhbiBhc3NlbWJseSBzZXJ2aWNlIG5lZWRzLgpNaWxlc3RvbmU6IGEgYm9hcmQgaGUnZCBnZW51aW5lbHkgb3JkZXIuIFByZWZsaWdodCdzIEJPTSBjaGVja3MgcnVuIG9uIGEgcmVhbCBCT00gbm93LgoKIyMgU3RhZ2UgNCDigJQgT3JkZXJpbmcgbGl0ZXJhY3kgKG5vIG9yZGVyIHJlcXVpcmVkKQotIFdhbGsgdGhlIEpMQ1BDQiBhbmQgUENCV2F5IHVwbG9hZCBmbG93IHdpdGggdGhlIFN0YWdlIDEvMyBHZXJiZXJzIHVwIHRvIOKAlCBub3QgcGFzdCDigJQKICB0aGUgcGF5bWVudCBzdGVwOiBob3cgZmFiIERSQyBkaWZmZXJzIGZyb20gS2lDYWQgRFJDLCBzdGVuY2lsL2Fzc2VtYmx5IG9wdGlvbnMsCiAgd2hhdCBMQ1NDIHBhcnQgbnVtYmVycyBhcmUgYW5kIHdoeSB0aGUgQk9NIG5lZWRzIHRoZW0uCi0gVGhpcyBpcyB0aGUgZXhhY3QgbW9tZW50IFByZWZsaWdodCAoYW5kIGxhdGVyIGl0cyBvcmRlci1wYWdlIGJyb3dzZXIgZXh0ZW5zaW9uKQogIGlzIGRlc2lnbmVkIHRvIHNpdCBpbiDigJQgaGUnbGwgZmVlbCB3aGVyZSB0aGUgY2hlY2tzIGJlbG9uZy4KCiMjIFN0YWdlIDUg4oCUIFVuZGVyIHRoZSBob29kIChmZWVkcyB0aGUgcHJvZHVjdCwgb3B0aW9uYWwgZGVwdGgpCi0gS2lDYWQgZmlsZXMgYXJlIHRleHQgcy1leHByZXNzaW9uczogcmVhZCBoaXMgb3duIC5raWNhZF9zY2ggLyAua2ljYWRfcGNiIGluIGFuIGVkaXRvcgogIGFsb25nc2lkZSB0aGUgUHJlZmxpZ2h0IHBhcnNlciBjb2RlIChwdXJlIFB5dGhvbiDigJQgaGlzIGxhbmd1YWdlKS4KLSBXaGF0IGtpY2FkLWNsaSBhdXRvbWF0ZXMgKERSQy9FUkMvR2VyYmVyL0JPTSBmcm9tIHRoZSBjb21tYW5kIGxpbmUpIGFuZCB3aGF0IHRoZQogIEtpQ2FkIEFjdGlvbiBQbHVnaW4gQVBJIGNhbiBkbyBpbnNpZGUgdGhlIGFwcCDigJQgdGhlIHR3byBmcm9udCBkb29ycyBvZiBQcmVmbGlnaHQuCk1pbGVzdG9uZTogaGUgY2FuIHJlYWQgYSBQcmVmbGlnaHQgZmluZGluZyBhbmQgdHJhY2UgaXQgdG8gdGhlIGxpbmUgaW4gaGlzIGJvYXJkIGZpbGUuCgojIyBIb3cgU3BhcmsgdGVhY2hlcyBhbG9uZyB0aGUgd2F5Ci0gRWFjaCBzdGFnZTogU3BhcmsgcHJlcGFyZXMgdGhlIHN0ZXAgbGlzdCArIHRoZSAid2hhdCB0aGlzIGJ1dHRvbiBtZWFucyBpbiBlbGVjdHJvbmljcwogIHRlcm1zIiBub3RlcyAqYmVmb3JlKiBoZSBzaXRzIGRvd24sIGFuZCByZXZpZXdzIGhpcyBleHBvcnRlZCBmaWxlcyBhZnRlci4KLSBObyBzdGFnZSBnYXRlcyB0aGUgcHJvZHVjdCBidWlsZCDigJQgdGhlIGVuZ2luZSB3b3JrIHJ1bnMgaW4gcGFyYWxsZWwgaW4gdGhpcyBjaGF0OwogIGhpcyBib2FyZHMgam9pbiB0aGUgdGVzdCBjb3JwdXMgYXMgdGhleSBhcHBlYXIuCi0gUm91Z2ggcmh5dGhtIGlmIGhlIHdhbnRzIG9uZTogb25lIHN0YWdlIHBlciB3ZWVrIGFsb25nc2lkZSB0aGUgc3Bpa2UsIH4xIGV2ZW5pbmcgZWFjaAogIGZvciBTdGFnZXMgMOKAkzIuIEZhc3RlciBvciBzbG93ZXIgYm90aCBmaW5lLgo=
+# Rakshit's KiCad Learning Plan
+
+For: a chip design engineer who has made CPUs, knows electronics deeply, codes in
+C / C++ / Python — but has never used KiCad. So this plan teaches the *tool*, not
+electronics. Every new KiCad term gets mapped to something he already knows.
+Pace: his own — no deadline ("not like we have a product meeting tomorrow").
+Golden rule: every practice board doubles as test data for KiCad Preflight.
+
+## Stage 0 — Setup (30 minutes, one evening)
+- Install KiCad (current stable) on the Windows 11 PC — free, from kicad.org.
+- Tour the 4 windows: Project Manager, Schematic Editor, PCB Editor, Symbol/Footprint libraries.
+  Analogy: schematic = the RTL/netlist intent; PCB = physical design / layout;
+  DRC = design rule check (same idea as in chip PD, friendlier); ERC = electrical rule check.
+- Set units to mm, grid, and turn on the netlist view. Nothing to design yet.
+
+## Stage 1 — Board 1: the full loop in one evening
+LED + resistor + battery (coin cell), start to finish:
+1. Schematic: place symbols, wire them, annotate references (R1, D1, BT1).
+2. Assign footprints — the moment "symbol vs footprint" clicks (logical pin vs physical pad).
+3. PCB: place, route two copper layers, add board outline.
+4. Run DRC until clean. Export Gerbers + drill files — the exact files a fab house takes.
+Milestone: a Gerber zip he could upload to JLCPCB. (Ordering it is optional, his say-so only.)
+Preflight tie-in: run Preflight on this board — it should PASS. His first clean test case.
+
+## Stage 2 — Reading boards, libraries, and breaking things on purpose
+- Open 2–3 small open-source KiCad projects (the same corpus Preflight is tested on)
+  and read them: how other people organise sheets, power symbols, net labels.
+- Libraries properly: built-in symbol/footprint libraries, and how to add one part
+  from a datasheet (pinout → symbol, package drawing → footprint pads).
+- Board 2: copy Board 1 and deliberately break it, one fault at a time:
+  wrong footprint, unconnected pin, missing part number in the BOM, swapped pins.
+Milestone: Preflight must flag each planted fault. Anything it misses is a bug report
+he just authored — this is how the test corpus grows.
+
+## Stage 3 — A real board in his style
+A small Ben Eater-flavoured module — e.g. a 555 timer board, a TTL logic breakout,
+or an ESP32 breakout:
+- Multi-part schematic with net labels and a power flag done properly.
+- 2-layer routing with ground pour, silkscreen that actually helps assembly.
+- Generate the BOM (CSV) and placement file — the two files an assembly service needs.
+Milestone: a board he'd genuinely order. Preflight's BOM checks run on a real BOM now.
+
+## Stage 4 — Ordering literacy (no order required)
+- Walk the JLCPCB and PCBWay upload flow with the Stage 1/3 Gerbers up to — not past —
+  the payment step: how fab DRC differs from KiCad DRC, stencil/assembly options,
+  what LCSC part numbers are and why the BOM needs them.
+- This is the exact moment Preflight (and later its order-page browser extension)
+  is designed to sit in — he'll feel where the checks belong.
+
+## Stage 5 — Under the hood (feeds the product, optional depth)
+- KiCad files are text s-expressions: read his own .kicad_sch / .kicad_pcb in an editor
+  alongside the Preflight parser code (pure Python — his language).
+- What kicad-cli automates (DRC/ERC/Gerber/BOM from the command line) and what the
+  KiCad Action Plugin API can do inside the app — the two front doors of Preflight.
+Milestone: he can read a Preflight finding and trace it to the line in his board file.
+
+## How Spark teaches along the way
+- Each stage: Spark prepares the step list + the "what this button means in electronics
+  terms" notes *before* he sits down, and reviews his exported files after.
+- No stage gates the product build — the engine work runs in parallel in this chat;
+  his boards join the test corpus as they appear.
+- Rough rhythm if he wants one: one stage per week alongside the spike, ~1 evening each
+  for Stages 0–2. Faster or slower both fine.

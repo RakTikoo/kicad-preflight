@@ -1,1 +1,44 @@
-IyBTZWN1cml0eSBwb2xpY3kKCktpQ2FkIFByZWZsaWdodCdzIHdob2xlIGpvYiBpcyByZWFkaW5nICoqdW50cnVzdGVkKiogcHJvamVjdCBmb2xkZXJzIOKAlApib2FyZHMgZG93bmxvYWRlZCBmcm9tIHRoZSBpbnRlcm5ldCwgc2hhcmVkIGluIGZvcnVtcywgc2VudCBieQpjb2xsYWJvcmF0b3JzIOKAlCBzbyB2dWxuZXJhYmlsaXRpZXMgaW4gUHJlZmxpZ2h0IGl0c2VsZiBtYXR0ZXI6IGEKY3JhZnRlZCBwcm9qZWN0IGZpbGUgdGhhdCBjYW4gY3Jhc2gsIGhhbmcsIGV4aGF1c3QsIG9yIGRlY2VpdmUgdGhlCmNoZWNrZXIgZGVmZWF0cyB0aGUgdG9vbCdzIHB1cnBvc2UuCgojIyBSZXBvcnRpbmcgYSB2dWxuZXJhYmlsaXR5CgpQbGVhc2UgcmVwb3J0IHNlY3VyaXR5IGlzc3VlcyAqKnByaXZhdGVseSoqLCBub3QgYXMgYSBwdWJsaWMgaXNzdWU6CgotIFVzZSBHaXRIdWIncyBwcml2YXRlIHZ1bG5lcmFiaWxpdHkgcmVwb3J0aW5nIGZvciB0aGlzIHJlcG9zaXRvcnk6CiAgKipTZWN1cml0eSDihpIgUmVwb3J0IGEgdnVsbmVyYWJpbGl0eSoqIG9uCiAgaHR0cHM6Ly9naXRodWIuY29tL1Jha1Rpa29vL2tpY2FkLXByZWZsaWdodAogIChHaXRIdWIgU2VjdXJpdHkgQWR2aXNvcmllcykuIFRoaXMga2VlcHMgdGhlIHJlcG9ydCB2aXNpYmxlIG9ubHkgdG8KICB0aGUgcmVwb3J0ZXIgYW5kIHRoZSBtYWludGFpbmVyIHVudGlsIGEgZml4IGlzIGF2YWlsYWJsZS4KClBsZWFzZSBpbmNsdWRlLCBhcyBmYXIgYXMgeW91IGNhbjoKCi0gdGhlIFByZWZsaWdodCB2ZXJzaW9uIChgcHJlZmxpZ2h0L19faW5pdF9fLnB5YCkgYW5kIHlvdXIgUHl0aG9uIHZlcnNpb24sCi0gYSBtaW5pbWFsIHByb2plY3QgZm9sZGVyIChvciBmaWxlKSB0aGF0IHRyaWdnZXJzIHRoZSBpc3N1ZSwKLSB3aGF0IHlvdSBleHBlY3RlZCB0byBoYXBwZW4gYW5kIHdoYXQgYWN0dWFsbHkgaGFwcGVuZWQgKGhhbmcsIGNyYXNoLAogIHJlc291cmNlIGV4aGF1c3Rpb24sIHZlcmRpY3QgYnlwYXNzLCBmb3JnZWQgcmVwb3J0IG91dHB1dCwg4oCmKS4KCkRvICoqbm90KiogaW5jbHVkZSByZWFsIGNyZWRlbnRpYWxzIG9yIGFueW9uZSBlbHNlJ3MgcHJpdmF0ZSBkYXRhIGluIGEKcmVwb3J0LiBUaGUgcHJvamVjdCdzIG93biBjb3JwdXMgdXNlcyBwdWJsaWMgb3Blbi1zb3VyY2UgYm9hcmRzIGFuZApzeW50aGV0aWMgZml4dHVyZXMgb25seSDigJQgdGhhdCBpcyBlbm91Z2guCgojIyBXaGF0IGNvdW50cyBhcyBhIGRlZmVjdAoKLSBBIHByb2plY3QgZmlsZSB0aGF0IG1ha2VzIFByZWZsaWdodCBoYW5nLCBjcmFzaCB3aXRoIGEgdHJhY2ViYWNrLCBvcgogIGNvbnN1bWUgdW5ib3VuZGVkIG1lbW9yeS9DUFUgKG5vIHNjYW4gYnVkZ2V0IG1heSBiZSBieXBhc3NhYmxlKS4KLSBBIGJyb2tlbiBib2FyZCB0aGF0IHJlY2VpdmVzIFBBU1MgYmVjYXVzZSBhIGZpbGUgd2FzIHNpbGVudGx5CiAgc2tpcHBlZCAoYFNDQU5fSU5DT01QTEVURWAgc2hvdWxkIGhhdmUgZmlyZWQgaW5zdGVhZCkuCi0gQ3JhZnRlZCBwYXJ0IHZhbHVlcyAvIHJlZmVyZW5jZXMgLyBmaWxlbmFtZXMgdGhhdCBmb3JnZSBvciBjb3JydXB0CiAgdGhlIHJlcG9ydCAodGVybWluYWwgZXNjYXBlcywgYnJva2VuIE1hcmtkb3duL0pTT04gb3V0cHV0KS4KLSBBIGZha2UgYGtpY2FkLWNsaWAgb3IgZGF0YXNldCBmaWxlIGJlaW5nIHRydXN0ZWQgYmV5b25kIGl0cyBkb2N1bWVudGVkCiAgcm9sZS4KCiMjIFN1cHBvcnRlZCB2ZXJzaW9ucwoKT25seSB0aGUgbGF0ZXN0IHJlbGVhc2UgaXMgc3VwcG9ydGVkLiBQcmVmbGlnaHQgaXMgcHJlLTEuMDsgc2VjdXJpdHkKZml4ZXMgbGFuZCBvbiB0aGUgbmV3ZXN0IHRhZyBhbmQgYXJlIGNhbGxlZCBvdXQgaW4gdGhlIHJlbGVhc2Ugbm90ZXMuCg==
+# Security policy
+
+KiCad Preflight's whole job is reading **untrusted** project folders —
+boards downloaded from the internet, shared in forums, sent by
+collaborators — so vulnerabilities in Preflight itself matter: a
+crafted project file that can crash, hang, exhaust, or deceive the
+checker defeats the tool's purpose.
+
+## Reporting a vulnerability
+
+Please report security issues **privately**, not as a public issue:
+
+- Use GitHub's private vulnerability reporting for this repository:
+  **Security → Report a vulnerability** on
+  https://github.com/RakTikoo/kicad-preflight
+  (GitHub Security Advisories). This keeps the report visible only to
+  the reporter and the maintainer until a fix is available.
+
+Please include, as far as you can:
+
+- the Preflight version (`preflight/__init__.py`) and your Python version,
+- a minimal project folder (or file) that triggers the issue,
+- what you expected to happen and what actually happened (hang, crash,
+  resource exhaustion, verdict bypass, forged report output, …).
+
+Do **not** include real credentials or anyone else's private data in a
+report. The project's own corpus uses public open-source boards and
+synthetic fixtures only — that is enough.
+
+## What counts as a defect
+
+- A project file that makes Preflight hang, crash with a traceback, or
+  consume unbounded memory/CPU (no scan budget may be bypassable).
+- A broken board that receives PASS because a file was silently
+  skipped (`SCAN_INCOMPLETE` should have fired instead).
+- Crafted part values / references / filenames that forge or corrupt
+  the report (terminal escapes, broken Markdown/JSON output).
+- A fake `kicad-cli` or dataset file being trusted beyond its documented
+  role.
+
+## Supported versions
+
+Only the latest release is supported. Preflight is pre-1.0; security
+fixes land on the newest tag and are called out in the release notes.

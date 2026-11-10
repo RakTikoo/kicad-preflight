@@ -1,1 +1,65 @@
-IyBDb250cmlidXRpbmcgdG8gS2lDYWQgUHJlZmxpZ2h0CgpUaGFua3MgZm9yIGhlbHBpbmcuIFRoZSBtb3N0IHZhbHVhYmxlIGNvbnRyaWJ1dGlvbnMgYXJlICoqZmFsc2UtcG9zaXRpdmUKcmVwb3J0cyB3aXRoIHRoZSByZWFsIGJvYXJkIGNvbnRleHQqKiwgKiptaXNzZWQtZmF1bHQgcmVwb3J0cyoqLCBhbmQKKipuZXcgY2hlY2tzIHRoYXQgc2hpcCB3aXRoIHByb2plY3RzIHByb3ZpbmcgYm90aCBzaWRlcyoqLgoKIyMgR3JvdW5kIHJ1bGVzCgotICoqUHJvamVjdHMgYXJlIG9ubHkgZXZlciBwYXJzZWQsIG5ldmVyIGZhYnJpY2F0ZWQuKiogRXZlcnl0aGluZyBpbgogIGBzYW1wbGVzL2AgYW5kIGBjb3JwdXMvYCBleGlzdHMgdG8gYmUgcmVhZCBhcyB0ZXh0LiBOb2JvZHkgb3JkZXJzIGEKICBib2FyZCB0byAidGVzdCIgYSBjaGFuZ2UuCi0gKipUaGUgdmVyZGljdCBjb21lcyBmcm9tIGRldGVybWluaXN0aWMgcnVsZXMsIG5ldmVyIGZyb20gYW4gTExNLioqCiAgQSBjaGFuZ2UgdGhhdCBtYWtlcyBhIHZlcmRpY3QgZGVwZW5kIG9uIGEgbW9kZWwgY2FsbCB3aWxsIG5vdCBiZQogIG1lcmdlZC4KLSAqKkV2ZXJ5IGNoZWNrIHNoaXBzIHdpdGggdHdvIHByb2plY3RzOioqIG9uZSBpdCBtdXN0IGNhdGNoIGFuZCBvbmUKICBjbGVhbiBsb29rLWFsaWtlIGl0IG11c3Qgbm90IEJMT0NLLiBBIGNoZWNrIHdpdGhvdXQgYm90aCBpcyBhIGd1ZXNzLgotIFB1cmUgUHl0aG9uIHN0YW5kYXJkIGxpYnJhcnkgb25seS4gTm8gbmV3IGRlcGVuZGVuY2llcy4KLSAqKk9wZW4tbGljZW5jZSB0ZXN0IGRhdGEgb25seS4qKiBBbnkgcmVhbCBib2FyZCBhZGRlZCB0byBgY29ycHVzL2AKICBtdXN0IGNvbWUgZnJvbSBhIHB1YmxpYyByZXBvc2l0b3J5IHdpdGggYSBjbGVhciBvcGVuIGxpY2VuY2UsIHJlY29yZGVkCiAgaW4gYGNvcnB1cy9TT1VSQ0VTLm1kYCB3aXRoIFVSTCwgY29tbWl0LCBhbmQgdGhlIGxpY2VuY2UgZmlsZSByZWFkLgogIE5vIGNsZWFyIGxpY2VuY2Ug4oaSIG5vdCBpbiB0aGUgY29ycHVzLCBubyBleGNlcHRpb25zLgoKIyMgSG93IGEgY2hlY2sgd29ya3MgKG9yaWVudGF0aW9uKQoKLSBDaGVja3MgYXJlIGRldGVybWluaXN0aWMgcnVsZXMgb3ZlciBLaUNhZCdzIHRleHQgZm9ybWF0cwogIChgLmtpY2FkX3NjaGAgLyBgLmtpY2FkX3BjYmAgUy1leHByZXNzaW9ucyDigJQgYm90aCB0aGUgS2lDYWQgNgogIGBmcF90ZXh0YCBzdHlsZSBhbmQgdGhlIEtpQ2FkIDcrIGBwcm9wZXJ0eWAgc3R5bGUpLCBCT00gQ1NWcwogIChLaUNhZCwgSkxDUENCIGFuZCBnZW5lcmljIGhlYWRlciBzcGVsbGluZ3MpLCBhbmQgYW4gb2ZmbGluZSwKICBob25lc3RseS1sYWJlbGxlZCBzYW1wbGUgcGFydC1yaXNrIGRhdGFzZXQuCi0gVGhlIEJPTSBjaGVja3MgbGl2ZSBpbiB0aGVpciBvd24gbW9kdWxlIGFuZCB3b3JrIG9uIGFueSB0b29sJ3MgQk9NCiAgQ1NWIOKAlCBLaUNhZC1maXJzdCBpcyB0aGUgcHJvZHVjdCB3ZWRnZSwgbm90IGEgS2lDYWQtb25seSBsaW1pdC4KLSBTZXZlcml0eS92ZXJkaWN0OiBhbnkgQkxPQ0sgZmluZGluZyDihpIgdmVyZGljdCBCTE9DSzsgZWxzZSBhbnkKICBDQVVUSU9OIOKGkiBDQVVUSU9OOyBlbHNlIFBBU1Mg4oCUICoqdW5sZXNzKiogc29tZXRoaW5nIHRoYXQgZXhpc3RzCiAgY291bGQgbm90IGJlIGNoZWNrZWQsIGluIHdoaWNoIGNhc2UgYSBgU0NBTl9JTkNPTVBMRVRFYCBmaW5kaW5nCiAgcHJldmVudHMgYSBjbGVhbiBQQVNTLiBBIHNpbGVudCBza2lwIGlzIGEgYnVnLgotIEV4aXQgY29kZXM6IDAgUEFTUywgMSBDQVVUSU9OLCAyIEJMT0NLLCAzIHVzYWdlIC8gSU8gZXJyb3IuCgojIyBBZGRpbmcgYSBjaGVjawoKMS4gQWRkIHRoZSBjaGVjayB3aXRoIGEgcGxhaW4tRW5nbGlzaCBmaW5kaW5nIG1lc3NhZ2UgYSBtYWtlciBjYW4KICAgdmVyaWZ5IGJ5IGhhbmQgaW4gc2Vjb25kcyAobmFtZSB0aGUgcGFydCBhbmQgdGhlIGV4YWN0IHZhbHVlcyB0aGF0CiAgIGRpc2FncmVlKS4KMi4gQWRkIGEgYnJva2VuIHByb2plY3QgKG9yIGEgbGFiZWxsZWQgY29ycHVzIG11dGF0aW9uKSB0aGF0IHRoZSBjaGVjawogICBjYXRjaGVzIGF0IHRoZSBleHBlY3RlZCBzZXZlcml0eS4KMy4gQWRkIChvciBwb2ludCB0bykgYSBjbGVhbiBwcm9qZWN0IHRoYXQgc3RheXMgUEFTUyAvIENBVVRJT04gYXMKICAgYXBwcm9wcmlhdGUg4oCUIGNoZWNrIHRoZSB3aG9sZSBjbGVhbiBjb3JwdXMsIG5vdCBqdXN0IHlvdXIgc2FtcGxlLgo0LiBSdW4gYWxsIHRocmVlIHN1aXRlcyAoYmVsb3cpIGFuZCBwYXN0ZSB0aGUgcmVzdWx0cyBpbiB5b3VyIFBSLgoKIyMgUnVubmluZyB0aGUgdGVzdHMKCmBgYGNvbnNvbGUKJCBweXRob24zIHJ1bl90ZXN0cy5weSAgICAgICAgICAjIHNoaXBwZWQgc2FtcGxlcwokIHB5dGhvbjMgcnVuX2NvcnB1c190ZXN0cy5weSAgICMgb3Blbi1zb3VyY2UgY29ycHVzICsgYnJva2VuIG11dGF0aW9ucwokIHB5dGhvbjMgcnVuX2VkZ2VfdGVzdHMucHkgICAgICMgaG9zdGlsZSAvIG1hbGZvcm1lZCBpbnB1dHMKYGBgCgpBbGwgdGhyZWUgbXVzdCBwYXNzLiBJZiB5b3UgY2hhbmdlZCBwYXJzZXIgYmVoYXZpb3VyLCBhbHNvIHJ1biB0aGUKY2xlYW4gY29ycHVzIGJ5IGhhbmQgYW5kIGxvb2sgYXQgdGhlIHBlci1ydWxlIGhpc3RvZ3JhbXMg4oCUIGEgbmV3IEJMT0NLCm9uIGEgY2xlYW4gcmVhbCBib2FyZCBuZWVkcyBhIGp1c3RpZmljYXRpb24gaW4gdGhlIFBSLgoKIyMgU3R5bGUKCi0gUHl0aG9uIDMuMTArIHN0YW5kYXJkIGxpYnJhcnksIHR5cGUtbGlnaHQsIGRvY3N0cmluZ3MgdGhhdCBzYXkgKndoeSouCi0gRmluZGluZyBtZXNzYWdlcyBhcmUgdXNlciBpbnRlcmZhY2UuIFdyaXRlIHRoZW0gZm9yIGEgbWFrZXIgYXQKICBtaWRuaWdodCBiZWZvcmUgYW4gb3JkZXIgZGVhZGxpbmUsIG5vdCBmb3IgYSBjb21waWxlci4K
+# Contributing to KiCad Preflight
+
+Thanks for helping. The most valuable contributions are **false-positive
+reports with the real board context**, **missed-fault reports**, and
+**new checks that ship with projects proving both sides**.
+
+## Ground rules
+
+- **Projects are only ever parsed, never fabricated.** Everything in
+  `samples/` and `corpus/` exists to be read as text. Nobody orders a
+  board to "test" a change.
+- **The verdict comes from deterministic rules, never from an LLM.**
+  A change that makes a verdict depend on a model call will not be
+  merged.
+- **Every check ships with two projects:** one it must catch and one
+  clean look-alike it must not BLOCK. A check without both is a guess.
+- Pure Python standard library only. No new dependencies.
+- **Open-licence test data only.** Any real board added to `corpus/`
+  must come from a public repository with a clear open licence, recorded
+  in `corpus/SOURCES.md` with URL, commit, and the licence file read.
+  No clear licence → not in the corpus, no exceptions.
+
+## How a check works (orientation)
+
+- Checks are deterministic rules over KiCad's text formats
+  (`.kicad_sch` / `.kicad_pcb` S-expressions — both the KiCad 6
+  `fp_text` style and the KiCad 7+ `property` style), BOM CSVs
+  (KiCad, JLCPCB and generic header spellings), and an offline,
+  honestly-labelled sample part-risk dataset.
+- The BOM checks live in their own module and work on any tool's BOM
+  CSV — KiCad-first is the product wedge, not a KiCad-only limit.
+- Severity/verdict: any BLOCK finding → verdict BLOCK; else any
+  CAUTION → CAUTION; else PASS — **unless** something that exists
+  could not be checked, in which case a `SCAN_INCOMPLETE` finding
+  prevents a clean PASS. A silent skip is a bug.
+- Exit codes: 0 PASS, 1 CAUTION, 2 BLOCK, 3 usage / IO error.
+
+## Adding a check
+
+1. Add the check with a plain-English finding message a maker can
+   verify by hand in seconds (name the part and the exact values that
+   disagree).
+2. Add a broken project (or a labelled corpus mutation) that the check
+   catches at the expected severity.
+3. Add (or point to) a clean project that stays PASS / CAUTION as
+   appropriate — check the whole clean corpus, not just your sample.
+4. Run all three suites (below) and paste the results in your PR.
+
+## Running the tests
+
+```console
+$ python3 run_tests.py          # shipped samples
+$ python3 run_corpus_tests.py   # open-source corpus + broken mutations
+$ python3 run_edge_tests.py     # hostile / malformed inputs
+```
+
+All three must pass. If you changed parser behaviour, also run the
+clean corpus by hand and look at the per-rule histograms — a new BLOCK
+on a clean real board needs a justification in the PR.
+
+## Style
+
+- Python 3.10+ standard library, type-light, docstrings that say *why*.
+- Finding messages are user interface. Write them for a maker at
+  midnight before an order deadline, not for a compiler.

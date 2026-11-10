@@ -1,1 +1,226 @@
-IyBLaUNhZCBQcmVmbGlnaHQKCkNoZWNrIGEgS2lDYWQgcHJvamVjdCAqYmVmb3JlKiB5b3UgZXhwb3J0IEdlcmJlcnMgYW5kIG9yZGVyIHRoZSBib2FyZCDigJQKYW5kIGNoZWNrIGEgQk9NIGZyb20gYW55IEVEQSB0b29sIGJlZm9yZSB5b3Ugb3JkZXIgdGhlIHBhcnRzLgoKRXZlcnkgbWFrZXIga25vd3MgdGhlIHNpbmtpbmcgZmVlbGluZzogdGhlIGJvYXJkcyBhcnJpdmUgYW5kIGEgZm9vdHByaW50CmlzIHdyb25nLCBhIHBhcnQgd2FzIG5ldmVyIHBsYWNlZCwgb3IgdGhlIG9uZSBjaGlwIHRoZSBkZXNpZ24gbmVlZHMgd2VudApvYnNvbGV0ZSBzaXggbW9udGhzIGFnby4gS2lDYWQgUHJlZmxpZ2h0IHJlYWRzIGEgS2lDYWQgcHJvamVjdCAob3IgYQpzdGFuZGFsb25lIEJPTSBDU1YpIGFuZCBnaXZlcyB5b3Ugb25lIHBsYWluLUVuZ2xpc2ggcmVwb3J0IOKAlCAqKlBBU1MqKiwKKipDQVVUSU9OKiosIG9yICoqQkxPQ0sqKiDigJQgZnJvbSBkZXRlcm1pbmlzdGljIGNoZWNrczogc2NoZW1hdGljIOKGlCBQQ0IKYWdyZWVtZW50LCBCT00gc2FuaXR5LCBhbmQgb2ZmbGluZSBwYXJ0LXJpc2sgZmxhZ3MuIE5vIExMTSBkZWNpZGVzIHRoZQp2ZXJkaWN0OiB0aGUgc2FtZSBwcm9qZWN0IGFsd2F5cyBnZXRzIHRoZSBzYW1lIGFuc3dlciwgYW5kIGV2ZXJ5IGZpbmRpbmcKbmFtZXMgdGhlIGV4YWN0IHBhcnQgYW5kIHRoZSBleGFjdCB2YWx1ZXMgdGhhdCBkaXNhZ3JlZSwgc28geW91IGNhbgp2ZXJpZnkgaXQgYnkgaGFuZCBpbiBzZWNvbmRzLgoKUHJlZmxpZ2h0IGlzIGZyZWUgYW5kIG9wZW4gc291cmNlIChNSVQpLiBUaGVyZSBpcyBubyBob3N0ZWQgdGllciBhbmQgbm8KcGFpZCB2ZXJzaW9uIOKAlCB0aGUgd2hvbGUgdG9vbCBsaXZlcyBpbiB0aGlzIHJlcG9zaXRvcnkuCgojIyAzMC1zZWNvbmQgZGVtbwoKYGBgY29uc29sZQokIHB5dGhvbjMgLW0gcHJlZmxpZ2h0IHNhbXBsZXMvYnJva2VuClByZWZsaWdodCByZXBvcnQgZm9yOiBMRUQgQm9hcmQgKGJyb2tlbiBmaXh0dXJlKQoKRmluZGluZ3M6IDcgKDUgQkxPQ0ssIDIgQ0FVVElPTiwgMCBOT1RFKQogIFtCTE9DS10gU0NIX1BBUlRfTk9UX09OX1BDQiDigJQgbGVkLWJvYXJkLmtpY2FkX3NjaCDCtyBSMwogICAgICBSMyAoMzMwUikgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiAuLi4KICBbQkxPQ0tdIEZPT1RQUklOVF9NSVNNQVRDSCDigJQgbGVkLWJvYXJkLmtpY2FkX3NjaCDCtyBEMQogICAgICAxIHBhcnQocykgKEQxKTogdGhlIHNjaGVtYXRpYyBhc2tzIGZvciBmb290cHJpbnQKICAgICAgJ0xFRF9TTUQ6TEVEXzA4MDVfMjAxMk1ldHJpYycgYnV0IHRoZSBQQ0IgaGFzCiAgICAgICdMRURfU01EOkxFRF8xMjA2XzMyMTZNZXRyaWMnLiAuLi4KICBbQkxPQ0tdIEJPTV9RVUFOVElUWV9NSVNNQVRDSCDigJQgYm9tLmNzdiBsaW5lIDUKICAgICAgQk9NIGxpbmUgNSBzYXlzIHF1YW50aXR5ICczJyBidXQgbGlzdHMgMiByZWZlcmVuY2UocykgKEQxLCBEMikuIC4uLgogIFtCTE9DS10gQk9NX1VOS05PV05fUkVGRVJFTkNFIOKAlCBib20uY3N2IGxpbmUgNwogICAgICBUaGUgQk9NIGxpc3RzIEM5LCBidXQgdGhlcmUgaXMgbm8gQzkgaW4gdGhlIHNjaGVtYXRpYy4gLi4uCiAgW0JMT0NLXSBQQVJUX09CU09MRVRFIOKAlCBib20uY3N2IGxpbmUgNSDCtyBMVFNULUMxNzBLR0tUCiAgICAgIExUU1QtQzE3MEtHS1QgKEQxLCBEMikgaXMgbWFya2VkICdvYnNvbGV0ZScgaW4gdGhlCiAgICAgIFByZWZsaWdodCBzYW1wbGUgZGlzdHJpYnV0b3IgZGF0YXNldCAoc25hcHNob3QgMjAyNi0xMS0wOSkuIC4uLgogIFtDQVVUSU9OXSBCT01fTUlTU0lOR19NUE4g4oCUIGJvbS5jc3YgbGluZSA2CiAgICAgIEJPTSBsaW5lIDYgKFNXMSkgaGFzIG5vIG1hbnVmYWN0dXJlciBwYXJ0IG51bWJlciBhbmQgbm8KICAgICAgTENTQy9KTENQQ0IgcGFydCBudW1iZXIuIC4uLgogIFtDQVVUSU9OXSBQQVJUX0xPV19TVE9DSyDigJQgYm9tLmNzdiBsaW5lIDMgwrcgUkMwNjAzRlItMDcxS0wKICAgICAgLi4uIHNob3dzIG9ubHkgOCBpbiBzdG9jayAuLi4gZmV3ZXIgdGhhbiB0aGUgNTAtcGllY2UgY29tZm9ydCBsaW5lLiAuLi4KClZFUkRJQ1Q6IEJMT0NLCiQgZWNobyAkPwoyCiQgcHl0aG9uMyAtbSBwcmVmbGlnaHQgc2FtcGxlcy9nb29kICAgICAjIHRoZSBzYW1lIGJvYXJkLCBmaXhlZApWRVJESUNUOiBQQVNTICAgICAgICAgICAgICAgICAgICAgICAgICAgIyBleGl0IDAsIHplcm8gZmluZGluZ3MKYGBgCgooVGhlIHNhbXBsZXMgYXJlIGhhbmQtYXV0aG9yZWQgZml4dHVyZXMg4oCUIHNlZSAiVGVzdCBjb3JwdXMiLiBUaGV5IGFyZQpvbmx5IGV2ZXIgcGFyc2VkLCBuZXZlciBvcGVuZWQgaW4gS2lDYWQgb3IgZmFicmljYXRlZC4pCgojIyBLaUNhZC1maXJzdCwgbm90IEtpQ2FkLW9ubHkKCktpQ2FkIGlzIHRoZSB3ZWRnZSwgYnkgZGVzaWduOiBpdCBpcyB0aGUgZnJlZSwgb3BlbiB0b29sIHdob3NlIHVzZXJzCmZlZWwgdGhlc2UgbWlzdGFrZXMgbW9zdCwgYW5kIGl0cyBQbHVnaW4gYW5kIENvbnRlbnQgTWFuYWdlciBpcyBhIHJlYWwKZGlzdHJpYnV0aW9uIGNoYW5uZWwuIEJ1dCB0aGUgY2hlY2tzIGFyZSBub3QgS2lDYWQtb25seToKCi0gVGhlICoqS2lDYWQgcGFyc2VyKiogcmVhZHMgYC5raWNhZF9zY2hgIC8gYC5raWNhZF9wY2JgIChLaUNhZCA2LCA3CiAgYW5kIDggZm9ybWF0cywgaGllcmFyY2hpY2FsIHNoZWV0cyBpbmNsdWRlZCkuCi0gVGhlICoqQk9NIGNoZWNrcyBhcmUgdG9vbC1hZ25vc3RpYyoqIOKAlCB0aGV5IGxpdmUgaW4gdGhlaXIgb3duIG1vZHVsZQogIChgcHJlZmxpZ2h0L2JvbWNoZWNrcy5weWAsIGZlZCBieSBgcHJlZmxpZ2h0L2JvbS5weWApIGFuZCBydW4gb24gYW55CiAgQk9NIENTVi4gQSBCT00gZXhwb3J0ZWQgZnJvbSBBbHRpdW0sIEVhZ2xlL0Z1c2lvbiwgRWFzeUVEQSBvciBhIGZhYgogIGhvdXNlIChKTENQQ0Igc3R5bGUgaW5jbHVkZWQpIGhhcyB0aGUgc2FtZSBjbGFzc2VzIG9mIHByb2JsZW1zOgoKYGBgY29uc29sZQokIHB5dGhvbjMgLW0gcHJlZmxpZ2h0IHByb2R1Y3Rpb24tYm9tLmNzdiAgICAgIyBzdGFuZGFsb25lIEJPTSBtb2RlCmBgYAoKLSBUaGUgcGxhbm5lZCAqKm9yZGVyLXBhZ2UgYnJvd3NlciBleHRlbnNpb24qKiAoSkxDUENCL1BDQldheQogIGNoZWNrb3V0KSBpcyB0aGUgbGF0ZXIsIGFueS10b29sIGZyb250IGRvb3IuIFRoZSBmdWxsIHJlYXNvbmluZyBpcwogIGluIGBFWFRFTlNJT05TX0FORF9HSVRIVUIubWRgLgoKIyMgVHdvIGZyb250IGRvb3JzLCBvbmUgZW5naW5lCgoxLiAqKlRoaXMgQ0xJIChub3cpKiog4oCUIHNjcmlwdGFibGUsIHRlc3RhYmxlIHdpdGhvdXQgYSBHVUksIHJ1bnMgaW4gQ0ksCiAgIHdvcmtzIGFueXdoZXJlIFB5dGhvbiAzIHJ1bnMuCjIuICoqQSBLaUNhZCBpbi1hcHAgcGx1Z2luIChpbiBkZXZlbG9wbWVudCkqKiDigJQgb25lIGNsaWNrIGluc2lkZQogICBLaUNhZCBhdCB0aGUgbW9tZW50IGJlZm9yZSBHZXJiZXIgZXhwb3J0LCB3cmFwcGluZyB0aGlzIHNhbWUKICAgZW5naW5lLCBkaXN0cmlidXRlZCB0aHJvdWdoIEtpQ2FkJ3MgKipQbHVnaW4gYW5kIENvbnRlbnQgTWFuYWdlcgogICAoUENNKSoqLiBBIHNrZWxldG9uIHBhY2thZ2UgKGlkZW50aWZpZXIKICAgYGNvbS5naXRodWIuUmFrVGlrb28ua2ljYWQtcHJlZmxpZ2h0YCkgbGl2ZXMgaW4gYHBjbS9gOyBpdCBoYXMgbm90CiAgIGJlZW4gcnVuIGluc2lkZSBhIHJlYWwgS2lDYWQgeWV0LCBhbmQgaXQgc2F5cyBzby4KCiMjIEluc3RhbGwgLyB1c2FnZQoKUHVyZSBQeXRob24gMyBzdGFuZGFyZCBsaWJyYXJ5ICgzLjEwKykuIE5vIGBwaXAgaW5zdGFsbGAsIG5vCmRlcGVuZGVuY2llcy4gS2lDYWQgaXRzZWxmIGlzICoqbm90KiogcmVxdWlyZWQg4oCUIHNlZSAiT2ZmaWNpYWwgY2hlY2tzIi4KCmBgYGJhc2gKcHl0aG9uMyAtbSBwcmVmbGlnaHQgPHByb2plY3QtZm9sZGVyPiAgICAgICAgICAgICAgICAgIyB0ZXh0IHJlcG9ydApweXRob24zIC1tIHByZWZsaWdodCA8cHJvamVjdC1mb2xkZXI+IC0tZm9ybWF0IG1kICAgICAjIG9uZS1wYWdlIE1hcmtkb3duCnB5dGhvbjMgLW0gcHJlZmxpZ2h0IDxwcm9qZWN0LWZvbGRlcj4gLS1mb3JtYXQganNvbiAgICMgbWFjaGluZS1yZWFkYWJsZQpweXRob24zIC1tIHByZWZsaWdodCA8cHJvamVjdC1mb2xkZXI+IC0tb3V0cHV0IHJlcG9ydC5tZCAtLWZvcm1hdCBtZApweXRob24zIC1tIHByZWZsaWdodCA8Ym9tLmNzdj4gICAgICAgICAgICAgICAgICAgICAgICAjIHN0YW5kYWxvbmUgQk9NIG1vZGUKcHl0aG9uMyBwcmVmbGlnaHQucHkgPHByb2plY3QtZm9sZGVyPiAgICAgICAgICAgICAgICAgIyBzaGltLCBzYW1lIHRoaW5nCmBgYAoKVGhlIHRhcmdldCBjYW4gYmUgYSBwcm9qZWN0IGZvbGRlciBvciBhIHNpbmdsZSBgLmtpY2FkX3Byb2AgLwpgLmtpY2FkX3NjaGAgLyBgLmtpY2FkX3BjYmAgZmlsZSBpbnNpZGUgb25lLiBBIEJPTSBDU1YgaW4gdGhlIGZvbGRlciBpcwphdXRvLWRldGVjdGVkIOKAlCBjYW5kaWRhdGVzIGFyZSB0cmllZCBpbiBuYW1lIG9yZGVyIGFuZCB0aGUgZmlyc3Qgd2hvc2UKaGVhZGVyIGFjdHVhbGx5IHBhcnNlcyBhcyBhIEJPTSB3aW5zLCBzbyBhIHBpY2stYW5kLXBsYWNlIENTViBpcyBuZXZlcgptaXN0YWtlbiBmb3IgdGhlIEJPTSAob3IgcGFzcyBgLS1ib21gKS4KCkV4aXQgY29kZXM6IGAwYCBQQVNTIMK3IGAxYCBDQVVUSU9OIMK3IGAyYCBCTE9DSyDCtyBgM2AgdXNhZ2UgZXJyb3IuClRoZSBDTEkgbmV2ZXIgcHJpbnRzIGEgdHJhY2ViYWNrOyBiYWQgaW5wdXRzIGV4aXQgMyB3aXRoIGEgbWVzc2FnZS4KCiMjIFdoYXQgaXQgY2hlY2tzCgpUaGUgZnVsbCBydWxlIGxpc3Qgd2l0aCBzZXZlcml0aWVzIGlzIGluIGBkb2NzL1JVTEVTLm1kYC4gSW4gc2hvcnQ6CgoqKlNjaGVtYXRpYyDihpQgUENCKiogKHBhcnNlZCBmcm9tIEtpQ2FkJ3MgUy1leHByZXNzaW9uIGZpbGVzLCBLaUNhZCA2CmBmcF90ZXh0YCBhbmQgS2lDYWQgNy84IGBwcm9wZXJ0eWAgc3R5bGVzIGFsaWtlKTogcGFydHMgaW4gdGhlCnNjaGVtYXRpYyB3aXRoIG5vIGZvb3RwcmludCBvbiB0aGUgUENCIGFuZCB2aWNlIHZlcnNhLCBmb290cHJpbnQKbWlzbWF0Y2hlcyAoYWdncmVnYXRlZCBwZXIgZm9vdHByaW50IHBhaXIpLCBkdXBsaWNhdGUgcmVmZXJlbmNlcywKdHdvIGRpZmZlcmVudCBwYXJ0cyBzaGFyaW5nIG9uZSByZWZlcmVuY2UsIHBhcnRzIHdpdGggbm8gZm9vdHByaW50IC8Kbm8gdmFsdWUgLyBhIHBsYWNlaG9sZGVyIE1QTiwgdW5hbm5vdGF0ZWQgc3ltYm9scy4gQm9hcmQgZnVybml0dXJlIOKAlAptb3VudGluZyBob2xlcyBtYXJrZWQgYGJvYXJkX29ubHlgLCBzaWxrc2NyZWVuIGxvZ29zIGFuZCBsYWJlbHMgd2l0aApnZW5lcmF0ZWQgcmVmZXJlbmNlcyDigJQgaXMgcmVjb2duaXNlZCBhcyBmdXJuaXR1cmUsIG5vdCBmbGFnZ2VkIGFzCnBhcnRzLiBQcmVmbGlnaHQgZG9lcyBub3QgY2hlY2sgcGlucyBvciBuZXRzIGl0c2VsZjsgdGhhdCBpcyB3aGF0CkRSQy9FUkMgYXJlIGZvciAoYmVsb3cpLgoKKipCT00g4oaUIHNjaGVtYXRpYyoqIChLaUNhZCwgSkxDUENCIGFuZCBnZW5lcmljIGhlYWRlciBzcGVsbGluZ3MpOgpyZWZlcmVuY2VzIHRoYXQgZG9uJ3QgZXhpc3QsIHNjaGVtYXRpYyBwYXJ0cyBtaXNzaW5nIGZyb20gdGhlIEJPTSwKRE5QIC8gbm90LWluLUJPTSBwYXJ0cyB0aGF0IHNudWNrIGludG8gdGhlIEJPTSwgZHVwbGljYXRlIHJlZmVyZW5jZXMsCnF1YW50aXR5IGNlbGxzIHRoYXQgZGlzYWdyZWUgd2l0aCB0aGUgZGVzaWduYXRvciBsaXN0IChgIlIxLFIyLFI1ImAKbGlzdHMgYW5kIGBSMS1SM2AgLyBgUjEtM2AgcmFuZ2VzIGFyZSBleHBhbmRlZCksIG1pc3Npbmcgb3IgcGxhY2Vob2xkZXIKTVBOcyAoYW4gTENTQy9KTENQQ0IgcGFydCBudW1iZXIgY291bnRzIGFzIGlkZW50aWZpZWQpLCBibGFuay1yZWZlcmVuY2UKcm93cywgYW5kIEJPTSBmb290cHJpbnQvdmFsdWUgZGlzYWdyZWVtZW50cyB3aXRoIHRoZSBzY2hlbWF0aWMuCgoqKlBhcnQgcmlzayAob2ZmbGluZSkqKjogb2Jzb2xldGUvRU9MLCBvdXQtb2Ytc3RvY2ssIGxvdyBzdG9jaywgbG9uZwpsZWFkIHRpbWUsIHNpbmdsZS1zb3VyY2UsIG5vdC1yZWNvbW1lbmRlZC1mb3ItbmV3LWRlc2lnbnMg4oCUIHBlciBCT00KTVBOIGFnYWluc3QgdGhlIGJ1bmRsZWQgZGF0YXNldCAoc2VlIHRoZSBob25lc3R5IG5vdGUpLiBOdW1iZXJzIGluIGEKdXNlciBkYXRhc2V0IG1heSBiZSBzdHJpbmdzIG9yIGZsb2F0cywgYXMgcmVhbCBleHBvcnRzIHByb2R1Y2U7IHRoZXkKYXJlIGNvZXJjZWQsIG5vdCBpZ25vcmVkLgoKIyMgQ292ZXJhZ2U6IGEgUEFTUyBvbmx5IGNvdmVycyB3aGF0IHdhcyBjaGVja2VkCgpFdmVyeSByZXBvcnQgZW5kcyB3aXRoIGEgQ292ZXJhZ2Ugc2VjdGlvbjogZmlsZXMgcGFyc2VkIChhbGwgc2hlZXRzIG9mCmEgaGllcmFyY2hpY2FsIGRlc2lnbiksIHBhcnRzIGFuZCBmb290cHJpbnRzIGNvdW50ZWQsIGJvYXJkIGZ1cm5pdHVyZQpleGNsdWRlZCwgQk9NIHJvd3MsIE1QTnMgY2hlY2tlZCwgcGFyc2UgZXJyb3JzLCBhbmQgdGhlIGtpY2FkLWNsaQpzdGF0dXMuIElmIHNvbWV0aGluZyB0aGF0IGV4aXN0cyBjb3VsZCBub3QgYmUgY2hlY2tlZCDigJQgYW4gdW5sb2FkZWQKZXh0cmEgcHJvamVjdCBmaWxlLCBhIGZhaWxlZCBraWNhZC1jbGkgcnVuLCBhIG1pc3NpbmcgQk9NIOKAlCB0aGUgcmVwb3J0CmNhcnJpZXMgYSBgU0NBTl9JTkNPTVBMRVRFYCwgYEJPTV9NSVNTSU5HYCBvciBzdHJvbmdlciBmaW5kaW5nLCBzbyB0aGUKdmVyZGljdCByZWZsZWN0cyBpdC4gVGhlcmUgYXJlIG5vIHNpbGVudCBza2lwcy4KCiMjIE9mZmljaWFsIGNoZWNrcyAoa2ljYWQtY2xpKQoKSWYgS2lDYWQncyBga2ljYWQtY2xpYCBpcyBvbiB5b3VyIFBBVEgsIFByZWZsaWdodCBhbHNvIHJ1bnMgdGhlCm9mZmljaWFsICoqRFJDKiogKFBDQikgYW5kICoqRVJDKiogKHNjaGVtYXRpYykgYW5kIGZvbGRzIHRoZWlyCnZpb2xhdGlvbnMgaW4gKGVycm9yIOKGkiBCTE9DSywgd2FybmluZyDihpIgQ0FVVElPTjsgYSBmYWlsZWQgcnVuJ3Mgb3V0cHV0CmlzIG5ldmVyIHRydXN0ZWQsIGFuZCB1c2VyLWV4Y2x1ZGVkL3Vua25vd24gc2V2ZXJpdGllcyBhcmUgY291bnRlZCBpbgpDb3ZlcmFnZSwgbm90IHNpbGVudGx5IG1hcHBlZCkuIElmIGtpY2FkLWNsaSBpcyBhYnNlbnQsIHRob3NlIGNoZWNrcwphcmUgc2tpcHBlZCAqKmFuZCB0aGUgcmVwb3J0IHNheXMgc28qKi4gVGhlIGJ1aWx0LWluIHRleHQgY2hlY2tzIHdvcmsKZWl0aGVyIHdheS4KCiMjIEJ1ZGdldHMgYW5kIHVudHJ1c3RlZCBpbnB1dAoKUHJvamVjdCBmb2xkZXJzIGFyZSB1bnRydXN0ZWQgaW5wdXQsIHNvIHNjYW5uaW5nIGlzIGJ1ZGdldGVkOiBmaWxlcwptdXN0IGJlIHJlZ3VsYXIgZmlsZXMgKGEgRklGTyB3aWxsIG5vdCBoYW5nIHRoZSB0b29sKSBhbmQg4omkIDY0IE1COwpCT01zIOKJpCAyMCwwMDAgcm93cyBhbmQg4omkIDFNIGNoYXJhY3RlcnMgcGVyIGZpZWxkOyByZXBvcnRzIGNhcCBhdAoyLDAwMCBmaW5kaW5ncyB3aXRoIGFuIGV4cGxpY2l0IHRydW5jYXRpb24gbm90ZS4gUmVwb3J0IG91dHB1dCBpcwpzYW5pdGlzZWQg4oCUIGNyYWZ0ZWQgcGFydCB2YWx1ZXMgY2Fubm90IGZvcmdlIGEgdmVyZGljdCBsaW5lIG9yIGJyZWFrCnRoZSBNYXJrZG93biB0YWJsZS4gRmlsZXMgYXJlIGRlY29kZWQgYXMgc3RyaWN0IFVURi04OyBjb3JydXB0IGJ5dGVzCmFyZSBhIHBhcnNlIGVycm9yLCBuZXZlciBzaWxlbnRseSByZXdyaXR0ZW4uCgojIyBBbiBob25lc3Qgbm90ZSBvbiBwYXJ0IGRhdGEKClRoZSBwYXJ0LXJpc2sgbGF5ZXIgc2hpcHMgd2l0aCBhIHNtYWxsICoqc2FtcGxlIGRpc3RyaWJ1dG9yIGRhdGFzZXQqKgooYHByZWZsaWdodC9kYXRhL3BhcnRzLmpzb25gLCBzbmFwc2hvdCAyMDI2LTExLTA5KSBzbyBpdCB3b3JrcyBvZmZsaW5lCndpdGggbm8gQVBJIGtleXMuIEl0cyBzdGF0dXNlcyBhbmQgc3RvY2sgbnVtYmVycyBhcmUgKippbGx1c3RyYXRpdmUsCm5vdCBsaXZlIGRpc3RyaWJ1dG9yIGRhdGEqKiDigJQgZXZlcnkgcGFydC1yaXNrIGZpbmRpbmcgY2l0ZXMgdGhlIGRhdGFzZXQKYW5kIHNuYXBzaG90IGRhdGUsIGFuZCBhbiBNUE4gYWJzZW50IGZyb20gdGhlIGRhdGFzZXQgaXMgcmVwb3J0ZWQgYXMKImNvdWxkIG5vdCBjaGVjayIsIG5ldmVyIGd1ZXNzZWQgYXQuIFN1cHBseSB5b3VyIG93biBzbmFwc2hvdCB3aXRoCmAtLWRhdGFzZXRgIChzaGFwZS12YWxpZGF0ZWQ7IGEgYmFkIGRhdGFzZXQgaXMgYSB1c2FnZSBlcnJvciwgZXhpdCAzKS4KCiMjIFRlc3QgY29ycHVzCgotIGBzYW1wbGVzL2Ag4oCUIGhhbmQtYXV0aG9yZWQgZml4dHVyZXMgaW4gcmVhbCBLaUNhZCBmb3JtYXRzOgogIGBnb29kL2AgKFBBU1MsIHplcm8gZmluZGluZ3MpLCBga2ljYWQ2L2AgKHRoZSBzYW1lIGJvYXJkIGluIEtpQ2FkIDYKICBmaWxlIGZvcm1hdDsgUEFTUyksIGBicm9rZW4vYCAoc2V2ZW4gZGVsaWJlcmF0ZSwgaGFuZC12ZXJpZmlhYmxlCiAgZXJyb3JzOyBCTE9DSyB3aXRoIGV4YWN0bHkgdGhlIHNldmVuIGRvY3VtZW50ZWQgZmluZGluZ3MpLgotIGBjb3JwdXMvYCDigJQgKipyZWFsIG9wZW4tc291cmNlIGJvYXJkcyoqIChVcHN5IERlc2t5LCB0aGUgRVNQMzIgUnVzdAogIGJvYXJkLCBQaWFudG9yKSB3aXRoIHNvdXJjZXMsIGNvbW1pdHMgYW5kIGxpY2VuY2VzIHJlY29yZGVkIGluCiAgYGNvcnB1cy9TT1VSQ0VTLm1kYCwgcGx1cyBhIGxhYmVsbGVkIGJyb2tlbiBjb3JwdXMgYnVpbHQgYnkgbXV0YXRpbmcKICBjb3BpZXMgKGBjb3JwdXMvYnVpbGRfYnJva2VuLnB5YCkuIFRoZSBjb3JwdXMgaXMgZG93bmxvYWRlZAogIHNlcGFyYXRlbHk7IGBydW5fY29ycHVzX3Rlc3RzLnB5YCBza2lwcyBjbGVhbmx5IHdpdGhvdXQgaXQuCgpgYGBiYXNoCnB5dGhvbjMgcnVuX3Rlc3RzLnB5ICAgICAgICAgICAjIHNhbXBsZXMKcHl0aG9uMyBydW5fY29ycHVzX3Rlc3RzLnB5ICAgICMgb3Blbi1zb3VyY2UgY29ycHVzICsgbXV0YXRpb25zCnB5dGhvbjMgcnVuX2VkZ2VfdGVzdHMucHkgICAgICAjIGhvc3RpbGUgaW5wdXRzIChmcm9tIHRoZSBhZHZlcnNhcmlhbCByZXZpZXcpCmBgYAoKIyMgSG93IHRoaXMgdmVyc2lvbiB3YXMgcmV2aWV3ZWQKCnYwLjEgd2FzIHB1dCB0aHJvdWdoIGFuIGluZGVwZW5kZW50IG11bHRpLWFnZW50IGFkdmVyc2FyaWFsIHJldmlldyDigJQKYSByZWQgdGVhbSAoaG9zdGlsZSBpbnB1dHMpLCBhIGZhbHNlLXBvc2l0aXZlIHRlc3RlciAoY2xlYW4gcmVhbApib2FyZHMpLCBhbmQgYSBjb2RlL3NlY3VyaXR5IGF1ZGl0b3Ig4oCUIGFuZCBmYWlsZWQgaXQgaW5zdHJ1Y3RpdmVseQooMTAwJSBvZiBpdHMgQkxPQ0tzIG9uIGNsZWFuIGJvYXJkcyB3ZXJlIGZhbHNlIGFsYXJtczsgNyBjcmFzaGVzIGFuZAphIEZJRk8gaGFuZyBvbiBob3N0aWxlIGlucHV0cykuIHYwLjIgaXMgdGhlIGZpeCByb3VuZDogZXZlcnkgcmV2aWV3ZXIKZmluZGluZyBpcyBlaXRoZXIgZml4ZWQgb3IgZG9jdW1lbnRlZCBhcyBhbiBhY2NlcHRlZCBnYXAsIGFuZCB0aGUKcmV2aWV3ZXJzJyBvd24gdGVzdCBzZXRzIGFyZSB0aGUgcmVncmVzc2lvbiBzdWl0ZXMgYWJvdmUuIFRoZSBmdWxsCnJlY29yZCwgd2l0aCBiZWZvcmUvYWZ0ZXIgbnVtYmVycywgaXMga2VwdCB3aXRoIHRoZSBwcm9qZWN0LgoKIyMgS25vd24gbGltaXRzCgotICoqTm8gbGl2ZSBkaXN0cmlidXRvciBkYXRhKiog4oCUIHBhcnQgcmlzayBpcyBvbmx5IGFzIHJlYWwgYXMgdGhlCiAgZGF0YXNldCBzdXBwbGllZCAoc2VlIGFib3ZlKS4KLSAqKmtpY2FkLWNsaSBpcyBvcHRpb25hbCoqIOKAlCB3aXRob3V0IGl0IHRoZXJlIGlzIG5vIG9mZmljaWFsIERSQy9FUkM7CiAgQ292ZXJhZ2UgYWx3YXlzIHNheXMgd2hpY2ggbW9kZSB5b3UgZ290LgotICoqVGV4dC1sZXZlbCBjaGVja3Mgb25seSoqIOKAlCBzeW1ib2xzLCBmb290cHJpbnRzIGFuZCBCT00gcm93cy4gTm8KICBuZXRzLCBnZW9tZXRyeSwgY2xlYXJhbmNlcyBvciBjb25uZWN0aXZpdHkuCi0gKipPbmUgcHJvamVjdCBwZXIgZm9sZGVyKiog4oCUIGhpZXJhcmNoaWNhbCBzaGVldHMgb2Ygb25lIHByb2plY3QgYXJlCiAgZm9sbG93ZWQ7IGEgc2Vjb25kIHByb2plY3Qgc2hhcmluZyBhIGZvbGRlciBpcyByZXBvcnRlZCB2aWEKICBgU0NBTl9JTkNPTVBMRVRFYCwgbm90IG1lcmdlZC4KLSAqKkxlZ2FjeSBmb3JtYXRzKiog4oCUIEtpQ2FkIOKJpDUgYC5zY2hgIGZpbGVzIGFyZSByZXBvcnRlZCBhcwogIHVuc3VwcG9ydGVkLCBub3Qgc2lsZW50bHkgbWlzcmVhZC4KLSAqKlBsdWdpbiB1bnRlc3RlZCBpbiBLaUNhZCoqIOKAlCB0aGUgYHBjbS9gIHNrZWxldG9uIGhhcyBub3QgcnVuCiAgaW5zaWRlIGEgcmVhbCBLaUNhZDsgaXRzIHRlc3QgcGxhbiBpcyBpbiBgcGNtL1JFQURNRS5tZGAuCgojIyBMaWNlbmNlCgpNSVQg4oCUIHNlZSBgTElDRU5TRWAuIENvcHlyaWdodCAoYykgMjAyNiBSYWtUaWtvby4K
+# KiCad Preflight
+
+Check a KiCad project *before* you export Gerbers and order the board —
+and check a BOM from any EDA tool before you order the parts.
+
+Every maker knows the sinking feeling: the boards arrive and a footprint
+is wrong, a part was never placed, or the one chip the design needs went
+obsolete six months ago. KiCad Preflight reads a KiCad project (or a
+standalone BOM CSV) and gives you one plain-English report — **PASS**,
+**CAUTION**, or **BLOCK** — from deterministic checks: schematic ↔ PCB
+agreement, BOM sanity, and offline part-risk flags. No LLM decides the
+verdict: the same project always gets the same answer, and every finding
+names the exact part and the exact values that disagree, so you can
+verify it by hand in seconds.
+
+Preflight is free and open source (MIT). There is no hosted tier and no
+paid version — the whole tool lives in this repository.
+
+## 30-second demo
+
+```console
+$ python3 -m preflight samples/broken
+Preflight report for: LED Board (broken fixture)
+
+Findings: 7 (5 BLOCK, 2 CAUTION, 0 NOTE)
+  [BLOCK] SCH_PART_NOT_ON_PCB — led-board.kicad_sch · R3
+      R3 (330R) is in the schematic but has no footprint on the PCB. ...
+  [BLOCK] FOOTPRINT_MISMATCH — led-board.kicad_sch · D1
+      1 part(s) (D1): the schematic asks for footprint
+      'LED_SMD:LED_0805_2012Metric' but the PCB has
+      'LED_SMD:LED_1206_3216Metric'. ...
+  [BLOCK] BOM_QUANTITY_MISMATCH — bom.csv line 5
+      BOM line 5 says quantity '3' but lists 2 reference(s) (D1, D2). ...
+  [BLOCK] BOM_UNKNOWN_REFERENCE — bom.csv line 7
+      The BOM lists C9, but there is no C9 in the schematic. ...
+  [BLOCK] PART_OBSOLETE — bom.csv line 5 · LTST-C170KGKT
+      LTST-C170KGKT (D1, D2) is marked 'obsolete' in the
+      Preflight sample distributor dataset (snapshot 2026-11-09). ...
+  [CAUTION] BOM_MISSING_MPN — bom.csv line 6
+      BOM line 6 (SW1) has no manufacturer part number and no
+      LCSC/JLCPCB part number. ...
+  [CAUTION] PART_LOW_STOCK — bom.csv line 3 · RC0603FR-071KL
+      ... shows only 8 in stock ... fewer than the 50-piece comfort line. ...
+
+VERDICT: BLOCK
+$ echo $?
+2
+$ python3 -m preflight samples/good     # the same board, fixed
+VERDICT: PASS                           # exit 0, zero findings
+```
+
+(The samples are hand-authored fixtures — see "Test corpus". They are
+only ever parsed, never opened in KiCad or fabricated.)
+
+## KiCad-first, not KiCad-only
+
+KiCad is the wedge, by design: it is the free, open tool whose users
+feel these mistakes most, and its Plugin and Content Manager is a real
+distribution channel. But the checks are not KiCad-only:
+
+- The **KiCad parser** reads `.kicad_sch` / `.kicad_pcb` (KiCad 6, 7
+  and 8 formats, hierarchical sheets included).
+- The **BOM checks are tool-agnostic** — they live in their own module
+  (`preflight/bomchecks.py`, fed by `preflight/bom.py`) and run on any
+  BOM CSV. A BOM exported from Altium, Eagle/Fusion, EasyEDA or a fab
+  house (JLCPCB style included) has the same classes of problems:
+
+```console
+$ python3 -m preflight production-bom.csv     # standalone BOM mode
+```
+
+- The planned **order-page browser extension** (JLCPCB/PCBWay
+  checkout) is the later, any-tool front door. The full reasoning is
+  in `EXTENSIONS_AND_GITHUB.md`.
+
+## Two front doors, one engine
+
+1. **This CLI (now)** — scriptable, testable without a GUI, runs in CI,
+   works anywhere Python 3 runs.
+2. **A KiCad in-app plugin (in development)** — one click inside
+   KiCad at the moment before Gerber export, wrapping this same
+   engine, distributed through KiCad's **Plugin and Content Manager
+   (PCM)**. A skeleton package (identifier
+   `com.github.RakTikoo.kicad-preflight`) lives in `pcm/`; it has not
+   been run inside a real KiCad yet, and it says so.
+
+## Install / usage
+
+Pure Python 3 standard library (3.10+). No `pip install`, no
+dependencies. KiCad itself is **not** required — see "Official checks".
+
+```bash
+python3 -m preflight <project-folder>                 # text report
+python3 -m preflight <project-folder> --format md     # one-page Markdown
+python3 -m preflight <project-folder> --format json   # machine-readable
+python3 -m preflight <project-folder> --output report.md --format md
+python3 -m preflight <bom.csv>                        # standalone BOM mode
+python3 preflight.py <project-folder>                 # shim, same thing
+```
+
+The target can be a project folder or a single `.kicad_pro` /
+`.kicad_sch` / `.kicad_pcb` file inside one. A BOM CSV in the folder is
+auto-detected — candidates are tried in name order and the first whose
+header actually parses as a BOM wins, so a pick-and-place CSV is never
+mistaken for the BOM (or pass `--bom`).
+
+Exit codes: `0` PASS · `1` CAUTION · `2` BLOCK · `3` usage error.
+The CLI never prints a traceback; bad inputs exit 3 with a message.
+
+## What it checks
+
+The full rule list with severities is in `docs/RULES.md`. In short:
+
+**Schematic ↔ PCB** (parsed from KiCad's S-expression files, KiCad 6
+`fp_text` and KiCad 7/8 `property` styles alike): parts in the
+schematic with no footprint on the PCB and vice versa, footprint
+mismatches (aggregated per footprint pair), duplicate references,
+two different parts sharing one reference, parts with no footprint /
+no value / a placeholder MPN, unannotated symbols. Board furniture —
+mounting holes marked `board_only`, silkscreen logos and labels with
+generated references — is recognised as furniture, not flagged as
+parts. Preflight does not check pins or nets itself; that is what
+DRC/ERC are for (below).
+
+**BOM ↔ schematic** (KiCad, JLCPCB and generic header spellings):
+references that don't exist, schematic parts missing from the BOM,
+DNP / not-in-BOM parts that snuck into the BOM, duplicate references,
+quantity cells that disagree with the designator list (`"R1,R2,R5"`
+lists and `R1-R3` / `R1-3` ranges are expanded), missing or placeholder
+MPNs (an LCSC/JLCPCB part number counts as identified), blank-reference
+rows, and BOM footprint/value disagreements with the schematic.
+
+**Part risk (offline)**: obsolete/EOL, out-of-stock, low stock, long
+lead time, single-source, not-recommended-for-new-designs — per BOM
+MPN against the bundled dataset (see the honesty note). Numbers in a
+user dataset may be strings or floats, as real exports produce; they
+are coerced, not ignored.
+
+## Coverage: a PASS only covers what was checked
+
+Every report ends with a Coverage section: files parsed (all sheets of
+a hierarchical design), parts and footprints counted, board furniture
+excluded, BOM rows, MPNs checked, parse errors, and the kicad-cli
+status. If something that exists could not be checked — an unloaded
+extra project file, a failed kicad-cli run, a missing BOM — the report
+carries a `SCAN_INCOMPLETE`, `BOM_MISSING` or stronger finding, so the
+verdict reflects it. There are no silent skips.
+
+## Official checks (kicad-cli)
+
+If KiCad's `kicad-cli` is on your PATH, Preflight also runs the
+official **DRC** (PCB) and **ERC** (schematic) and folds their
+violations in (error → BLOCK, warning → CAUTION; a failed run's output
+is never trusted, and user-excluded/unknown severities are counted in
+Coverage, not silently mapped). If kicad-cli is absent, those checks
+are skipped **and the report says so**. The built-in text checks work
+either way.
+
+## Budgets and untrusted input
+
+Project folders are untrusted input, so scanning is budgeted: files
+must be regular files (a FIFO will not hang the tool) and ≤ 64 MB;
+BOMs ≤ 20,000 rows and ≤ 1M characters per field; reports cap at
+2,000 findings with an explicit truncation note. Report output is
+sanitised — crafted part values cannot forge a verdict line or break
+the Markdown table. Files are decoded as strict UTF-8; corrupt bytes
+are a parse error, never silently rewritten.
+
+## An honest note on part data
+
+The part-risk layer ships with a small **sample distributor dataset**
+(`preflight/data/parts.json`, snapshot 2026-11-09) so it works offline
+with no API keys. Its statuses and stock numbers are **illustrative,
+not live distributor data** — every part-risk finding cites the dataset
+and snapshot date, and an MPN absent from the dataset is reported as
+"could not check", never guessed at. Supply your own snapshot with
+`--dataset` (shape-validated; a bad dataset is a usage error, exit 3).
+
+## Test corpus
+
+- `samples/` — hand-authored fixtures in real KiCad formats:
+  `good/` (PASS, zero findings), `kicad6/` (the same board in KiCad 6
+  file format; PASS), `broken/` (seven deliberate, hand-verifiable
+  errors; BLOCK with exactly the seven documented findings).
+- `corpus/` — **real open-source boards** (Upsy Desky, the ESP32 Rust
+  board, Piantor) with sources, commits and licences recorded in
+  `corpus/SOURCES.md`, plus a labelled broken corpus built by mutating
+  copies (`corpus/build_broken.py`). The corpus is downloaded
+  separately; `run_corpus_tests.py` skips cleanly without it.
+
+```bash
+python3 run_tests.py           # samples
+python3 run_corpus_tests.py    # open-source corpus + mutations
+python3 run_edge_tests.py      # hostile inputs (from the adversarial review)
+```
+
+## How this version was reviewed
+
+v0.1 was put through an independent multi-agent adversarial review —
+a red team (hostile inputs), a false-positive tester (clean real
+boards), and a code/security auditor — and failed it instructively
+(100% of its BLOCKs on clean boards were false alarms; 7 crashes and
+a FIFO hang on hostile inputs). v0.2 is the fix round: every reviewer
+finding is either fixed or documented as an accepted gap, and the
+reviewers' own test sets are the regression suites above. The full
+record, with before/after numbers, is kept with the project.
+
+## Known limits
+
+- **No live distributor data** — part risk is only as real as the
+  dataset supplied (see above).
+- **kicad-cli is optional** — without it there is no official DRC/ERC;
+  Coverage always says which mode you got.
+- **Text-level checks only** — symbols, footprints and BOM rows. No
+  nets, geometry, clearances or connectivity.
+- **One project per folder** — hierarchical sheets of one project are
+  followed; a second project sharing a folder is reported via
+  `SCAN_INCOMPLETE`, not merged.
+- **Legacy formats** — KiCad ≤5 `.sch` files are reported as
+  unsupported, not silently misread.
+- **Plugin untested in KiCad** — the `pcm/` skeleton has not run
+  inside a real KiCad; its test plan is in `pcm/README.md`.
+
+## Licence
+
+MIT — see `LICENSE`. Copyright (c) 2026 RakTikoo.

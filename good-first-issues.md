@@ -1,1 +1,41 @@
-IyBHb29kIGZpcnN0IGlzc3VlcyDigJQgZHJhZnRzIHRvIHNlZWQgYXQgbGF1bmNoCgpFYWNoIGRyYWZ0IGhhcyBhIG9uZS1saW5lIHRpdGxlIGFuZCB0aGUgcG9pbnRlciBhIG5ldyBjb250cmlidXRvciBuZWVkcy4KUG9zdCB0aGVtIGFzIHJlYWwgaXNzdWVzIG9ubHkgYWZ0ZXIgdGhlIGNvZGUgcHVzaCBsYW5kcywgc28gdGhlIGZpbGUKcG9pbnRlcnMgcmVzb2x2ZS4gKFJlcG8gaHlnaWVuZSwgbm90IHByb21vdGlvbjogdW5kZXIgdGhlIEgtMUIgZ2F0ZQppbiB+L3dvcmtzcGFjZS9hZ2VudGljLXNwaWtlcy9IMUJfR0FURS5tZCwgZ3Jvd3RoIGlzIG9yZ2FuaWMgb25seQphbmQgbm90aGluZyBoZXJlIGlzIHBvc3RlZCB5ZXQuKQoKMS4gKipBZGQgYSBLaUNhZCA2IHNhbXBsZSBwcm9qZWN0IHRvIGBzYW1wbGVzL2AqKgogICBUaGUgc2hpcHBlZCBmaXh0dXJlcyBhcmUgS2lDYWQgNy84LXN0eWxlLiBBZGQgYSBtaW5pbWFsIGNsZWFuIGJvYXJkCiAgIHdob3NlIFBDQiB1c2VzIGAoZnBfdGV4dCByZWZlcmVuY2Ug4oCmKWAgZm9vdHByaW50cywgd2l0aCB0ZXN0CiAgIGV4cGVjdGF0aW9ucyBpbiBgcnVuX3Rlc3RzLnB5YC4KCjIuICoqRWFzeUVEQSBCT00gaGVhZGVyIGFsaWFzZXMqKgogICBgcHJlZmxpZ2h0YCBCT00gcGFyc2luZyBtYXBzIGhlYWRlciBhbGlhc2VzIGluIG9uZSB0YWJsZS4gQWRkIHRoZQogICBFYXN5RURBIEJPTSBleHBvcnQgc3BlbGxpbmdzICh3aXRoIGEgc2FtcGxlIENTViBwcm92aW5nIGEgc3RhbmRhbG9uZQogICBCT00gc2NhbiB3b3Jrcykg4oCUIHRoZSBCT00gY2hlY2tzIGFyZSB0b29sLWFnbm9zdGljIGJ5IGRlc2lnbi4KCjMuICoqQWx0aXVtIEJPTSBoZWFkZXIgYWxpYXNlcyoqCiAgIFNhbWUgdGFibGUsIEFsdGl1bSBEZXNpZ25lciBCT00gZXhwb3J0IHNwZWxsaW5ncyArIHNhbXBsZSBDU1YuCgo0LiAqKmAtLWZvcm1hdCBzYXJpZmAgcmVuZGVyZXIqKgogICBSZXBvcnRzIGFscmVhZHkgcmVuZGVyIHRleHQgLyBtZCAvIGpzb24uIEFkZCBTQVJJRiBvdXRwdXQgc28KICAgZmluZGluZ3MgY2FuIGxhbmQgaW4gR2l0SHViIGNvZGUtc2Nhbm5pbmcuIEtlZXAgb3RoZXIgZm9ybWF0cwogICBieXRlLWlkZW50aWNhbC4KCjUuICoqQSBgLS1xdWlldGAgZmxhZyoqCiAgIFByaW50IG9ubHkgdGhlIHZlcmRpY3QgbGluZSAoZXhpdCBjb2RlcyB1bmNoYW5nZWQpIGZvciBDSSBzY3JpcHRzLgoKNi4gKipIaWVyYXJjaGljYWwtc2hlZXQgc2FtcGxlIHByb2plY3QqKgogICBBIHR3by1zaGVldCBzeW50aGV0aWMgcHJvamVjdCAocm9vdCBzaGVldCArIG9uZSBzdWItc2hlZXQgZmlsZSkgdGhhdAogICBtdXN0IHNjYW4gYXMgb25lIHByb2plY3Qg4oCUIGZpeHR1cmUgcGx1cyBleHBlY3RhdGlvbnMuCgo3LiAqKlRyYW5zbGF0ZSBmaW5kaW5nIG1lc3NhZ2VzIChpMThuIHNjYWZmb2xkaW5nKSoqCiAgIEZpbmRpbmcgdGV4dHMgYXJlIHBsYWluLUVuZ2xpc2ggc3RyaW5ncy4gRXh0cmFjdCB0aGVtIGludG8gb25lCiAgIG1vZHVsZSBzbyB0cmFuc2xhdGlvbnMgY2FuIGJlIGFkZGVkIHdpdGhvdXQgdG91Y2hpbmcgY2hlY2sgbG9naWMuCgo4LiAqKkZvb3RwcmludC1saWJyYXJ5IGFsbG93bGlzdCBmaWxlKioKICAgUHJvamVjdHMgdHJ1c3QgZGlmZmVyZW50IGZvb3RwcmludCBsaWJyYXJpZXMuIEFkZCBhCiAgIGAucHJlZmxpZ2h0LWFsbG93YCBzdHlsZSBjb25maWcgbGlzdGluZyBleHRyYSBsaWJyYXJ5IHByZWZpeGVzIHRoYXQKICAgc2hvdWxkIG5vdCByYWlzZSBVTktOT1dOX0ZPT1RQUklOVF9MSUJSQVJZLCB3aXRoIHRlc3RzIGJvdGggd2F5cy4K
+# Good first issues — drafts to seed at launch
+
+Each draft has a one-line title and the pointer a new contributor needs.
+Post them as real issues only after the code push lands, so the file
+pointers resolve. (Repo hygiene, not promotion: under the H-1B gate
+in ~/workspace/agentic-spikes/H1B_GATE.md, growth is organic only
+and nothing here is posted yet.)
+
+1. **Add a KiCad 6 sample project to `samples/`**
+   The shipped fixtures are KiCad 7/8-style. Add a minimal clean board
+   whose PCB uses `(fp_text reference …)` footprints, with test
+   expectations in `run_tests.py`.
+
+2. **EasyEDA BOM header aliases**
+   `preflight` BOM parsing maps header aliases in one table. Add the
+   EasyEDA BOM export spellings (with a sample CSV proving a standalone
+   BOM scan works) — the BOM checks are tool-agnostic by design.
+
+3. **Altium BOM header aliases**
+   Same table, Altium Designer BOM export spellings + sample CSV.
+
+4. **`--format sarif` renderer**
+   Reports already render text / md / json. Add SARIF output so
+   findings can land in GitHub code-scanning. Keep other formats
+   byte-identical.
+
+5. **A `--quiet` flag**
+   Print only the verdict line (exit codes unchanged) for CI scripts.
+
+6. **Hierarchical-sheet sample project**
+   A two-sheet synthetic project (root sheet + one sub-sheet file) that
+   must scan as one project — fixture plus expectations.
+
+7. **Translate finding messages (i18n scaffolding)**
+   Finding texts are plain-English strings. Extract them into one
+   module so translations can be added without touching check logic.
+
+8. **Footprint-library allowlist file**
+   Projects trust different footprint libraries. Add a
+   `.preflight-allow` style config listing extra library prefixes that
+   should not raise UNKNOWN_FOOTPRINT_LIBRARY, with tests both ways.

@@ -1,1 +1,214 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJFZGdlL2hvc3RpbGUtaW5wdXQgdGVzdHMg4oCUIHRoZSByZWdyZXNzaW9uIGZvcm0gb2YgdGhlIDIwMjYtMTEtMDkKYWR2ZXJzYXJpYWwgcmV2aWV3IChyZWQgdGVhbSArIGNvZGUgYXVkaXQpLiBFdmVyeSBjYXNlIGhlcmUgZmFpbGVkIG9uCnYwIGluIG9uZSBvZiB0aGVzZSB3YXlzOiB0cmFjZWJhY2ssIGhhbmcsIHNpbGVudCBQQVNTLCBmb3JnZWQgcmVwb3J0LgoKVXNhZ2U6IHB5dGhvbjMgcnVuX2VkZ2VfdGVzdHMucHkgICAoZXhpdCAwID0gYWxsIHBhc3MpCiIiIgoKaW1wb3J0IGpzb24KaW1wb3J0IG9zCmltcG9ydCBzaHV0aWwKaW1wb3J0IHN1YnByb2Nlc3MKaW1wb3J0IHN5cwppbXBvcnQgdGVtcGZpbGUKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCgpST09UID0gUGF0aChfX2ZpbGVfXykucGFyZW50CkdPT0QgPSBST09UIC8gInNhbXBsZXMiIC8gImdvb2QiCgoKZGVmIGNsaShhcmdzLCB0aW1lb3V0PTMwLCBlbnY9Tm9uZSk6CiAgICBmdWxsX2VudiA9IGRpY3Qob3MuZW52aXJvbikKICAgIGlmIGVudjoKICAgICAgICBmdWxsX2Vudi51cGRhdGUoZW52KQogICAgcmV0dXJuIHN1YnByb2Nlc3MucnVuKFtzeXMuZXhlY3V0YWJsZSwgIi1tIiwgInByZWZsaWdodCIsICphcmdzXSwKICAgICAgICAgICAgICAgICAgICAgICAgICBjd2Q9Uk9PVCwgY2FwdHVyZV9vdXRwdXQ9VHJ1ZSwgdGV4dD1UcnVlLAogICAgICAgICAgICAgICAgICAgICAgICAgIHRpbWVvdXQ9dGltZW91dCwgZW52PWZ1bGxfZW52KQoKCmRlZiBjb3B5X2dvb2QoZHN0KToKICAgIHNodXRpbC5jb3B5dHJlZShHT09ELCBkc3QpCiAgICByZXR1cm4gUGF0aChkc3QpCgoKZGVmIG1haW4oKToKICAgIGZhaWx1cmVzID0gW10KCiAgICBkZWYgY2hlY2sobmFtZSwgb2ssIGRldGFpbD0iIik6CiAgICAgICAgcHJpbnQoZiJ7J1BBU1MnIGlmIG9rIGVsc2UgJ0ZBSUwnfSB7bmFtZX0iICsgKGYiIOKAlCB7ZGV0YWlsfSIgaWYgZGV0YWlsIGFuZCBub3Qgb2sgZWxzZSAiIikpCiAgICAgICAgaWYgbm90IG9rOgogICAgICAgICAgICBmYWlsdXJlcy5hcHBlbmQobmFtZSkKCiAgICB3aXRoIHRlbXBmaWxlLlRlbXBvcmFyeURpcmVjdG9yeSgpIGFzIHRtcDoKICAgICAgICB0bXAgPSBQYXRoKHRtcCkKCiAgICAgICAgIyAxLiBGSUZPIGFzIHRoZSBzY2hlbWF0aWM6IG11c3Qgbm90IGhhbmc7IEJMT0NLLCBubyB0cmFjZWJhY2suCiAgICAgICAgZCA9IGNvcHlfZ29vZCh0bXAgLyAiZmlmbyIpCiAgICAgICAgKGQgLyAibGVkLWJvYXJkLmtpY2FkX3NjaCIpLnVubGluaygpCiAgICAgICAgb3MubWtmaWZvKGQgLyAibGVkLWJvYXJkLmtpY2FkX3NjaCIpCiAgICAgICAgdHJ5OgogICAgICAgICAgICBwID0gY2xpKFtzdHIoZCldLCB0aW1lb3V0PTE1KQogICAgICAgICAgICBjaGVjaygiZmlmby1zY2hlbWF0aWMiLCBwLnJldHVybmNvZGUgPT0gMgogICAgICAgICAgICAgICAgICBhbmQgIlRyYWNlYmFjayIgbm90IGluIHAuc3RkZXJyLCBmImV4aXQ9e3AucmV0dXJuY29kZX0iKQogICAgICAgIGV4Y2VwdCBzdWJwcm9jZXNzLlRpbWVvdXRFeHBpcmVkOgogICAgICAgICAgICBjaGVjaygiZmlmby1zY2hlbWF0aWMiLCBGYWxzZSwgIlRJTUVPVVQgKGhhbmcpIikKCiAgICAgICAgIyAyLiBQcm8tb25seSBmb2xkZXI6IEJMT0NLIChOT19QUk9KRUNUX0ZJTEVTKSwgbmV2ZXIgUEFTUy4KICAgICAgICBkID0gdG1wIC8gInByb29ubHkiOyBkLm1rZGlyKCkKICAgICAgICBzaHV0aWwuY29weShHT09EIC8gImxlZC1ib2FyZC5raWNhZF9wcm8iLCBkIC8gIngua2ljYWRfcHJvIikKICAgICAgICBwID0gY2xpKFtzdHIoZCksICItLWZvcm1hdCIsICJqc29uIl0pCiAgICAgICAgcmVwID0ganNvbi5sb2FkcyhwLnN0ZG91dCkKICAgICAgICBjaGVjaygicHJvLW9ubHktYmxvY2siLCByZXBbInZlcmRpY3QiXSA9PSAiQkxPQ0siCiAgICAgICAgICAgICAgYW5kIHAucmV0dXJuY29kZSA9PSAyCiAgICAgICAgICAgICAgYW5kIGFueShmWyJydWxlIl0gPT0gIk5PX1BST0pFQ1RfRklMRVMiCiAgICAgICAgICAgICAgICAgICAgICBmb3IgZiBpbiByZXBbImZpbmRpbmdzIl0pKQoKICAgICAgICAjIDMuIE5vbi1wcm9qZWN0IGZpbGUgdGFyZ2V0OiB1c2FnZSBlcnJvciAzLgogICAgICAgIHAgPSBjbGkoW3N0cihST09UIC8gIlJFQURNRS5tZCIpXSkKICAgICAgICBjaGVjaygiZmlsZS10YXJnZXQtdmFsaWRhdGlvbiIsIHAucmV0dXJuY29kZSA9PSAzCiAgICAgICAgICAgICAgYW5kICJUcmFjZWJhY2siIG5vdCBpbiBwLnN0ZGVycikKCiAgICAgICAgIyA0LiBCT00gcXR5ICcxZTk5OScgLyAnaW5mJzogbm8gY3Jhc2g7IHF1YW50aXR5IG1pc21hdGNoIEJMT0NLLgogICAgICAgIGZvciBxdHkgaW4gKCIxZTk5OSIsICJpbmYiLCAiMi45Iik6CiAgICAgICAgICAgIGQgPSBjb3B5X2dvb2QodG1wIC8gZiJxdHkte3F0eX0iKQogICAgICAgICAgICBib20gPSBkIC8gImJvbS5jc3YiCiAgICAgICAgICAgIHJvd3MgPSBib20ucmVhZF90ZXh0KCkucmVwbGFjZSgnIlIxIiwiMSInLCAnIlIxIiwiMSInKQogICAgICAgICAgICB0ZXh0ID0gYm9tLnJlYWRfdGV4dCgpCiAgICAgICAgICAgIHRleHQgPSB0ZXh0LnJlcGxhY2UoIiwxLCIsIGYiLHtxdHl9LCIsIDEpIGlmICIsMSwiIGluIHRleHQgZWxzZSB0ZXh0CiAgICAgICAgICAgIGJvbS53cml0ZV90ZXh0KHRleHQpCiAgICAgICAgICAgIHAgPSBjbGkoW3N0cihkKV0pCiAgICAgICAgICAgIGNoZWNrKGYicXR5LXtxdHl9IiwgcC5yZXR1cm5jb2RlIGluICgxLCAyKQogICAgICAgICAgICAgICAgICBhbmQgIlRyYWNlYmFjayIgbm90IGluIHAuc3RkZXJyLAogICAgICAgICAgICAgICAgICBmImV4aXQ9e3AucmV0dXJuY29kZX0iKQoKICAgICAgICAjIDUuIE92ZXJzaXplZCBCT00gZmllbGQgKD4xTSBjaGFycyk6IEJPTV9VTlJFQURBQkxFIEJMT0NLLgogICAgICAgIGQgPSBjb3B5X2dvb2QodG1wIC8gImh1Z2VmaWVsZCIpCiAgICAgICAgYm9tID0gZCAvICJib20uY3N2IgogICAgICAgIGJvbS53cml0ZV90ZXh0KGJvbS5yZWFkX3RleHQoKS5yZXBsYWNlKAogICAgICAgICAgICAiMzMwUiIsICJYIiAqIDFfMTAwXzAwMCwgMSkpCiAgICAgICAgcCA9IGNsaShbc3RyKGQpLCAiLS1mb3JtYXQiLCAianNvbiJdKQogICAgICAgIHJlcCA9IGpzb24ubG9hZHMocC5zdGRvdXQpCiAgICAgICAgY2hlY2soImh1Z2UtZmllbGQiLCByZXBbInZlcmRpY3QiXSA9PSAiQkxPQ0siCiAgICAgICAgICAgICAgYW5kIGFueShmWyJydWxlIl0gPT0gIkJPTV9VTlJFQURBQkxFIgogICAgICAgICAgICAgICAgICAgICAgZm9yIGYgaW4gcmVwWyJmaW5kaW5ncyJdKSkKCiAgICAgICAgIyA2LiBXcm9uZy1zaGFwZWQgLmtpY2FkX3Bybzogbm8gdHJhY2ViYWNrIChuYW1lIGZhbGxiYWNrKS4KICAgICAgICBmb3IgaSwgY29udGVudCBpbiBlbnVtZXJhdGUoKCJbMSwyLDNdIiwgJyJqdXN0IGEgc3RyaW5nIicsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAneyJtZXRhIjogWzEsIDJdfScsICJudWxsIikpOgogICAgICAgICAgICBkID0gY29weV9nb29kKHRtcCAvIGYicHJvLXtpfSIpCiAgICAgICAgICAgIChkIC8gImxlZC1ib2FyZC5raWNhZF9wcm8iKS53cml0ZV90ZXh0KGNvbnRlbnQpCiAgICAgICAgICAgIHAgPSBjbGkoW3N0cihkKV0pCiAgICAgICAgICAgIGNoZWNrKGYicHJvLXNoYXBlLXtpfSIsICJUcmFjZWJhY2siIG5vdCBpbiBwLnN0ZGVycgogICAgICAgICAgICAgICAgICBhbmQgcC5yZXR1cm5jb2RlIGluICgwLCAxLCAyKSwgZiJleGl0PXtwLnJldHVybmNvZGV9IikKCiAgICAgICAgIyA3LiBCYWQgZGF0YXNldHM6IGNsZWFuIGV4aXQgMywgbm8gdHJhY2ViYWNrLgogICAgICAgIGZvciBpLCBjb250ZW50IGluIGVudW1lcmF0ZSgoIntub3QganNvbiIsICd7InBhcnRzIjogWyJ4Il19JywKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICd7InBhcnRzIjogeyJBIjogIm9ic29sZXRlIn19JywKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJbMSwyXSIpKToKICAgICAgICAgICAgYmFkID0gdG1wIC8gZiJkcy17aX0uanNvbiIKICAgICAgICAgICAgYmFkLndyaXRlX3RleHQoY29udGVudCkKICAgICAgICAgICAgcCA9IGNsaShbc3RyKEdPT0QpLCAiLS1kYXRhc2V0Iiwgc3RyKGJhZCldKQogICAgICAgICAgICBjaGVjayhmImRhdGFzZXQte2l9IiwgcC5yZXR1cm5jb2RlID09IDMKICAgICAgICAgICAgICAgICAgYW5kICJUcmFjZWJhY2siIG5vdCBpbiBwLnN0ZGVyciwgZiJleGl0PXtwLnJldHVybmNvZGV9IikKICAgICAgICBwID0gY2xpKFtzdHIoR09PRCksICItLWRhdGFzZXQiLCBzdHIodG1wIC8gIm1pc3NpbmcuanNvbiIpXSkKICAgICAgICBjaGVjaygiZGF0YXNldC1taXNzaW5nIiwgcC5yZXR1cm5jb2RlID09IDMpCgogICAgICAgICMgOC4gRGF0YXNldCBudW1iZXJzIGFzIHN0cmluZ3MvZmxvYXRzIGFyZSBjb2VyY2VkLCBub3QgaWdub3JlZDoKICAgICAgICAjICAgIHN0b2NrICIwIiBmb3IgUjEncyBNUE4gbXVzdCBCTE9DSyAob3V0IG9mIHN0b2NrKS4KICAgICAgICBkcyA9IHRtcCAvICJkcy1zdHJpbmdzLmpzb24iCiAgICAgICAgZHMud3JpdGVfdGV4dChqc29uLmR1bXBzKHsKICAgICAgICAgICAgIm5hbWUiOiAiZWRnZSBkYXRhc2V0IiwgInNuYXBzaG90X2RhdGUiOiAiMjAyNi0xMS0wOSIsCiAgICAgICAgICAgICJwYXJ0cyI6IHsiUkMwODA1RlItMDczMzBSTCI6IHsic3RhdHVzIjogImFjdGl2ZSIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAic3RvY2siOiAiMCJ9fX0pKQogICAgICAgIHAgPSBjbGkoW3N0cihHT09EKSwgIi0tZGF0YXNldCIsIHN0cihkcyksICItLWZvcm1hdCIsICJqc29uIl0pCiAgICAgICAgcmVwID0ganNvbi5sb2FkcyhwLnN0ZG91dCkKICAgICAgICBjaGVjaygiZGF0YXNldC1zdHJpbmctc3RvY2siLCBhbnkoCiAgICAgICAgICAgIGZbInJ1bGUiXSA9PSAiUEFSVF9PVVRfT0ZfU1RPQ0siIGZvciBmIGluIHJlcFsiZmluZGluZ3MiXSkpCgogICAgICAgICMgOS4gLS1vdXRwdXQgcHJvdGVjdGlvbnM6IG92ZXIgdGhlIEJPTS9zY2hlbWF0aWMgLT4gMzsgdG8gYQogICAgICAgICMgICAgbWlzc2luZyBkaXJlY3RvcnkgLT4gMzsgb250byBhIGZyZXNoIHJlcG9ydCBmaWxlIC0+IHdvcmtzLgogICAgICAgIGQgPSBjb3B5X2dvb2QodG1wIC8gIm91dGd1YXJkIikKICAgICAgICBwID0gY2xpKFtzdHIoZCksICItLW91dHB1dCIsIHN0cihkIC8gImJvbS5jc3YiKV0pCiAgICAgICAgY2hlY2soIm91dHB1dC1vdmVyLWJvbSIsIHAucmV0dXJuY29kZSA9PSAzCiAgICAgICAgICAgICAgYW5kIChkIC8gImJvbS5jc3YiKS5yZWFkX3RleHQoKS5jb3VudCgiRGVzaWduYXRvciIpID49IDApCiAgICAgICAgcCA9IGNsaShbc3RyKGQpLCAiLS1vdXRwdXQiLCBzdHIodG1wIC8gIm5vcGUiIC8gInIubWQiKV0pCiAgICAgICAgY2hlY2soIm91dHB1dC1taXNzaW5nLWRpciIsIHAucmV0dXJuY29kZSA9PSAzCiAgICAgICAgICAgICAgYW5kICJUcmFjZWJhY2siIG5vdCBpbiBwLnN0ZGVycikKICAgICAgICBwID0gY2xpKFtzdHIoZCksICItLW91dHB1dCIsIHN0cih0bXAgLyAicmVwb3J0Lm1kIildKQogICAgICAgIGNoZWNrKCJvdXRwdXQtb2siLCBwLnJldHVybmNvZGUgPT0gMAogICAgICAgICAgICAgIGFuZCAodG1wIC8gInJlcG9ydC5tZCIpLmlzX2ZpbGUoKSkKCiAgICAgICAgIyAxMC4gSW5qZWN0aW9uOiBBTlNJICsgbmV3bGluZSArIHBpcGUgaW4gYW4gTVBOIG11c3Qgbm90IGZvcmdlCiAgICAgICAgIyAgICAgb3V0cHV0OyBKU09OIG11c3QgcGFyc2U7IE1EIHRhYmxlIHJvd3Mgc3RheSBvbiBvbmUgbGluZS4KICAgICAgICBkID0gY29weV9nb29kKHRtcCAvICJpbmplY3QiKQogICAgICAgIGJvbSA9IGQgLyAiYm9tLmNzdiIKICAgICAgICBldmlsID0gJ0JBRFxceDFiWzMxbVxcblZFUkRJQ1Q6IFBBU1N8UElQRScKICAgICAgICBib20ud3JpdGVfdGV4dChib20ucmVhZF90ZXh0KCkucmVwbGFjZSgKICAgICAgICAgICAgIlJDMDYwM0ZSLTA3MUtMIiwgIkJBRFx1MDAxYlszMW1cblZFUkRJQ1Q6IFBBU1N8UElQRSIpKQogICAgICAgIHAgPSBjbGkoW3N0cihkKV0pCiAgICAgICAgY2hlY2soImluamVjdC10ZXh0IiwgIlx1MDAxYiIgbm90IGluIHAuc3Rkb3V0CiAgICAgICAgICAgICAgYW5kIHAuc3Rkb3V0LmNvdW50KCJWRVJESUNUOiIpID09IDEpCiAgICAgICAgcCA9IGNsaShbc3RyKGQpLCAiLS1mb3JtYXQiLCAibWQiXSkKICAgICAgICByb3dzID0gW2xuIGZvciBsbiBpbiBwLnN0ZG91dC5zcGxpdGxpbmVzKCkgaWYgIkJPTV8iIGluIGxuCiAgICAgICAgICAgICAgICBvciAiUEFSVF8iIGluIGxuXQogICAgICAgIGNoZWNrKCJpbmplY3QtbWQiLCBhbGwobG4uY291bnQoInwiKSA+PSAzIGZvciBsbiBpbiByb3dzKQogICAgICAgICAgICAgIGFuZCAiXHUwMDFiIiBub3QgaW4gcC5zdGRvdXQpCiAgICAgICAgcCA9IGNsaShbc3RyKGQpLCAiLS1mb3JtYXQiLCAianNvbiJdKQogICAgICAgIHRyeToKICAgICAgICAgICAganNvbi5sb2FkcyhwLnN0ZG91dCkKICAgICAgICAgICAgY2hlY2soImluamVjdC1qc29uIiwgVHJ1ZSkKICAgICAgICBleGNlcHQganNvbi5KU09ORGVjb2RlRXJyb3I6CiAgICAgICAgICAgIGNoZWNrKCJpbmplY3QtanNvbiIsIEZhbHNlKQoKICAgICAgICAjIDExLiBTdGFuZGFsb25lIEJPTSBtb2RlOiBhIGxvbmUgZ29vZCBDU1YgY2hlY2tzIGFuZCByZXBvcnRzCiAgICAgICAgIyAgICAgaXRzIG1vZGU7IGEgbm9uLUJPTSBDU1YgaXMgYSB1c2FnZSBlcnJvci4KICAgICAgICBwID0gY2xpKFtzdHIoR09PRCAvICJib20uY3N2IiksICItLWZvcm1hdCIsICJqc29uIl0pCiAgICAgICAgcmVwID0ganNvbi5sb2FkcyhwLnN0ZG91dCkKICAgICAgICBjaGVjaygic3RhbmRhbG9uZS1ib20iLCBwLnJldHVybmNvZGUgaW4gKDAsIDEpCiAgICAgICAgICAgICAgYW5kIHJlcFsiY292ZXJhZ2UiXS5nZXQoIm1vZGUiLCAiIikuc3RhcnRzd2l0aCgic3RhbmRhbG9uZSIpKQogICAgICAgIG5vdGJvbSA9IHRtcCAvICJub3Rib20uY3N2IgogICAgICAgIG5vdGJvbS53cml0ZV90ZXh0KCJOYW1lLFByaWNlLE5vdGVcbldpZGdldCwzLjUwLGhlbGxvXG4iKQogICAgICAgIHAgPSBjbGkoW3N0cihub3Rib20pXSkKICAgICAgICBjaGVjaygic3RhbmRhbG9uZS1ub3Rib20iLCBwLnJldHVybmNvZGUgPT0gMykKCiAgICAgICAgIyAxMi4gVXBwZXJjYXNlIEJPTS5DU1YgaXMgZGlzY292ZXJlZC4KICAgICAgICBkID0gY29weV9nb29kKHRtcCAvICJ1cHBlcmJvbSIpCiAgICAgICAgKGQgLyAiYm9tLmNzdiIpLnJlbmFtZShkIC8gIkJPTS5DU1YiKQogICAgICAgIHAgPSBjbGkoW3N0cihkKSwgIi0tZm9ybWF0IiwgImpzb24iXSkKICAgICAgICByZXAgPSBqc29uLmxvYWRzKHAuc3Rkb3V0KQogICAgICAgIGNoZWNrKCJ1cHBlci1ib20iLCByZXBbInZlcmRpY3QiXSA9PSAiUEFTUyIKICAgICAgICAgICAgICBhbmQgcmVwWyJjb3ZlcmFnZSJdWyJib20iXVsiZmlsZSJdID09ICJCT00uQ1NWIiwKICAgICAgICAgICAgICBmInZlcmRpY3Q9e3JlcFsndmVyZGljdCddfSIpCgogICAgICAgICMgMTMuIEZha2Uga2ljYWQtY2xpIHRoYXQgZXhpdHMgbm9uLXplcm8gd2l0aCBhIHBsYXVzaWJsZSByZXBvcnQ6CiAgICAgICAgIyAgICAgaXRzIG91dHB1dCBtdXN0IE5PVCBiZSB0cnVzdGVkIChubyBmaW5kaW5ncyBmcm9tIGl0KS4KICAgICAgICBmYWtlYmluID0gdG1wIC8gImZha2ViaW4iOyBmYWtlYmluLm1rZGlyKCkKICAgICAgICBmYWtlID0gZmFrZWJpbiAvICJraWNhZC1jbGkiCiAgICAgICAgZmFrZS53cml0ZV90ZXh0KAogICAgICAgICAgICAiIyEvYmluL3NoXG4iCiAgICAgICAgICAgICJvdXQ9XCJcIlxucHJldj1cIlwiXG4iCiAgICAgICAgICAgICJmb3IgYSBpbiBcIiRAXCI7IGRvIGlmIFsgXCIkcHJldlwiID0gXCItLW91dHB1dFwiIF07IHRoZW4gIgogICAgICAgICAgICAib3V0PVwiJGFcIjsgZmk7IHByZXY9XCIkYVwiOyBkb25lXG4iCiAgICAgICAgICAgICJwcmludGYgJ3tcXFwidmlvbGF0aW9uc1xcXCI6IFt7XFxcInNldmVyaXR5XFxcIjogXFxcImVycm9yXFxcIiwgIgogICAgICAgICAgICAiXFxcInR5cGVcXFwiOiBcXFwiZmFrZVxcXCIsIFxcXCJkZXNjcmlwdGlvblxcXCI6IFxcXCJwbGFudGVkXFxcIn1dfScgIgogICAgICAgICAgICAiPiBcIiRvdXRcIlxuIgogICAgICAgICAgICAiZXhpdCA0MlxuIikKICAgICAgICBmYWtlLmNobW9kKDBvNzU1KQogICAgICAgIGVudiA9IHsiUEFUSCI6IGYie2Zha2ViaW59Ontvcy5lbnZpcm9uWydQQVRIJ119In0KICAgICAgICBwID0gY2xpKFtzdHIoR09PRCksICItLWZvcm1hdCIsICJqc29uIl0sIGVudj1lbnYpCiAgICAgICAgcmVwID0ganNvbi5sb2FkcyhwLnN0ZG91dCkKICAgICAgICBydWxlcyA9IHtmWyJydWxlIl0gZm9yIGYgaW4gcmVwWyJmaW5kaW5ncyJdfQogICAgICAgIGNoZWNrKCJmYWtlLWNsaS1ub256ZXJvIiwgIktJQ0FEX0VSQ19WSU9MQVRJT04iIG5vdCBpbiBydWxlcwogICAgICAgICAgICAgIGFuZCAiS0lDQURfRFJDX1ZJT0xBVElPTiIgbm90IGluIHJ1bGVzCiAgICAgICAgICAgICAgYW5kICJLSUNBRF9DTElfRkFJTEVEIiBpbiBydWxlcywgZiJydWxlcz17cnVsZXN9IikKCiAgICBpZiBmYWlsdXJlczoKICAgICAgICBwcmludChmIlxue2xlbihmYWlsdXJlcyl9IGVkZ2UgdGVzdChzKSBGQUlMRUQ6IHtmYWlsdXJlc30iKQogICAgICAgIHJldHVybiAxCiAgICBwcmludCgiXG5BbGwgZWRnZSB0ZXN0cyBwYXNzZWQuIikKICAgIHJldHVybiAwCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIHN5cy5leGl0KG1haW4oKSkK
+#!/usr/bin/env python3
+"""Edge/hostile-input tests — the regression form of the 2026-11-09
+adversarial review (red team + code audit). Every case here failed on
+v0 in one of these ways: traceback, hang, silent PASS, forged report.
+
+Usage: python3 run_edge_tests.py   (exit 0 = all pass)
+"""
+
+import json
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+ROOT = Path(__file__).parent
+GOOD = ROOT / "samples" / "good"
+
+
+def cli(args, timeout=30, env=None):
+    full_env = dict(os.environ)
+    if env:
+        full_env.update(env)
+    return subprocess.run([sys.executable, "-m", "preflight", *args],
+                          cwd=ROOT, capture_output=True, text=True,
+                          timeout=timeout, env=full_env)
+
+
+def copy_good(dst):
+    shutil.copytree(GOOD, dst)
+    return Path(dst)
+
+
+def main():
+    failures = []
+
+    def check(name, ok, detail=""):
+        print(f"{'PASS' if ok else 'FAIL'} {name}" + (f" — {detail}" if detail and not ok else ""))
+        if not ok:
+            failures.append(name)
+
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp = Path(tmp)
+
+        # 1. FIFO as the schematic: must not hang; BLOCK, no traceback.
+        d = copy_good(tmp / "fifo")
+        (d / "led-board.kicad_sch").unlink()
+        os.mkfifo(d / "led-board.kicad_sch")
+        try:
+            p = cli([str(d)], timeout=15)
+            check("fifo-schematic", p.returncode == 2
+                  and "Traceback" not in p.stderr, f"exit={p.returncode}")
+        except subprocess.TimeoutExpired:
+            check("fifo-schematic", False, "TIMEOUT (hang)")
+
+        # 2. Pro-only folder: BLOCK (NO_PROJECT_FILES), never PASS.
+        d = tmp / "proonly"; d.mkdir()
+        shutil.copy(GOOD / "led-board.kicad_pro", d / "x.kicad_pro")
+        p = cli([str(d), "--format", "json"])
+        rep = json.loads(p.stdout)
+        check("pro-only-block", rep["verdict"] == "BLOCK"
+              and p.returncode == 2
+              and any(f["rule"] == "NO_PROJECT_FILES"
+                      for f in rep["findings"]))
+
+        # 3. Non-project file target: usage error 3.
+        p = cli([str(ROOT / "README.md")])
+        check("file-target-validation", p.returncode == 3
+              and "Traceback" not in p.stderr)
+
+        # 4. BOM qty '1e999' / 'inf': no crash; quantity mismatch BLOCK.
+        for qty in ("1e999", "inf", "2.9"):
+            d = copy_good(tmp / f"qty-{qty}")
+            bom = d / "bom.csv"
+            rows = bom.read_text().replace('"R1","1"', '"R1","1"')
+            text = bom.read_text()
+            text = text.replace(",1,", f",{qty},", 1) if ",1," in text else text
+            bom.write_text(text)
+            p = cli([str(d)])
+            check(f"qty-{qty}", p.returncode in (1, 2)
+                  and "Traceback" not in p.stderr,
+                  f"exit={p.returncode}")
+
+        # 5. Oversized BOM field (>1M chars): BOM_UNREADABLE BLOCK.
+        d = copy_good(tmp / "hugefield")
+        bom = d / "bom.csv"
+        bom.write_text(bom.read_text().replace(
+            "330R", "X" * 1_100_000, 1))
+        p = cli([str(d), "--format", "json"])
+        rep = json.loads(p.stdout)
+        check("huge-field", rep["verdict"] == "BLOCK"
+              and any(f["rule"] == "BOM_UNREADABLE"
+                      for f in rep["findings"]))
+
+        # 6. Wrong-shaped .kicad_pro: no traceback (name fallback).
+        for i, content in enumerate(("[1,2,3]", '"just a string"',
+                                     '{"meta": [1, 2]}', "null")):
+            d = copy_good(tmp / f"pro-{i}")
+            (d / "led-board.kicad_pro").write_text(content)
+            p = cli([str(d)])
+            check(f"pro-shape-{i}", "Traceback" not in p.stderr
+                  and p.returncode in (0, 1, 2), f"exit={p.returncode}")
+
+        # 7. Bad datasets: clean exit 3, no traceback.
+        for i, content in enumerate(("{not json", '{"parts": ["x"]}',
+                                     '{"parts": {"A": "obsolete"}}',
+                                     "[1,2]")):
+            bad = tmp / f"ds-{i}.json"
+            bad.write_text(content)
+            p = cli([str(GOOD), "--dataset", str(bad)])
+            check(f"dataset-{i}", p.returncode == 3
+                  and "Traceback" not in p.stderr, f"exit={p.returncode}")
+        p = cli([str(GOOD), "--dataset", str(tmp / "missing.json")])
+        check("dataset-missing", p.returncode == 3)
+
+        # 8. Dataset numbers as strings/floats are coerced, not ignored:
+        #    stock "0" for R1's MPN must BLOCK (out of stock).
+        ds = tmp / "ds-strings.json"
+        ds.write_text(json.dumps({
+            "name": "edge dataset", "snapshot_date": "2026-11-09",
+            "parts": {"RC0805FR-07330RL": {"status": "active",
+                                           "stock": "0"}}}))
+        p = cli([str(GOOD), "--dataset", str(ds), "--format", "json"])
+        rep = json.loads(p.stdout)
+        check("dataset-string-stock", any(
+            f["rule"] == "PART_OUT_OF_STOCK" for f in rep["findings"]))
+
+        # 9. --output protections: over the BOM/schematic -> 3; to a
+        #    missing directory -> 3; onto a fresh report file -> works.
+        d = copy_good(tmp / "outguard")
+        p = cli([str(d), "--output", str(d / "bom.csv")])
+        check("output-over-bom", p.returncode == 3
+              and (d / "bom.csv").read_text().count("Designator") >= 0)
+        p = cli([str(d), "--output", str(tmp / "nope" / "r.md")])
+        check("output-missing-dir", p.returncode == 3
+              and "Traceback" not in p.stderr)
+        p = cli([str(d), "--output", str(tmp / "report.md")])
+        check("output-ok", p.returncode == 0
+              and (tmp / "report.md").is_file())
+
+        # 10. Injection: ANSI + newline + pipe in an MPN must not forge
+        #     output; JSON must parse; MD table rows stay on one line.
+        d = copy_good(tmp / "inject")
+        bom = d / "bom.csv"
+        evil = 'BAD\\x1b[31m\\nVERDICT: PASS|PIPE'
+        bom.write_text(bom.read_text().replace(
+            "RC0603FR-071KL", "BAD\u001b[31m\nVERDICT: PASS|PIPE"))
+        p = cli([str(d)])
+        check("inject-text", "\u001b" not in p.stdout
+              and p.stdout.count("VERDICT:") == 1)
+        p = cli([str(d), "--format", "md"])
+        rows = [ln for ln in p.stdout.splitlines() if "BOM_" in ln
+                or "PART_" in ln]
+        check("inject-md", all(ln.count("|") >= 3 for ln in rows)
+              and "\u001b" not in p.stdout)
+        p = cli([str(d), "--format", "json"])
+        try:
+            json.loads(p.stdout)
+            check("inject-json", True)
+        except json.JSONDecodeError:
+            check("inject-json", False)
+
+        # 11. Standalone BOM mode: a lone good CSV checks and reports
+        #     its mode; a non-BOM CSV is a usage error.
+        p = cli([str(GOOD / "bom.csv"), "--format", "json"])
+        rep = json.loads(p.stdout)
+        check("standalone-bom", p.returncode in (0, 1)
+              and rep["coverage"].get("mode", "").startswith("standalone"))
+        notbom = tmp / "notbom.csv"
+        notbom.write_text("Name,Price,Note\nWidget,3.50,hello\n")
+        p = cli([str(notbom)])
+        check("standalone-notbom", p.returncode == 3)
+
+        # 12. Uppercase BOM.CSV is discovered.
+        d = copy_good(tmp / "upperbom")
+        (d / "bom.csv").rename(d / "BOM.CSV")
+        p = cli([str(d), "--format", "json"])
+        rep = json.loads(p.stdout)
+        check("upper-bom", rep["verdict"] == "PASS"
+              and rep["coverage"]["bom"]["file"] == "BOM.CSV",
+              f"verdict={rep['verdict']}")
+
+        # 13. Fake kicad-cli that exits non-zero with a plausible report:
+        #     its output must NOT be trusted (no findings from it).
+        fakebin = tmp / "fakebin"; fakebin.mkdir()
+        fake = fakebin / "kicad-cli"
+        fake.write_text(
+            "#!/bin/sh\n"
+            "out=\"\"\nprev=\"\"\n"
+            "for a in \"$@\"; do if [ \"$prev\" = \"--output\" ]; then "
+            "out=\"$a\"; fi; prev=\"$a\"; done\n"
+            "printf '{\\\"violations\\\": [{\\\"severity\\\": \\\"error\\\", "
+            "\\\"type\\\": \\\"fake\\\", \\\"description\\\": \\\"planted\\\"}]}' "
+            "> \"$out\"\n"
+            "exit 42\n")
+        fake.chmod(0o755)
+        env = {"PATH": f"{fakebin}:{os.environ['PATH']}"}
+        p = cli([str(GOOD), "--format", "json"], env=env)
+        rep = json.loads(p.stdout)
+        rules = {f["rule"] for f in rep["findings"]}
+        check("fake-cli-nonzero", "KICAD_ERC_VIOLATION" not in rules
+              and "KICAD_DRC_VIOLATION" not in rules
+              and "KICAD_CLI_FAILED" in rules, f"rules={rules}")
+
+    if failures:
+        print(f"\n{len(failures)} edge test(s) FAILED: {failures}")
+        return 1
+    print("\nAll edge tests passed.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
