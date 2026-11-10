@@ -1,1 +1,29 @@
-IyBsYXVuY2gtcHJlcC8g4oCUIFBBVVNFRCB1bmRlciB0aGUgSC0xQiBnYXRlCgpSYWtzaGl0IGRlY2lkZWQgb24gMjAyNi0xMS0wOSB0byBhZGQgYW4gSC0xQiBnYXRlIHRvIHRoaXMgcHJvamVjdAooZnVsbCBydWxlczogYH4vd29ya3NwYWNlL2FnZW50aWMtc3Bpa2VzL0gxQl9HQVRFLm1kYCwgd2hpY2ggb3V0cmFua3MKZXZlcnkgYWR2ZXJ0aXNpbmcgcGxhbik6CgotICoqTm8gbGF1bmNoIG9yIGFkdmVydGlzaW5nIGFjdGl2aXR5Kiogd2hpbGUgdGhlIGdhdGUgaXMgb24g4oCUIG5vCiAgU2hvdyBITiwgbm8gS2lDYWQgZm9ydW0gYW5ub3VuY2VtZW50LCBubyBIYWNrYWRheSB0aXAsIG5vIFJlZGRpdCwKICBubyBhd2Vzb21lLWxpc3QgUFJzLCBubyBhcnRpY2xlcy4KLSAqKk5vIGRpc3RyaWJ1dGlvbiBzdWJtaXNzaW9ucyB0aGF0IGFyZSBsYXVuY2hlcyBpbiBlZmZlY3QqKiDigJQgdGhlCiAgS2lDYWQgUENNIG9mZmljaWFsLXJlcG9zaXRvcnkgbWVyZ2UgcmVxdWVzdCBpcyBwYXVzZWQuCi0gKipObyBtb25leSBvZiBhbnkga2luZCoqIOKAlCBubyBzcG9uc29ycywgZG9uYXRpb25zLCBwYWlkIHRpZXJzLAogIHNhbGVzLCBvciBzdXBwb3J0IGluY29tZS4gVGhlcmUgYXJlIGRlbGliZXJhdGVseSBubyBtb25ldGlzYXRpb24KICBob29rcyBhbnl3aGVyZSBpbiB0aGlzIHRyZWUuCi0gVGhlIEphbiA04oCTMTUsIDIwMjcgbGF1bmNoIHN0YWNrIGZyb20gQURWRVJUSVNFX0JPVEgubWQgaXMgKipwYXVzZWQKICBpbiBmdWxsKio7IGl0cyBkYXRlcyBwYXNzaW5nIGFyZSBub24tZXZlbnRzLgoKVGhlIHR3byBkcmFmdHMgaW4gdGhpcyBmb2xkZXIgKEtpQ2FkIGZvcnVtIHBvc3QsIFNob3cgSE4pIGFyZQpjYW5jZWxsZWQgYXMgZGVsaXZlcmFibGVzIGFuZCBzdGFtcGVkIFBBVVNFRC4gVGhleSByZW1haW4gb24gZmlsZQpvbmx5IGZvciB0aGUgcmV2aXNpdCB0aGUgZ2F0ZSBmaWxlIGRlc2NyaWJlczogYWZ0ZXIgUmFrc2hpdCBpcyBiYWNrCmluIEluZGlhIChwbGFubmVkIEZlYuKAk01hciAyMDI3KSwgb3Igd2hlbiBhbiBpbW1pZ3JhdGlvbiBhdHRvcm5leQpnaXZlcyBhIGNsZWFyIG9waW5pb24sIHRoZSBsYXVuY2ggY2FuIGJlIHJlLWRhdGVkIHdpdGggdGhlIHBsYW5zIGFuZApkcmFmdHMgaW50YWN0LgoKV2hhdCBjb250aW51ZXMgbm9ybWFsbHk6IGJ1aWxkaW5nLCB0ZXN0aW5nLCByZXZpZXdzLCBkb2N1bWVudGF0aW9uLAphbmQgdGhlIHJlcG8gZXhpc3RpbmcgcHVibGljbHkgYXMtaXMg4oCUIGdyb3d0aCBpcyBvcmdhbmljIG9ubHkKKEdpdEh1Yi9Hb29nbGUgc2VhcmNoLCB3b3JkIG9mIG1vdXRoKS4gVGhlIEdpdEh1YiBwdXNoIGl0c2VsZiBzdGlsbAp3YWl0cyBmb3IgUmFrc2hpdCdzIG9uZS10YXAgYXBwcm92YWwgYWZ0ZXIgaGUgcmVhZHMgdGhlIGFkdmVyc2FyaWFsCnJldmlldy4K
+# launch-prep/ — PAUSED under the H-1B gate
+
+Rakshit decided on 2026-11-09 to add an H-1B gate to this project
+(full rules: `~/workspace/agentic-spikes/H1B_GATE.md`, which outranks
+every advertising plan):
+
+- **No launch or advertising activity** while the gate is on — no
+  Show HN, no KiCad forum announcement, no Hackaday tip, no Reddit,
+  no awesome-list PRs, no articles.
+- **No distribution submissions that are launches in effect** — the
+  KiCad PCM official-repository merge request is paused.
+- **No money of any kind** — no sponsors, donations, paid tiers,
+  sales, or support income. There are deliberately no monetisation
+  hooks anywhere in this tree.
+- The Jan 4–15, 2027 launch stack from ADVERTISE_BOTH.md is **paused
+  in full**; its dates passing are non-events.
+
+The two drafts in this folder (KiCad forum post, Show HN) are
+cancelled as deliverables and stamped PAUSED. They remain on file
+only for the revisit the gate file describes: after Rakshit is back
+in India (planned Feb–Mar 2027), or when an immigration attorney
+gives a clear opinion, the launch can be re-dated with the plans and
+drafts intact.
+
+What continues normally: building, testing, reviews, documentation,
+and the repo existing publicly as-is — growth is organic only
+(GitHub/Google search, word of mouth). The GitHub push itself still
+waits for Rakshit's one-tap approval after he reads the adversarial
+review.

@@ -1,1 +1,154 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJCdWlsZCB0aGUgYnJva2VuIGNvcnB1czogbGFiZWxsZWQgbXV0YXRpb25zIG9mIHRoZSBvcGVuLXNvdXJjZSBib2FyZHMuCgpFYWNoIG11dGF0aW9uIGNvcGllcyBhIGNsZWFuIHByb2plY3QgZm9sZGVyIGZyb20gY29ycHVzL3Byb2plY3RzLyBpbnRvCmNvcnB1cy9icm9rZW4vPG5hbWU+LywgYXBwbGllcyBPTkUgdGV4dHVhbCBmYXVsdCwgYW5kIHdyaXRlcyBhCk1VVEFUSU9OLm1kIG5hbWluZyB0aGUgZmF1bHQgYW5kIHRoZSBQcmVmbGlnaHQgcnVsZSB0aGF0IG11c3QgY2F0Y2ggaXQuClJ1bjogIHB5dGhvbjMgY29ycHVzL2J1aWxkX2Jyb2tlbi5weQpSZS1ydW5uaW5nIHJlYnVpbGRzIGZyb20gdGhlIHByaXN0aW5lIGNvcGllcy4KIiIiCgppbXBvcnQgY3N2CmltcG9ydCBpbwppbXBvcnQgcmUKaW1wb3J0IHNodXRpbApmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKCkhFUkUgPSBQYXRoKF9fZmlsZV9fKS5wYXJlbnQKUFJPSkVDVFMgPSBIRVJFIC8gInByb2plY3RzIgpCUk9LRU4gPSBIRVJFIC8gImJyb2tlbiIKCkVTUCA9IFBST0pFQ1RTIC8gImVzcC1ydXN0LWJvYXJkIiAvICJoYXJkd2FyZSIgLyAiZXNwLXJ1c3QtYm9hcmQiClVQU1kgPSBQUk9KRUNUUyAvICJ1cHN5LWRlc2t5IiAvICJwY2IiCgoKZGVmIGNvcHlfdHJlZShzcmMsIGRzdCk6CiAgICBpZiBkc3QuZXhpc3RzKCk6CiAgICAgICAgc2h1dGlsLnJtdHJlZShkc3QpCiAgICBzaHV0aWwuY29weXRyZWUoc3JjLCBkc3QsCiAgICAgICAgICAgICAgICAgICAgaWdub3JlPXNodXRpbC5pZ25vcmVfcGF0dGVybnMoIioucGRmIiwgImdlcmJlciIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInBsYWNlbWVudCIsICJib20iLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJzY2hlbWF0aWMiKSkKICAgIHJldHVybiBkc3QKCgpkZWYgd3JpdGVfbXV0YXRpb24oZm9sZGVyLCB0aXRsZSwgZmF1bHQsIGV4cGVjdGVkX3J1bGUpOgogICAgKGZvbGRlciAvICJNVVRBVElPTi5tZCIpLndyaXRlX3RleHQoCiAgICAgICAgZiIjIE11dGF0aW9uOiB7dGl0bGV9XG5cbkZhdWx0IHBsYW50ZWQ6IHtmYXVsdH1cblxuIgogICAgICAgIGYiUHJlZmxpZ2h0IE1VU1QgY2F0Y2ggdGhpcyB3aXRoIHJ1bGU6IHtleHBlY3RlZF9ydWxlfVxuIiwKICAgICAgICBlbmNvZGluZz0idXRmLTgiKQoKCmRlZiByZW1vdmVfYmFsYW5jZWRfYmxvY2sodGV4dCwgc3RhcnRfaWR4KToKICAgICIiIlJlbW92ZSB0aGUgYmFsYW5jZWQgKC4uLikgYmxvY2sgc3RhcnRpbmcgYXQgc3RhcnRfaWR4LiIiIgogICAgZGVwdGggPSAwCiAgICBpID0gc3RhcnRfaWR4CiAgICBpbl9zdHIgPSBGYWxzZQogICAgd2hpbGUgaSA8IGxlbih0ZXh0KToKICAgICAgICBjaCA9IHRleHRbaV0KICAgICAgICBpZiBpbl9zdHI6CiAgICAgICAgICAgIGlmIGNoID09ICJcXCI6CiAgICAgICAgICAgICAgICBpICs9IDEKICAgICAgICAgICAgZWxpZiBjaCA9PSAnIic6CiAgICAgICAgICAgICAgICBpbl9zdHIgPSBGYWxzZQogICAgICAgIGVsaWYgY2ggPT0gJyInOgogICAgICAgICAgICBpbl9zdHIgPSBUcnVlCiAgICAgICAgZWxpZiBjaCA9PSAiKCI6CiAgICAgICAgICAgIGRlcHRoICs9IDEKICAgICAgICBlbGlmIGNoID09ICIpIjoKICAgICAgICAgICAgZGVwdGggLT0gMQogICAgICAgICAgICBpZiBkZXB0aCA9PSAwOgogICAgICAgICAgICAgICAgcmV0dXJuIHRleHRbOnN0YXJ0X2lkeF0gKyB0ZXh0W2kgKyAxOl0KICAgICAgICBpICs9IDEKICAgIHJhaXNlIFZhbHVlRXJyb3IoInVuYmFsYW5jZWQgYmxvY2siKQoKCmRlZiBlZGl0X2JvbShmb2xkZXIsIGZuKToKICAgIGJvbSA9IGZvbGRlciAvICJlc3AtcnVzdC1ib2FyZC5jc3YiCiAgICByb3dzID0gbGlzdChjc3YucmVhZGVyKGlvLlN0cmluZ0lPKGJvbS5yZWFkX3RleHQoZW5jb2Rpbmc9InV0Zi04IikpKSkKICAgIHJvd3MgPSBmbihyb3dzKQogICAgb3V0ID0gaW8uU3RyaW5nSU8oKQogICAgY3N2LndyaXRlcihvdXQsIHF1b3Rpbmc9Y3N2LlFVT1RFX0FMTCkud3JpdGVyb3dzKHJvd3MpCiAgICBib20ud3JpdGVfdGV4dChvdXQuZ2V0dmFsdWUoKSwgZW5jb2Rpbmc9InV0Zi04IikKCgpkZWYgbWFpbigpOgogICAgQlJPS0VOLm1rZGlyKGV4aXN0X29rPVRydWUpCgogICAgIyAxIOKAlCBCT00gcm93IGRlbGV0ZWQgKGVzcCk6IHRoZSBDNiByb3cgdmFuaXNoZXMgZnJvbSB0aGUgQk9NLgogICAgZCA9IGNvcHlfdHJlZShFU1AsIEJST0tFTiAvICJlc3AtYm9tLXJvdy1kZWxldGVkIikKICAgIGRlZiBkcm9wX2M2KHJvd3MpOgogICAgICAgIHJldHVybiBbciBmb3IgciBpbiByb3dzIGlmIG5vdCByWzBdLnN0YXJ0c3dpdGgoJyJDNicpIGFuZCAiQzYsIiBub3QgaW4gclswXS5yZXBsYWNlKCIgIiwgIiIpXQogICAgZWRpdF9ib20oZCwgbGFtYmRhIHJvd3M6IFtyIGZvciByIGluIHJvd3MKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWYgclswXS5yZXBsYWNlKCIgIiwgIiIpICE9ICJDNiwiXSkKICAgIHdyaXRlX211dGF0aW9uKGQsICJCT00gcm93IGRlbGV0ZWQiLAogICAgICAgICAgICAgICAgICAgIlRoZSBCT00gcm93IGZvciBDNiB3YXMgZGVsZXRlZDsgQzYgaXMgc3RpbGwgaW4gdGhlIHNjaGVtYXRpYy4iLAogICAgICAgICAgICAgICAgICAgIlNDSEVNQVRJQ19QQVJUX01JU1NJTkdfRlJPTV9CT00iKQoKICAgICMgMiDigJQgQk9NIHF1YW50aXR5IGNoYW5nZWQgKGVzcCk6IGZpcnN0IGRhdGEgcm93IHF0eSAzIC0+IDcuCiAgICBkID0gY29weV90cmVlKEVTUCwgQlJPS0VOIC8gImVzcC1ib20tcXR5LWNoYW5nZWQiKQogICAgZGVmIHF0eShyb3dzKToKICAgICAgICByb3dzWzFdWzFdID0gIjciCiAgICAgICAgcmV0dXJuIHJvd3MKICAgIGVkaXRfYm9tKGQsIHF0eSkKICAgIHdyaXRlX211dGF0aW9uKGQsICJCT00gcXVhbnRpdHkgY2hhbmdlZCIsCiAgICAgICAgICAgICAgICAgICAiRmlyc3QgQk9NIHJvdyBxdWFudGl0eSBjaGFuZ2VkIGZyb20gMyB0byA3IHdoaWxlIGl0IGxpc3RzIDMgcmVmZXJlbmNlcy4iLAogICAgICAgICAgICAgICAgICAgIkJPTV9RVUFOVElUWV9NSVNNQVRDSCIpCgogICAgIyAzIOKAlCBCT00gZ2FpbnMgYW4gdW5rbm93biByZWZlcmVuY2UgKGVzcCk6IGV4dHJhIHJvdyBmb3IgQzk5OS4KICAgIGQgPSBjb3B5X3RyZWUoRVNQLCBCUk9LRU4gLyAiZXNwLWJvbS11bmtub3duLXJlZiIpCiAgICBkZWYgYWRkKHJvd3MpOgogICAgICAgIHJvd3MuYXBwZW5kKFsiQzk5OSwgIiwgIjEiLCAiMTBuRiAxMFYiLCAiQzE1MTk1IiwgIkdSTTEyMyIsCiAgICAgICAgICAgICAgICAgICAgICJDYXBhY2l0b3JfU01EOkNfMDQwMl8xMDA1TWV0cmljIiwgInBsYW50ZWQiXSkKICAgICAgICByZXR1cm4gcm93cwogICAgZWRpdF9ib20oZCwgYWRkKQogICAgd3JpdGVfbXV0YXRpb24oZCwgIkJPTSB1bmtub3duIHJlZmVyZW5jZSIsCiAgICAgICAgICAgICAgICAgICAiQSBCT00gcm93IGZvciBDOTk5IHdhcyBhZGRlZDsgbm8gQzk5OSBleGlzdHMgaW4gdGhlIHNjaGVtYXRpYy4iLAogICAgICAgICAgICAgICAgICAgIkJPTV9VTktOT1dOX1JFRkVSRU5DRSIpCgogICAgIyA0IOKAlCBTY2hlbWF0aWMgZm9vdHByaW50IGJsYW5rZWQgKHVwc3kpOiBSMSBsb3NlcyBpdHMgRm9vdHByaW50IHByb3BlcnR5IHZhbHVlLgogICAgZCA9IGNvcHlfdHJlZShVUFNZLCBCUk9LRU4gLyAidXBzeS1zY2gtZm9vdHByaW50LWJsYW5rZWQiKQogICAgc2NoID0gZCAvICJ1cHN5LWRlc2t5LmtpY2FkX3NjaCIKICAgIHRleHQgPSBzY2gucmVhZF90ZXh0KGVuY29kaW5nPSJ1dGYtOCIpCiAgICBtID0gcmUuc2VhcmNoKHInXChwcm9wZXJ0eSAiUmVmZXJlbmNlIiAiUjEiJywgdGV4dCkKICAgIGFzc2VydCBtLCAiUjEgbm90IGZvdW5kIgogICAgZnAgPSByZS5zZWFyY2gocidcKHByb3BlcnR5ICJGb290cHJpbnQiICJbXiJdKiInLAogICAgICAgICAgICAgICAgICAgdGV4dFttLnN0YXJ0KCk6bS5zdGFydCgpICsgNDAwMF0pCiAgICBhc3NlcnQgZnAsICJSMSBmb290cHJpbnQgcHJvcGVydHkgbm90IGZvdW5kIgogICAgcG9zID0gbS5zdGFydCgpICsgZnAuc3RhcnQoKQogICAgdGV4dCA9ICh0ZXh0Wzpwb3NdICsgJyhwcm9wZXJ0eSAiRm9vdHByaW50IiAiIicKICAgICAgICAgICAgKyB0ZXh0W3BvcyArIGxlbihmcC5ncm91cCgwKSk6XSkKICAgIHNjaC53cml0ZV90ZXh0KHRleHQsIGVuY29kaW5nPSJ1dGYtOCIpCiAgICB3cml0ZV9tdXRhdGlvbihkLCAiU2NoZW1hdGljIGZvb3RwcmludCBibGFua2VkIiwKICAgICAgICAgICAgICAgICAgICJSMSdzIEZvb3RwcmludCBwcm9wZXJ0eSBpbiB0aGUgc2NoZW1hdGljIHdhcyBlbXB0aWVkLiIsCiAgICAgICAgICAgICAgICAgICAiU0NIRU1BVElDX0ZPT1RQUklOVF9NSVNTSU5HIikKCiAgICAjIDUg4oCUIFBDQiBmb290cHJpbnQgc3dhcHBlZCAodXBzeSk6IGZpcnN0IGZvb3RwcmludCdzIGxpYnJhcnkgbmFtZSBjaGFuZ2VkLgogICAgZCA9IGNvcHlfdHJlZShVUFNZLCBCUk9LRU4gLyAidXBzeS1wY2ItZm9vdHByaW50LXN3YXBwZWQiKQogICAgcGNiID0gZCAvICJ1cHN5LWRlc2t5LmtpY2FkX3BjYiIKICAgIHRleHQgPSBwY2IucmVhZF90ZXh0KGVuY29kaW5nPSJ1dGYtOCIpCiAgICBtID0gcmUuc2VhcmNoKHInXChmb290cHJpbnQgIihbXiJdKykiJywgdGV4dCkKICAgIGFzc2VydCBtLCAibm8gZm9vdHByaW50IGZvdW5kIgogICAgdGV4dCA9IHRleHRbOm0uc3RhcnQoKV0gKyBmJyhmb290cHJpbnQgInttLmdyb3VwKDEpfV9XUk9ORyInICsgdGV4dFttLmVuZCgpOl0KICAgIHBjYi53cml0ZV90ZXh0KHRleHQsIGVuY29kaW5nPSJ1dGYtOCIpCiAgICB3cml0ZV9tdXRhdGlvbihkLCAiUENCIGZvb3RwcmludCBzd2FwcGVkIiwKICAgICAgICAgICAgICAgICAgIGYiUENCIGZvb3RwcmludCAne20uZ3JvdXAoMSl9JyByZW5hbWVkIHRvICd7bS5ncm91cCgxKX1fV1JPTkcnLiIsCiAgICAgICAgICAgICAgICAgICAiRk9PVFBSSU5UX01JU01BVENIIikKCiAgICAjIDYg4oCUIEZvb3RwcmludCBkZWxldGVkIGZyb20gUENCICh1cHN5KTogZmlyc3QgZm9vdHByaW50IGJsb2NrIHJlbW92ZWQuCiAgICBkID0gY29weV90cmVlKFVQU1ksIEJST0tFTiAvICJ1cHN5LXBjYi1mb290cHJpbnQtZGVsZXRlZCIpCiAgICBwY2IgPSBkIC8gInVwc3ktZGVza3kua2ljYWRfcGNiIgogICAgdGV4dCA9IHBjYi5yZWFkX3RleHQoZW5jb2Rpbmc9InV0Zi04IikKICAgIHN0YXJ0ID0gdGV4dC5pbmRleCgiKGZvb3RwcmludCAiKQogICAgdGV4dCA9IHJlbW92ZV9iYWxhbmNlZF9ibG9jayh0ZXh0LCBzdGFydCkKICAgIHBjYi53cml0ZV90ZXh0KHRleHQsIGVuY29kaW5nPSJ1dGYtOCIpCiAgICB3cml0ZV9tdXRhdGlvbihkLCAiRm9vdHByaW50IGRlbGV0ZWQgZnJvbSBQQ0IiLAogICAgICAgICAgICAgICAgICAgIlRoZSBmaXJzdCBmb290cHJpbnQgYmxvY2sgd2FzIHJlbW92ZWQgZnJvbSB0aGUgUENCIGZpbGU7ICIKICAgICAgICAgICAgICAgICAgICJpdHMgcmVmZXJlbmNlIHJlbWFpbnMgaW4gdGhlIHNjaGVtYXRpYy4iLAogICAgICAgICAgICAgICAgICAgIlNDSF9QQVJUX05PVF9PTl9QQ0IiKQoKICAgIHByaW50KCJCcm9rZW4gY29ycHVzIGJ1aWx0OiIsIHNvcnRlZChwLm5hbWUgZm9yIHAgaW4gQlJPS0VOLml0ZXJkaXIoKSkpCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIG1haW4oKQo=
+#!/usr/bin/env python3
+"""Build the broken corpus: labelled mutations of the open-source boards.
+
+Each mutation copies a clean project folder from corpus/projects/ into
+corpus/broken/<name>/, applies ONE textual fault, and writes a
+MUTATION.md naming the fault and the Preflight rule that must catch it.
+Run:  python3 corpus/build_broken.py
+Re-running rebuilds from the pristine copies.
+"""
+
+import csv
+import io
+import re
+import shutil
+from pathlib import Path
+
+HERE = Path(__file__).parent
+PROJECTS = HERE / "projects"
+BROKEN = HERE / "broken"
+
+ESP = PROJECTS / "esp-rust-board" / "hardware" / "esp-rust-board"
+UPSY = PROJECTS / "upsy-desky" / "pcb"
+
+
+def copy_tree(src, dst):
+    if dst.exists():
+        shutil.rmtree(dst)
+    shutil.copytree(src, dst,
+                    ignore=shutil.ignore_patterns("*.pdf", "gerber",
+                                                  "placement", "bom",
+                                                  "schematic"))
+    return dst
+
+
+def write_mutation(folder, title, fault, expected_rule):
+    (folder / "MUTATION.md").write_text(
+        f"# Mutation: {title}\n\nFault planted: {fault}\n\n"
+        f"Preflight MUST catch this with rule: {expected_rule}\n",
+        encoding="utf-8")
+
+
+def remove_balanced_block(text, start_idx):
+    """Remove the balanced (...) block starting at start_idx."""
+    depth = 0
+    i = start_idx
+    in_str = False
+    while i < len(text):
+        ch = text[i]
+        if in_str:
+            if ch == "\\":
+                i += 1
+            elif ch == '"':
+                in_str = False
+        elif ch == '"':
+            in_str = True
+        elif ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth -= 1
+            if depth == 0:
+                return text[:start_idx] + text[i + 1:]
+        i += 1
+    raise ValueError("unbalanced block")
+
+
+def edit_bom(folder, fn):
+    bom = folder / "esp-rust-board.csv"
+    rows = list(csv.reader(io.StringIO(bom.read_text(encoding="utf-8"))))
+    rows = fn(rows)
+    out = io.StringIO()
+    csv.writer(out, quoting=csv.QUOTE_ALL).writerows(rows)
+    bom.write_text(out.getvalue(), encoding="utf-8")
+
+
+def main():
+    BROKEN.mkdir(exist_ok=True)
+
+    # 1 — BOM row deleted (esp): the C6 row vanishes from the BOM.
+    d = copy_tree(ESP, BROKEN / "esp-bom-row-deleted")
+    def drop_c6(rows):
+        return [r for r in rows if not r[0].startswith('"C6') and "C6," not in r[0].replace(" ", "")]
+    edit_bom(d, lambda rows: [r for r in rows
+                              if r[0].replace(" ", "") != "C6,"])
+    write_mutation(d, "BOM row deleted",
+                   "The BOM row for C6 was deleted; C6 is still in the schematic.",
+                   "SCHEMATIC_PART_MISSING_FROM_BOM")
+
+    # 2 — BOM quantity changed (esp): first data row qty 3 -> 7.
+    d = copy_tree(ESP, BROKEN / "esp-bom-qty-changed")
+    def qty(rows):
+        rows[1][1] = "7"
+        return rows
+    edit_bom(d, qty)
+    write_mutation(d, "BOM quantity changed",
+                   "First BOM row quantity changed from 3 to 7 while it lists 3 references.",
+                   "BOM_QUANTITY_MISMATCH")
+
+    # 3 — BOM gains an unknown reference (esp): extra row for C999.
+    d = copy_tree(ESP, BROKEN / "esp-bom-unknown-ref")
+    def add(rows):
+        rows.append(["C999, ", "1", "10nF 10V", "C15195", "GRM123",
+                     "Capacitor_SMD:C_0402_1005Metric", "planted"])
+        return rows
+    edit_bom(d, add)
+    write_mutation(d, "BOM unknown reference",
+                   "A BOM row for C999 was added; no C999 exists in the schematic.",
+                   "BOM_UNKNOWN_REFERENCE")
+
+    # 4 — Schematic footprint blanked (upsy): R1 loses its Footprint property value.
+    d = copy_tree(UPSY, BROKEN / "upsy-sch-footprint-blanked")
+    sch = d / "upsy-desky.kicad_sch"
+    text = sch.read_text(encoding="utf-8")
+    m = re.search(r'\(property "Reference" "R1"', text)
+    assert m, "R1 not found"
+    fp = re.search(r'\(property "Footprint" "[^"]*"',
+                   text[m.start():m.start() + 4000])
+    assert fp, "R1 footprint property not found"
+    pos = m.start() + fp.start()
+    text = (text[:pos] + '(property "Footprint" ""'
+            + text[pos + len(fp.group(0)):])
+    sch.write_text(text, encoding="utf-8")
+    write_mutation(d, "Schematic footprint blanked",
+                   "R1's Footprint property in the schematic was emptied.",
+                   "SCHEMATIC_FOOTPRINT_MISSING")
+
+    # 5 — PCB footprint swapped (upsy): first footprint's library name changed.
+    d = copy_tree(UPSY, BROKEN / "upsy-pcb-footprint-swapped")
+    pcb = d / "upsy-desky.kicad_pcb"
+    text = pcb.read_text(encoding="utf-8")
+    m = re.search(r'\(footprint "([^"]+)"', text)
+    assert m, "no footprint found"
+    text = text[:m.start()] + f'(footprint "{m.group(1)}_WRONG"' + text[m.end():]
+    pcb.write_text(text, encoding="utf-8")
+    write_mutation(d, "PCB footprint swapped",
+                   f"PCB footprint '{m.group(1)}' renamed to '{m.group(1)}_WRONG'.",
+                   "FOOTPRINT_MISMATCH")
+
+    # 6 — Footprint deleted from PCB (upsy): first footprint block removed.
+    d = copy_tree(UPSY, BROKEN / "upsy-pcb-footprint-deleted")
+    pcb = d / "upsy-desky.kicad_pcb"
+    text = pcb.read_text(encoding="utf-8")
+    start = text.index("(footprint ")
+    text = remove_balanced_block(text, start)
+    pcb.write_text(text, encoding="utf-8")
+    write_mutation(d, "Footprint deleted from PCB",
+                   "The first footprint block was removed from the PCB file; "
+                   "its reference remains in the schematic.",
+                   "SCH_PART_NOT_ON_PCB")
+
+    print("Broken corpus built:", sorted(p.name for p in BROKEN.iterdir()))
+
+
+if __name__ == "__main__":
+    main()

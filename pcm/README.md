@@ -1,1 +1,38 @@
-IyBQQ00gcGFja2FnZSDigJQgS2lDYWQgUHJlZmxpZ2h0CgpTa2VsZXRvbiBmb3IgZGlzdHJpYnV0aW5nIHRoZSBpbi1LaUNhZCBwbHVnaW4gdGhyb3VnaCBLaUNhZCdzIFBsdWdpbgphbmQgQ29udGVudCBNYW5hZ2VyLCBmb2xsb3dpbmcgdGhlIG9mZmljaWFsIEtpQ2FkIGFkZG9ucyBndWlkZQooaHR0cHM6Ly9kZXYtZG9jcy5LaUNhZC5vcmcvZW4vYWRkb25zL2luZGV4Lmh0bWwsIGFjY2Vzc2VkIDIwMjYtMTEtMDkpOgoKLSBgcGFja2FnZS9tZXRhZGF0YS5qc29uYCDigJQgdGhlIGluLWFyY2hpdmUgbWV0YWRhdGEgKHNjaGVtYSB2MiwKICBpZGVudGlmaWVyIGBjb20uZ2l0aHViLlJha1Rpa29vLmtpY2FkLXByZWZsaWdodGAsIHR5cGUgYHBsdWdpbmAsCiAgbGljZW5zZSBNSVQsIG5vIGBkb3dubG9hZF8qYCBrZXlzIOKAlCB0aG9zZSBiZWxvbmcgb25seSBpbiB0aGUKICBzdWJtaXNzaW9uIGNvcHkpLgotIGBwYWNrYWdlL3BsdWdpbnMvX19pbml0X18ucHlgIOKAlCB0aGUgQWN0aW9uIFBsdWdpbiAocmVnaXN0ZXJzIGEKICBgcGNibmV3LkFjdGlvblBsdWdpbmAgc3ViY2xhc3M7IGBSdW4oKWAgY2FsbHMgdGhlIHNoYXJlZCBlbmdpbmUgb24KICB0aGUgb3BlbiBib2FyZCdzIHByb2plY3QgZm9sZGVyIGFuZCBzaG93cyB0aGUgdGV4dCByZXBvcnQpLgotIGBwYWNrYWdlL3Jlc291cmNlcy9pY29uLnBuZ2Ag4oCUIDY0w5c2NCBQQ00gaWNvbiAocGxhY2Vob2xkZXIgYXJ0KS4KLSBgYnVpbGRfcGNtLnB5YCDigJQgYXNzZW1ibGVzIHRoZSB6aXAgKGVuZ2luZSBjb3BpZWQgaW50bwogIGBwbHVnaW5zL3ByZWZsaWdodC9gKSwgY29tcHV0ZXMgU0hBLTI1Ni9zaXplcywgYW5kIGVtaXRzIHRoZQogIHN1Ym1pc3Npb24gbWV0YWRhdGEgKyBhIHNlbGYtaG9zdGVkIHJlcG9zaXRvcnkgcGFpcgogIChgcmVwb3NpdG9yeS5qc29uYCAvIGBwYWNrYWdlcy5qc29uYCkgdW5kZXIgYGRpc3QvYC4KICBJdCB1cGxvYWRzIGFuZCBzdWJtaXRzIG5vdGhpbmcuCgojIyBUZXN0IHBsYW4gKG5lZWRzIGEgcmVhbCBLaUNhZCDigJQgbm9uZSBvbiB0aGUgYnVpbGQgbWFjaGluZSkKMS4gQ29weSBgcGFja2FnZS9wbHVnaW5zL2AgKHBsdXMgdGhlIGJ1aWx0IGVuZ2luZSBmb2xkZXIpIGludG8gYSBLaUNhZAogICBwbHVnaW4gc2VhcmNoIHBhdGggKGBwY2JuZXcuUExVR0lOX0RJUkVDVE9SSUVTX1NFQVJDSGApLgoyLiBPcGVuIHRoZSBicm9rZW4gc2FtcGxlIGJvYXJkIGluIHRoZSBQQ0IgRWRpdG9yOyBydW4KICAgVG9vbHMg4oaSIEV4dGVybmFsIFBsdWdpbnMg4oaSIEtpQ2FkIFByZWZsaWdodDsgdGhlIGRpYWxvZyBtdXN0IHNob3cKICAgdGhlIHNhbWUgZmluZGluZ3MgYXMgYHB5dGhvbjMgLW0gcHJlZmxpZ2h0IHNhbXBsZXMvYnJva2VuYC4KMy4gQnVpbGQgdGhlIHppcCB3aXRoIGBidWlsZF9wY20ucHlgLCBhZGQgYGRpc3QvYCBhcyBhIHRoaXJkLXBhcnR5CiAgIHJlcG9zaXRvcnkgaW4gUENNIOKGkiBNYW5hZ2UsIGluc3RhbGwsIHJlcGVhdCBzdGVwIDIuCjQuIFZhbGlkYXRlIGBtZXRhZGF0YS1zdWJtaXNzaW9uLmpzb25gIGFnYWluc3QgdGhlIG9mZmljaWFsIHNjaGVtYQogICAoaHR0cHM6Ly9nby5raWNhZC5vcmcvcGNtL3NjaGVtYXMvdjIpIGJlZm9yZSBhbnkgc3VibWlzc2lvbi4KClN1Ym1pc3Npb24gdG8gdGhlIG9mZmljaWFsIHJlcG9zaXRvcnkgKG1lcmdlIHJlcXVlc3QgdG8KZ2l0bGFiLmNvbS9raWNhZC9hZGRvbnMvbWV0YWRhdGEpIGlzICoqUEFVU0VEIHVuZGVyIHRoZSBILTFCIGdhdGUqKgooYH4vd29ya3NwYWNlL2FnZW50aWMtc3Bpa2VzL0gxQl9HQVRFLm1kYCkg4oCUIGl0IGlzIGEgZGlzdHJpYnV0aW9uCnN1Ym1pc3Npb24sIG5vdCBtZXJlIGNvZGUgd29yaywgYW5kIGhhcHBlbnMgb25seSBhZnRlciB0aGUgZ2F0ZQpjbGVhcnMgQU5EIFJha3NoaXQgYXBwcm92ZXMuIE5vdGhpbmcgaW4gdGhpcyBmb2xkZXIgaXMgc3VibWl0dGVkIGJ5CmJ1aWxkaW5nIGl0OyB0aGUgYnVpbHQgYGRpc3QvYCBvdXRwdXRzIHdlcmUgcmVtb3ZlZCB3aGVuIHRoZSBnYXRlCndhcyBhcHBsaWVkLgo=
+# PCM package — KiCad Preflight
+
+Skeleton for distributing the in-KiCad plugin through KiCad's Plugin
+and Content Manager, following the official KiCad addons guide
+(https://dev-docs.KiCad.org/en/addons/index.html, accessed 2026-11-09):
+
+- `package/metadata.json` — the in-archive metadata (schema v2,
+  identifier `com.github.RakTikoo.kicad-preflight`, type `plugin`,
+  license MIT, no `download_*` keys — those belong only in the
+  submission copy).
+- `package/plugins/__init__.py` — the Action Plugin (registers a
+  `pcbnew.ActionPlugin` subclass; `Run()` calls the shared engine on
+  the open board's project folder and shows the text report).
+- `package/resources/icon.png` — 64×64 PCM icon (placeholder art).
+- `build_pcm.py` — assembles the zip (engine copied into
+  `plugins/preflight/`), computes SHA-256/sizes, and emits the
+  submission metadata + a self-hosted repository pair
+  (`repository.json` / `packages.json`) under `dist/`.
+  It uploads and submits nothing.
+
+## Test plan (needs a real KiCad — none on the build machine)
+1. Copy `package/plugins/` (plus the built engine folder) into a KiCad
+   plugin search path (`pcbnew.PLUGIN_DIRECTORIES_SEARCH`).
+2. Open the broken sample board in the PCB Editor; run
+   Tools → External Plugins → KiCad Preflight; the dialog must show
+   the same findings as `python3 -m preflight samples/broken`.
+3. Build the zip with `build_pcm.py`, add `dist/` as a third-party
+   repository in PCM → Manage, install, repeat step 2.
+4. Validate `metadata-submission.json` against the official schema
+   (https://go.kicad.org/pcm/schemas/v2) before any submission.
+
+Submission to the official repository (merge request to
+gitlab.com/kicad/addons/metadata) is **PAUSED under the H-1B gate**
+(`~/workspace/agentic-spikes/H1B_GATE.md`) — it is a distribution
+submission, not mere code work, and happens only after the gate
+clears AND Rakshit approves. Nothing in this folder is submitted by
+building it; the built `dist/` outputs were removed when the gate
+was applied.

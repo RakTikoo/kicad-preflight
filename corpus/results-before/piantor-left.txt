@@ -1,1 +1,113 @@
-UHJlZmxpZ2h0IHJlcG9ydCBmb3I6IGtleWJvYXJkX3BjYgpQcm9qZWN0IGZvbGRlcjogY29ycHVzL3Byb2plY3RzL3BpYW50b3IvcGNiL2xlZnQKCkZpbmRpbmdzOiAzMyAoMzMgQkxPQ0ssIDAgRklYLUZJUlNULCAwIE5PVEUpCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IEgxCiAgICAgIEgxIChNb3VudGluZ0hvbGUpIGlzIGluIHRoZSBzY2hlbWF0aWMgYnV0IGhhcyBubyBmb290cHJpbnQgb24gdGhlIFBDQi4gSXQgd2lsbCBub3QgYmUgb24gdGhlIGJvYXJkIHlvdSByZWNlaXZlIOKAlCBwbGFjZSBpdCBvciByZW1vdmUgaXQgZnJvbSB0aGUgc2NoZW1hdGljLgogICAgICA+IGluIHNjaGVtYXRpYywgbWlzc2luZyBmcm9tIFBDQgogIFtCTE9DS10gU0NIX1BBUlRfTk9UX09OX1BDQiDigJQga2V5Ym9hcmRfcGNiLmtpY2FkX3NjaCDCtyBIMgogICAgICBIMiAoTW91bnRpbmdIb2xlKSBpcyBpbiB0aGUgc2NoZW1hdGljIGJ1dCBoYXMgbm8gZm9vdHByaW50IG9uIHRoZSBQQ0IuIEl0IHdpbGwgbm90IGJlIG9uIHRoZSBib2FyZCB5b3UgcmVjZWl2ZSDigJQgcGxhY2UgaXQgb3IgcmVtb3ZlIGl0IGZyb20gdGhlIHNjaGVtYXRpYy4KICAgICAgPiBpbiBzY2hlbWF0aWMsIG1pc3NpbmcgZnJvbSBQQ0IKICBbQkxPQ0tdIFNDSF9QQVJUX05PVF9PTl9QQ0Ig4oCUIGtleWJvYXJkX3BjYi5raWNhZF9zY2ggwrcgSDMKICAgICAgSDMgKE1vdW50aW5nSG9sZSkgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiBJdCB3aWxsIG5vdCBiZSBvbiB0aGUgYm9hcmQgeW91IHJlY2VpdmUg4oCUIHBsYWNlIGl0IG9yIHJlbW92ZSBpdCBmcm9tIHRoZSBzY2hlbWF0aWMuCiAgICAgID4gaW4gc2NoZW1hdGljLCBtaXNzaW5nIGZyb20gUENCCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IEg0CiAgICAgIEg0IChNb3VudGluZ0hvbGUpIGlzIGluIHRoZSBzY2hlbWF0aWMgYnV0IGhhcyBubyBmb290cHJpbnQgb24gdGhlIFBDQi4gSXQgd2lsbCBub3QgYmUgb24gdGhlIGJvYXJkIHlvdSByZWNlaXZlIOKAlCBwbGFjZSBpdCBvciByZW1vdmUgaXQgZnJvbSB0aGUgc2NoZW1hdGljLgogICAgICA+IGluIHNjaGVtYXRpYywgbWlzc2luZyBmcm9tIFBDQgogIFtCTE9DS10gU0NIX1BBUlRfTk9UX09OX1BDQiDigJQga2V5Ym9hcmRfcGNiLmtpY2FkX3NjaCDCtyBKMQogICAgICBKMSAoVFJSUykgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiBJdCB3aWxsIG5vdCBiZSBvbiB0aGUgYm9hcmQgeW91IHJlY2VpdmUg4oCUIHBsYWNlIGl0IG9yIHJlbW92ZSBpdCBmcm9tIHRoZSBzY2hlbWF0aWMuCiAgICAgID4gaW4gc2NoZW1hdGljLCBtaXNzaW5nIGZyb20gUENCCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IEswMAogICAgICBLMDAgKEtFWVNXKSBpcyBpbiB0aGUgc2NoZW1hdGljIGJ1dCBoYXMgbm8gZm9vdHByaW50IG9uIHRoZSBQQ0IuIEl0IHdpbGwgbm90IGJlIG9uIHRoZSBib2FyZCB5b3UgcmVjZWl2ZSDigJQgcGxhY2UgaXQgb3IgcmVtb3ZlIGl0IGZyb20gdGhlIHNjaGVtYXRpYy4KICAgICAgPiBpbiBzY2hlbWF0aWMsIG1pc3NpbmcgZnJvbSBQQ0IKICBbQkxPQ0tdIFNDSF9QQVJUX05PVF9PTl9QQ0Ig4oCUIGtleWJvYXJkX3BjYi5raWNhZF9zY2ggwrcgSzAxCiAgICAgIEswMSAoS0VZU1cpIGlzIGluIHRoZSBzY2hlbWF0aWMgYnV0IGhhcyBubyBmb290cHJpbnQgb24gdGhlIFBDQi4gSXQgd2lsbCBub3QgYmUgb24gdGhlIGJvYXJkIHlvdSByZWNlaXZlIOKAlCBwbGFjZSBpdCBvciByZW1vdmUgaXQgZnJvbSB0aGUgc2NoZW1hdGljLgogICAgICA+IGluIHNjaGVtYXRpYywgbWlzc2luZyBmcm9tIFBDQgogIFtCTE9DS10gU0NIX1BBUlRfTk9UX09OX1BDQiDigJQga2V5Ym9hcmRfcGNiLmtpY2FkX3NjaCDCtyBLMDIKICAgICAgSzAyIChLRVlTVykgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiBJdCB3aWxsIG5vdCBiZSBvbiB0aGUgYm9hcmQgeW91IHJlY2VpdmUg4oCUIHBsYWNlIGl0IG9yIHJlbW92ZSBpdCBmcm9tIHRoZSBzY2hlbWF0aWMuCiAgICAgID4gaW4gc2NoZW1hdGljLCBtaXNzaW5nIGZyb20gUENCCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IEswMwogICAgICBLMDMgKEtFWVNXKSBpcyBpbiB0aGUgc2NoZW1hdGljIGJ1dCBoYXMgbm8gZm9vdHByaW50IG9uIHRoZSBQQ0IuIEl0IHdpbGwgbm90IGJlIG9uIHRoZSBib2FyZCB5b3UgcmVjZWl2ZSDigJQgcGxhY2UgaXQgb3IgcmVtb3ZlIGl0IGZyb20gdGhlIHNjaGVtYXRpYy4KICAgICAgPiBpbiBzY2hlbWF0aWMsIG1pc3NpbmcgZnJvbSBQQ0IKICBbQkxPQ0tdIFNDSF9QQVJUX05PVF9PTl9QQ0Ig4oCUIGtleWJvYXJkX3BjYi5raWNhZF9zY2ggwrcgSzA0CiAgICAgIEswNCAoS0VZU1cpIGlzIGluIHRoZSBzY2hlbWF0aWMgYnV0IGhhcyBubyBmb290cHJpbnQgb24gdGhlIFBDQi4gSXQgd2lsbCBub3QgYmUgb24gdGhlIGJvYXJkIHlvdSByZWNlaXZlIOKAlCBwbGFjZSBpdCBvciByZW1vdmUgaXQgZnJvbSB0aGUgc2NoZW1hdGljLgogICAgICA+IGluIHNjaGVtYXRpYywgbWlzc2luZyBmcm9tIFBDQgogIFtCTE9DS10gU0NIX1BBUlRfTk9UX09OX1BDQiDigJQga2V5Ym9hcmRfcGNiLmtpY2FkX3NjaCDCtyBLMDUKICAgICAgSzA1IChLRVlTVykgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiBJdCB3aWxsIG5vdCBiZSBvbiB0aGUgYm9hcmQgeW91IHJlY2VpdmUg4oCUIHBsYWNlIGl0IG9yIHJlbW92ZSBpdCBmcm9tIHRoZSBzY2hlbWF0aWMuCiAgICAgID4gaW4gc2NoZW1hdGljLCBtaXNzaW5nIGZyb20gUENCCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IEsxMAogICAgICBLMTAgKEtFWVNXKSBpcyBpbiB0aGUgc2NoZW1hdGljIGJ1dCBoYXMgbm8gZm9vdHByaW50IG9uIHRoZSBQQ0IuIEl0IHdpbGwgbm90IGJlIG9uIHRoZSBib2FyZCB5b3UgcmVjZWl2ZSDigJQgcGxhY2UgaXQgb3IgcmVtb3ZlIGl0IGZyb20gdGhlIHNjaGVtYXRpYy4KICAgICAgPiBpbiBzY2hlbWF0aWMsIG1pc3NpbmcgZnJvbSBQQ0IKICBbQkxPQ0tdIFNDSF9QQVJUX05PVF9PTl9QQ0Ig4oCUIGtleWJvYXJkX3BjYi5raWNhZF9zY2ggwrcgSzExCiAgICAgIEsxMSAoS0VZU1cpIGlzIGluIHRoZSBzY2hlbWF0aWMgYnV0IGhhcyBubyBmb290cHJpbnQgb24gdGhlIFBDQi4gSXQgd2lsbCBub3QgYmUgb24gdGhlIGJvYXJkIHlvdSByZWNlaXZlIOKAlCBwbGFjZSBpdCBvciByZW1vdmUgaXQgZnJvbSB0aGUgc2NoZW1hdGljLgogICAgICA+IGluIHNjaGVtYXRpYywgbWlzc2luZyBmcm9tIFBDQgogIFtCTE9DS10gU0NIX1BBUlRfTk9UX09OX1BDQiDigJQga2V5Ym9hcmRfcGNiLmtpY2FkX3NjaCDCtyBLMTIKICAgICAgSzEyIChLRVlTVykgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiBJdCB3aWxsIG5vdCBiZSBvbiB0aGUgYm9hcmQgeW91IHJlY2VpdmUg4oCUIHBsYWNlIGl0IG9yIHJlbW92ZSBpdCBmcm9tIHRoZSBzY2hlbWF0aWMuCiAgICAgID4gaW4gc2NoZW1hdGljLCBtaXNzaW5nIGZyb20gUENCCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IEsxMwogICAgICBLMTMgKEtFWVNXKSBpcyBpbiB0aGUgc2NoZW1hdGljIGJ1dCBoYXMgbm8gZm9vdHByaW50IG9uIHRoZSBQQ0IuIEl0IHdpbGwgbm90IGJlIG9uIHRoZSBib2FyZCB5b3UgcmVjZWl2ZSDigJQgcGxhY2UgaXQgb3IgcmVtb3ZlIGl0IGZyb20gdGhlIHNjaGVtYXRpYy4KICAgICAgPiBpbiBzY2hlbWF0aWMsIG1pc3NpbmcgZnJvbSBQQ0IKICBbQkxPQ0tdIFNDSF9QQVJUX05PVF9PTl9QQ0Ig4oCUIGtleWJvYXJkX3BjYi5raWNhZF9zY2ggwrcgSzE0CiAgICAgIEsxNCAoS0VZU1cpIGlzIGluIHRoZSBzY2hlbWF0aWMgYnV0IGhhcyBubyBmb290cHJpbnQgb24gdGhlIFBDQi4gSXQgd2lsbCBub3QgYmUgb24gdGhlIGJvYXJkIHlvdSByZWNlaXZlIOKAlCBwbGFjZSBpdCBvciByZW1vdmUgaXQgZnJvbSB0aGUgc2NoZW1hdGljLgogICAgICA+IGluIHNjaGVtYXRpYywgbWlzc2luZyBmcm9tIFBDQgogIFtCTE9DS10gU0NIX1BBUlRfTk9UX09OX1BDQiDigJQga2V5Ym9hcmRfcGNiLmtpY2FkX3NjaCDCtyBLMTUKICAgICAgSzE1IChLRVlTVykgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiBJdCB3aWxsIG5vdCBiZSBvbiB0aGUgYm9hcmQgeW91IHJlY2VpdmUg4oCUIHBsYWNlIGl0IG9yIHJlbW92ZSBpdCBmcm9tIHRoZSBzY2hlbWF0aWMuCiAgICAgID4gaW4gc2NoZW1hdGljLCBtaXNzaW5nIGZyb20gUENCCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IEsyMAogICAgICBLMjAgKEtFWVNXKSBpcyBpbiB0aGUgc2NoZW1hdGljIGJ1dCBoYXMgbm8gZm9vdHByaW50IG9uIHRoZSBQQ0IuIEl0IHdpbGwgbm90IGJlIG9uIHRoZSBib2FyZCB5b3UgcmVjZWl2ZSDigJQgcGxhY2UgaXQgb3IgcmVtb3ZlIGl0IGZyb20gdGhlIHNjaGVtYXRpYy4KICAgICAgPiBpbiBzY2hlbWF0aWMsIG1pc3NpbmcgZnJvbSBQQ0IKICBbQkxPQ0tdIFNDSF9QQVJUX05PVF9PTl9QQ0Ig4oCUIGtleWJvYXJkX3BjYi5raWNhZF9zY2ggwrcgSzIxCiAgICAgIEsyMSAoS0VZU1cpIGlzIGluIHRoZSBzY2hlbWF0aWMgYnV0IGhhcyBubyBmb290cHJpbnQgb24gdGhlIFBDQi4gSXQgd2lsbCBub3QgYmUgb24gdGhlIGJvYXJkIHlvdSByZWNlaXZlIOKAlCBwbGFjZSBpdCBvciByZW1vdmUgaXQgZnJvbSB0aGUgc2NoZW1hdGljLgogICAgICA+IGluIHNjaGVtYXRpYywgbWlzc2luZyBmcm9tIFBDQgogIFtCTE9DS10gU0NIX1BBUlRfTk9UX09OX1BDQiDigJQga2V5Ym9hcmRfcGNiLmtpY2FkX3NjaCDCtyBLMjIKICAgICAgSzIyIChLRVlTVykgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiBJdCB3aWxsIG5vdCBiZSBvbiB0aGUgYm9hcmQgeW91IHJlY2VpdmUg4oCUIHBsYWNlIGl0IG9yIHJlbW92ZSBpdCBmcm9tIHRoZSBzY2hlbWF0aWMuCiAgICAgID4gaW4gc2NoZW1hdGljLCBtaXNzaW5nIGZyb20gUENCCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IEsyMwogICAgICBLMjMgKEtFWVNXKSBpcyBpbiB0aGUgc2NoZW1hdGljIGJ1dCBoYXMgbm8gZm9vdHByaW50IG9uIHRoZSBQQ0IuIEl0IHdpbGwgbm90IGJlIG9uIHRoZSBib2FyZCB5b3UgcmVjZWl2ZSDigJQgcGxhY2UgaXQgb3IgcmVtb3ZlIGl0IGZyb20gdGhlIHNjaGVtYXRpYy4KICAgICAgPiBpbiBzY2hlbWF0aWMsIG1pc3NpbmcgZnJvbSBQQ0IKICBbQkxPQ0tdIFNDSF9QQVJUX05PVF9PTl9QQ0Ig4oCUIGtleWJvYXJkX3BjYi5raWNhZF9zY2ggwrcgSzI0CiAgICAgIEsyNCAoS0VZU1cpIGlzIGluIHRoZSBzY2hlbWF0aWMgYnV0IGhhcyBubyBmb290cHJpbnQgb24gdGhlIFBDQi4gSXQgd2lsbCBub3QgYmUgb24gdGhlIGJvYXJkIHlvdSByZWNlaXZlIOKAlCBwbGFjZSBpdCBvciByZW1vdmUgaXQgZnJvbSB0aGUgc2NoZW1hdGljLgogICAgICA+IGluIHNjaGVtYXRpYywgbWlzc2luZyBmcm9tIFBDQgogIFtCTE9DS10gU0NIX1BBUlRfTk9UX09OX1BDQiDigJQga2V5Ym9hcmRfcGNiLmtpY2FkX3NjaCDCtyBLMjUKICAgICAgSzI1IChLRVlTVykgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiBJdCB3aWxsIG5vdCBiZSBvbiB0aGUgYm9hcmQgeW91IHJlY2VpdmUg4oCUIHBsYWNlIGl0IG9yIHJlbW92ZSBpdCBmcm9tIHRoZSBzY2hlbWF0aWMuCiAgICAgID4gaW4gc2NoZW1hdGljLCBtaXNzaW5nIGZyb20gUENCCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IEszMAogICAgICBLMzAgKEtFWVNXKSBpcyBpbiB0aGUgc2NoZW1hdGljIGJ1dCBoYXMgbm8gZm9vdHByaW50IG9uIHRoZSBQQ0IuIEl0IHdpbGwgbm90IGJlIG9uIHRoZSBib2FyZCB5b3UgcmVjZWl2ZSDigJQgcGxhY2UgaXQgb3IgcmVtb3ZlIGl0IGZyb20gdGhlIHNjaGVtYXRpYy4KICAgICAgPiBpbiBzY2hlbWF0aWMsIG1pc3NpbmcgZnJvbSBQQ0IKICBbQkxPQ0tdIFNDSF9QQVJUX05PVF9PTl9QQ0Ig4oCUIGtleWJvYXJkX3BjYi5raWNhZF9zY2ggwrcgSzMxCiAgICAgIEszMSAoS0VZU1cpIGlzIGluIHRoZSBzY2hlbWF0aWMgYnV0IGhhcyBubyBmb290cHJpbnQgb24gdGhlIFBDQi4gSXQgd2lsbCBub3QgYmUgb24gdGhlIGJvYXJkIHlvdSByZWNlaXZlIOKAlCBwbGFjZSBpdCBvciByZW1vdmUgaXQgZnJvbSB0aGUgc2NoZW1hdGljLgogICAgICA+IGluIHNjaGVtYXRpYywgbWlzc2luZyBmcm9tIFBDQgogIFtCTE9DS10gU0NIX1BBUlRfTk9UX09OX1BDQiDigJQga2V5Ym9hcmRfcGNiLmtpY2FkX3NjaCDCtyBLMzIKICAgICAgSzMyIChLRVlTVykgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiBJdCB3aWxsIG5vdCBiZSBvbiB0aGUgYm9hcmQgeW91IHJlY2VpdmUg4oCUIHBsYWNlIGl0IG9yIHJlbW92ZSBpdCBmcm9tIHRoZSBzY2hlbWF0aWMuCiAgICAgID4gaW4gc2NoZW1hdGljLCBtaXNzaW5nIGZyb20gUENCCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IE1CMQogICAgICBNQjEgKE1vdW50aW5nSG9sZSkgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiBJdCB3aWxsIG5vdCBiZSBvbiB0aGUgYm9hcmQgeW91IHJlY2VpdmUg4oCUIHBsYWNlIGl0IG9yIHJlbW92ZSBpdCBmcm9tIHRoZSBzY2hlbWF0aWMuCiAgICAgID4gaW4gc2NoZW1hdGljLCBtaXNzaW5nIGZyb20gUENCCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IE1CMgogICAgICBNQjIgKE1vdW50aW5nSG9sZSkgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiBJdCB3aWxsIG5vdCBiZSBvbiB0aGUgYm9hcmQgeW91IHJlY2VpdmUg4oCUIHBsYWNlIGl0IG9yIHJlbW92ZSBpdCBmcm9tIHRoZSBzY2hlbWF0aWMuCiAgICAgID4gaW4gc2NoZW1hdGljLCBtaXNzaW5nIGZyb20gUENCCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IE1CMwogICAgICBNQjMgKE1vdW50aW5nSG9sZSkgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiBJdCB3aWxsIG5vdCBiZSBvbiB0aGUgYm9hcmQgeW91IHJlY2VpdmUg4oCUIHBsYWNlIGl0IG9yIHJlbW92ZSBpdCBmcm9tIHRoZSBzY2hlbWF0aWMuCiAgICAgID4gaW4gc2NoZW1hdGljLCBtaXNzaW5nIGZyb20gUENCCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IE1CNAogICAgICBNQjQgKE1vdW50aW5nSG9sZSkgaXMgaW4gdGhlIHNjaGVtYXRpYyBidXQgaGFzIG5vIGZvb3RwcmludCBvbiB0aGUgUENCLiBJdCB3aWxsIG5vdCBiZSBvbiB0aGUgYm9hcmQgeW91IHJlY2VpdmUg4oCUIHBsYWNlIGl0IG9yIHJlbW92ZSBpdCBmcm9tIHRoZSBzY2hlbWF0aWMuCiAgICAgID4gaW4gc2NoZW1hdGljLCBtaXNzaW5nIGZyb20gUENCCiAgW0JMT0NLXSBTQ0hfUEFSVF9OT1RfT05fUENCIOKAlCBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIMK3IFIxCiAgICAgIFIxICg1azYpIGlzIGluIHRoZSBzY2hlbWF0aWMgYnV0IGhhcyBubyBmb290cHJpbnQgb24gdGhlIFBDQi4gSXQgd2lsbCBub3QgYmUgb24gdGhlIGJvYXJkIHlvdSByZWNlaXZlIOKAlCBwbGFjZSBpdCBvciByZW1vdmUgaXQgZnJvbSB0aGUgc2NoZW1hdGljLgogICAgICA+IGluIHNjaGVtYXRpYywgbWlzc2luZyBmcm9tIFBDQgogIFtCTE9DS10gU0NIX1BBUlRfTk9UX09OX1BDQiDigJQga2V5Ym9hcmRfcGNiLmtpY2FkX3NjaCDCtyBSMgogICAgICBSMiAoMTBrKSBpcyBpbiB0aGUgc2NoZW1hdGljIGJ1dCBoYXMgbm8gZm9vdHByaW50IG9uIHRoZSBQQ0IuIEl0IHdpbGwgbm90IGJlIG9uIHRoZSBib2FyZCB5b3UgcmVjZWl2ZSDigJQgcGxhY2UgaXQgb3IgcmVtb3ZlIGl0IGZyb20gdGhlIHNjaGVtYXRpYy4KICAgICAgPiBpbiBzY2hlbWF0aWMsIG1pc3NpbmcgZnJvbSBQQ0IKICBbQkxPQ0tdIFNDSF9QQVJUX05PVF9PTl9QQ0Ig4oCUIGtleWJvYXJkX3BjYi5raWNhZF9zY2ggwrcgVTIKICAgICAgVTIgKFBpY28pIGlzIGluIHRoZSBzY2hlbWF0aWMgYnV0IGhhcyBubyBmb290cHJpbnQgb24gdGhlIFBDQi4gSXQgd2lsbCBub3QgYmUgb24gdGhlIGJvYXJkIHlvdSByZWNlaXZlIOKAlCBwbGFjZSBpdCBvciByZW1vdmUgaXQgZnJvbSB0aGUgc2NoZW1hdGljLgogICAgICA+IGluIHNjaGVtYXRpYywgbWlzc2luZyBmcm9tIFBDQgoKQ292ZXJhZ2Ug4oCUIHdoYXQgd2FzIGFjdHVhbGx5IGNoZWNrZWQ6CiAgU2NoZW1hdGljOiBrZXlib2FyZF9wY2Iua2ljYWRfc2NoIOKAlCAzMyBwYXJ0KHMpLCA5IGV4cGxpY2l0IG5vLWNvbm5lY3QgbWFya2VyKHMpIChwaW5zIG1hcmtlZCBuby1jb25uZWN0IGFyZSBpbnRlbnRpb25hbCBhbmQgYXJlIG5ldmVyIGZsYWdnZWQpCiAgUENCOiBrZXlib2FyZF9wY2Iua2ljYWRfcGNiIOKAlCAwIGZvb3RwcmludChzKQogIEJPTTogbm8gQ1NWIGZvdW5kIOKAlCBCT00gYW5kIHBhcnQtcmlzayBjaGVja3Mgc2tpcHBlZAogIFBhcnQgcmlzazogMCBNUE4ocykgY2hlY2tlZCBhZ2FpbnN0IFByZWZsaWdodCBzYW1wbGUgZGlzdHJpYnV0b3IgZGF0YXNldCAoc25hcHNob3QgMjAyNi0xMS0wOSwgU0FNUExFIGRhdGEg4oCUIG5vdCBsaXZlIGRpc3RyaWJ1dG9yIGRhdGEpOyAwIGZvdW5kIGluIGRhdGFzZXQKICBraWNhZC1jbGk6IE5PVCBGT1VORCDigJQgb2ZmaWNpYWwgRFJDL0VSQyBza2lwcGVkIChpbnN0YWxsIEtpQ2FkIHRvIGVuYWJsZSB0aGVtKTsgdGhlIGJ1aWx0LWluIHRleHQgY2hlY2tzIGFib3ZlIHN0aWxsIHJhbgoKVkVSRElDVDogQkxPQ0tFRApEbyBub3Qgb3JkZXIgeWV0IOKAlCB0aGUgQkxPQ0sgaXRlbXMgYmVsb3cgbWVhbiB0aGUgYm9hcmQgb3IgdGhlIHBhcnRzIG9yZGVyIHdpbGwgYmUgd3JvbmcuCg==
+Preflight report for: keyboard_pcb
+Project folder: corpus/projects/piantor/pcb/left
+
+Findings: 33 (33 BLOCK, 0 FIX-FIRST, 0 NOTE)
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · H1
+      H1 (MountingHole) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · H2
+      H2 (MountingHole) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · H3
+      H3 (MountingHole) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · H4
+      H4 (MountingHole) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · J1
+      J1 (TRRS) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K00
+      K00 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K01
+      K01 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K02
+      K02 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K03
+      K03 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K04
+      K04 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K05
+      K05 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K10
+      K10 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K11
+      K11 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K12
+      K12 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K13
+      K13 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K14
+      K14 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K15
+      K15 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K20
+      K20 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K21
+      K21 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K22
+      K22 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K23
+      K23 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K24
+      K24 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K25
+      K25 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K30
+      K30 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K31
+      K31 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · K32
+      K32 (KEYSW) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · MB1
+      MB1 (MountingHole) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · MB2
+      MB2 (MountingHole) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · MB3
+      MB3 (MountingHole) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · MB4
+      MB4 (MountingHole) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · R1
+      R1 (5k6) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · R2
+      R2 (10k) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+  [BLOCK] SCH_PART_NOT_ON_PCB — keyboard_pcb.kicad_sch · U2
+      U2 (Pico) is in the schematic but has no footprint on the PCB. It will not be on the board you receive — place it or remove it from the schematic.
+      > in schematic, missing from PCB
+
+Coverage — what was actually checked:
+  Schematic: keyboard_pcb.kicad_sch — 33 part(s), 9 explicit no-connect marker(s) (pins marked no-connect are intentional and are never flagged)
+  PCB: keyboard_pcb.kicad_pcb — 0 footprint(s)
+  BOM: no CSV found — BOM and part-risk checks skipped
+  Part risk: 0 MPN(s) checked against Preflight sample distributor dataset (snapshot 2026-11-09, SAMPLE data — not live distributor data); 0 found in dataset
+  kicad-cli: NOT FOUND — official DRC/ERC skipped (install KiCad to enable them); the built-in text checks above still ran
+
+VERDICT: BLOCKED
+Do not order yet — the BLOCK items below mean the board or the parts order will be wrong.

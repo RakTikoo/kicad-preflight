@@ -1,1 +1,16 @@
-LS0tCm5hbWU6IE1pc3NlZCBmYXVsdCDigJQgbXkgYm9hcmQgd2FzIHdyb25nIGFuZCBQcmVmbGlnaHQgcGFzc2VkIGl0CmFib3V0OiBBIHJlYWwgZGVmZWN0IFByZWZsaWdodCBzaG91bGQgaGF2ZSBjYXVnaHQgYnV0IGRpZG4ndCAoYW4gZXZhc2lvbikuCnRpdGxlOiAiW21pc3NlZCBmYXVsdF0gIgpsYWJlbHM6IGV2YXNpb24KLS0tCgoqKldoYXQgd2FzIHdyb25nIHdpdGggdGhlIGJvYXJkKiogKHRoZSBkZWZlY3QgdGhhdCByZWFjaGVkIG9yZGVyaW5nIG9yCmZhYnJpY2F0aW9uKToKCioqV2hhdCBQcmVmbGlnaHQgc2FpZCoqIChwYXN0ZSB0aGUgdmVyZGljdCArIGNvdmVyYWdlIGxpbmVzKToKCioqUHJvamVjdCBmaWxlcyoqOiBhdHRhY2ggYSB6aXAgb2YgdGhlIHByb2plY3QgKG9yIGEgbWluaW1hbCByZXBybykgaWYKeW91IGNhbi4gRmlsZXMgYXJlIHBhcnNlZCBhcyB0ZXh0IG9ubHkuCgoqKktpQ2FkIHZlcnNpb24qKiB0aGF0IHByb2R1Y2VkIHRoZSBmaWxlczoK
+---
+name: Missed fault — my board was wrong and Preflight passed it
+about: A real defect Preflight should have caught but didn't (an evasion).
+title: "[missed fault] "
+labels: evasion
+---
+
+**What was wrong with the board** (the defect that reached ordering or
+fabrication):
+
+**What Preflight said** (paste the verdict + coverage lines):
+
+**Project files**: attach a zip of the project (or a minimal repro) if
+you can. Files are parsed as text only.
+
+**KiCad version** that produced the files:
