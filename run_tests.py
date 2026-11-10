@@ -23,7 +23,12 @@ EXPECTED = {
     "samples/good": ("PASS", 0),
     "samples/kicad6": ("PASS", 0),
     "samples/broken": ("BLOCK", 2),
+    "samples/v9": ("CAUTION", 1),
 }
+
+# samples/v9 is the good board re-stamped as KiCad 9: the ONLY findings
+# may be the two honest version warnings (one per file).
+V9_RULES = Counter({"KICAD_VERSION_UNTESTED": 2})
 
 # Rules that must fire for the broken fixture — and ONLY these rules.
 BROKEN_RULES = Counter({
@@ -78,6 +83,10 @@ def main():
             got = Counter(f["rule"] for f in report["findings"])
             if got != BROKEN_RULES:
                 problems.append(f"rules {dict(got)} != {dict(BROKEN_RULES)}")
+        if rel == "samples/v9":
+            got = Counter(f["rule"] for f in report["findings"])
+            if got != V9_RULES:
+                problems.append(f"rules {dict(got)} != {dict(V9_RULES)}")
         if problems:
             print(f"FAIL {rel}: " + "; ".join(problems))
             failures += 1

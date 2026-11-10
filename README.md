@@ -128,7 +128,20 @@ DNP / not-in-BOM parts that snuck into the BOM, duplicate references,
 quantity cells that disagree with the designator list (`"R1,R2,R5"`
 lists and `R1-R3` / `R1-3` ranges are expanded), missing or placeholder
 MPNs (an LCSC/JLCPCB part number counts as identified), blank-reference
-rows, and BOM footprint/value disagreements with the schematic.
+rows, BOM footprint/value disagreements with the schematic, and one
+part number used for two different parts.
+
+**Fabrication readiness** (v0.3): a missing board outline (BLOCK —
+nothing to cut), copper zones with no fill stored, and measured board
+values against the published standard-process minimums of JLCPCB and
+PCBWay — track width, drill and via sizes, annular rings, plated slot
+widths (CAUTION: below-standard means an engineering question or an
+advanced process, not an automatic rejection). If a position/CPL file
+sits in the folder, its designators are checked against the board
+(assembly orders). Files written by KiCad 9/10 are detected from
+their format stamps and flagged honestly: newer constructs
+(variants, pad stacks, embedded files) are not fully parsed, so those
+files never pass in silence.
 
 **Part risk (offline)**: obsolete/EOL, out-of-stock, low stock, long
 lead time, single-source, not-recommended-for-new-designs — per BOM
@@ -160,8 +173,8 @@ either way.
 
 Project folders are untrusted input, so scanning is budgeted: files
 must be regular files (a FIFO will not hang the tool) and ≤ 64 MB;
-BOMs ≤ 20,000 rows and ≤ 1M characters per field; reports cap at
-2,000 findings with an explicit truncation note. Report output is
+BOMs and position files ≤ 20,000 rows and ≤ 1M characters per field;
+reports cap at 2,000 findings with an explicit truncation note. Report output is
 sanitised — crafted part values cannot forge a verdict line or break
 the Markdown table. Files are decoded as strict UTF-8; corrupt bytes
 are a parse error, never silently rewritten.
@@ -180,8 +193,10 @@ and snapshot date, and an MPN absent from the dataset is reported as
 
 - `samples/` — hand-authored fixtures in real KiCad formats:
   `good/` (PASS, zero findings), `kicad6/` (the same board in KiCad 6
-  file format; PASS), `broken/` (seven deliberate, hand-verifiable
-  errors; BLOCK with exactly the seven documented findings).
+  file format; PASS), `v9/` (the good board re-stamped as KiCad 9;
+  CAUTION with exactly the two honest version warnings), `broken/`
+  (seven deliberate, hand-verifiable errors; BLOCK with exactly the
+  seven documented findings).
 - `corpus/` — **real open-source boards** (Upsy Desky, the ESP32 Rust
   board, Piantor) with sources, commits and licences recorded in
   `corpus/SOURCES.md`, plus a labelled broken corpus built by mutating
@@ -204,6 +219,10 @@ a FIFO hang on hostile inputs). v0.2 is the fix round: every reviewer
 finding is either fixed or documented as an accepted gap, and the
 reviewers' own test sets are the regression suites above. The full
 record, with before/after numbers, is kept with the project.
+v0.3 (the coverage wave) went through the same three-reviewer
+discipline for its new rules; `docs/COVERAGE.md` maps every pre-order
+failure class we know of against this tool and the open-source
+alternatives, gaps included.
 
 ## Known limits
 
@@ -211,8 +230,12 @@ record, with before/after numbers, is kept with the project.
   dataset supplied (see above).
 - **kicad-cli is optional** — without it there is no official DRC/ERC;
   Coverage always says which mode you got.
-- **Text-level checks only** — symbols, footprints and BOM rows. No
-  nets, geometry, clearances or connectivity.
+- **Text-level checks only** — symbols, footprints, BOM rows, and
+  (v0.3) property-level board measurements: track widths, drill/via
+  sizes, annular rings, slots, zone fills, outline presence. No
+  clearances, distances or connectivity — spatial DRC is kicad-cli's
+  job (above), and `docs/COVERAGE.md` maps exactly which failure
+  classes that leaves open.
 - **One project per folder** — hierarchical sheets of one project are
   followed; a second project sharing a folder is reported via
   `SCAN_INCOMPLETE`, not merged.
