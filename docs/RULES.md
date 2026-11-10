@@ -1,1 +1,85 @@
-IyBLaUNhZCBQcmVmbGlnaHQg4oCUIFJ1bGUgUmVmZXJlbmNlCgpFdmVyeSBkZXRlcm1pbmlzdGljIHJ1bGUgaW4gdjAuMiwgaXRzIHNldmVyaXR5LCBhbmQgd2hhdCB0cmlnZ2VycyBpdC4KVmVyZGljdHM6IGFueSBCTE9DSyDihpIgQkxPQ0sgKGV4aXQgMik7IGVsc2UgYW55IENBVVRJT04g4oaSIENBVVRJT04KKGV4aXQgMSk7IGVsc2UgUEFTUyAoZXhpdCAwKS4gTk9URSBmaW5kaW5ncyBuZXZlciBjaGFuZ2UgdGhlIHZlcmRpY3QuClJ1bGVzIG1hcmtlZCDil4YgcnVuIGluIHN0YW5kYWxvbmUgQk9NIG1vZGUgdG9vIChubyBzY2hlbWF0aWMgbmVlZGVkKS4KCiMjIFByb2plY3Qgc2hhcGUgJiBjb3ZlcmFnZQoKfCBSdWxlIHwgU2V2ZXJpdHkgfCBUcmlnZ2VyIHwKfCAtLS0gfCAtLS0gfCAtLS0gfAp8IE5PX1BST0pFQ1RfRklMRVMgfCBCTE9DSyB8IEZvbGRlciBoYXMgYSBwcm9qZWN0IGZpbGUgdGFyZ2V0IGJ1dCBubyBzY2hlbWF0aWMgYW5kIG5vIFBDQiDigJQgbm90aGluZyBjb3VsZCBiZSBjaGVja2VkLiB8CnwgUFJPSkVDVF9GSUxFX1VOUEFSU0VBQkxFIHwgQkxPQ0sgfCBBIC5raWNhZF9zY2gvLmtpY2FkX3BjYiBleGlzdHMgYnV0IGNhbm5vdCBiZSByZWFkOiBiYWQgUy1leHByZXNzaW9uLCBub24tcmVndWxhciBmaWxlIChGSUZPL2RldmljZSksIG92ZXIgdGhlIDY0IE1CIGJ1ZGdldCwgb3Igbm90IHZhbGlkIFVURi04LiBEZXBlbmRlbnQgY2hlY2tzIGFyZSBza2lwcGVkLCBuZXZlciBndWVzc2VkLiB8CnwgTUlTU0lOR19QQ0JfRklMRSB8IEJMT0NLIHwgU2NoZW1hdGljIHByZXNlbnQsIG5vIC5raWNhZF9wY2IuIHwKfCBNSVNTSU5HX1NDSEVNQVRJQ19GSUxFIHwgQkxPQ0sgfCBQQ0IgcHJlc2VudCwgbm8gLmtpY2FkX3NjaCAoYSBsZWdhY3kgLnNjaCwgaWYgcHJlc2VudCwgaXMgbmFtZWQgaW4gdGhlIG1lc3NhZ2UpLiB8CnwgTUlTU0lOR19TSEVFVF9GSUxFIHwgQkxPQ0sgfCBBIGhpZXJhcmNoaWNhbCBzdWItc2hlZXQgcmVmZXJlbmNlZCBieSB0aGUgcm9vdCBzaGVldCBpcyBub3Qgb24gZGlzay4gfAp8IFBDQl9OT19GT09UUFJJTlRTX1BBUlNFRCB8IEJMT0NLIHwgUENCIHBhcnNlZCB0byB6ZXJvIGZvb3RwcmludHMgd2hpbGUgdGhlIHNjaGVtYXRpYyBoYXMgcGFydHMg4oCUIHVucGxhY2VkIGJvYXJkIG9yIHVucmVhZGFibGUgZm9ybWF0OyBwZXItcGFydCBibGFtZSBpcyB3aXRoaGVsZC4gfAp8IFNDQU5fSU5DT01QTEVURSB8IENBVVRJT04gfCBFeHRyYSBLaUNhZCBmaWxlcyBpbiB0aGUgZm9sZGVyIHdlcmUgbm90IGxvYWRlZCAoYSBzZWNvbmQgcHJvamVjdCksIG9yIGRhdGFzZXQgZW50cmllcyB3ZXJlIHVudXNhYmxlLiB8CnwgRklORElOR1NfVFJVTkNBVEVEIHwgQ0FVVElPTiB8IE1vcmUgdGhhbiAyLDAwMCBmaW5kaW5nczsgdGhlIHJlc3QgYXJlIGNvdW50ZWQsIG5vdCBsaXN0ZWQuIHwKfCBCT01fT05MWV9NT0RFIHwgTk9URSB8IFN0YW5kYWxvbmUgQk9NIHJ1bjogY3Jvc3MtY2hlY2tzIGRpZCBub3QgcnVuLCBieSBkZXNpZ24gb2YgdGhlIG1vZGUuIHwKCiMjIFNjaGVtYXRpYyDihpQgUENCCgp8IFJ1bGUgfCBTZXZlcml0eSB8IFRyaWdnZXIgfAp8IC0tLSB8IC0tLSB8IC0tLSB8CnwgU0NIX1BBUlRfTk9UX09OX1BDQiB8IEJMT0NLIHwgU2NoZW1hdGljIHBhcnQgaGFzIG5vIChwYXJ0KSBmb290cHJpbnQgb24gdGhlIFBDQi4gfAp8IFBDQl9QQVJUX05PVF9JTl9TQ0hFTUFUSUMgfCBCTE9DSyB8IEEgcGFydCBmb290cHJpbnQgb24gdGhlIFBDQiBoYXMgbm8gc2NoZW1hdGljIHN5bWJvbC4gQm9hcmQgZnVybml0dXJlIChtb3VudGluZyBob2xlcyB3aXRoIGBib2FyZF9vbmx5YCwgbG9nb3MvbGFiZWxzIHdpdGggcGxhY2Vob2xkZXIgb3IgZ2VuZXJhdGVkIHJlZnMpIGlzIG5ldmVyIGNvdW50ZWQuIHwKfCBGT09UUFJJTlRfTUlTTUFUQ0ggfCBCTE9DSyB8IFNjaGVtYXRpYyBGb290cHJpbnQgcHJvcGVydHkg4omgIHBsYWNlZCBQQ0IgZm9vdHByaW50LiBBZ2dyZWdhdGVkIHBlciAoc2NoZW1hdGljLCBQQ0IpIGZvb3RwcmludCBwYWlyLCBsaXN0aW5nIGFsbCBhZmZlY3RlZCByZWZzLiB8CnwgRFVQTElDQVRFX1JFRkVSRU5DRV9TQ0hFTUFUSUMgfCBCTE9DSyB8IFNhbWUgcmVmZXJlbmNlICsgdW5pdCBwbGFjZWQgdHdpY2UgaW4gdGhlIHNjaGVtYXRpYy4gTXVsdGktdW5pdCBzeW1ib2xzIChzYW1lIHJlZiwgZGlmZmVyZW50IHVuaXRzLCBzYW1lIGxpYnJhcnkgcGFydCkgYXJlIGNvcnJlY3QgYW5kIHBhc3MuIHwKfCBEVVBMSUNBVEVfUkVGRVJFTkNFX1BDQiB8IEJMT0NLIHwgU2FtZSBkZXNpZ25hdG9yIG9uIDIrIHBhcnQgZm9vdHByaW50cyBvbiB0aGUgUENCLiB8CnwgTVVMVElfVU5JVF9QQVJUX0NPTkZMSUNUIHwgQkxPQ0sgfCBPbmUgcmVmZXJlbmNlIHVzZWQgYnkgc3ltYm9scyBvZiBkaWZmZXJlbnQgbGlicmFyeSBwYXJ0cy4gfAp8IE1VTFRJX1VOSVRfUFJPUEVSVFlfRElWRVJHRU5DRSB8IENBVVRJT04gfCBVbml0cyBvZiBvbmUgcGFydCBkaXNhZ3JlZSBvbiB0aGUgZm9vdHByaW50LiB8CnwgVU5BTk5PVEFURURfU1lNQk9MIHwgQ0FVVElPTiB8IFBsYWNlZCBzeW1ib2xzIGhhdmUgYSB2YWx1ZS9mb290cHJpbnQgYnV0IG5vIHJlZmVyZW5jZSAoYWdncmVnYXRlZCkuIHwKfCBTQ0hFTUFUSUNfRk9PVFBSSU5UX01JU1NJTkcgfCBDQVVUSU9OIHwgTm8gZm9vdHByaW50IGFzc2lnbmVkIGluIHRoZSBzY2hlbWF0aWMuIHwKfCBGT09UUFJJTlRfTk9fTElCUkFSWSB8IENBVVRJT04gfCBGb290cHJpbnQgc3RyaW5nIGhhcyBubyBgTGlicmFyeTpgIHByZWZpeC4gfAp8IFNDSEVNQVRJQ19WQUxVRV9NSVNTSU5HIHwgQ0FVVElPTiB8IFZhbHVlIGVtcHR5IG9yIGB+YC4gfAp8IFNDSEVNQVRJQ19QTEFDRUhPTERFUl9NUE4gfCBDQVVUSU9OIHwgU2NoZW1hdGljIE1QTiBwcm9wZXJ0eSBpcyBhIHBsYWNlaG9sZGVyIChgVEJEYCwgYH5gLCBgTi9BYCwg4oCmKS4gfAp8IFNDSEVNQVRJQ19EQVRBU0hFRVRfTUlTU0lORyB8IE5PVEUgfCBFbXB0eSBEYXRhc2hlZXQgcHJvcGVydHkgKGFnZ3JlZ2F0ZWQsIGxpc3RzIHVwIHRvIDggcmVmcykuIHwKCiMjIEJPTSDil4YKCnwgUnVsZSB8IFNldmVyaXR5IHwgVHJpZ2dlciB8CnwgLS0tIHwgLS0tIHwgLS0tIHwKfCBCT01fVU5SRUFEQUJMRSB8IEJMT0NLIHwgQSBCT00gZmlsZSBleGlzdHMgYnV0IHdvbid0IHBhcnNlIChiYWQgaGVhZGVyLCBDU1YgZXJyb3IsIG92ZXIgcm93L2ZpZWxkIGJ1ZGdldHMpLiB8CnwgQk9NX1VOS05PV05fUkVGRVJFTkNFIOKXhihuZWVkcyBzY2hlbWF0aWMpIHwgQkxPQ0sgfCBCT00gcmVmIG5vdCBpbiB0aGUgc2NoZW1hdGljLiB8CnwgQk9NX1FVQU5USVRZX01JU01BVENIIOKXhiB8IEJMT0NLIHwgUXVhbnRpdHkgY2VsbCBpcyBub3QgYSB3aG9sZSBudW1iZXIgZXF1YWwgdG8gdGhlIHJvdydzIHJlZmVyZW5jZSBjb3VudCAoYDIuOWAsIGAxZTk5OWAsIGJsYW5rIGFsbCBjb3VudCBhcyBub3QtYS13aG9sZS1udW1iZXIpLiB8CnwgQk9NX01JU1NJTkcgfCBDQVVUSU9OIHwgUHJvamVjdCBoYXMgYSBzY2hlbWF0aWMgYnV0IG5vIHVzYWJsZSBCT00gQ1NWIOKAlCBCT00gYW5kIHBhcnQtcmlzayBjaGVja3MgZGlkIG5vdCBydW4uIHwKfCBCT01fUEFSVF9OT1RfT1JERVJBQkxFIHwgQ0FVVElPTiB8IEJPTSBsaXN0cyBhIHBhcnQgdGhlIHNjaGVtYXRpYyBtYXJrcyBETlAgLyBub3QtaW4tQk9NLiB8CnwgQk9NX0RVUExJQ0FURV9SRUZFUkVOQ0Ug4peGIHwgQ0FVVElPTiB8IFNhbWUgcmVmIG9uIDIrIEJPTSByb3dzLiB8CnwgQk9NX01JU1NJTkdfTVBOIOKXhiB8IENBVVRJT04gfCBSb3cgaGFzIG5laXRoZXIgYW4gTVBOIG5vciBhbiBMQ1NDL0pMQ1BDQiBwYXJ0IG51bWJlci4gKExDU0Mtb25seSByb3dzIHBhc3MgYW5kIGFyZSBjb3VudGVkIGluIENvdmVyYWdlLikgfAp8IEJPTV9QTEFDRUhPTERFUl9NUE4g4peGIHwgQ0FVVElPTiB8IE1QTiBjZWxsIGlzIGEgcGxhY2Vob2xkZXIgKGBUQkRgLCBgfmAsIGBOL0FgLCBgbm9uZWAsIOKApikuIHwKfCBCT01fTUlTU0lOR19GT09UUFJJTlQg4peGIHwgQ0FVVElPTiB8IFJvdyBoYXMgbm8gZm9vdHByaW50L3BhY2thZ2UgY2VsbC4gfAp8IEJPTV9GT09UUFJJTlRfTUlTTUFUQ0ggfCBDQVVUSU9OIHwgQk9NIGZvb3RwcmludCBkaXNhZ3JlZXMgd2l0aCB0aGUgc2NoZW1hdGljIGZvb3RwcmludCBmb3IgdGhlIHJvdydzIHBhcnQuIHwKfCBCT01fUk9XX1dJVEhPVVRfUkVGRVJFTkNFUyDil4YgfCBDQVVUSU9OIHwgUm93IGNhcnJpZXMgcXVhbnRpdHkvcGFydCBkYXRhIGJ1dCBubyBkZXNpZ25hdG9ycy4gfAp8IFNDSEVNQVRJQ19QQVJUX01JU1NJTkdfRlJPTV9CT00gfCBDQVVUSU9OIHwgQSBCT00tZXhwZWN0ZWQgc2NoZW1hdGljIHBhcnQgYXBwZWFycyBvbiBubyBCT00gcm93LiB8CnwgQk9NX1ZBTFVFX0RJRkZFUlMgfCBOT1RFIHwgQk9NIHZhbHVlIGFuZCBzY2hlbWF0aWMgdmFsdWUgc2hhcmUgbm8gY29udGFpbm1lbnQgZWl0aGVyIHdheSAodmFsdWVzIGFyZSBvZnRlbiBub3JtYWxpc2VkLCBzbyB0aGlzIGluZm9ybXMsIG5ldmVyIGJsb2NrcykuIHwKCkJPTSBwYXJzaW5nIG5vdGVzOiBoZWFkZXIgYWxpYXNlcyBjb3ZlciBLaUNhZCwgSkxDUENCIChgQ29tbWVudCAvCkRlc2lnbmF0b3IgLyBGb290cHJpbnQgLyBMQ1NDIFBhcnQgI2ApIGFuZCBnZW5lcmljIHNwZWxsaW5nczsgcmVmZXJlbmNlCnJhbmdlcyBgUjEtUjNgLCBgUjEtM2AgYW5kIGBSMSAtIFIzYCBhcmUgZXhwYW5kZWQgKOKJpDIwMCBwZXIgcmFuZ2UpLgoKIyMgUGFydCByaXNrIOKXhiAob2ZmbGluZSBzYW1wbGUgZGF0YXNldCDigJQgZmluZGluZ3MgY2l0ZSBpdCkKCnwgUnVsZSB8IFNldmVyaXR5IHwgVHJpZ2dlciB8CnwgLS0tIHwgLS0tIHwgLS0tIHwKfCBQQVJUX09CU09MRVRFIHwgQkxPQ0sgfCBEYXRhc2V0IHN0YXR1cyBpcyBvYnNvbGV0ZS9FT0wvZGlzY29udGludWVkL2xhc3QtdGltZS1idXkuIHwKfCBQQVJUX09VVF9PRl9TVE9DSyB8IEJMT0NLIHwgRGF0YXNldCBzdG9jayBpcyAwIChzdHJpbmcvZmxvYXQgY291bnRzIGFyZSBjb2VyY2VkIGZpcnN0KS4gfAp8IFBBUlRfTk9UX1JFQ09NTUVOREVEIHwgQ0FVVElPTiB8IERhdGFzZXQgc3RhdHVzIGlzIE5STkQuIHwKfCBQQVJUX0xPV19TVE9DSyB8IENBVVRJT04gfCBTdG9jayA8IDUwIChhbmQgPiAwKS4gfAp8IFBBUlRfTE9OR19MRUFEX1RJTUUgfCBDQVVUSU9OIHwgTGVhZCB0aW1lID4gMTYgd2Vla3MuIHwKfCBQQVJUX1NJTkdMRV9TT1VSQ0UgfCBOT1RFIHwgRXhhY3RseSAxIHNvdXJjZSBpbiB0aGUgZGF0YXNldC4gfAp8IFBBUlRfTk9UX0lOX1NBTVBMRV9EQVRBIHwgTk9URSB8IE1QTiBhYnNlbnQgZnJvbSB0aGUgZGF0YXNldCDigJQgImNvdWxkIG5vdCBjaGVjayIsIG5ldmVyIGEgZ3Vlc3MgYWJvdXQgdGhlIHBhcnQuIHwKfCBQQVJUX0RBVEFTRVRfRU5UUllfSU5WQUxJRCB8IE5PVEUgfCBNUE4gcHJlc2VudCBpbiB0aGUgZGF0YXNldCBidXQgaXRzIGVudHJ5IGlzIGVtcHR5L3VudXNhYmxlIOKAlCBhIGRhdGFzZXQgYnVnLCBub3QgYSBib2FyZCBidWcuIHwKCk1QTiBsb29rdXAgaXMgZXhhY3QgZmlyc3QsIHRoZW4gY2FzZS1pbnNlbnNpdGl2ZTsgYSBjYXNlLWluc2Vuc2l0aXZlCmhpdCBpcyBkaXNjbG9zZWQgaW4gdGhlIGZpbmRpbmcncyBldmlkZW5jZS4gT25lIGZpbmRpbmcgcGVyIE1QTiwKYWdncmVnYXRpbmcgZXZlcnkgQk9NIHJvdyB0aGF0IHVzZXMgaXQuCgojIyBPZmZpY2lhbCBjaGVja3MgKGtpY2FkLWNsaSwgd2hlbiBpbnN0YWxsZWQpCgp8IFJ1bGUgfCBTZXZlcml0eSB8IFRyaWdnZXIgfAp8IC0tLSB8IC0tLSB8IC0tLSB8CnwgS0lDQURfRVJDX1ZJT0xBVElPTiB8IEJMT0NLL0NBVVRJT04gfCBga2ljYWQtY2xpIHNjaCBlcmNgIHZpb2xhdGlvbjogZXJyb3Ig4oaSIEJMT0NLLCB3YXJuaW5nIOKGkiBDQVVUSU9OLiB8CnwgS0lDQURfRFJDX1ZJT0xBVElPTiB8IEJMT0NLL0NBVVRJT04gfCBga2ljYWQtY2xpIHBjYiBkcmNgIHZpb2xhdGlvbiwgc2FtZSBtYXBwaW5nLiB8CnwgS0lDQURfQ0xJX0ZBSUxFRCB8IENBVVRJT04gfCBraWNhZC1jbGkgaXMgaW5zdGFsbGVkIGJ1dCBhIHJ1biBmYWlsZWQgKG5vbi16ZXJvIGV4aXQsIG5vL2ludmFsaWQgcmVwb3J0LCB0aW1lb3V0KS4gSXRzIG91dHB1dCBpcyBuZXZlciB0cnVzdGVkLiBFeGNsdWRlZC91bnJlY29nbmlzZWQgc2V2ZXJpdGllcyBhcmUgY291bnRlZCBpbiBDb3ZlcmFnZSwgbm90IG1hcHBlZCB0byBmaW5kaW5ncy4gfAo=
+# KiCad Preflight — Rule Reference
+
+Every deterministic rule in v0.2, its severity, and what triggers it.
+Verdicts: any BLOCK → BLOCK (exit 2); else any CAUTION → CAUTION
+(exit 1); else PASS (exit 0). NOTE findings never change the verdict.
+Rules marked ◆ run in standalone BOM mode too (no schematic needed).
+
+## Project shape & coverage
+
+| Rule | Severity | Trigger |
+| --- | --- | --- |
+| NO_PROJECT_FILES | BLOCK | Folder has a project file target but no schematic and no PCB — nothing could be checked. |
+| PROJECT_FILE_UNPARSEABLE | BLOCK | A .kicad_sch/.kicad_pcb exists but cannot be read: bad S-expression, non-regular file (FIFO/device), over the 64 MB budget, or not valid UTF-8. Dependent checks are skipped, never guessed. |
+| MISSING_PCB_FILE | BLOCK | Schematic present, no .kicad_pcb. |
+| MISSING_SCHEMATIC_FILE | BLOCK | PCB present, no .kicad_sch (a legacy .sch, if present, is named in the message). |
+| MISSING_SHEET_FILE | BLOCK | A hierarchical sub-sheet referenced by the root sheet is not on disk. |
+| PCB_NO_FOOTPRINTS_PARSED | BLOCK | PCB parsed to zero footprints while the schematic has parts — unplaced board or unreadable format; per-part blame is withheld. |
+| SCAN_INCOMPLETE | CAUTION | Extra KiCad files in the folder were not loaded (a second project), or dataset entries were unusable. |
+| FINDINGS_TRUNCATED | CAUTION | More than 2,000 findings; the rest are counted, not listed. |
+| BOM_ONLY_MODE | NOTE | Standalone BOM run: cross-checks did not run, by design of the mode. |
+
+## Schematic ↔ PCB
+
+| Rule | Severity | Trigger |
+| --- | --- | --- |
+| SCH_PART_NOT_ON_PCB | BLOCK | Schematic part has no (part) footprint on the PCB. |
+| PCB_PART_NOT_IN_SCHEMATIC | BLOCK | A part footprint on the PCB has no schematic symbol. Board furniture (mounting holes with `board_only`, logos/labels with placeholder or generated refs) is never counted. |
+| FOOTPRINT_MISMATCH | BLOCK | Schematic Footprint property ≠ placed PCB footprint. Aggregated per (schematic, PCB) footprint pair, listing all affected refs. |
+| DUPLICATE_REFERENCE_SCHEMATIC | BLOCK | Same reference + unit placed twice in the schematic. Multi-unit symbols (same ref, different units, same library part) are correct and pass. |
+| DUPLICATE_REFERENCE_PCB | BLOCK | Same designator on 2+ part footprints on the PCB. |
+| MULTI_UNIT_PART_CONFLICT | BLOCK | One reference used by symbols of different library parts. |
+| MULTI_UNIT_PROPERTY_DIVERGENCE | CAUTION | Units of one part disagree on the footprint. |
+| UNANNOTATED_SYMBOL | CAUTION | Placed symbols have a value/footprint but no reference (aggregated). |
+| SCHEMATIC_FOOTPRINT_MISSING | CAUTION | No footprint assigned in the schematic. |
+| FOOTPRINT_NO_LIBRARY | CAUTION | Footprint string has no `Library:` prefix. |
+| SCHEMATIC_VALUE_MISSING | CAUTION | Value empty or `~`. |
+| SCHEMATIC_PLACEHOLDER_MPN | CAUTION | Schematic MPN property is a placeholder (`TBD`, `~`, `N/A`, …). |
+| SCHEMATIC_DATASHEET_MISSING | NOTE | Empty Datasheet property (aggregated, lists up to 8 refs). |
+
+## BOM ◆
+
+| Rule | Severity | Trigger |
+| --- | --- | --- |
+| BOM_UNREADABLE | BLOCK | A BOM file exists but won't parse (bad header, CSV error, over row/field budgets). |
+| BOM_UNKNOWN_REFERENCE ◆(needs schematic) | BLOCK | BOM ref not in the schematic. |
+| BOM_QUANTITY_MISMATCH ◆ | BLOCK | Quantity cell is not a whole number equal to the row's reference count (`2.9`, `1e999`, blank all count as not-a-whole-number). |
+| BOM_MISSING | CAUTION | Project has a schematic but no usable BOM CSV — BOM and part-risk checks did not run. |
+| BOM_PART_NOT_ORDERABLE | CAUTION | BOM lists a part the schematic marks DNP / not-in-BOM. |
+| BOM_DUPLICATE_REFERENCE ◆ | CAUTION | Same ref on 2+ BOM rows. |
+| BOM_MISSING_MPN ◆ | CAUTION | Row has neither an MPN nor an LCSC/JLCPCB part number. (LCSC-only rows pass and are counted in Coverage.) |
+| BOM_PLACEHOLDER_MPN ◆ | CAUTION | MPN cell is a placeholder (`TBD`, `~`, `N/A`, `none`, …). |
+| BOM_MISSING_FOOTPRINT ◆ | CAUTION | Row has no footprint/package cell. |
+| BOM_FOOTPRINT_MISMATCH | CAUTION | BOM footprint disagrees with the schematic footprint for the row's part. |
+| BOM_ROW_WITHOUT_REFERENCES ◆ | CAUTION | Row carries quantity/part data but no designators. |
+| SCHEMATIC_PART_MISSING_FROM_BOM | CAUTION | A BOM-expected schematic part appears on no BOM row. |
+| BOM_VALUE_DIFFERS | NOTE | BOM value and schematic value share no containment either way (values are often normalised, so this informs, never blocks). |
+
+BOM parsing notes: header aliases cover KiCad, JLCPCB (`Comment /
+Designator / Footprint / LCSC Part #`) and generic spellings; reference
+ranges `R1-R3`, `R1-3` and `R1 - R3` are expanded (≤200 per range).
+
+## Part risk ◆ (offline sample dataset — findings cite it)
+
+| Rule | Severity | Trigger |
+| --- | --- | --- |
+| PART_OBSOLETE | BLOCK | Dataset status is obsolete/EOL/discontinued/last-time-buy. |
+| PART_OUT_OF_STOCK | BLOCK | Dataset stock is 0 (string/float counts are coerced first). |
+| PART_NOT_RECOMMENDED | CAUTION | Dataset status is NRND. |
+| PART_LOW_STOCK | CAUTION | Stock < 50 (and > 0). |
+| PART_LONG_LEAD_TIME | CAUTION | Lead time > 16 weeks. |
+| PART_SINGLE_SOURCE | NOTE | Exactly 1 source in the dataset. |
+| PART_NOT_IN_SAMPLE_DATA | NOTE | MPN absent from the dataset — "could not check", never a guess about the part. |
+| PART_DATASET_ENTRY_INVALID | NOTE | MPN present in the dataset but its entry is empty/unusable — a dataset bug, not a board bug. |
+
+MPN lookup is exact first, then case-insensitive; a case-insensitive
+hit is disclosed in the finding's evidence. One finding per MPN,
+aggregating every BOM row that uses it.
+
+## Official checks (kicad-cli, when installed)
+
+| Rule | Severity | Trigger |
+| --- | --- | --- |
+| KICAD_ERC_VIOLATION | BLOCK/CAUTION | `kicad-cli sch erc` violation: error → BLOCK, warning → CAUTION. |
+| KICAD_DRC_VIOLATION | BLOCK/CAUTION | `kicad-cli pcb drc` violation, same mapping. |
+| KICAD_CLI_FAILED | CAUTION | kicad-cli is installed but a run failed (non-zero exit, no/invalid report, timeout). Its output is never trusted. Excluded/unrecognised severities are counted in Coverage, not mapped to findings. |
