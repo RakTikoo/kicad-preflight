@@ -42,6 +42,17 @@ The same style of board with seven deliberate, hand-verifiable errors:
 If `run_tests.py` reports anything else for this folder, either the fixture
 or the checker changed — that is what the test is for.
 
+## `v9/` — expected CAUTION (exit 1, exactly 2 findings)
+
+The `good/` board with its file-format stamps changed to KiCad 9
+(schematic format 20250114, board format 20241229, generator_version
+"9.0"). The design itself is unchanged and healthy; the two expected
+findings are both `KICAD_VERSION_UNTESTED`, one per file — v0.3's
+honest handling of KiCad 9/10 files, whose newer constructs (embedded
+files, tables, pad stacks, design variants) the parser does not fully
+understand. A silent PASS here would be a lie; a BLOCK would be one
+too.
+
 ## `real/` — optional, not asserted
 
 If real open-source KiCad projects were fetched during development, they
