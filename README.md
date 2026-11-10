@@ -143,6 +143,24 @@ their format stamps and flagged honestly: newer constructs
 (variants, pad stacks, embedded files) are not fully parsed, so those
 files never pass in silence.
 
+**Geometry-lite** (v0.4): a conservative distance-checking subset —
+not DRC. Exact pad/track/arc/via shapes are measured for
+different-net clearance and copper-to-edge distance against the
+board's own stated design rules (`.kicad_pro` clearances and
+netclasses) or, when the board states none, the published fab
+minimums; and the Edge.Cuts outline is chained to prove it closes.
+What cannot be measured exactly is never approximated into a
+finding: zones, custom/trapezoid pads and objects with no stated
+net are excluded and listed in Coverage instead.
+
+**Gerber package** (v0.4): point Preflight at the folder you are
+about to upload to the fab and it checks the package itself —
+top/bottom copper, masks, silkscreen, outline and drill file
+present, no zero-byte or duplicated layers, a consistent layer
+stack, one naming scheme (KiCad defaults, Protel extensions, or
+generic names). Auto-detected for fab-output folders, or forced
+with `--gerber`. File-level only: Gerber contents are never parsed.
+
 **Part risk (offline)**: obsolete/EOL, out-of-stock, low stock, long
 lead time, single-source, not-recommended-for-new-designs — per BOM
 MPN against the bundled dataset (see the honesty note). Numbers in a
@@ -196,7 +214,12 @@ and snapshot date, and an MPN absent from the dataset is reported as
   file format; PASS), `v9/` (the good board re-stamped as KiCad 9;
   CAUTION with exactly the two honest version warnings), `broken/`
   (seven deliberate, hand-verifiable errors; BLOCK with exactly the
-  seven documented findings).
+  seven documented findings), and the v0.4 fixtures: `geo-ok/`
+  (pads exactly at the stated clearance; geometry silent),
+  `geo-violation/` (clearance + copper-to-edge findings),
+  `geo-open/` (an unclosed outline; BLOCK), `gerber-good/`
+  (a complete fab package; PASS), `gerber-incomplete/` and
+  `gerber-inner-broken/` (package caution/BLOCK sets).
 - `corpus/` — **real open-source boards** (Upsy Desky, the ESP32 Rust
   board, Piantor) with sources, commits and licences recorded in
   `corpus/SOURCES.md`, plus a labelled broken corpus built by mutating
@@ -223,6 +246,13 @@ v0.3 (the coverage wave) went through the same three-reviewer
 discipline for its new rules; `docs/COVERAGE.md` maps every pre-order
 failure class we know of against this tool and the open-source
 alternatives, gaps included.
+v0.4 (geometry-lite + Gerber package checks) went through the same
+discipline again: the three reviewers produced 21 red-team cases, a
+clean-corpus verdict that failed on exactly two real bugs, and a
+worst-case runtime audit that refuted the first build's budget
+claims on crafted inputs. Every confirmed finding was fixed or
+documented as an accepted limit; the reviewers' inputs are now
+regression tests in the edge suite (§17).
 
 ## Known limits
 
@@ -230,12 +260,15 @@ alternatives, gaps included.
   dataset supplied (see above).
 - **kicad-cli is optional** — without it there is no official DRC/ERC;
   Coverage always says which mode you got.
-- **Text-level checks only** — symbols, footprints, BOM rows, and
-  (v0.3) property-level board measurements: track widths, drill/via
-  sizes, annular rings, slots, zone fills, outline presence. No
-  clearances, distances or connectivity — spatial DRC is kicad-cli's
+- **Geometry is a subset, honestly labelled** — v0.4 measures
+  clearances and copper-to-edge for pads/tracks/arcs/vias with
+  exact shapes, and proves outline closure; it does not check
+  zones, custom/trapezoid pads, mask/silk/courtyard geometry,
+  holes, or connectivity. Full spatial DRC remains kicad-cli's
   job (above), and `docs/COVERAGE.md` maps exactly which failure
-  classes that leaves open.
+  classes the subset leaves open. Gerber package checks are
+  file-level only — a zipped package must be extracted first, and
+  Gerber/drill contents are never parsed.
 - **One project per folder** — hierarchical sheets of one project are
   followed; a second project sharing a folder is reported via
   `SCAN_INCOMPLETE`, not merged.

@@ -561,6 +561,426 @@ def main():
         check("v03-output-hardlink", p.returncode == 3
               and (d / "led-board.kicad_pcb").read_bytes() == before)
 
+        # ---- §16: v0.4 geometry-lite + Gerber package edge cases ----
+        # 16a. A FIFO with a drill-ish name inside a package folder:
+        # the package scan stats files but only ever opens regular
+        # files under a size guard — it must not hang.
+        d = tmp / "v04fifo"; d.mkdir()
+        (d / "pkg-F_Cu.gtl").write_text("G04 *\nM02*\n")
+        (d / "pkg-B_Cu.gbl").write_text("G04 *\nM02*\n")
+        (d / "pkg-Edge_Cuts.gm1").write_text("G04 *\nM02*\n")
+        os.mkfifo(d / "drill.txt")
+        try:
+            p = cli([str(d), "--gerber", "--format", "json"], timeout=15)
+            check("v04-gerber-fifo", p.returncode in (1, 2)
+                  and "Traceback" not in p.stderr,
+                  f"exit={p.returncode}")
+        except subprocess.TimeoutExpired:
+            check("v04-gerber-fifo", False, "TIMEOUT (hang)")
+
+        # 16b. Object budget: 45k tracks exceed the geometry budget;
+        # the layer must abstain honestly (GEOMETRY_SKIPPED), fast.
+        d = tmp / "v04budget"; d.mkdir()
+        segs = "\n".join(
+            f'\t(segment (start {10 + (i % 200)} {10 + (i // 200)}) '
+            f'(end {11 + (i % 200)} {10 + (i // 200)}) (width 0.25) '
+            f'(layer "F.Cu") (net 1))' for i in range(45000))
+        (d / "big.kicad_pcb").write_text(
+            '(kicad_pcb\n\t(version 20240108)\n\t(generator "pcbnew")\n'
+            '\t(layers (0 "F.Cu" signal) (31 "B.Cu" signal) '
+            '(44 "Edge.Cuts" user))\n\t(net 0 "")\n\t(net 1 "N")\n'
+            + segs + "\n)\n")
+        try:
+            p = cli([str(d), "--format", "json"], timeout=60)
+            rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+            check("v04-geometry-budget", "GEOMETRY_SKIPPED" in rules,
+                  f"rules={sorted(rules)[:6]}")
+        except subprocess.TimeoutExpired:
+            check("v04-geometry-budget", False, "TIMEOUT")
+
+        # 16c. --gerber on a file target is a usage error.
+        p = cli([str(GOOD / "bom.csv"), "--gerber"])
+        check("v04-gerber-on-file", p.returncode == 3,
+              f"exit={p.returncode}")
+
+        # 16d. Mixed naming schemes in one package -> NOTE.
+        d = tmp / "v04mixed"; d.mkdir()
+        (d / "demo-F_Cu.gtl").write_text("G04 *\nM02*\n")
+        (d / "bottom_copper.gbr").write_text("G04 *\nM02*\n")
+        (d / "outline.gbr").write_text("G04 *\nM02*\n")
+        (d / "holes.drl").write_text("M48\n%%\nM30\n")
+        p = cli([str(d), "--format", "json"])
+        rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+        check("v04-mixed-schemes", "GERBER_MIXED_SCHEMES" in rules,
+              f"rules={rules}")
+
+        # 16e. Drill-only package: BLOCK on missing top copper.
+        d = tmp / "v04drillonly"; d.mkdir()
+        (d / "holes.drl").write_text("M48\n%%\nM30\n")
+        p = cli([str(d), "--gerber", "--format", "json"])
+        rep = json.loads(p.stdout)
+        rules = {f["rule"] for f in rep["findings"]}
+        check("v04-drill-only", rep["verdict"] == "BLOCK"
+              and "GERBER_TOP_COPPER_MISSING" in rules
+              and "GERBER_DRILL_WITHOUT_COPPER" in rules,
+              f"verdict={rep['verdict']} rules={rules}")
+
+        # 16f. Deterministic output: identical bytes on repeat runs.
+        for target in ("samples/geo-violation", "samples/gerber-incomplete"):
+            p1 = cli([str(ROOT / target), "--format", "json"])
+            p2 = cli([str(ROOT / target), "--format", "json"])
+            check(f"v04-determinism-{Path(target).name}",
+                  p1.stdout == p2.stdout and p1.returncode == p2.returncode)
+
+        # 16g. A Gerber-extension file with no determinable role is
+        # reported, not silently skipped.
+        d = tmp / "v04unknown"; d.mkdir()
+        (d / "demo-F_Cu.gtl").write_text("G04 *\nM02*\n")
+        (d / "mystery.gbr").write_text("G04 *\nM02*\n")
+        p = cli([str(d), "--gerber", "--format", "json"])
+        rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+        check("v04-unrecognised-file", "GERBER_UNRECOGNISED_FILE" in rules,
+              f"rules={rules}")
+
+        # 16h/16i. Tiny synthetic boards: arc-sided outline closes;
+        # net-0 (unnamed net) pads never pair, however close.
+        def tiny_pcb(body):
+            return ('(kicad_pcb\n\t(version 20240108)\n'
+                    '\t(generator "pcbnew")\n'
+                    '\t(layers (0 "F.Cu" signal) (31 "B.Cu" signal) '
+                    '(44 "Edge.Cuts" user))\n'
+                    '\t(net 0 "")\n\t(net 1 "A")\n\t(net 2 "B")\n'
+                    + body + "\n)\n")
+        d = tmp / "v04arc"; d.mkdir()
+        (d / "a.kicad_pcb").write_text(tiny_pcb(
+            '\t(gr_line (start 10 10) (end 30 10) (stroke (width 0.05) '
+            '(type solid)) (layer "Edge.Cuts"))\n'
+            '\t(gr_arc (start 30 10) (mid 35 20) (end 30 30) '
+            '(stroke (width 0.05) (type solid)) (layer "Edge.Cuts"))\n'
+            '\t(gr_line (start 30 30) (end 10 30) (stroke (width 0.05) '
+            '(type solid)) (layer "Edge.Cuts"))\n'
+            '\t(gr_line (start 10 30) (end 10 10) (stroke (width 0.05) '
+            '(type solid)) (layer "Edge.Cuts"))'))
+        p = cli([str(d), "--format", "json"])
+        rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+        check("v04-arc-outline-closed", "BOARD_OUTLINE_OPEN" not in rules
+              and "BOARD_OUTLINE_MISSING" not in rules, f"rules={rules}")
+        d = tmp / "v04net0"; d.mkdir()
+        (d / "a.kicad_pcb").write_text(tiny_pcb(
+            '\t(footprint "R" (layer "F.Cu") (at 20 20) (attr smd)\n'
+            '\t\t(pad "1" smd rect (at -0.525 0) (size 1 1) '
+            '(layers "F.Cu") (net 0 ""))\n'
+            '\t\t(pad "2" smd rect (at 0.525 0) (size 1 1) '
+            '(layers "F.Cu") (net 0 "")))\n'
+            '\t(gr_rect (start 10 10) (end 40 30) '
+            '(stroke (width 0.05) (type solid)) (layer "Edge.Cuts"))'))
+        p = cli([str(d), "--format", "json"])
+        rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+        check("v04-net0-never-paired",
+              "GEOMETRY_CLEARANCE_BELOW_MIN" not in rules, f"rules={rules}")
+
+        # ---- §17: v0.4 adversarial-review fix regressions ----
+        # 17a. Netclass thresholds reach TRACKS (their names come
+        # from the (net N "name") table — FP-1/RT-10) and KiCad's
+        # pattern list is priority-ordered, FIRST match wins
+        # (RT-08/RT-11): HV segments 0.5 mm apart flag when HV*
+        # comes first, and are legal when the * catch-all does.
+        def hv_board(patterns):
+            pro = {"net_settings": {
+                "classes": [{"name": "Default", "clearance": 0.2},
+                            {"name": "HV", "clearance": 1.0}],
+                "netclass_patterns": [
+                    {"pattern": pat, "netclass": cls}
+                    for pat, cls in patterns]}}
+            pcb = ('(kicad_pcb\n\t(version 20240108)\n'
+                   '\t(generator "pcbnew")\n'
+                   '\t(layers (0 "F.Cu" signal) (31 "B.Cu" signal) '
+                   '(44 "Edge.Cuts" user))\n'
+                   '\t(net 0 "")\n\t(net 1 "HV_A")\n\t(net 2 "HV_B")\n'
+                   '\t(segment (start 10 10) (end 20 10) (width 0.25) '
+                   '(layer "F.Cu") (net 1))\n'
+                   '\t(segment (start 10 10.75) (end 20 10.75) '
+                   '(width 0.25) (layer "F.Cu") (net 2))\n'
+                   '\t(gr_rect (start 5 5) (end 25 15) '
+                   '(stroke (width 0.05) (type solid)) '
+                   '(layer "Edge.Cuts"))\n)\n')
+            return pcb, json.dumps(pro)
+        for name, patterns, expect in (
+                ("v04r-track-netclass-first-match",
+                 [("HV*", "HV"), ("*", "Default")], True),
+                ("v04r-pattern-catchall-first",
+                 [("*", "Default"), ("HV*", "HV")], False)):
+            d = tmp / name; d.mkdir()
+            pcb_text, pro_text = hv_board(patterns)
+            (d / "a.kicad_pcb").write_text(pcb_text)
+            (d / "a.kicad_pro").write_text(pro_text)
+            p = cli([str(d), "--format", "json"])
+            rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+            check(name, ("GEOMETRY_CLEARANCE_BELOW_MIN" in rules)
+                  == expect, f"rules={rules}")
+
+        # 17b. An outline shattered at EVERY corner still BLOCKs
+        # (RT-12): four lines, each corner gapped ~0.04 mm.
+        d = tmp / "v04r-four-gaps"; d.mkdir()
+        (d / "a.kicad_pcb").write_text(tiny_pcb(
+            '\t(gr_line (start 10.03 10) (end 29.97 10) '
+            '(stroke (width 0.05) (type solid)) (layer "Edge.Cuts"))\n'
+            '\t(gr_line (start 30 10.03) (end 30 29.97) '
+            '(stroke (width 0.05) (type solid)) (layer "Edge.Cuts"))\n'
+            '\t(gr_line (start 29.97 30) (end 10.03 30) '
+            '(stroke (width 0.05) (type solid)) (layer "Edge.Cuts"))\n'
+            '\t(gr_line (start 10 29.97) (end 10 10.03) '
+            '(stroke (width 0.05) (type solid)) (layer "Edge.Cuts"))'))
+        p = cli([str(d), "--format", "json"])
+        rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+        check("v04r-outline-four-gaps", "BOARD_OUTLINE_OPEN" in rules,
+              f"rules={rules}")
+
+        # 17c. Legacy (angle ...) arcs chain under BOTH real-world
+        # readings (RT-04): centre-in-(start) and endpoints.
+        for name, arc in (
+                ("v04r-legacy-arc-centre",
+                 '\t(gr_arc (start 25 30) (end 40 30) (angle 180) '
+                 '(stroke (width 0.05) (type solid)) '
+                 '(layer "Edge.Cuts"))'),
+                ("v04r-legacy-arc-ends",
+                 '\t(gr_arc (start 40 30) (end 10 30) (angle 180) '
+                 '(stroke (width 0.05) (type solid)) '
+                 '(layer "Edge.Cuts"))')):
+            d = tmp / name; d.mkdir()
+            (d / "a.kicad_pcb").write_text(tiny_pcb(
+                '\t(gr_line (start 10 10) (end 40 10) '
+                '(stroke (width 0.05) (type solid)) '
+                '(layer "Edge.Cuts"))\n'
+                '\t(gr_line (start 40 10) (end 40 30) '
+                '(stroke (width 0.05) (type solid)) '
+                '(layer "Edge.Cuts"))\n' + arc + '\n'
+                '\t(gr_line (start 10 30) (end 10 10) '
+                '(stroke (width 0.05) (type solid)) '
+                '(layer "Edge.Cuts"))'))
+            p = cli([str(d), "--format", "json"])
+            rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+            check(name, "BOARD_OUTLINE_OPEN" not in rules,
+                  f"rules={rules}")
+
+        # 17d. A through via occupies the inner layers too (RT-15):
+        # an In1.Cu track through its centre is a violation.
+        d = tmp / "v04r-via-inner"; d.mkdir()
+        (d / "a.kicad_pcb").write_text(
+            '(kicad_pcb\n\t(version 20240108)\n\t(generator "pcbnew")\n'
+            '\t(layers (0 "F.Cu" signal) (4 "In1.Cu" signal) '
+            '(31 "B.Cu" signal) (44 "Edge.Cuts" user))\n'
+            '\t(net 0 "")\n\t(net 1 "A")\n\t(net 2 "B")\n'
+            '\t(via (at 20 20) (size 0.6) (drill 0.3) '
+            '(layers "F.Cu" "B.Cu") (net 1))\n'
+            '\t(segment (start 15 20) (end 25 20) (width 0.25) '
+            '(layer "In1.Cu") (net 2))\n'
+            '\t(gr_rect (start 10 10) (end 30 30) '
+            '(stroke (width 0.05) (type solid)) (layer "Edge.Cuts"))\n)\n')
+        p = cli([str(d), "--format", "json"])
+        rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+        check("v04r-via-inner-layer",
+              "GEOMETRY_CLEARANCE_BELOW_MIN" in rules, f"rules={rules}")
+
+        # 17e. One board-spanning segment must not blow up the
+        # grid (RT-01: was 19 s / 850 MB): it still gets its
+        # copper-to-edge verdict, fast.
+        d = tmp / "v04r-giant-span"; d.mkdir()
+        (d / "a.kicad_pcb").write_text(tiny_pcb(
+            '\t(segment (start -1000000 20) (end 1000000 20) '
+            '(width 0.25) (layer "F.Cu") (net 1))\n'
+            '\t(gr_rect (start 10 10) (end 40 30) '
+            '(stroke (width 0.05) (type solid)) (layer "Edge.Cuts"))'))
+        try:
+            p = cli([str(d), "--format", "json"], timeout=20)
+            rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+            check("v04r-giant-span-segment",
+                  "GEOMETRY_COPPER_TO_EDGE" in rules, f"rules={rules}")
+        except subprocess.TimeoutExpired:
+            check("v04r-giant-span-segment", False, "TIMEOUT")
+
+        # 17f. Gerber fix pack: PTH+NPTH split is not a duplicate
+        # (FP-2); In1..In8 KiCad names classify (RT-06); dot-
+        # separated names classify (RT-07); a BOM-prefixed
+        # Excellon .txt is a drill file (RT-09); .g1-.g10 inners
+        # have no gap (RT-05).
+        d = tmp / "v04r-pthnpth"; d.mkdir()
+        for fname in ("b-F_Cu.gtl", "b-B_Cu.gbl", "b-F_Mask.gts",
+                      "b-B_Mask.gbs", "b-F_Silkscreen.gto",
+                      "b-Edge_Cuts.gm1", "b-PTH.drl", "b-NPTH.drl"):
+            (d / fname).write_text("G04 *\nM02*\n")
+        p = cli([str(d), "--format", "json"])
+        rep = json.loads(p.stdout)
+        rules = {f["rule"] for f in rep["findings"]}
+        check("v04r-pth-npth-not-duplicate",
+              "GERBER_DUPLICATE_LAYER" not in rules
+              and rep["verdict"] == "PASS", f"rules={rules}")
+        d = tmp / "v04r-in78"; d.mkdir()
+        names = ["b-F_Cu.gtl", "b-B_Cu.gbl", "b-F_Mask.gts",
+                 "b-B_Mask.gbs", "b-F_Silkscreen.gto",
+                 "b-Edge_Cuts.gm1", "b.drl"] + \
+            [f"b-In{i}_Cu.gtl" for i in range(1, 9)]
+        for fname in names:
+            (d / fname).write_text("G04 *\nM02*\n")
+        p = cli([str(d), "--format", "json"])
+        rep = json.loads(p.stdout)
+        rules = {f["rule"] for f in rep["findings"]}
+        check("v04r-kicad-in7-in8", rep["verdict"] == "PASS",
+              f"rules={rules}")
+        d = tmp / "v04r-dotnames"; d.mkdir()
+        for fname in ("board.F_Cu.gbr", "board.B_Cu.gbr",
+                      "board.F_Mask.gbr", "board.B_Mask.gbr",
+                      "board.F_Silkscreen.gbr", "board.Edge_Cuts.gbr",
+                      "board.drl"):
+            (d / fname).write_text("G04 *\nM02*\n")
+        p = cli([str(d), "--format", "json"])
+        rep = json.loads(p.stdout)
+        rules = {f["rule"] for f in rep["findings"]}
+        check("v04r-dot-separated-names", rep["verdict"] == "PASS",
+              f"rules={rules}")
+        d = tmp / "v04r-bom-drill"; d.mkdir()
+        for fname in ("x.gtl", "x.gbl", "x.gts", "x.gbs", "x.gto",
+                      "x.gko"):
+            (d / fname).write_text("G04 *\nM02*\n")
+        (d / "drill.txt").write_bytes(
+            b"\xef\xbb\xbf; generated by CAM\nM48\n%\nM30\n")
+        p = cli([str(d), "--format", "json"])
+        rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+        check("v04r-excellon-bom-comment",
+              "GERBER_DRILL_MISSING" not in rules, f"rules={rules}")
+        d = tmp / "v04r-g10"; d.mkdir()
+        for fname in ("x.gtl", "x.gbl", "x.gts", "x.gbs", "x.gto",
+                      "x.gko", "x.drl"):
+            (d / fname).write_text("G04 *\nM02*\n")
+        for i in range(1, 11):
+            (d / f"x.g{i}").write_text("G04 *\nM02*\n")
+        p = cli([str(d), "--format", "json"])
+        rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+        check("v04r-inner-1-to-10-nogap",
+              "GERBER_INNER_LAYER_GAP" not in rules, f"rules={rules}")
+
+        # ---- §18: v0.4 code-audit fix regressions (AUDIT F1-F8) ----
+        # 18a. A circular outline is real geometry (F2): a pad
+        # crossing it fires copper-to-edge; a centred pad doesn't.
+        for name, fy, expect in (
+                ("v05-circle-outline-crossing", 10.1, True),
+                ("v05-circle-outline-inside", 25.0, False)):
+            d = tmp / name; d.mkdir()
+            (d / "a.kicad_pcb").write_text(tiny_pcb(
+                '\t(gr_circle (center 25 25) (end 40 25) '
+                '(stroke (width 0.05) (type solid)) '
+                '(layer "Edge.Cuts"))\n'
+                '\t(footprint "R" (layer "F.Cu") '
+                f'(at 25 {fy}) (attr smd)\n'
+                '\t\t(pad "1" smd rect (at 0 0) (size 1 1) '
+                '(layers "F.Cu") (net 1 "A")))\n'))
+            p = cli([str(d), "--format", "json"])
+            rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+            check(name, ("GEOMETRY_COPPER_TO_EDGE" in rules) == expect,
+                  f"rules={rules}")
+
+        # 18b. Candidate enumeration is budgeted (F1): 4,000
+        # same-net tracks in ~2 mm^2 abstain, fast, instead of
+        # enumerating ~8M candidate pairs unbounded.
+        d = tmp / "v05dense"; d.mkdir()
+        segs = "\n".join(
+            f'\t(segment (start {10 + (i % 64) * 0.015:.3f} '
+            f'{10 + (i // 64) * 0.015:.3f}) '
+            f'(end {10 + (i % 64) * 0.015 + 0.01:.3f} '
+            f'{10 + (i // 64) * 0.015:.3f}) (width 0.01) '
+            f'(layer "F.Cu") (net 1))' for i in range(4000))
+        (d / "a.kicad_pcb").write_text(tiny_pcb(segs))
+        try:
+            p = cli([str(d), "--format", "json"], timeout=30)
+            rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+            check("v05-candidate-budget", "GEOMETRY_SKIPPED" in rules,
+                  f"rules={sorted(rules)[:6]}")
+        except subprocess.TimeoutExpired:
+            check("v05-candidate-budget", False, "TIMEOUT")
+
+        # 18c. Budgets bite during construction (F3): 300 huge
+        # arcs would subdivide to ~300k objects; the layer must
+        # abstain without materialising them.
+        d = tmp / "v05arcs"; d.mkdir()
+        arcs = "\n".join(
+            '\t(arc (start 0 0) (mid 10000 10000) (end 20000 0) '
+            '(width 0.25) (layer "F.Cu") (net 1))'
+            for _ in range(300))
+        (d / "a.kicad_pcb").write_text(tiny_pcb(arcs))
+        try:
+            p = cli([str(d), "--format", "json"], timeout=30)
+            rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+            check("v05-arc-amplification-budget",
+                  "GEOMETRY_SKIPPED" in rules, f"rules={sorted(rules)[:6]}")
+        except subprocess.TimeoutExpired:
+            check("v05-arc-amplification-budget", False, "TIMEOUT")
+
+        # 18d. A negative-size pad is excluded, not measured
+        # from a negative radius (F7): the foreign pad inside it
+        # produces no clearance finding, and Coverage owns up.
+        d = tmp / "v05negpad"; d.mkdir()
+        (d / "a.kicad_pcb").write_text(tiny_pcb(
+            '\t(footprint "R1" (layer "F.Cu") (at 20 20) (attr smd)\n'
+            '\t\t(pad "1" smd rect (at 0 0) (size -2 -2) '
+            '(layers "F.Cu") (net 1 "A")))\n'
+            '\t(footprint "R2" (layer "F.Cu") (at 20 20) (attr smd)\n'
+            '\t\t(pad "1" smd rect (at 0 0) (size 0.5 0.5) '
+            '(layers "F.Cu") (net 2 "B")))\n'
+            '\t(gr_rect (start 10 10) (end 30 30) '
+            '(stroke (width 0.05) (type solid)) (layer "Edge.Cuts"))'))
+        p = cli([str(d), "--format", "json"])
+        rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+        check("v05-negative-pad-excluded",
+              "GEOMETRY_CLEARANCE_BELOW_MIN" not in rules
+              and "SCAN_INCOMPLETE" in rules, f"rules={rules}")
+
+        # 18e. A filename is not a stackup (F5): one .g200000
+        # file gets a bounded gap finding, not a 189 MB report.
+        d = tmp / "v05hugeinner"; d.mkdir()
+        for fname in ("x.gtl", "x.gbl", "x.gts", "x.gbs", "x.gto",
+                      "x.gko", "x.drl", "x.g200000"):
+            (d / fname).write_text("G04 *\nM02*\n")
+        p = cli([str(d), "--format", "json"])
+        rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+        check("v05-gerber-inner-huge",
+              "GERBER_INNER_LAYER_GAP" in rules
+              and len(p.stdout) < 50000, f"out={len(p.stdout)}")
+
+        # 18f. Generic Gerber names need a fab extension (F6):
+        # "bottom_copper.txt" must not satisfy bottom copper.
+        d = tmp / "v05notesspoof"; d.mkdir()
+        for fname in ("x-F_Cu.gtl", "x-Edge_Cuts.gm1", "x.drl"):
+            (d / fname).write_text("G04 *\nM02*\n")
+        (d / "bottom_copper.txt").write_text("these are notes\n")
+        p = cli([str(d), "--format", "json"])
+        rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+        check("v05-gerber-notes-spoof",
+              "GERBER_BOTTOM_COPPER_MISSING" in rules, f"rules={rules}")
+
+        # 18g. A lone .kicad_pro does not hijack a Gerber folder
+        # (F8): a complete package beside one still auto-detects.
+        d = tmp / "v05proonly"; d.mkdir()
+        (d / "a.kicad_pro").write_text("{}\n")
+        for fname in ("b-F_Cu.gtl", "b-B_Cu.gbl", "b-F_Mask.gts",
+                      "b-B_Mask.gbs", "b-F_Silkscreen.gto",
+                      "b-Edge_Cuts.gm1", "b.drl"):
+            (d / fname).write_text("G04 *\nM02*\n")
+        p = cli([str(d), "--format", "json"])
+        rep = json.loads(p.stdout)
+        check("v05-gerber-lone-kicad-pro", rep["verdict"] == "PASS",
+              f"verdict={rep['verdict']}")
+
+        # 18h. .g0 is not an inner layer (F5/F8 tail): no
+        # nonsense gap finding.
+        d = tmp / "v05g0"; d.mkdir()
+        for fname in ("x.gtl", "x.gbl", "x.gts", "x.gbs", "x.gto",
+                      "x.gko", "x.drl", "x.g0"):
+            (d / fname).write_text("G04 *\nM02*\n")
+        p = cli([str(d), "--format", "json"])
+        rules = {f["rule"] for f in json.loads(p.stdout)["findings"]}
+        check("v05-gerber-g0-not-inner",
+              "GERBER_INNER_LAYER_GAP" not in rules, f"rules={rules}")
+
     if failures:
         print(f"\n{len(failures)} edge test(s) FAILED: {failures}")
         return 1

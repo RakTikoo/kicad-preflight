@@ -26,7 +26,13 @@ CORPUS = ROOT / "corpus"
 # target -> (verdict, exit, {rule: count}) — exact, from hand-verified runs
 CLEAN = {
     "projects/upsy-desky/pcb":
-        ("CAUTION", 1, {"BOM_MISSING": 1}),
+        ("CAUTION", 1, {"BOM_MISSING": 1,
+                        # v0.4, hand-verified: the USB-C shell pad
+                        # sits 0.071 mm from the routed edge (the
+                        # connector straddles the edge by design);
+                        # the board states no edge clearance, so
+                        # the published 0.20 mm fab minimum applies.
+                        "GEOMETRY_COPPER_TO_EDGE": 1}),
     "projects/esp-rust-board/hardware/esp-rust-board":
         ("CAUTION", 1, {"BOM_MISSING_MPN": 1,
                         "SCHEMATIC_DATASHEET_MISSING": 1}),
@@ -34,12 +40,20 @@ CLEAN = {
         ("BLOCK", 2, {"DUPLICATE_REFERENCE_PCB": 2,
                       "FOOTPRINT_MISMATCH": 4,
                       "BOM_MISSING": 1,
-                      "SCHEMATIC_DATASHEET_MISSING": 1}),
+                      "SCHEMATIC_DATASHEET_MISSING": 1,
+                      # v0.4, hand-verified per KiCad's documented
+                      # pad semantics: the Pico module's elongated
+                      # castellated SMD tabs graze the neighbouring
+                      # fan-out tracks by up to 0.125 mm against the
+                      # board's stated 0.3 mm class (the fan-out was
+                      # routed against the 1.7 mm thru-hole pads).
+                      "GEOMETRY_CLEARANCE_BELOW_MIN": 1}),
     "projects/piantor/pcb/right":
         ("BLOCK", 2, {"DUPLICATE_REFERENCE_PCB": 2,
                       "FOOTPRINT_MISMATCH": 4,
                       "BOM_MISSING": 1,
-                      "SCHEMATIC_DATASHEET_MISSING": 1}),
+                      "SCHEMATIC_DATASHEET_MISSING": 1,
+                      "GEOMETRY_CLEARANCE_BELOW_MIN": 1}),
 }
 
 BROKEN = {

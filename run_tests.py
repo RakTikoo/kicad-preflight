@@ -150,6 +150,107 @@ def main():
         print("SKIP coverage: kicad-cli is installed here, skip-path "
               "assertion not applicable")
 
+    # --- v0.4: geometry-lite fixtures --------------------------------
+    # geo-ok: pads exactly AT the stated 0.2 mm clearance, a closed
+    # outline, and a lone Edge.Cuts line (a routed slot) — geometry
+    # must stay completely silent.
+    proc = run_cli(ROOT / "samples/geo-ok")
+    try:
+        report = parse_report(proc)
+        rules = {f["rule"] for f in report["findings"]}
+        geo_rules = {r for r in rules
+                     if r.startswith("GEOMETRY")
+                     or r == "BOARD_OUTLINE_OPEN"}
+        if geo_rules:
+            print(f"FAIL geo-ok: unexpected geometry rules {geo_rules}")
+            failures += 1
+        else:
+            print("PASS geo-ok: exact-clearance pads + slot line + "
+                  "closed outline produce no geometry findings")
+    except json.JSONDecodeError:
+        print("FAIL geo-ok: output was not JSON")
+        failures += 1
+
+    # geo-violation: pads 0.05 mm apart + a pad 0.1 mm from the edge.
+    proc = run_cli(ROOT / "samples/geo-violation")
+    try:
+        report = parse_report(proc)
+        rules = {f["rule"] for f in report["findings"]}
+        want = {"GEOMETRY_CLEARANCE_BELOW_MIN",
+                "GEOMETRY_COPPER_TO_EDGE"}
+        if not want <= rules:
+            print(f"FAIL geo-violation: missing {want - rules} "
+                  f"in {rules}")
+            failures += 1
+        else:
+            print("PASS geo-violation: clearance + copper-to-edge fire")
+    except json.JSONDecodeError:
+        print("FAIL geo-violation: output was not JSON")
+        failures += 1
+
+    # geo-open: a U-shaped outline (3 sides) must not pass as closed.
+    proc = run_cli(ROOT / "samples/geo-open")
+    try:
+        report = parse_report(proc)
+        rules = {f["rule"] for f in report["findings"]}
+        if "BOARD_OUTLINE_OPEN" not in rules:
+            print(f"FAIL geo-open: BOARD_OUTLINE_OPEN missing in {rules}")
+            failures += 1
+        else:
+            print("PASS geo-open: open outline is BLOCKed")
+    except json.JSONDecodeError:
+        print("FAIL geo-open: output was not JSON")
+        failures += 1
+
+    # --- v0.4: Gerber package fixtures -------------------------------
+    proc = run_cli(ROOT / "samples/gerber-good")
+    try:
+        report = parse_report(proc)
+        if report["verdict"] != "PASS" or report["findings"]:
+            print(f"FAIL gerber-good: verdict={report['verdict']} "
+                  f"findings={[f['rule'] for f in report['findings']]}")
+            failures += 1
+        else:
+            print("PASS gerber-good: complete package passes clean "
+                  "(auto-detected)")
+    except json.JSONDecodeError:
+        print("FAIL gerber-good: output was not JSON")
+        failures += 1
+
+    proc = run_cli(ROOT / "samples/gerber-incomplete")
+    try:
+        report = parse_report(proc)
+        got = Counter(f["rule"] for f in report["findings"])
+        want = Counter({"GERBER_BOTTOM_COPPER_MISSING": 1,
+                        "GERBER_MASK_MISSING": 1,
+                        "GERBER_SILKSCREEN_MISSING": 1,
+                        "GERBER_EMPTY_FILE": 1})
+        if got != want or report["verdict"] != "CAUTION":
+            print(f"FAIL gerber-incomplete: rules {dict(got)} "
+                  f"verdict={report['verdict']}")
+            failures += 1
+        else:
+            print("PASS gerber-incomplete: exact caution set")
+    except json.JSONDecodeError:
+        print("FAIL gerber-incomplete: output was not JSON")
+        failures += 1
+
+    proc = run_cli(ROOT / "samples/gerber-inner-broken")
+    try:
+        report = parse_report(proc)
+        rules = {f["rule"] for f in report["findings"]}
+        want = {"GERBER_INNER_WITHOUT_BOTTOM", "GERBER_OUTLINE_MISSING"}
+        if not want <= rules or report["verdict"] != "BLOCK":
+            print(f"FAIL gerber-inner-broken: rules={rules} "
+                  f"verdict={report['verdict']}")
+            failures += 1
+        else:
+            print("PASS gerber-inner-broken: inner-without-bottom "
+                  "is BLOCKed")
+    except json.JSONDecodeError:
+        print("FAIL gerber-inner-broken: output was not JSON")
+        failures += 1
+
     # Real third-party projects: smoke only, no verdict assertions.
     for folder in sorted(ROOT.glob(SMOKE_ONLY_GLOB)):
         if not folder.is_dir():
