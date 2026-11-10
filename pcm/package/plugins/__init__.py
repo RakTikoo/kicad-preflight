@@ -1,1 +1,72 @@
-IiIiS2lDYWQgUHJlZmxpZ2h0IOKAlCBBY3Rpb24gUGx1Z2luIGVudHJ5IHBvaW50IChQQ00gcGFja2FnZSkuCgpUaGlzIGlzIHRoZSBpbi1LaUNhZCBmcm9udCBkb29yIGZvciB0aGUgc2FtZSBjaGVja3MgZW5naW5lIHRoYXQgcG93ZXJzCnRoZSBDTEkgKHRoZSBgcHJlZmxpZ2h0YCBwYWNrYWdlLCBjb3BpZWQgbmV4dCB0byB0aGlzIGZpbGUgYXQgcGFja2FnZQpidWlsZCB0aW1lIGJ5IC4uL2J1aWxkX3BjbS5weSkuIE9uZSBlbmdpbmUsIHR3byBmcm9udCBkb29yczogdGhlIGNoZWNrCmxvZ2ljIGxpdmVzIGluIGBwcmVmbGlnaHQvYCBhbmQgaXMgcHVyZSBQeXRob24gc3RhbmRhcmQgbGlicmFyeTsgdGhpcwpmaWxlIG9ubHkgYWRhcHRzIGl0IHRvIEtpQ2FkJ3MgQWN0aW9uIFBsdWdpbiBBUEk6CgogICogYSBjbGFzcyBkZXJpdmVkIGZyb20gYHBjYm5ldy5BY3Rpb25QbHVnaW5gLAogICogYGRlZmF1bHRzKClgIHNldHMgbmFtZS9jYXRlZ29yeS9kZXNjcmlwdGlvbi9pY29uLAogICogYFJ1bigpYCBpcyBjYWxsZWQgd2hlbiB0aGUgdXNlciBwaWNrcyBUb29scyAtPiBFeHRlcm5hbCBQbHVnaW5zIC0+CiAgICBLaUNhZCBQcmVmbGlnaHQgKG9yIHRoZSB0b29sYmFyIGJ1dHRvbiksCiAgKiBgU2ltcGxlUGx1Z2luKCkucmVnaXN0ZXIoKWAgYXQgaW1wb3J0IHRpbWUgKGRvbmUgYXQgdGhlIGJvdHRvbSkuCgpQZXIgdGhlIG9mZmljaWFsIEtpQ2FkIGRldmVsb3BlciBkb2NzIChQQ0IgUHl0aG9uIEJpbmRpbmdzKToKaHR0cHM6Ly9kZXYtZG9jcy5LaUNhZC5vcmcvZW4vYXBpcy1hbmQtYmluZGluZy9wY2JuZXcvaW5kZXguaHRtbAoKU1RBVFVTOiBTS0VMRVRPTi4gVGhlIHdpcmluZyBpcyBjb21wbGV0ZSBidXQgaXQgaGFzIE5PVCBiZWVuIHJ1biBpbnNpZGUKYSByZWFsIEtpQ2FkIHlldCAodGhlcmUgaXMgbm8gS2lDYWQgb24gdGhlIGJ1aWxkIG1hY2hpbmUpLiBUZXN0IHBsYW4gaXMKaW4gLi4vUkVBRE1FLm1kLiBUaGUgZW5naW5lIGl0IGNhbGxzIGlzIGZ1bGx5IHRlc3RlZCBoZWFkbGVzcyB2aWEgdGhlCkNMSSBhbmQgdGhlIHJlcG8gdGVzdCBzdWl0ZXMuCiIiIgoKaW1wb3J0IG9zCgp0cnk6CiAgICBpbXBvcnQgcGNibmV3CmV4Y2VwdCBJbXBvcnRFcnJvcjogICMgaW1wb3J0ZWQgb3V0c2lkZSBLaUNhZCAoZS5nLiBieSB0aGUgdGVzdCBzdWl0ZXMpCiAgICBwY2JuZXcgPSBOb25lCgoKaWYgcGNibmV3IGlzIG5vdCBOb25lOgoKICAgIGNsYXNzIFByZWZsaWdodEFjdGlvbihwY2JuZXcuQWN0aW9uUGx1Z2luKToKICAgICAgICBkZWYgZGVmYXVsdHMoc2VsZik6CiAgICAgICAgICAgIHNlbGYubmFtZSA9ICJLaUNhZCBQcmVmbGlnaHQiCiAgICAgICAgICAgIHNlbGYuY2F0ZWdvcnkgPSAiQ2hlY2sgYmVmb3JlIG9yZGVyaW5nIgogICAgICAgICAgICBzZWxmLmRlc2NyaXB0aW9uID0gKAogICAgICAgICAgICAgICAgIlByZS1mYWIgY2hlY2tzIGZvciB0aGUgb3BlbiBwcm9qZWN0OiBzY2hlbWF0aWMvUENCICIKICAgICAgICAgICAgICAgICJhZ3JlZW1lbnQsIEJPTSBzYW5pdHksIGFuZCBwYXJ0IHJpc2sg4oCUIG9uZSByZXBvcnQgIgogICAgICAgICAgICAgICAgImJlZm9yZSB5b3Ugb3JkZXIuIikKICAgICAgICAgICAgc2VsZi5zaG93X3Rvb2xiYXJfYnV0dG9uID0gVHJ1ZQogICAgICAgICAgICBzZWxmLmljb25fZmlsZV9uYW1lID0gb3MucGF0aC5qb2luKAogICAgICAgICAgICAgICAgb3MucGF0aC5kaXJuYW1lKF9fZmlsZV9fKSwgImljb24ucG5nIikKCiAgICAgICAgZGVmIFJ1bihzZWxmKToKICAgICAgICAgICAgaW1wb3J0IHd4CgogICAgICAgICAgICBib2FyZCA9IHBjYm5ldy5HZXRCb2FyZCgpCiAgICAgICAgICAgIGlmIGJvYXJkIGlzIE5vbmU6CiAgICAgICAgICAgICAgICB3eC5NZXNzYWdlQm94KCJObyBib2FyZCBpcyBvcGVuLiIsICJLaUNhZCBQcmVmbGlnaHQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICB3eC5PSyB8IHd4LklDT05fV0FSTklORykKICAgICAgICAgICAgICAgIHJldHVybgogICAgICAgICAgICBwcm9qZWN0X2RpciA9IG9zLnBhdGguZGlybmFtZShib2FyZC5HZXRGaWxlTmFtZSgpKQogICAgICAgICAgICAjIFRoZSBlbmdpbmUgaXMgYnVuZGxlZCBuZXh0IHRvIHRoaXMgZmlsZSBhdCBidWlsZCB0aW1lLgogICAgICAgICAgICBmcm9tIHByZWZsaWdodCBpbXBvcnQgZW5naW5lCiAgICAgICAgICAgIGZyb20gcHJlZmxpZ2h0LnJlcG9ydCBpbXBvcnQgcmVuZGVyX3RleHQKCiAgICAgICAgICAgIHJlcG9ydCA9IGVuZ2luZS5ydW4ocHJvamVjdF9kaXIpCiAgICAgICAgICAgIHRleHQgPSByZW5kZXJfdGV4dChyZXBvcnQpCiAgICAgICAgICAgIGRsZyA9IHd4LkRpYWxvZyhOb25lLCB0aXRsZT0iS2lDYWQgUHJlZmxpZ2h0IOKAlCByZXBvcnQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2l6ZT0oNzYwLCA1NjApKQogICAgICAgICAgICBzaXplciA9IHd4LkJveFNpemVyKHd4LlZFUlRJQ0FMKQogICAgICAgICAgICBzaXplci5BZGQod3guVGV4dEN0cmwoZGxnLCB2YWx1ZT10ZXh0LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3R5bGU9d3guVEVfTVVMVElMSU5FIHwgd3guVEVfUkVBRE9OTFkKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgd3guSFNDUk9MTCksCiAgICAgICAgICAgICAgICAgICAgICAxLCB3eC5FWFBBTkQgfCB3eC5BTEwsIDgpCiAgICAgICAgICAgIGRsZy5TZXRTaXplcihzaXplcikKICAgICAgICAgICAgZGxnLlNob3dNb2RhbCgpCiAgICAgICAgICAgIGRsZy5EZXN0cm95KCkKCiAgICBQcmVmbGlnaHRBY3Rpb24oKS5yZWdpc3RlcigpCg==
+"""KiCad Preflight — Action Plugin entry point (PCM package).
+
+This is the in-KiCad front door for the same checks engine that powers
+the CLI (the `preflight` package, copied next to this file at package
+build time by ../build_pcm.py). One engine, two front doors: the check
+logic lives in `preflight/` and is pure Python standard library; this
+file only adapts it to KiCad's Action Plugin API:
+
+  * a class derived from `pcbnew.ActionPlugin`,
+  * `defaults()` sets name/category/description/icon,
+  * `Run()` is called when the user picks Tools -> External Plugins ->
+    KiCad Preflight (or the toolbar button),
+  * `SimplePlugin().register()` at import time (done at the bottom).
+
+Per the official KiCad developer docs (PCB Python Bindings):
+https://dev-docs.KiCad.org/en/apis-and-binding/pcbnew/index.html
+
+STATUS: SKELETON. The wiring is complete but it has NOT been run inside
+a real KiCad yet (there is no KiCad on the build machine). Test plan is
+in ../README.md. The engine it calls is fully tested headless via the
+CLI and the repo test suites.
+"""
+
+import os
+
+try:
+    import pcbnew
+except ImportError:  # imported outside KiCad (e.g. by the test suites)
+    pcbnew = None
+
+
+if pcbnew is not None:
+
+    class PreflightAction(pcbnew.ActionPlugin):
+        def defaults(self):
+            self.name = "KiCad Preflight"
+            self.category = "Check before ordering"
+            self.description = (
+                "Pre-fab checks for the open project: schematic/PCB "
+                "agreement, BOM sanity, and part risk — one report "
+                "before you order.")
+            self.show_toolbar_button = True
+            self.icon_file_name = os.path.join(
+                os.path.dirname(__file__), "icon.png")
+
+        def Run(self):
+            import wx
+
+            board = pcbnew.GetBoard()
+            if board is None:
+                wx.MessageBox("No board is open.", "KiCad Preflight",
+                              wx.OK | wx.ICON_WARNING)
+                return
+            project_dir = os.path.dirname(board.GetFileName())
+            # The engine is bundled next to this file at build time.
+            from preflight import engine
+            from preflight.report import render_text
+
+            report = engine.run(project_dir)
+            text = render_text(report)
+            dlg = wx.Dialog(None, title="KiCad Preflight — report",
+                            size=(760, 560))
+            sizer = wx.BoxSizer(wx.VERTICAL)
+            sizer.Add(wx.TextCtrl(dlg, value=text,
+                                  style=wx.TE_MULTILINE | wx.TE_READONLY
+                                  | wx.HSCROLL),
+                      1, wx.EXPAND | wx.ALL, 8)
+            dlg.SetSizer(sizer)
+            dlg.ShowModal()
+            dlg.Destroy()
+
+    PreflightAction().register()
