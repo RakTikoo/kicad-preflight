@@ -17,7 +17,7 @@ jobs:
       # via Dependabot PRs (see .github/dependabot.yml) without the
       # maintenance cost of full SHA pinning.
       - uses: actions/checkout@v7
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Shipped samples
