@@ -1,1 +1,159 @@
-IiIiT3B0aW9uYWwgaW50ZWdyYXRpb24gd2l0aCBLaUNhZCdzIG9mZmljaWFsIGBraWNhZC1jbGlgIHRvb2wuCgpXaGVuIGtpY2FkLWNsaSBpcyBvbiBQQVRILCBQcmVmbGlnaHQgcnVucyB0aGUgb2ZmaWNpYWwgZGVzaWduLXJ1bGUgY2hlY2sKKERSQykgb24gdGhlIFBDQiBhbmQgZWxlY3RyaWNhbC1ydWxlIGNoZWNrIChFUkMpIG9uIHRoZSBzY2hlbWF0aWMsIGFuZApmb2xkcyB0aGVpciB2aW9sYXRpb25zIGludG8gdGhlIHJlcG9ydC4gV2hlbiBpdCBpcyBub3QgaW5zdGFsbGVkLCB0aGUKb2ZmaWNpYWwgY2hlY2tzIGFyZSByZWNvcmRlZCBhcyBTS0lQUEVEIGluIHRoZSByZXBvcnQncyBDb3ZlcmFnZSBzZWN0aW9uIOKAlApuZXZlciBzaWxlbnRseSBwcmV0ZW5kZWQsIGFuZCB0aGUgYnVpbHQtaW4gdGV4dCBjaGVja3Mgc3RpbGwgcnVuLgoKVHJ1c3QgYm91bmRhcmllcyAoaGFyZGVuZWQgYWZ0ZXIgdGhlIHYwIGF1ZGl0KToKICAqIGEgbm9uLXplcm8ga2ljYWQtY2xpIGV4aXQgaXMgYSBGQUlMRUQgcnVuIOKAlCBpdHMgb3V0cHV0IGZpbGUgaXMgbm90CiAgICB0cnVzdGVkLCBob3dldmVyIHBsYXVzaWJsZSBpdCBsb29rczsKICAqIHZpb2xhdGlvbnMgYXJlIGNvbGxlY3RlZCBpdGVyYXRpdmVseSAobm8gcmVjdXJzaW9uIGxpbWl0KSwgYQogICAgbWF0Y2hlZCB2aW9sYXRpb24gbm9kZSBpcyBub3QgZGVzY2VuZGVkIGludG8gKGNvbnRhaW5lcnMgYXJlIG5vdAogICAgZG91YmxlLWNvdW50ZWQgYXMgdGhlaXIgb3duIGNoaWxkcmVuKSwgYW5kIGR1cGxpY2F0ZXMgYXJlIHJlbW92ZWQKICAgIG9uIChzZXZlcml0eSwgdHlwZSwgZGVzY3JpcHRpb24sIGl0ZW0gaWRlbnRpdHkpLCBub3Qgd2hvbGUtb2JqZWN0CiAgICBlcXVhbGl0eSDigJQgcmVhbCBFUkMgcmVwb3J0cyBuZXN0IHBlciBzaGVldCwgc28gc2hlZXQvdXVpZCBmaWVsZHMKICAgIGxlZ2l0aW1hdGVseSBkaWZmZXIgYmV0d2VlbiBjb3BpZXMgb2YgdGhlIHNhbWUgdmlvbGF0aW9uOwogICogc2V2ZXJpdGllcyBhcmUgbWFwcGVkIGVycm9yIC0+IEJMT0NLLCB3YXJuaW5nIC0+IENBVVRJT047CiAgICAnZXhjbHVzaW9uJyBlbnRyaWVzICh1c2VyLXN1cHByZXNzZWQpIGFuZCB1bnJlY29nbmlzZWQgc2V2ZXJpdGllcwogICAgYXJlIGNvdW50ZWQgaW4gQ292ZXJhZ2UsIG5ldmVyIHNpbGVudGx5IHR1cm5lZCBpbnRvIGZpbmRpbmdzOwogICogdmlvbGF0aW9ucyBwZXIgam9iIGFyZSBjYXBwZWQgKE1BWF9WSU9MQVRJT05TKSB3aXRoIHRoZSBvdmVyZmxvdwogICAgc3RhdGVkIGluIHRoZSBDb3ZlcmFnZSBzdGF0dXMgbGluZS4KIiIiCgppbXBvcnQganNvbgppbXBvcnQgc2h1dGlsCmltcG9ydCBzdWJwcm9jZXNzCmltcG9ydCB0ZW1wZmlsZQpmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKCmZyb20gLmZpbmRpbmcgaW1wb3J0IEJMT0NLLCBDQVVUSU9OLCBOT1RFLCBGaW5kaW5nCgpUSU1FT1VUX1NFQ09ORFMgPSAxODAKTUFYX1ZJT0xBVElPTlMgPSA1MDAKCgpkZWYgZmluZF9jbGkoKToKICAgIHJldHVybiBzaHV0aWwud2hpY2goImtpY2FkLWNsaSIpCgoKZGVmIF9jb2xsZWN0X3Zpb2xhdGlvbnMocm9vdCk6CiAgICAiIiJJdGVyYXRpdmVseSBjb2xsZWN0IHZpb2xhdGlvbiBkaWN0cyAoYSBkaWN0IHdpdGggJ3NldmVyaXR5JyBwbHVzCiAgICAndHlwZScgb3IgJ2Rlc2NyaXB0aW9uJyk7IGRvIG5vdCBkZXNjZW5kIGludG8gYSBtYXRjaGVkIG5vZGUuIiIiCiAgICBvdXQgPSBbXQogICAgc3RhY2sgPSBbcm9vdF0KICAgIHdoaWxlIHN0YWNrOgogICAgICAgIG5vZGUgPSBzdGFjay5wb3AoKQogICAgICAgIGlmIGlzaW5zdGFuY2Uobm9kZSwgZGljdCk6CiAgICAgICAgICAgIGlmICJzZXZlcml0eSIgaW4gbm9kZSBhbmQgKCJkZXNjcmlwdGlvbiIgaW4gbm9kZQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvciAidHlwZSIgaW4gbm9kZSk6CiAgICAgICAgICAgICAgICBvdXQuYXBwZW5kKG5vZGUpCiAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICBzdGFjay5leHRlbmQobm9kZS52YWx1ZXMoKSkKICAgICAgICBlbGlmIGlzaW5zdGFuY2Uobm9kZSwgbGlzdCk6CiAgICAgICAgICAgIHN0YWNrLmV4dGVuZChub2RlKQogICAgcmV0dXJuIG91dAoKCmRlZiBfZGVkdXBfa2V5KHYpOgogICAgaXRlbXMgPSB2LmdldCgiaXRlbXMiKSBvciB2LmdldCgidmlvbGF0aW9ucyIpIG9yIFtdCiAgICBpZGVudGl0aWVzID0gW10KICAgIGlmIGlzaW5zdGFuY2UoaXRlbXMsIGxpc3QpOgogICAgICAgIGZvciBpdGVtIGluIGl0ZW1zOgogICAgICAgICAgICBpZiBpc2luc3RhbmNlKGl0ZW0sIGRpY3QpOgogICAgICAgICAgICAgICAgaWRlbnRpdGllcy5hcHBlbmQoc3RyKGl0ZW0uZ2V0KCJ1dWlkIikKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvciBpdGVtLmdldCgiZGVzY3JpcHRpb24iKSBvciAiIikpCiAgICByZXR1cm4gKHN0cih2LmdldCgic2V2ZXJpdHkiLCAiIikpLCBzdHIodi5nZXQoInR5cGUiLCAiIikpLAogICAgICAgICAgICBzdHIodi5nZXQoImRlc2NyaXB0aW9uIiwgIiIpKSwgdHVwbGUoc29ydGVkKGlkZW50aXRpZXMpKSkKCgpkZWYgX3J1bl9vbmUoY2xpLCBhcmdzLCBzb3VyY2VfcGF0aCwgb3V0X25hbWUpOgogICAgIiIiUnVuIG9uZSBraWNhZC1jbGkgY2hlY2suIFJldHVybnMgKHZpb2xhdGlvbnMsIHN0YXR1c19saW5lLCBpZ25vcmVkKQogICAgd2hlcmUgdmlvbGF0aW9ucyBpcyBOb25lIHdoZW4gdGhlIHJ1biBkaWQgbm90IHByb2R1Y2UgdHJ1c3R3b3J0aHkKICAgIG91dHB1dC4iIiIKICAgIHdpdGggdGVtcGZpbGUuVGVtcG9yYXJ5RGlyZWN0b3J5KCkgYXMgdG1wOgogICAgICAgIG91dF9wYXRoID0gUGF0aCh0bXApIC8gb3V0X25hbWUKICAgICAgICBjbWQgPSBbY2xpXSArIGFyZ3MgKyBbIi0tZm9ybWF0IiwgImpzb24iLCAiLS1vdXRwdXQiLCBzdHIob3V0X3BhdGgpLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHIoc291cmNlX3BhdGgpXQogICAgICAgIHRyeToKICAgICAgICAgICAgcHJvYyA9IHN1YnByb2Nlc3MucnVuKGNtZCwgY2FwdHVyZV9vdXRwdXQ9VHJ1ZSwgdGV4dD1UcnVlLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGltZW91dD1USU1FT1VUX1NFQ09ORFMpCiAgICAgICAgZXhjZXB0IChPU0Vycm9yLCBzdWJwcm9jZXNzLlRpbWVvdXRFeHBpcmVkKSBhcyBleGM6CiAgICAgICAgICAgIHJldHVybiBOb25lLCBmInNraXBwZWQg4oCUIGtpY2FkLWNsaSBydW4gZmFpbGVkICh7ZXhjfSkiLCAwCiAgICAgICAgaWYgcHJvYy5yZXR1cm5jb2RlICE9IDA6CiAgICAgICAgICAgIHJldHVybiBOb25lLCAoZiJza2lwcGVkIOKAlCBraWNhZC1jbGkgZXhpdGVkICIKICAgICAgICAgICAgICAgICAgICAgICAgICBmIntwcm9jLnJldHVybmNvZGV9OyBpdHMgb3V0cHV0IHdhcyBub3QgIgogICAgICAgICAgICAgICAgICAgICAgICAgICJ0cnVzdGVkIiksIDAKICAgICAgICBpZiBub3Qgb3V0X3BhdGguaXNfZmlsZSgpOgogICAgICAgICAgICByZXR1cm4gTm9uZSwgInNraXBwZWQg4oCUIGtpY2FkLWNsaSBwcm9kdWNlZCBubyByZXBvcnQiLCAwCiAgICAgICAgdHJ5OgogICAgICAgICAgICBkYXRhID0ganNvbi5sb2FkcyhvdXRfcGF0aC5yZWFkX3RleHQoZW5jb2Rpbmc9InV0Zi04IiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVycm9ycz0icmVwbGFjZSIpKQogICAgICAgIGV4Y2VwdCBWYWx1ZUVycm9yOgogICAgICAgICAgICByZXR1cm4gTm9uZSwgInNraXBwZWQg4oCUIGtpY2FkLWNsaSByZXBvcnQgd2FzIG5vdCB2YWxpZCBKU09OIiwgMAogICAgICAgIHZpb2xhdGlvbnMgPSBfY29sbGVjdF92aW9sYXRpb25zKGRhdGEpCiAgICAgICAgc2VlbiwgdW5pcXVlID0gc2V0KCksIFtdCiAgICAgICAgZm9yIHYgaW4gdmlvbGF0aW9uczoKICAgICAgICAgICAga2V5ID0gX2RlZHVwX2tleSh2KQogICAgICAgICAgICBpZiBrZXkgbm90IGluIHNlZW46CiAgICAgICAgICAgICAgICBzZWVuLmFkZChrZXkpCiAgICAgICAgICAgICAgICB1bmlxdWUuYXBwZW5kKHYpCiAgICAgICAgcmV0dXJuIHVuaXF1ZSwgZiJyYW4g4oCUIHtsZW4odW5pcXVlKX0gdmlvbGF0aW9uKHMpIiwgMAoKCmRlZiBydW5fb2ZmaWNpYWxfY2hlY2tzKHByb2plY3QpOgogICAgIiIiUmV0dXJucyAoZmluZGluZ3MsIGNvdmVyYWdlKSB3aGVyZSBjb3ZlcmFnZSBkZXNjcmliZXMgd2hhdCByYW4uIiIiCiAgICBjb3ZlcmFnZSA9IHsiYXZhaWxhYmxlIjogRmFsc2UsICJlcmMiOiAic2tpcHBlZCDigJQga2ljYWQtY2xpIG5vdCBmb3VuZCIsCiAgICAgICAgICAgICAgICAiZHJjIjogInNraXBwZWQg4oCUIGtpY2FkLWNsaSBub3QgZm91bmQiLCAiZmFpbGVkIjogRmFsc2V9CiAgICBjbGkgPSBmaW5kX2NsaSgpCiAgICBpZiBjbGkgaXMgTm9uZToKICAgICAgICByZXR1cm4gW10sIGNvdmVyYWdlCiAgICBjb3ZlcmFnZVsiYXZhaWxhYmxlIl0gPSBUcnVlCiAgICBjb3ZlcmFnZVsicGF0aCJdID0gY2xpCiAgICBmaW5kaW5ncyA9IFtdCgogICAgam9icyA9IFtdCiAgICBpZiBwcm9qZWN0LnNjaF9wYXRoIGlzIG5vdCBOb25lOgogICAgICAgIGpvYnMuYXBwZW5kKCgiZXJjIiwgWyJzY2giLCAiZXJjIl0sIHByb2plY3Quc2NoX3BhdGgsCiAgICAgICAgICAgICAgICAgICAgICJLSUNBRF9FUkNfVklPTEFUSU9OIikpCiAgICBpZiBwcm9qZWN0LnBjYl9wYXRoIGlzIG5vdCBOb25lOgogICAgICAgIGpvYnMuYXBwZW5kKCgiZHJjIiwgWyJwY2IiLCAiZHJjIl0sIHByb2plY3QucGNiX3BhdGgsCiAgICAgICAgICAgICAgICAgICAgICJLSUNBRF9EUkNfVklPTEFUSU9OIikpCiAgICBmb3Iga2V5LCBhcmdzLCBzb3VyY2UsIHJ1bGUgaW4gam9iczoKICAgICAgICB2aW9sYXRpb25zLCBzdGF0dXMsIF8gPSBfcnVuX29uZShjbGksIGFyZ3MsIHNvdXJjZSwgZiJ7a2V5fS5qc29uIikKICAgICAgICBpZiB2aW9sYXRpb25zIGlzIE5vbmU6CiAgICAgICAgICAgIGNvdmVyYWdlWyJmYWlsZWQiXSA9IFRydWUKICAgICAgICAgICAgY292ZXJhZ2Vba2V5XSA9IHN0YXR1cwogICAgICAgICAgICBjb250aW51ZQogICAgICAgIGlnbm9yZWQgPSAwCiAgICAgICAgc2hvd24gPSB2aW9sYXRpb25zWzpNQVhfVklPTEFUSU9OU10KICAgICAgICBpZiBsZW4odmlvbGF0aW9ucykgPiBNQVhfVklPTEFUSU9OUzoKICAgICAgICAgICAgc3RhdHVzICs9IChmIiAoc2hvd2luZyBmaXJzdCB7TUFYX1ZJT0xBVElPTlN9OyAiCiAgICAgICAgICAgICAgICAgICAgICAgZiJ7bGVuKHZpb2xhdGlvbnMpIC0gTUFYX1ZJT0xBVElPTlN9IG1vcmUgbm90ICIKICAgICAgICAgICAgICAgICAgICAgICAibGlzdGVkKSIpCiAgICAgICAgZm9yIHYgaW4gc2hvd246CiAgICAgICAgICAgIHNldmVyaXR5X3JhdyA9IHN0cih2LmdldCgic2V2ZXJpdHkiLCAiIikpLmxvd2VyKCkKICAgICAgICAgICAgaWYgc2V2ZXJpdHlfcmF3ID09ICJlcnJvciI6CiAgICAgICAgICAgICAgICBzZXZlcml0eSA9IEJMT0NLCiAgICAgICAgICAgIGVsaWYgc2V2ZXJpdHlfcmF3ID09ICJ3YXJuaW5nIjoKICAgICAgICAgICAgICAgIHNldmVyaXR5ID0gQ0FVVElPTgogICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgIyAnZXhjbHVzaW9uJyAodXNlci1zdXBwcmVzc2VkKSBvciB1bnJlY29nbmlzZWQ6IGNvdW50ZWQsCiAgICAgICAgICAgICAgICAjIG5ldmVyIHNpbGVudGx5IG1hcHBlZCB0byBhIGZpbmRpbmcuCiAgICAgICAgICAgICAgICBpZ25vcmVkICs9IDEKICAgICAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgICAgIG1lc3NhZ2UgPSB2LmdldCgiZGVzY3JpcHRpb24iKSBvciB2LmdldCgidHlwZSIpIG9yICJ2aW9sYXRpb24iCiAgICAgICAgICAgIHZ0eXBlID0gdi5nZXQoInR5cGUiLCAiIikKICAgICAgICAgICAgZmluZGluZ3MuYXBwZW5kKEZpbmRpbmcoCiAgICAgICAgICAgICAgICBydWxlLCBzZXZlcml0eSwKICAgICAgICAgICAgICAgIGYiT2ZmaWNpYWwgeydFUkMnIGlmIGtleSA9PSAnZXJjJyBlbHNlICdEUkMnfSAiCiAgICAgICAgICAgICAgICBmIih7dnR5cGV9KToge21lc3NhZ2V9IiBpZiB2dHlwZSBlbHNlCiAgICAgICAgICAgICAgICBmIk9mZmljaWFsIHsnRVJDJyBpZiBrZXkgPT0gJ2VyYycgZWxzZSAnRFJDJ306IHttZXNzYWdlfSIsCiAgICAgICAgICAgICAgICB3aGVyZT1zb3VyY2UubmFtZSwKICAgICAgICAgICAgICAgIGV2aWRlbmNlPWYic2V2ZXJpdHk9e3NldmVyaXR5X3JhdyBvciAndW5rbm93bid9IikpCiAgICAgICAgaWYgaWdub3JlZDoKICAgICAgICAgICAgc3RhdHVzICs9IChmIjsge2lnbm9yZWR9IGV4Y2x1c2lvbi91bnJlY29nbmlzZWQtc2V2ZXJpdHkgIgogICAgICAgICAgICAgICAgICAgICAgICJlbnRyKGllcykgbm90IGNvdW50ZWQgYXMgZmluZGluZ3MiKQogICAgICAgIGNvdmVyYWdlW2tleV0gPSBzdGF0dXMKICAgIHJldHVybiBmaW5kaW5ncywgY292ZXJhZ2UK
+"""Optional integration with KiCad's official `kicad-cli` tool.
+
+When kicad-cli is on PATH, Preflight runs the official design-rule check
+(DRC) on the PCB and electrical-rule check (ERC) on the schematic, and
+folds their violations into the report. When it is not installed, the
+official checks are recorded as SKIPPED in the report's Coverage section —
+never silently pretended, and the built-in text checks still run.
+
+Trust boundaries (hardened after the v0 audit):
+  * a non-zero kicad-cli exit is a FAILED run — its output file is not
+    trusted, however plausible it looks;
+  * violations are collected iteratively (no recursion limit), a
+    matched violation node is not descended into (containers are not
+    double-counted as their own children), and duplicates are removed
+    on (severity, type, description, item identity), not whole-object
+    equality — real ERC reports nest per sheet, so sheet/uuid fields
+    legitimately differ between copies of the same violation;
+  * severities are mapped error -> BLOCK, warning -> CAUTION;
+    'exclusion' entries (user-suppressed) and unrecognised severities
+    are counted in Coverage, never silently turned into findings;
+  * violations per job are capped (MAX_VIOLATIONS) with the overflow
+    stated in the Coverage status line.
+"""
+
+import json
+import shutil
+import subprocess
+import tempfile
+from pathlib import Path
+
+from .finding import BLOCK, CAUTION, NOTE, Finding
+
+TIMEOUT_SECONDS = 180
+MAX_VIOLATIONS = 500
+
+
+def find_cli():
+    return shutil.which("kicad-cli")
+
+
+def _collect_violations(root):
+    """Iteratively collect violation dicts (a dict with 'severity' plus
+    'type' or 'description'); do not descend into a matched node."""
+    out = []
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        if isinstance(node, dict):
+            if "severity" in node and ("description" in node
+                                       or "type" in node):
+                out.append(node)
+                continue
+            stack.extend(node.values())
+        elif isinstance(node, list):
+            stack.extend(node)
+    return out
+
+
+def _dedup_key(v):
+    items = v.get("items") or v.get("violations") or []
+    identities = []
+    if isinstance(items, list):
+        for item in items:
+            if isinstance(item, dict):
+                identities.append(str(item.get("uuid")
+                                      or item.get("description") or ""))
+    return (str(v.get("severity", "")), str(v.get("type", "")),
+            str(v.get("description", "")), tuple(sorted(identities)))
+
+
+def _run_one(cli, args, source_path, out_name):
+    """Run one kicad-cli check. Returns (violations, status_line, ignored)
+    where violations is None when the run did not produce trustworthy
+    output."""
+    with tempfile.TemporaryDirectory() as tmp:
+        out_path = Path(tmp) / out_name
+        cmd = [cli] + args + ["--format", "json", "--output", str(out_path),
+                              str(source_path)]
+        try:
+            proc = subprocess.run(cmd, capture_output=True, text=True,
+                                  timeout=TIMEOUT_SECONDS)
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            return None, f"skipped — kicad-cli run failed ({exc})", 0
+        if proc.returncode != 0:
+            return None, (f"skipped — kicad-cli exited "
+                          f"{proc.returncode}; its output was not "
+                          "trusted"), 0
+        if not out_path.is_file():
+            return None, "skipped — kicad-cli produced no report", 0
+        try:
+            data = json.loads(out_path.read_text(encoding="utf-8",
+                                                 errors="replace"))
+        except ValueError:
+            return None, "skipped — kicad-cli report was not valid JSON", 0
+        violations = _collect_violations(data)
+        seen, unique = set(), []
+        for v in violations:
+            key = _dedup_key(v)
+            if key not in seen:
+                seen.add(key)
+                unique.append(v)
+        return unique, f"ran — {len(unique)} violation(s)", 0
+
+
+def run_official_checks(project):
+    """Returns (findings, coverage) where coverage describes what ran."""
+    coverage = {"available": False, "erc": "skipped — kicad-cli not found",
+                "drc": "skipped — kicad-cli not found", "failed": False}
+    cli = find_cli()
+    if cli is None:
+        return [], coverage
+    coverage["available"] = True
+    coverage["path"] = cli
+    findings = []
+
+    jobs = []
+    if project.sch_path is not None:
+        jobs.append(("erc", ["sch", "erc"], project.sch_path,
+                     "KICAD_ERC_VIOLATION"))
+    if project.pcb_path is not None:
+        jobs.append(("drc", ["pcb", "drc"], project.pcb_path,
+                     "KICAD_DRC_VIOLATION"))
+    for key, args, source, rule in jobs:
+        violations, status, _ = _run_one(cli, args, source, f"{key}.json")
+        if violations is None:
+            coverage["failed"] = True
+            coverage[key] = status
+            continue
+        ignored = 0
+        shown = violations[:MAX_VIOLATIONS]
+        if len(violations) > MAX_VIOLATIONS:
+            status += (f" (showing first {MAX_VIOLATIONS}; "
+                       f"{len(violations) - MAX_VIOLATIONS} more not "
+                       "listed)")
+        for v in shown:
+            severity_raw = str(v.get("severity", "")).lower()
+            if severity_raw == "error":
+                severity = BLOCK
+            elif severity_raw == "warning":
+                severity = CAUTION
+            else:
+                # 'exclusion' (user-suppressed) or unrecognised: counted,
+                # never silently mapped to a finding.
+                ignored += 1
+                continue
+            message = v.get("description") or v.get("type") or "violation"
+            vtype = v.get("type", "")
+            findings.append(Finding(
+                rule, severity,
+                f"Official {'ERC' if key == 'erc' else 'DRC'} "
+                f"({vtype}): {message}" if vtype else
+                f"Official {'ERC' if key == 'erc' else 'DRC'}: {message}",
+                where=source.name,
+                evidence=f"severity={severity_raw or 'unknown'}"))
+        if ignored:
+            status += (f"; {ignored} exclusion/unrecognised-severity "
+                       "entr(ies) not counted as findings")
+        coverage[key] = status
+    return findings, coverage

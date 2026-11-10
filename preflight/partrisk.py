@@ -1,1 +1,206 @@
-IiIiT2ZmbGluZSBwYXJ0LXJpc2sgY2hlY2tzIGFnYWluc3QgYSBidW5kbGVkIFNBTVBMRSBkaXN0cmlidXRvciBkYXRhc2V0LgoKVGhlIGRhdGFzZXQgKHByZWZsaWdodC9kYXRhL3BhcnRzLmpzb24pIGlzIGEgc21hbGwsIGhhbmQtYXV0aG9yZWQgc25hcHNob3QKc2hpcHBlZCB3aXRoIHRoZSB0b29sIHNvIHRoZSBzcGlrZSB3b3JrcyB3aXRoIG5vIG5ldHdvcmsgYW5kIG5vIEFQSQprZXlzLiBJdHMgdmFsdWVzIGFyZSBpbGx1c3RyYXRpdmUg4oCUIGV2ZXJ5IGZpbmRpbmcgY2l0ZXMgdGhlIGRhdGFzZXQgbmFtZQphbmQgc25hcHNob3QgZGF0ZSwgYW5kIHRoZSBSRUFETUUgc2F5cyBwbGFpbmx5IHRoYXQgdGhpcyBpcyBub3QgbGl2ZQpkaXN0cmlidXRvciBkYXRhLiBBIGxpdmUtZGF0YSBzb3VyY2UgaXMgYSBsYXRlciB2ZXJzaW9uJ3Mgam9iLgoKRGF0YXNldCBoYW5kbGluZyBpcyBkZWZlbnNpdmU6IHRoZSBmaWxlIGlzIHNjaGVtYS12YWxpZGF0ZWQgYXQgbG9hZAooRGF0YXNldEVycm9yIC0+IHVzYWdlIGVycm9yLCBleGl0IDMsIG5ldmVyIGEgdHJhY2ViYWNrKSwgbnVtYmVycyB0aGF0CmFycml2ZSBhcyBzdHJpbmdzL2Zsb2F0cyAoIjAiLCAwLjAg4oCUIGFzIHJlYWwgZGlzdHJpYnV0b3IgZXhwb3J0cwpwcm9kdWNlKSBhcmUgY29lcmNlZCBleHBsaWNpdGx5LCBhbiBNUE4gcHJlc2VudCB3aXRoIGFuIHVudXNhYmxlIGVudHJ5CmlzIHJlcG9ydGVkIGFzIHN1Y2ggKG5vdCBtYXNxdWVyYWRlZCBhcyAibm90IGluIGRhdGFzZXQiKSwgYW5kIE1QTgpsb29rdXAgZmFsbHMgYmFjayB0byBhIGNhc2UtaW5zZW5zaXRpdmUgbWF0Y2ggdGhhdCBpcyBkaXNjbG9zZWQgaW4gdGhlCmZpbmRpbmcncyBldmlkZW5jZS4KIiIiCgppbXBvcnQganNvbgpmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKCmZyb20gLmZpbmRpbmcgaW1wb3J0IEJMT0NLLCBDQVVUSU9OLCBOT1RFLCBGaW5kaW5nCgpMT1dfU1RPQ0tfVEhSRVNIT0xEID0gNTAgICAgICAjIGZld2VyIHBpZWNlcyB0aGFuIHRoaXMgY291bnRzIGFzICJsb3ciCkxPTkdfTEVBRF9XRUVLUyA9IDE2ICAgICAgICAgICMgbG9uZ2VyIGxlYWQgdGltZSB0aGFuIHRoaXMgZ2V0cyBmbGFnZ2VkCgpERUZBVUxUX0RBVEFTRVQgPSBQYXRoKF9fZmlsZV9fKS5wYXJlbnQgLyAiZGF0YSIgLyAicGFydHMuanNvbiIKCl9PQlNPTEVURV9TVEFUVVNFUyA9IHsib2Jzb2xldGUiLCAiZW9sIiwgImVuZCBvZiBsaWZlIiwgImRpc2NvbnRpbnVlZCIsCiAgICAgICAgICAgICAgICAgICAgICAibGFzdCB0aW1lIGJ1eSIsICJsdGIifQpfTlJORF9TVEFUVVNFUyA9IHsibnJuZCIsICJub3QgcmVjb21tZW5kZWQgZm9yIG5ldyBkZXNpZ25zIiwKICAgICAgICAgICAgICAgICAgIm5vdCByZWNvbW1lbmRlZCJ9CgoKY2xhc3MgRGF0YXNldEVycm9yKFZhbHVlRXJyb3IpOgogICAgIiIiVGhlIHBhcnQtcmlzayBkYXRhc2V0IGlzIG1pc3NpbmcsIHVucmVhZGFibGUsIG9yIHdyb25nbHkgc2hhcGVkLiIiIgoKCmRlZiBfYXNfaW50KHZhbHVlKToKICAgICIiIkNvZXJjZSBhIGRhdGFzZXQgbnVtYmVyIChpbnQgLyBpbnRlZ3JhbCBmbG9hdCAvIGRpZ2l0IHN0cmluZykgdG8KICAgIGludDsgYW55dGhpbmcgZWxzZSAoaW5jbC4gYm9vbCwgTm9uZSwganVuaykgLT4gTm9uZS4iIiIKICAgIGlmIGlzaW5zdGFuY2UodmFsdWUsIGJvb2wpOgogICAgICAgIHJldHVybiBOb25lCiAgICBpZiBpc2luc3RhbmNlKHZhbHVlLCBpbnQpOgogICAgICAgIHJldHVybiB2YWx1ZQogICAgaWYgaXNpbnN0YW5jZSh2YWx1ZSwgZmxvYXQpOgogICAgICAgIHJldHVybiBpbnQodmFsdWUpIGlmIHZhbHVlLmlzX2ludGVnZXIoKSBlbHNlIE5vbmUKICAgIGlmIGlzaW5zdGFuY2UodmFsdWUsIHN0cik6CiAgICAgICAgdGV4dCA9IHZhbHVlLnN0cmlwKCkucmVwbGFjZSgiLCIsICIiKQogICAgICAgIHRyeToKICAgICAgICAgICAgcmV0dXJuIGludCh0ZXh0KQogICAgICAgIGV4Y2VwdCBWYWx1ZUVycm9yOgogICAgICAgICAgICB0cnk6CiAgICAgICAgICAgICAgICBudW0gPSBmbG9hdCh0ZXh0KQogICAgICAgICAgICBleGNlcHQgVmFsdWVFcnJvcjoKICAgICAgICAgICAgICAgIHJldHVybiBOb25lCiAgICAgICAgICAgIHJldHVybiBpbnQobnVtKSBpZiBudW0uaXNfaW50ZWdlcigpIGVsc2UgTm9uZQogICAgcmV0dXJuIE5vbmUKCgpkZWYgbG9hZF9kYXRhc2V0KHBhdGg9Tm9uZSk6CiAgICAiIiJSZXR1cm4gKG1ldGEsIHBhcnRzKSB3aGVyZSBwYXJ0cyBtYXBzIE1QTiAtPiBpbmZvIGRpY3QuCgogICAgUmFpc2VzIERhdGFzZXRFcnJvciB3aXRoIGEgdXNlci1yZWFkYWJsZSBtZXNzYWdlIG9uIGFueSBwcm9ibGVtIOKAlAogICAgY2FsbGVycyB0dXJuIHRoYXQgaW50byBhIGNsZWFuIHVzYWdlIGVycm9yIChleGl0IDMpLgogICAgIiIiCiAgICBwYXRoID0gUGF0aChwYXRoKSBpZiBwYXRoIGVsc2UgREVGQVVMVF9EQVRBU0VUCiAgICB0cnk6CiAgICAgICAgcmF3ID0gcGF0aC5yZWFkX3RleHQoZW5jb2Rpbmc9InV0Zi04IikKICAgIGV4Y2VwdCBPU0Vycm9yIGFzIGV4YzoKICAgICAgICByYWlzZSBEYXRhc2V0RXJyb3IoZiJjYW5ub3QgcmVhZCBwYXJ0LXJpc2sgZGF0YXNldCAiCiAgICAgICAgICAgICAgICAgICAgICAgICAgIGYie3BhdGh9OiB7ZXhjfSIpIGZyb20gZXhjCiAgICB0cnk6CiAgICAgICAgZGF0YSA9IGpzb24ubG9hZHMocmF3KQogICAgZXhjZXB0IFZhbHVlRXJyb3IgYXMgZXhjOgogICAgICAgIHJhaXNlIERhdGFzZXRFcnJvcihmInBhcnQtcmlzayBkYXRhc2V0IHtwYXRofSBpcyBub3QgdmFsaWQgIgogICAgICAgICAgICAgICAgICAgICAgICAgICBmIkpTT046IHtleGN9IikgZnJvbSBleGMKICAgIGlmIG5vdCBpc2luc3RhbmNlKGRhdGEsIGRpY3QpOgogICAgICAgIHJhaXNlIERhdGFzZXRFcnJvcihmInBhcnQtcmlzayBkYXRhc2V0IHtwYXRofSBtdXN0IGJlIGEgSlNPTiAiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICJvYmplY3Qgd2l0aCBhICdwYXJ0cycgb2JqZWN0IikKICAgIHBhcnRzID0gZGF0YS5nZXQoInBhcnRzIiwge30pCiAgICBpZiBub3QgaXNpbnN0YW5jZShwYXJ0cywgZGljdCk6CiAgICAgICAgcmFpc2UgRGF0YXNldEVycm9yKGYicGFydC1yaXNrIGRhdGFzZXQge3BhdGh9OiAncGFydHMnIG11c3QgIgogICAgICAgICAgICAgICAgICAgICAgICAgICAiYmUgYW4gb2JqZWN0IG1hcHBpbmcgTVBOIC0+IHBhcnQgaW5mbyIpCiAgICBmb3IgbXBuLCBpbmZvIGluIHBhcnRzLml0ZW1zKCk6CiAgICAgICAgaWYgaW5mbyBpcyBub3QgTm9uZSBhbmQgbm90IGlzaW5zdGFuY2UoaW5mbywgZGljdCk6CiAgICAgICAgICAgIHJhaXNlIERhdGFzZXRFcnJvcihmInBhcnQtcmlzayBkYXRhc2V0IHtwYXRofTogZW50cnkgZm9yICIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGYie21wbiFyfSBtdXN0IGJlIGFuIG9iamVjdCBvciBudWxsIikKICAgIHJldHVybiBkYXRhLCBwYXJ0cwoKCmRlZiBfY2l0ZShtZXRhKToKICAgIHJldHVybiAoZiJ7bWV0YS5nZXQoJ25hbWUnLCAnc2FtcGxlIGRhdGFzZXQnKX0gIgogICAgICAgICAgICBmIihzbmFwc2hvdCB7bWV0YS5nZXQoJ3NuYXBzaG90X2RhdGUnLCAndW5rbm93bicpfSkiKQoKCmRlZiBydW5fcGFydF9yaXNrX2NoZWNrcyhwcm9qZWN0LCBtZXRhLCBwYXJ0cyk6CiAgICAiIiJDaGVjayBlYWNoIHVuaXF1ZSBCT00gTVBOIG9uY2UsIGFnZ3JlZ2F0aW5nIGV2ZXJ5IHJvdyB0aGF0IHVzZXMKICAgIGl0LiBSZXR1cm5zIChmaW5kaW5ncywgc3RhdHMpLiIiIgogICAgZmluZGluZ3MgPSBbXQogICAgYm9tX25hbWUgPSBwcm9qZWN0LmJvbV9wYXRoLm5hbWUgaWYgcHJvamVjdC5ib21fcGF0aCBlbHNlICJCT00iCiAgICBieV9tcG4gPSB7fQogICAgZm9yIHJvdyBpbiBwcm9qZWN0LmJvbV9yb3dzOgogICAgICAgIGlmIHJvdy5tcG46CiAgICAgICAgICAgIGJ5X21wbi5zZXRkZWZhdWx0KHJvdy5tcG4sIFtdKS5hcHBlbmQocm93KQogICAgbG93ZXJfbWFwID0ge30KICAgIGZvciBrZXkgaW4gcGFydHM6CiAgICAgICAgbG93ZXJfbWFwLnNldGRlZmF1bHQoa2V5Lmxvd2VyKCksIGtleSkKICAgIHN0YXRzID0geyJtcG5zX2NoZWNrZWQiOiBsZW4oYnlfbXBuKSwgIm1wbnNfZm91bmQiOiAwLAogICAgICAgICAgICAgImRhdGFzZXRfZW50cmllc19pbnZhbGlkIjogMH0KCiAgICBmb3IgbXBuIGluIHNvcnRlZChieV9tcG4pOgogICAgICAgIHJvd3MgPSBieV9tcG5bbXBuXQogICAgICAgIGZpcnN0ID0gcm93c1swXQogICAgICAgIHdoZXJlID0gZiJ7Ym9tX25hbWV9IGxpbmUge2ZpcnN0LmxpbmVfbm99IMK3IHttcG59IgogICAgICAgIGFsbF9yZWZzID0gW3IgZm9yIHJvdyBpbiByb3dzIGZvciByIGluIHJvdy5yZWZzXQogICAgICAgIHJlZnMgPSAiLCAiLmpvaW4oYWxsX3JlZnMpIG9yICI/IgogICAgICAgIGV4dHJhX2xpbmVzID0gIiwgIi5qb2luKGYibGluZSB7ci5saW5lX25vfSIgZm9yIHIgaW4gcm93c1sxOl0pCiAgICAgICAgdXNhZ2UgPSBmInttcG59ICh7cmVmc30pIiArICgKICAgICAgICAgICAgZiIg4oCUIGFsc28gdXNlZCBvbiB7ZXh0cmFfbGluZXN9IiBpZiBleHRyYV9saW5lcyBlbHNlICIiKQoKICAgICAgICBpbmZvID0gcGFydHMuZ2V0KG1wbikKICAgICAgICBtYXRjaGVkX2Nhc2UgPSAiIgogICAgICAgIGNhbm9uaWNhbCA9IG1wbgogICAgICAgIGlmIGluZm8gaXMgTm9uZSBhbmQgbXBuIG5vdCBpbiBwYXJ0czoKICAgICAgICAgICAgY2Fub25pY2FsID0gbG93ZXJfbWFwLmdldChtcG4ubG93ZXIoKSwgbXBuKQogICAgICAgICAgICBpZiBjYW5vbmljYWwgIT0gbXBuOgogICAgICAgICAgICAgICAgaW5mbyA9IHBhcnRzW2Nhbm9uaWNhbF0KICAgICAgICAgICAgICAgIG1hdGNoZWRfY2FzZSA9IChmIm1hdGNoZWQgZGF0YXNldCBlbnRyeSAne2Nhbm9uaWNhbH0nICIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY2FzZS1pbnNlbnNpdGl2ZWx5IOKAlCBmaXggdGhlIEJPTSdzICIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY2FwaXRhbGlzYXRpb24iKQogICAgICAgIGlmIGNhbm9uaWNhbCBpbiBwYXJ0cyBhbmQgcGFydHNbY2Fub25pY2FsXSBpcyBOb25lOgogICAgICAgICAgICBzdGF0c1siZGF0YXNldF9lbnRyaWVzX2ludmFsaWQiXSArPSAxCiAgICAgICAgICAgIGZpbmRpbmdzLmFwcGVuZChGaW5kaW5nKAogICAgICAgICAgICAgICAgIlBBUlRfREFUQVNFVF9FTlRSWV9JTlZBTElEIiwgTk9URSwKICAgICAgICAgICAgICAgIGYie21wbn0gKHtyZWZzfSkgaXMgcHJlc2VudCBpbiB0aGUge19jaXRlKG1ldGEpfSBidXQgIgogICAgICAgICAgICAgICAgIml0cyBlbnRyeSBpcyBlbXB0eS91bnVzYWJsZSwgc28gaXRzIHJpc2sgY291bGQgbm90IGJlICIKICAgICAgICAgICAgICAgICJjaGVja2VkLiBUaGUgZGF0YXNldCBuZWVkcyBmaXhpbmcsIG5vdCB0aGUgYm9hcmQuIiwKICAgICAgICAgICAgICAgIHdoZXJlPXdoZXJlKSkKICAgICAgICAgICAgY29udGludWUKICAgICAgICBpZiBpbmZvIGlzIE5vbmU6CiAgICAgICAgICAgIGZpbmRpbmdzLmFwcGVuZChGaW5kaW5nKAogICAgICAgICAgICAgICAgIlBBUlRfTk9UX0lOX1NBTVBMRV9EQVRBIiwgTk9URSwKICAgICAgICAgICAgICAgIGYie21wbn0gKHtyZWZzfSkgaXMgbm90IGluIHRoZSB7X2NpdGUobWV0YSl9LCBzbyBpdHMgIgogICAgICAgICAgICAgICAgImxpZmVjeWNsZS9zdG9jayByaXNrIGNvdWxkIG5vdCBiZSBjaGVja2VkLiBBYnNlbmNlICIKICAgICAgICAgICAgICAgICJmcm9tIHRoZSBzYW1wbGUgZGF0YSBzYXlzIG5vdGhpbmcgYWJvdXQgdGhlIHBhcnQgIgogICAgICAgICAgICAgICAgIml0c2VsZi4iLAogICAgICAgICAgICAgICAgd2hlcmU9d2hlcmUpKQogICAgICAgICAgICBjb250aW51ZQogICAgICAgIHN0YXRzWyJtcG5zX2ZvdW5kIl0gKz0gMQogICAgICAgIHN0YXR1cyA9IHN0cihpbmZvLmdldCgic3RhdHVzIiwgIiIpKS5zdHJpcCgpLmxvd2VyKCkKICAgICAgICBzdG9jayA9IF9hc19pbnQoaW5mby5nZXQoInN0b2NrIikpCiAgICAgICAgc291cmNlcyA9IF9hc19pbnQoaW5mby5nZXQoInNvdXJjZXMiKSkKICAgICAgICBsZWFkID0gX2FzX2ludChpbmZvLmdldCgibGVhZF90aW1lX3dlZWtzIikpCiAgICAgICAgb2Jzb2xldGUgPSBzdGF0dXMgaW4gX09CU09MRVRFX1NUQVRVU0VTCiAgICAgICAgZXYgPSBtYXRjaGVkX2Nhc2UKCiAgICAgICAgaWYgb2Jzb2xldGU6CiAgICAgICAgICAgIGZpbmRpbmdzLmFwcGVuZChGaW5kaW5nKAogICAgICAgICAgICAgICAgIlBBUlRfT0JTT0xFVEUiLCBCTE9DSywKICAgICAgICAgICAgICAgIGYie3VzYWdlfSBpcyBtYXJrZWQgJ3tpbmZvLmdldCgnc3RhdHVzJyl9JyBpbiB0aGUgIgogICAgICAgICAgICAgICAgZiJ7X2NpdGUobWV0YSl9LiBBbiBvYnNvbGV0ZSBwYXJ0IGNhbiB2YW5pc2ggZnJvbSBzdG9jayAiCiAgICAgICAgICAgICAgICAiYmVmb3JlIHlvdXIgbmV4dCBvcmRlciDigJQgcGljayBhIGN1cnJlbnQgcmVwbGFjZW1lbnQgIgogICAgICAgICAgICAgICAgIm5vdywgd2hpbGUgY2hhbmdpbmcgaXQgaXMgY2hlYXAuIiwKICAgICAgICAgICAgICAgIHdoZXJlPXdoZXJlLAogICAgICAgICAgICAgICAgZXZpZGVuY2U9ZiJzdGF0dXM9e2luZm8uZ2V0KCdzdGF0dXMnKX0iCiAgICAgICAgICAgICAgICAgICAgICAgICArIChmIjsge2V2fSIgaWYgZXYgZWxzZSAiIikpKQogICAgICAgIGVsaWYgc3RhdHVzIGluIF9OUk5EX1NUQVRVU0VTOgogICAgICAgICAgICBmaW5kaW5ncy5hcHBlbmQoRmluZGluZygKICAgICAgICAgICAgICAgICJQQVJUX05PVF9SRUNPTU1FTkRFRCIsIENBVVRJT04sCiAgICAgICAgICAgICAgICBmInt1c2FnZX0gaXMgJ25vdCByZWNvbW1lbmRlZCBmb3IgbmV3IGRlc2lnbnMnIGluIHRoZSAiCiAgICAgICAgICAgICAgICBmIntfY2l0ZShtZXRhKX0uIEZpbmUgZm9yIGEgb25lLW9mZiBidWlsZCwgYSBwb29yICIKICAgICAgICAgICAgICAgICJjaG9pY2UgaWYgeW91IHBsYW4gdG8gb3JkZXIgdGhpcyBib2FyZCBhZ2Fpbi4iLAogICAgICAgICAgICAgICAgd2hlcmU9d2hlcmUsCiAgICAgICAgICAgICAgICBldmlkZW5jZT1mInN0YXR1cz17aW5mby5nZXQoJ3N0YXR1cycpfSIKICAgICAgICAgICAgICAgICAgICAgICAgICsgKGYiOyB7ZXZ9IiBpZiBldiBlbHNlICIiKSkpCiAgICAgICAgaWYgbm90IG9ic29sZXRlOgogICAgICAgICAgICBpZiBzdG9jayA9PSAwOgogICAgICAgICAgICAgICAgZmluZGluZ3MuYXBwZW5kKEZpbmRpbmcoCiAgICAgICAgICAgICAgICAgICAgIlBBUlRfT1VUX09GX1NUT0NLIiwgQkxPQ0ssCiAgICAgICAgICAgICAgICAgICAgZiJ7dXNhZ2V9IHNob3dzIDAgaW4gc3RvY2sgaW4gdGhlIHtfY2l0ZShtZXRhKX0uICIKICAgICAgICAgICAgICAgICAgICAiWW91IGNhbm5vdCBvcmRlciB0aGlzIHBhcnQgdG9kYXkuIiwKICAgICAgICAgICAgICAgICAgICB3aGVyZT13aGVyZSwgZXZpZGVuY2U9InN0b2NrPTAiKSkKICAgICAgICAgICAgZWxpZiBzdG9jayBpcyBub3QgTm9uZSBhbmQgMCA8IHN0b2NrIDwgTE9XX1NUT0NLX1RIUkVTSE9MRDoKICAgICAgICAgICAgICAgIGZpbmRpbmdzLmFwcGVuZChGaW5kaW5nKAogICAgICAgICAgICAgICAgICAgICJQQVJUX0xPV19TVE9DSyIsIENBVVRJT04sCiAgICAgICAgICAgICAgICAgICAgZiJ7dXNhZ2V9IHNob3dzIG9ubHkge3N0b2NrfSBpbiBzdG9jayBpbiB0aGUgIgogICAgICAgICAgICAgICAgICAgIGYie19jaXRlKG1ldGEpfSDigJQgZmV3ZXIgdGhhbiB0aGUgIgogICAgICAgICAgICAgICAgICAgIGYie0xPV19TVE9DS19USFJFU0hPTER9LXBpZWNlIGNvbWZvcnQgbGluZS4gQSBzbWFsbCAiCiAgICAgICAgICAgICAgICAgICAgInJ1biBvciBhIGZldyBsb3N0IGJvYXJkcyBjYW4gd2lwZSB0aGF0IG91dDsgIgogICAgICAgICAgICAgICAgICAgICJjb25zaWRlciBhIHN0b2NrZWQgYWx0ZXJuYXRlLiIsCiAgICAgICAgICAgICAgICAgICAgd2hlcmU9d2hlcmUsIGV2aWRlbmNlPWYic3RvY2s9e3N0b2NrfSIpKQogICAgICAgICAgICBpZiBsZWFkIGlzIG5vdCBOb25lIGFuZCBsZWFkID4gTE9OR19MRUFEX1dFRUtTOgogICAgICAgICAgICAgICAgZmluZGluZ3MuYXBwZW5kKEZpbmRpbmcoCiAgICAgICAgICAgICAgICAgICAgIlBBUlRfTE9OR19MRUFEX1RJTUUiLCBDQVVUSU9OLAogICAgICAgICAgICAgICAgICAgIGYie3VzYWdlfSBoYXMgYSB7bGVhZH0td2VlayBsZWFkIHRpbWUgaW4gdGhlICIKICAgICAgICAgICAgICAgICAgICBmIntfY2l0ZShtZXRhKX0uIE9yZGVyIGVhcmx5IG9yIHBpY2sgYSBmYXN0ZXIgcGFydCAiCiAgICAgICAgICAgICAgICAgICAgImlmIHRoaXMgYm9hcmQgaXMgb24gYSBzY2hlZHVsZS4iLAogICAgICAgICAgICAgICAgICAgIHdoZXJlPXdoZXJlLCBldmlkZW5jZT1mImxlYWRfdGltZV93ZWVrcz17bGVhZH0iKSkKICAgICAgICAgICAgaWYgc291cmNlcyA9PSAxOgogICAgICAgICAgICAgICAgZmluZGluZ3MuYXBwZW5kKEZpbmRpbmcoCiAgICAgICAgICAgICAgICAgICAgIlBBUlRfU0lOR0xFX1NPVVJDRSIsIE5PVEUsCiAgICAgICAgICAgICAgICAgICAgZiJ7dXNhZ2V9IGhhcyBhIHNpbmdsZSBzb3VyY2UgaW4gdGhlIHtfY2l0ZShtZXRhKX0uICIKICAgICAgICAgICAgICAgICAgICAiSWYgdGhhdCBzb3VyY2UgZHJpZXMgdXAsIHRoaXMgYm9hcmQgd2FpdHMg4oCUIHdvcnRoICIKICAgICAgICAgICAgICAgICAgICAia25vd2luZywgbm90IG5lY2Vzc2FyaWx5IHdvcnRoIGZpeGluZy4iLAogICAgICAgICAgICAgICAgICAgIHdoZXJlPXdoZXJlLCBldmlkZW5jZT0ic291cmNlcz0xIikpCiAgICByZXR1cm4gZmluZGluZ3MsIHN0YXRzCg==
+"""Offline part-risk checks against a bundled SAMPLE distributor dataset.
+
+The dataset (preflight/data/parts.json) is a small, hand-authored snapshot
+shipped with the tool so the spike works with no network and no API
+keys. Its values are illustrative — every finding cites the dataset name
+and snapshot date, and the README says plainly that this is not live
+distributor data. A live-data source is a later version's job.
+
+Dataset handling is defensive: the file is schema-validated at load
+(DatasetError -> usage error, exit 3, never a traceback), numbers that
+arrive as strings/floats ("0", 0.0 — as real distributor exports
+produce) are coerced explicitly, an MPN present with an unusable entry
+is reported as such (not masqueraded as "not in dataset"), and MPN
+lookup falls back to a case-insensitive match that is disclosed in the
+finding's evidence.
+"""
+
+import json
+from pathlib import Path
+
+from .finding import BLOCK, CAUTION, NOTE, Finding
+
+LOW_STOCK_THRESHOLD = 50      # fewer pieces than this counts as "low"
+LONG_LEAD_WEEKS = 16          # longer lead time than this gets flagged
+
+DEFAULT_DATASET = Path(__file__).parent / "data" / "parts.json"
+
+_OBSOLETE_STATUSES = {"obsolete", "eol", "end of life", "discontinued",
+                      "last time buy", "ltb"}
+_NRND_STATUSES = {"nrnd", "not recommended for new designs",
+                  "not recommended"}
+
+
+class DatasetError(ValueError):
+    """The part-risk dataset is missing, unreadable, or wrongly shaped."""
+
+
+def _as_int(value):
+    """Coerce a dataset number (int / integral float / digit string) to
+    int; anything else (incl. bool, None, junk) -> None."""
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, int):
+        return value
+    if isinstance(value, float):
+        return int(value) if value.is_integer() else None
+    if isinstance(value, str):
+        text = value.strip().replace(",", "")
+        try:
+            return int(text)
+        except ValueError:
+            try:
+                num = float(text)
+            except ValueError:
+                return None
+            return int(num) if num.is_integer() else None
+    return None
+
+
+def load_dataset(path=None):
+    """Return (meta, parts) where parts maps MPN -> info dict.
+
+    Raises DatasetError with a user-readable message on any problem —
+    callers turn that into a clean usage error (exit 3).
+    """
+    path = Path(path) if path else DEFAULT_DATASET
+    try:
+        raw = path.read_text(encoding="utf-8")
+    except OSError as exc:
+        raise DatasetError(f"cannot read part-risk dataset "
+                           f"{path}: {exc}") from exc
+    try:
+        data = json.loads(raw)
+    except ValueError as exc:
+        raise DatasetError(f"part-risk dataset {path} is not valid "
+                           f"JSON: {exc}") from exc
+    if not isinstance(data, dict):
+        raise DatasetError(f"part-risk dataset {path} must be a JSON "
+                           "object with a 'parts' object")
+    parts = data.get("parts", {})
+    if not isinstance(parts, dict):
+        raise DatasetError(f"part-risk dataset {path}: 'parts' must "
+                           "be an object mapping MPN -> part info")
+    for mpn, info in parts.items():
+        if info is not None and not isinstance(info, dict):
+            raise DatasetError(f"part-risk dataset {path}: entry for "
+                               f"{mpn!r} must be an object or null")
+    return data, parts
+
+
+def _cite(meta):
+    return (f"{meta.get('name', 'sample dataset')} "
+            f"(snapshot {meta.get('snapshot_date', 'unknown')})")
+
+
+def run_part_risk_checks(project, meta, parts):
+    """Check each unique BOM MPN once, aggregating every row that uses
+    it. Returns (findings, stats)."""
+    findings = []
+    bom_name = project.bom_path.name if project.bom_path else "BOM"
+    by_mpn = {}
+    for row in project.bom_rows:
+        if row.mpn:
+            by_mpn.setdefault(row.mpn, []).append(row)
+    lower_map = {}
+    for key in parts:
+        lower_map.setdefault(key.lower(), key)
+    stats = {"mpns_checked": len(by_mpn), "mpns_found": 0,
+             "dataset_entries_invalid": 0}
+
+    for mpn in sorted(by_mpn):
+        rows = by_mpn[mpn]
+        first = rows[0]
+        where = f"{bom_name} line {first.line_no} · {mpn}"
+        all_refs = [r for row in rows for r in row.refs]
+        refs = ", ".join(all_refs) or "?"
+        extra_lines = ", ".join(f"line {r.line_no}" for r in rows[1:])
+        usage = f"{mpn} ({refs})" + (
+            f" — also used on {extra_lines}" if extra_lines else "")
+
+        info = parts.get(mpn)
+        matched_case = ""
+        canonical = mpn
+        if info is None and mpn not in parts:
+            canonical = lower_map.get(mpn.lower(), mpn)
+            if canonical != mpn:
+                info = parts[canonical]
+                matched_case = (f"matched dataset entry '{canonical}' "
+                                "case-insensitively — fix the BOM's "
+                                "capitalisation")
+        if canonical in parts and parts[canonical] is None:
+            stats["dataset_entries_invalid"] += 1
+            findings.append(Finding(
+                "PART_DATASET_ENTRY_INVALID", NOTE,
+                f"{mpn} ({refs}) is present in the {_cite(meta)} but "
+                "its entry is empty/unusable, so its risk could not be "
+                "checked. The dataset needs fixing, not the board.",
+                where=where))
+            continue
+        if info is None:
+            findings.append(Finding(
+                "PART_NOT_IN_SAMPLE_DATA", NOTE,
+                f"{mpn} ({refs}) is not in the {_cite(meta)}, so its "
+                "lifecycle/stock risk could not be checked. Absence "
+                "from the sample data says nothing about the part "
+                "itself.",
+                where=where))
+            continue
+        stats["mpns_found"] += 1
+        status = str(info.get("status", "")).strip().lower()
+        stock = _as_int(info.get("stock"))
+        sources = _as_int(info.get("sources"))
+        lead = _as_int(info.get("lead_time_weeks"))
+        obsolete = status in _OBSOLETE_STATUSES
+        ev = matched_case
+
+        if obsolete:
+            findings.append(Finding(
+                "PART_OBSOLETE", BLOCK,
+                f"{usage} is marked '{info.get('status')}' in the "
+                f"{_cite(meta)}. An obsolete part can vanish from stock "
+                "before your next order — pick a current replacement "
+                "now, while changing it is cheap.",
+                where=where,
+                evidence=f"status={info.get('status')}"
+                         + (f"; {ev}" if ev else "")))
+        elif status in _NRND_STATUSES:
+            findings.append(Finding(
+                "PART_NOT_RECOMMENDED", CAUTION,
+                f"{usage} is 'not recommended for new designs' in the "
+                f"{_cite(meta)}. Fine for a one-off build, a poor "
+                "choice if you plan to order this board again.",
+                where=where,
+                evidence=f"status={info.get('status')}"
+                         + (f"; {ev}" if ev else "")))
+        if not obsolete:
+            if stock == 0:
+                findings.append(Finding(
+                    "PART_OUT_OF_STOCK", BLOCK,
+                    f"{usage} shows 0 in stock in the {_cite(meta)}. "
+                    "You cannot order this part today.",
+                    where=where, evidence="stock=0"))
+            elif stock is not None and 0 < stock < LOW_STOCK_THRESHOLD:
+                findings.append(Finding(
+                    "PART_LOW_STOCK", CAUTION,
+                    f"{usage} shows only {stock} in stock in the "
+                    f"{_cite(meta)} — fewer than the "
+                    f"{LOW_STOCK_THRESHOLD}-piece comfort line. A small "
+                    "run or a few lost boards can wipe that out; "
+                    "consider a stocked alternate.",
+                    where=where, evidence=f"stock={stock}"))
+            if lead is not None and lead > LONG_LEAD_WEEKS:
+                findings.append(Finding(
+                    "PART_LONG_LEAD_TIME", CAUTION,
+                    f"{usage} has a {lead}-week lead time in the "
+                    f"{_cite(meta)}. Order early or pick a faster part "
+                    "if this board is on a schedule.",
+                    where=where, evidence=f"lead_time_weeks={lead}"))
+            if sources == 1:
+                findings.append(Finding(
+                    "PART_SINGLE_SOURCE", NOTE,
+                    f"{usage} has a single source in the {_cite(meta)}. "
+                    "If that source dries up, this board waits — worth "
+                    "knowing, not necessarily worth fixing.",
+                    where=where, evidence="sources=1"))
+    return findings, stats

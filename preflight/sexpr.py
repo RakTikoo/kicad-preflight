@@ -1,1 +1,101 @@
-IiIiQSBzbWFsbCwgZGVwZW5kZW5jeS1mcmVlIFMtZXhwcmVzc2lvbiBwYXJzZXIgZm9yIEtpQ2FkIHRleHQgZm9ybWF0cy4KCktpQ2FkJ3MgLmtpY2FkX3NjaCBhbmQgLmtpY2FkX3BjYiBmaWxlcyBhcmUgUy1leHByZXNzaW9uczogbmVzdGVkIGxpc3RzIG9mCmF0b21zIGFuZCBxdW90ZWQgc3RyaW5ncywgZS5nLgoKICAgIChzeW1ib2wgKGxpYl9pZCAiRGV2aWNlOkxFRCIpIChwcm9wZXJ0eSAiUmVmZXJlbmNlIiAiRDEiIC4uLikpCgpwYXJzZSgpIHJldHVybnMgdGhlIGxpc3Qgb2YgdG9wLWxldmVsIGZvcm1zLiBFYWNoIGZvcm0gaXMgYSBQeXRob24gbGlzdCB3aG9zZQpmaXJzdCBlbGVtZW50IGlzIHRoZSBoZWFkIGF0b20gKGEgc3RyKTsgYXRvbXMgYW5kIHF1b3RlZCBzdHJpbmdzIGFyZSBib3RoCnJldHVybmVkIGFzIHBsYWluIHN0ciDigJQgUHJlZmxpZ2h0IG9ubHkgZXZlciBjb21wYXJlcyB0aGVtIGFzIHRleHQsIHNvIHRoZQpkaXN0aW5jdGlvbiBkb2VzIG5vdCBtYXR0ZXIgaGVyZS4gVGhlIHBhcnNlciBpcyBpdGVyYXRpdmUsIHNvIGRlZXBseSBuZXN0ZWQKb3IgbGFyZ2UgYm9hcmQgZmlsZXMgY2Fubm90IGhpdCBQeXRob24ncyByZWN1cnNpb24gbGltaXQuCiIiIgoKCmNsYXNzIFNleHByRXJyb3IoVmFsdWVFcnJvcik6CiAgICAiIiJSYWlzZWQgd2hlbiBhIGZpbGUgaXMgbm90IGEgd2VsbC1mb3JtZWQgUy1leHByZXNzaW9uLiIiIgoKCl9PUEVOID0gb2JqZWN0KCkKX0NMT1NFID0gb2JqZWN0KCkKCgpkZWYgX3Rva2VuaXplKHRleHQpOgogICAgaSwgbiA9IDAsIGxlbih0ZXh0KQogICAgd2hpbGUgaSA8IG46CiAgICAgICAgY2ggPSB0ZXh0W2ldCiAgICAgICAgaWYgY2ggaW4gIiBcdFxyXG4iOgogICAgICAgICAgICBpICs9IDEKICAgICAgICBlbGlmIGNoID09ICIoIjoKICAgICAgICAgICAgeWllbGQgX09QRU4KICAgICAgICAgICAgaSArPSAxCiAgICAgICAgZWxpZiBjaCA9PSAiKSI6CiAgICAgICAgICAgIHlpZWxkIF9DTE9TRQogICAgICAgICAgICBpICs9IDEKICAgICAgICBlbGlmIGNoID09ICciJzoKICAgICAgICAgICAgaiA9IGkgKyAxCiAgICAgICAgICAgIGJ1ZiA9IFtdCiAgICAgICAgICAgIHdoaWxlIGogPCBuOgogICAgICAgICAgICAgICAgY2ogPSB0ZXh0W2pdCiAgICAgICAgICAgICAgICBpZiBjaiA9PSAiXFwiIGFuZCBqICsgMSA8IG46CiAgICAgICAgICAgICAgICAgICAgYnVmLmFwcGVuZCh0ZXh0W2ogKyAxXSkKICAgICAgICAgICAgICAgICAgICBqICs9IDIKICAgICAgICAgICAgICAgIGVsaWYgY2ogPT0gJyInOgogICAgICAgICAgICAgICAgICAgIGJyZWFrCiAgICAgICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgICAgIGJ1Zi5hcHBlbmQoY2opCiAgICAgICAgICAgICAgICAgICAgaiArPSAxCiAgICAgICAgICAgIGlmIGogPj0gbjoKICAgICAgICAgICAgICAgIHJhaXNlIFNleHByRXJyb3IoInVudGVybWluYXRlZCBzdHJpbmcgbGl0ZXJhbCIpCiAgICAgICAgICAgIHlpZWxkICIiLmpvaW4oYnVmKQogICAgICAgICAgICBpID0gaiArIDEKICAgICAgICBlbHNlOgogICAgICAgICAgICBqID0gaQogICAgICAgICAgICB3aGlsZSBqIDwgbiBhbmQgdGV4dFtqXSBub3QgaW4gJyBcdFxyXG4oKSInOgogICAgICAgICAgICAgICAgaiArPSAxCiAgICAgICAgICAgIHlpZWxkIHRleHRbaTpqXQogICAgICAgICAgICBpID0gagoKCmRlZiBwYXJzZSh0ZXh0KToKICAgICIiIlBhcnNlIFMtZXhwcmVzc2lvbiB0ZXh0IGludG8gYSBsaXN0IG9mIHRvcC1sZXZlbCBmb3Jtcy4iIiIKICAgIHJvb3QgPSBbXQogICAgc3RhY2sgPSBbcm9vdF0KICAgIGZvciB0b2sgaW4gX3Rva2VuaXplKHRleHQpOgogICAgICAgIGlmIHRvayBpcyBfT1BFTjoKICAgICAgICAgICAgbm9kZSA9IFtdCiAgICAgICAgICAgIHN0YWNrWy0xXS5hcHBlbmQobm9kZSkKICAgICAgICAgICAgc3RhY2suYXBwZW5kKG5vZGUpCiAgICAgICAgZWxpZiB0b2sgaXMgX0NMT1NFOgogICAgICAgICAgICBpZiBsZW4oc3RhY2spID09IDE6CiAgICAgICAgICAgICAgICByYWlzZSBTZXhwckVycm9yKCJ1bmJhbGFuY2VkICcpJyBpbiBmaWxlIikKICAgICAgICAgICAgc3RhY2sucG9wKCkKICAgICAgICBlbHNlOgogICAgICAgICAgICBzdGFja1stMV0uYXBwZW5kKHRvaykKICAgIGlmIGxlbihzdGFjaykgIT0gMToKICAgICAgICByYWlzZSBTZXhwckVycm9yKCJ1bmJhbGFuY2VkICcoJyBpbiBmaWxlICh0cnVuY2F0ZWQ/KSIpCiAgICByZXR1cm4gcm9vdAoKCmRlZiBoZWFkKG5vZGUpOgogICAgIiIiSGVhZCBhdG9tIG9mIGEgZm9ybSwgb3IgTm9uZSBpZiB0aGUgbm9kZSBpcyBub3QgYSBub24tZW1wdHkgbGlzdC4iIiIKICAgIGlmIGlzaW5zdGFuY2Uobm9kZSwgbGlzdCkgYW5kIG5vZGUgYW5kIGlzaW5zdGFuY2Uobm9kZVswXSwgc3RyKToKICAgICAgICByZXR1cm4gbm9kZVswXQogICAgcmV0dXJuIE5vbmUKCgpkZWYgY2hpbGRyZW4obm9kZSwgbmFtZSk6CiAgICAiIiJEaXJlY3QgY2hpbGQgZm9ybXMgb2YgYG5vZGVgIHdob3NlIGhlYWQgaXMgYG5hbWVgLiIiIgogICAgaWYgbm90IGlzaW5zdGFuY2Uobm9kZSwgbGlzdCk6CiAgICAgICAgcmV0dXJuCiAgICBmb3IgY2hpbGQgaW4gbm9kZVsxOl06CiAgICAgICAgaWYgaXNpbnN0YW5jZShjaGlsZCwgbGlzdCkgYW5kIGhlYWQoY2hpbGQpID09IG5hbWU6CiAgICAgICAgICAgIHlpZWxkIGNoaWxkCgoKZGVmIGNoaWxkKG5vZGUsIG5hbWUpOgogICAgIiIiRmlyc3QgZGlyZWN0IGNoaWxkIGZvcm0gd2l0aCB0aGUgZ2l2ZW4gaGVhZCwgb3IgTm9uZS4iIiIKICAgIGZvciBjIGluIGNoaWxkcmVuKG5vZGUsIG5hbWUpOgogICAgICAgIHJldHVybiBjCiAgICByZXR1cm4gTm9uZQo=
+"""A small, dependency-free S-expression parser for KiCad text formats.
+
+KiCad's .kicad_sch and .kicad_pcb files are S-expressions: nested lists of
+atoms and quoted strings, e.g.
+
+    (symbol (lib_id "Device:LED") (property "Reference" "D1" ...))
+
+parse() returns the list of top-level forms. Each form is a Python list whose
+first element is the head atom (a str); atoms and quoted strings are both
+returned as plain str — Preflight only ever compares them as text, so the
+distinction does not matter here. The parser is iterative, so deeply nested
+or large board files cannot hit Python's recursion limit.
+"""
+
+
+class SexprError(ValueError):
+    """Raised when a file is not a well-formed S-expression."""
+
+
+_OPEN = object()
+_CLOSE = object()
+
+
+def _tokenize(text):
+    i, n = 0, len(text)
+    while i < n:
+        ch = text[i]
+        if ch in " \t\r\n":
+            i += 1
+        elif ch == "(":
+            yield _OPEN
+            i += 1
+        elif ch == ")":
+            yield _CLOSE
+            i += 1
+        elif ch == '"':
+            j = i + 1
+            buf = []
+            while j < n:
+                cj = text[j]
+                if cj == "\\" and j + 1 < n:
+                    buf.append(text[j + 1])
+                    j += 2
+                elif cj == '"':
+                    break
+                else:
+                    buf.append(cj)
+                    j += 1
+            if j >= n:
+                raise SexprError("unterminated string literal")
+            yield "".join(buf)
+            i = j + 1
+        else:
+            j = i
+            while j < n and text[j] not in ' \t\r\n()"':
+                j += 1
+            yield text[i:j]
+            i = j
+
+
+def parse(text):
+    """Parse S-expression text into a list of top-level forms."""
+    root = []
+    stack = [root]
+    for tok in _tokenize(text):
+        if tok is _OPEN:
+            node = []
+            stack[-1].append(node)
+            stack.append(node)
+        elif tok is _CLOSE:
+            if len(stack) == 1:
+                raise SexprError("unbalanced ')' in file")
+            stack.pop()
+        else:
+            stack[-1].append(tok)
+    if len(stack) != 1:
+        raise SexprError("unbalanced '(' in file (truncated?)")
+    return root
+
+
+def head(node):
+    """Head atom of a form, or None if the node is not a non-empty list."""
+    if isinstance(node, list) and node and isinstance(node[0], str):
+        return node[0]
+    return None
+
+
+def children(node, name):
+    """Direct child forms of `node` whose head is `name`."""
+    if not isinstance(node, list):
+        return
+    for child in node[1:]:
+        if isinstance(child, list) and head(child) == name:
+            yield child
+
+
+def child(node, name):
+    """First direct child form with the given head, or None."""
+    for c in children(node, name):
+        return c
+    return None

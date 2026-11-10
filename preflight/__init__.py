@@ -1,1 +1,8 @@
-IiIiS2lDYWQgUHJlZmxpZ2h0IOKAlCBwcmUtZmFiIGNoZWNrcyBmb3IgS2lDYWQgcHJvamVjdHMuCgpPbmUgc2hhcmVkIGNoZWNrcyBlbmdpbmUsIHR3byBmcm9udCBkb29ycyBwbGFubmVkOiB0aGlzIENMSSAobm93KSBhbmQgYQpLaUNhZCBpbi1hcHAgcGx1Z2luIChuZXh0KS4gUHVyZSBQeXRob24gMyBzdGFuZGFyZCBsaWJyYXJ5LCBkZXRlcm1pbmlzdGljCmNoZWNrcywgcGxhaW4tRW5nbGlzaCBmaW5kaW5ncy4KIiIiCgpfX3ZlcnNpb25fXyA9ICIwLjIuMCIK
+"""KiCad Preflight — pre-fab checks for KiCad projects.
+
+One shared checks engine, two front doors planned: this CLI (now) and a
+KiCad in-app plugin (next). Pure Python 3 standard library, deterministic
+checks, plain-English findings.
+"""
+
+__version__ = "0.2.0"

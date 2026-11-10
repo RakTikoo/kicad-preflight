@@ -1,1 +1,175 @@
-IiIiUmVuZGVyIGEgUmVwb3J0IGFzIHRlcm1pbmFsIHRleHQsIG9uZS1wYWdlIE1hcmtkb3duLCBvciBKU09OLgoKT3V0cHV0IHNhZmV0eTogZXZlcnkgdmFsdWUgaW50ZXJwb2xhdGVkIGludG8gdGV4dC9NYXJrZG93biBvdXRwdXQgaXMKc2FuaXRpc2VkIOKAlCBDMCBjb250cm9sIGNoYXJhY3RlcnMgYW5kIEVTQyBhcmUgcmVwbGFjZWQsIG5ld2xpbmVzIGFyZQpjb2xsYXBzZWQg4oCUIGJlY2F1c2UgcGFydCB2YWx1ZXMsIHJlZmVyZW5jZXMsIGZpbGVuYW1lcyBhbmQgdGl0bGVzIGFyZQphdHRhY2tlci1jb250cm9sbGFibGUgc3RyaW5ncyBpbiBhbiB1bnRydXN0ZWQgcHJvamVjdCBmb2xkZXIgKGEgY3JhZnRlZApNUE4gbXVzdCBub3QgYmUgYWJsZSB0byBmb3JnZSBhICJWRVJESUNUOiBQQVNTIiBsaW5lLCBicmVhayB0aGUKTWFya2Rvd24gdGFibGUsIG9yIGluamVjdCB0ZXJtaW5hbCBlc2NhcGVzKS4gSlNPTiBuZWVkcyBubyBzdWNoIGhlbHA6Cmpzb24uZHVtcHMgZXNjYXBlcyBjb3JyZWN0bHksIGFuZCBpcyBsZWZ0IHVudG91Y2hlZC4KIiIiCgppbXBvcnQganNvbgppbXBvcnQgcmUKCmZyb20gLmZpbmRpbmcgaW1wb3J0IEJMT0NLLCBDQVVUSU9OLCBOT1RFLCBTRVZFUklUWV9PUkRFUgoKX1ZFUkRJQ1RfQkxVUkIgPSB7CiAgICAiUEFTUyI6ICJObyBibG9ja2luZyBvciBjYXV0aW9uIGZpbmRpbmdzLiAoUmVhZCBDb3ZlcmFnZSDigJQgYSAiCiAgICAgICAgICAgICJ2ZXJkaWN0IG9ubHkgY292ZXJzIHdoYXQgd2FzIGFjdHVhbGx5IGNoZWNrZWQuKSIsCiAgICAiQ0FVVElPTiI6ICJOb3RoaW5nIGhlcmUgYnJlYWtzIHRoZSBidWlsZCBvdXRyaWdodCwgYnV0IHRoZSAiCiAgICAgICAgICAgICAgICJDQVVUSU9OIGl0ZW1zIGFyZSB3b3J0aCBzb3J0aW5nIGJlZm9yZSB5b3Ugb3JkZXIuIiwKICAgICJCTE9DSyI6ICJEbyBub3Qgb3JkZXIgeWV0IOKAlCB0aGUgQkxPQ0sgaXRlbXMgbWVhbiB0aGUgYm9hcmQgb3IgIgogICAgICAgICAgICAgInRoZSBwYXJ0cyBvcmRlciB3aWxsIGJlIHdyb25nLiIsCn0KCl9DVFJMID0gcmUuY29tcGlsZShyIltceDAwLVx4MWZceDdmXSIpCgoKZGVmIF9jbGVhbih0ZXh0KToKICAgICIiIk9uZS1saW5lLCBjb250cm9sLWZyZWUgcmVuZGVyaW5nIG9mIGFuIHVudHJ1c3RlZCBzdHJpbmcuIiIiCiAgICByZXR1cm4gX0NUUkwuc3ViKCIgIiwgc3RyKHRleHQpKS5zdHJpcCgpCgoKZGVmIF9tZCh0ZXh0KToKICAgIHJldHVybiBfY2xlYW4odGV4dCkucmVwbGFjZSgifCIsICJcXHwiKQoKCmRlZiBfZ3JvdXBlZChmaW5kaW5ncyk6CiAgICBncm91cHMgPSB7c2V2OiBbXSBmb3Igc2V2IGluIFNFVkVSSVRZX09SREVSfQogICAgZm9yIGYgaW4gZmluZGluZ3M6CiAgICAgICAgZ3JvdXBzW2Yuc2V2ZXJpdHldLmFwcGVuZChmKQogICAgcmV0dXJuIGdyb3VwcwoKCmRlZiBfY292ZXJhZ2VfbGluZXMoY292KToKICAgIGxpbmVzID0gW10KICAgIHNjaCA9IGNvdi5nZXQoInNjaGVtYXRpYyIpCiAgICBpZiBzY2g6CiAgICAgICAgZXh0cmEgPSAiIgogICAgICAgIGlmIGxlbihzY2guZ2V0KCJmaWxlc19sb2FkZWQiLCBbXSkpID4gMToKICAgICAgICAgICAgZXh0cmEgPSAoZiIgKGhpZXJhcmNoaWNhbDoge2xlbihzY2hbJ2ZpbGVzX2xvYWRlZCddKX0gIgogICAgICAgICAgICAgICAgICAgICBmInNoZWV0cyBsb2FkZWQpIikKICAgICAgICBpZiBzY2guZ2V0KCJzeW1ib2xzX3dpdGhvdXRfcmVmZXJlbmNlIik6CiAgICAgICAgICAgIGV4dHJhICs9IChmIjsge3NjaFsnc3ltYm9sc193aXRob3V0X3JlZmVyZW5jZSddfSBzeW1ib2wocykgIgogICAgICAgICAgICAgICAgICAgICAgIndpdGhvdXQgYSByZWZlcmVuY2Ugd2VyZSBleGNsdWRlZCAoc2VlIGZpbmRpbmdzKSIpCiAgICAgICAgbGluZXMuYXBwZW5kKAogICAgICAgICAgICBmIlNjaGVtYXRpYzoge3NjaFsnZmlsZSddfSDigJQge3NjaFsncGFydHMnXX0gcGFydChzKSwgIgogICAgICAgICAgICBmIntzY2hbJ25vX2Nvbm5lY3RfbWFya2VycyddfSBleHBsaWNpdCBuby1jb25uZWN0ICIKICAgICAgICAgICAgZiJtYXJrZXIocyl7ZXh0cmF9IikKICAgIGVsc2U6CiAgICAgICAgbGluZXMuYXBwZW5kKCJTY2hlbWF0aWM6IE5PVCBGT1VORCDigJQgY3Jvc3MtY2hlY2tzIHNraXBwZWQiKQogICAgcGNiID0gY292LmdldCgicGNiIikKICAgIGlmIHBjYjoKICAgICAgICBmdXJuaXR1cmUgPSBwY2JbImZvb3RwcmludHMiXSAtIHBjYi5nZXQoInBhcnRfZm9vdHByaW50cyIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBjYlsiZm9vdHByaW50cyJdKQogICAgICAgIGV4dHJhID0gKGYiICh7ZnVybml0dXJlfSBib2FyZC1mdXJuaXR1cmUgZm9vdHByaW50KHMpIOKAlCAiCiAgICAgICAgICAgICAgICAgIm1vdW50aW5nIGhvbGVzLCBsb2dvcywgbGFiZWxzIOKAlCBub3QgY291bnRlZCBhcyBwYXJ0cykiCiAgICAgICAgICAgICAgICAgaWYgZnVybml0dXJlIGVsc2UgIiIpCiAgICAgICAgbGluZXMuYXBwZW5kKAogICAgICAgICAgICBmIlBDQjoge3BjYlsnZmlsZSddfSDigJQge3BjYi5nZXQoJ3BhcnRfZm9vdHByaW50cycsIHBjYlsnZm9vdHByaW50cyddKX0gIgogICAgICAgICAgICBmInBhcnQgZm9vdHByaW50KHMpe2V4dHJhfSIpCiAgICBlbHNlOgogICAgICAgIGxpbmVzLmFwcGVuZCgiUENCOiBOT1QgRk9VTkQg4oCUIGNyb3NzLWNoZWNrcyBza2lwcGVkIikKICAgIGJvbSA9IGNvdi5nZXQoImJvbSIpCiAgICBsaW5lcy5hcHBlbmQoCiAgICAgICAgZiJCT006IHtib21bJ2ZpbGUnXX0g4oCUIHtib21bJ3Jvd3MnXX0gcm93KHMpICIKICAgICAgICBmIih7Ym9tLmdldCgnaG93X2ZvdW5kJywgJ2ZvdW5kJyl9KSIKICAgICAgICBpZiBib20gZWxzZSAiQk9NOiBubyB1c2FibGUgQ1NWIGZvdW5kIOKAlCBCT00gYW5kIHBhcnQtcmlzayAiCiAgICAgICAgICAgICAgICAgICAgImNoZWNrcyBza2lwcGVkIChzZWUgZmluZGluZ3MpIikKICAgIHN0YXRzID0gY292LmdldCgiYm9tX3N0YXRzIikgb3Ige30KICAgIGlmIHN0YXRzLmdldCgibGNzY19vbmx5X3Jvd3MiKToKICAgICAgICBsaW5lcy5hcHBlbmQoCiAgICAgICAgICAgIGYiQk9NIGlkZW50aWZpZXJzOiB7c3RhdHNbJ2xjc2Nfb25seV9yb3dzJ119IHJvdyhzKSBhcmUgIgogICAgICAgICAgICAiaWRlbnRpZmllZCBieSBMQ1NDL0pMQ1BDQiBwYXJ0IG51bWJlciAobm8gTVBOKSDigJQgYWNjZXB0ZWQgIgogICAgICAgICAgICAiYXMgaWRlbnRpZmllZCIpCiAgICBmb3IgZXJyIGluIGNvdi5nZXQoInBhcnNlX2Vycm9ycyIsIFtdKToKICAgICAgICBsaW5lcy5hcHBlbmQoZiJQYXJzZSBlcnJvcjoge2Vycn0iKQogICAgZm9yIGxlZ2FjeSBpbiBjb3YuZ2V0KCJsZWdhY3lfc2NoZW1hdGljcyIsIFtdKToKICAgICAgICBsaW5lcy5hcHBlbmQoZiJMZWdhY3kgc2NoZW1hdGljIHByZXNlbnQgKG5vdCBzdXBwb3J0ZWQpOiAiCiAgICAgICAgICAgICAgICAgICAgIGYie2xlZ2FjeX0iKQogICAgcmlzayA9IGNvdi5nZXQoInBhcnRfcmlzayIsIHt9KQogICAgbGluZXMuYXBwZW5kKAogICAgICAgIGYiUGFydCByaXNrOiB7cmlzay5nZXQoJ21wbnNfY2hlY2tlZCcsIDApfSBNUE4ocykgY2hlY2tlZCAiCiAgICAgICAgZiJhZ2FpbnN0IHtyaXNrLmdldCgnZGF0YXNldCcpfSAoc25hcHNob3QgIgogICAgICAgIGYie3Jpc2suZ2V0KCdzbmFwc2hvdF9kYXRlJyl9LCBTQU1QTEUgZGF0YSDigJQgbm90IGxpdmUgIgogICAgICAgIGYiZGlzdHJpYnV0b3IgZGF0YSk7IHtyaXNrLmdldCgnbXBuc19mb3VuZCcsIDApfSBmb3VuZCBpbiAiCiAgICAgICAgImRhdGFzZXQiKQogICAgY2xpID0gY292LmdldCgia2ljYWRfY2xpIiwge30pCiAgICBpZiBjbGkuZ2V0KCJhdmFpbGFibGUiKToKICAgICAgICBsaW5lcy5hcHBlbmQoZiJraWNhZC1jbGk6IGZvdW5kIGF0IHtjbGkuZ2V0KCdwYXRoJyl9IikKICAgICAgICBsaW5lcy5hcHBlbmQoZiIgIE9mZmljaWFsIEVSQzoge2NsaS5nZXQoJ2VyYycpfSIpCiAgICAgICAgbGluZXMuYXBwZW5kKGYiICBPZmZpY2lhbCBEUkM6IHtjbGkuZ2V0KCdkcmMnKX0iKQogICAgZWxpZiBjb3YuZ2V0KCJtb2RlIik6CiAgICAgICAgbGluZXMuYXBwZW5kKCJraWNhZC1jbGk6IG5vdCBhcHBsaWNhYmxlIOKAlCBzdGFuZGFsb25lIEJPTSBtb2RlIikKICAgIGVsc2U6CiAgICAgICAgbGluZXMuYXBwZW5kKCJraWNhZC1jbGk6IE5PVCBGT1VORCDigJQgb2ZmaWNpYWwgRFJDL0VSQyBza2lwcGVkICIKICAgICAgICAgICAgICAgICAgICAgIihpbnN0YWxsIEtpQ2FkIHRvIGVuYWJsZSB0aGVtKTsgdGhlIGJ1aWx0LWluICIKICAgICAgICAgICAgICAgICAgICAgInRleHQgY2hlY2tzIGFib3ZlIHN0aWxsIHJhbiIpCiAgICByZXR1cm4gbGluZXMKCgpkZWYgcmVuZGVyX3RleHQocmVwb3J0KToKICAgIGdyb3VwcyA9IF9ncm91cGVkKHJlcG9ydC5maW5kaW5ncykKICAgIG91dCA9IFtdCiAgICBvdXQuYXBwZW5kKGYiUHJlZmxpZ2h0IHJlcG9ydCBmb3I6IHtfY2xlYW4ocmVwb3J0LnByb2plY3RfbmFtZSl9IikKICAgIG91dC5hcHBlbmQoZiJQcm9qZWN0IGZvbGRlcjoge19jbGVhbihyZXBvcnQuZm9sZGVyKX0iKQogICAgb3V0LmFwcGVuZCgiIikKICAgIGNvdW50cyA9ICIsICIuam9pbihmIntsZW4oZ3JvdXBzW3NdKX0ge3N9IiBmb3IgcyBpbiBTRVZFUklUWV9PUkRFUikKICAgIG91dC5hcHBlbmQoZiJGaW5kaW5nczoge2xlbihyZXBvcnQuZmluZGluZ3MpfSAoe2NvdW50c30pIikKICAgIGZvciBzZXYgaW4gU0VWRVJJVFlfT1JERVI6CiAgICAgICAgZm9yIGYgaW4gZ3JvdXBzW3Nldl06CiAgICAgICAgICAgIGxvYyA9IGYiIOKAlCB7X2NsZWFuKGYud2hlcmUpfSIgaWYgZi53aGVyZSBlbHNlICIiCiAgICAgICAgICAgIG91dC5hcHBlbmQoZiIgIFt7c2V2fV0ge2YucnVsZX17bG9jfSIpCiAgICAgICAgICAgIG91dC5hcHBlbmQoZiIgICAgICB7X2NsZWFuKGYubWVzc2FnZSl9IikKICAgICAgICAgICAgaWYgZi5ldmlkZW5jZToKICAgICAgICAgICAgICAgIG91dC5hcHBlbmQoZiIgICAgICA+IHtfY2xlYW4oZi5ldmlkZW5jZSl9IikKICAgIG91dC5hcHBlbmQoIiIpCiAgICBvdXQuYXBwZW5kKCJDb3ZlcmFnZSDigJQgd2hhdCB3YXMgYWN0dWFsbHkgY2hlY2tlZDoiKQogICAgb3V0LmV4dGVuZChmIiAge19jbGVhbihsaW5lKX0iIGZvciBsaW5lIGluIF9jb3ZlcmFnZV9saW5lcyhyZXBvcnQuY292ZXJhZ2UpKQogICAgb3V0LmFwcGVuZCgiIikKICAgIG91dC5hcHBlbmQoZiJWRVJESUNUOiB7cmVwb3J0LnZlcmRpY3R9IikKICAgIG91dC5hcHBlbmQoX1ZFUkRJQ1RfQkxVUkJbcmVwb3J0LnZlcmRpY3RdKQogICAgcmV0dXJuICJcbiIuam9pbihvdXQpICsgIlxuIgoKCmRlZiByZW5kZXJfbWFya2Rvd24ocmVwb3J0KToKICAgIGdyb3VwcyA9IF9ncm91cGVkKHJlcG9ydC5maW5kaW5ncykKICAgIG91dCA9IFtdCiAgICBvdXQuYXBwZW5kKGYiIyBQcmVmbGlnaHQgcmVwb3J0IOKAlCB7X21kKHJlcG9ydC5wcm9qZWN0X25hbWUpfSIpCiAgICBvdXQuYXBwZW5kKCIiKQogICAgb3V0LmFwcGVuZChmIioqVmVyZGljdDoge3JlcG9ydC52ZXJkaWN0fSoqIOKAlCAiCiAgICAgICAgICAgICAgIGYie19WRVJESUNUX0JMVVJCW3JlcG9ydC52ZXJkaWN0XX0iKQogICAgb3V0LmFwcGVuZCgiIikKICAgIGNvdW50cyA9ICIsICIuam9pbihmIntsZW4oZ3JvdXBzW3NdKX0ge3N9IiBmb3IgcyBpbiBTRVZFUklUWV9PUkRFUikKICAgIG91dC5hcHBlbmQoZiJGaW5kaW5nczoge2xlbihyZXBvcnQuZmluZGluZ3MpfSAoe2NvdW50c30pLiIpCiAgICBmb3Igc2V2IGluIFNFVkVSSVRZX09SREVSOgogICAgICAgIGlmIG5vdCBncm91cHNbc2V2XToKICAgICAgICAgICAgY29udGludWUKICAgICAgICBvdXQuYXBwZW5kKCIiKQogICAgICAgIG91dC5hcHBlbmQoZiIjIyB7c2V2fSAoe2xlbihncm91cHNbc2V2XSl9KSIpCiAgICAgICAgb3V0LmFwcGVuZCgiIikKICAgICAgICBvdXQuYXBwZW5kKCJ8IFJ1bGUgfCBXaGVyZSB8IEZpbmRpbmcgfCIpCiAgICAgICAgb3V0LmFwcGVuZCgifCAtLS0gfCAtLS0gfCAtLS0gfCIpCiAgICAgICAgZm9yIGYgaW4gZ3JvdXBzW3Nldl06CiAgICAgICAgICAgIG1zZyA9IF9tZChmLm1lc3NhZ2UpCiAgICAgICAgICAgIGlmIGYuZXZpZGVuY2U6CiAgICAgICAgICAgICAgICBtc2cgKz0gZiIgKHtfbWQoZi5ldmlkZW5jZSl9KSIKICAgICAgICAgICAgb3V0LmFwcGVuZChmInwge2YucnVsZX0gfCB7X21kKGYud2hlcmUpIG9yICfigJQnfSB8IHttc2d9IHwiKQogICAgb3V0LmFwcGVuZCgiIikKICAgIG91dC5hcHBlbmQoIiMjIENvdmVyYWdlIOKAlCB3aGF0IHdhcyBhY3R1YWxseSBjaGVja2VkIikKICAgIG91dC5hcHBlbmQoIiIpCiAgICBvdXQuZXh0ZW5kKGYiLSB7X21kKGxpbmUpfSIgZm9yIGxpbmUgaW4gX2NvdmVyYWdlX2xpbmVzKHJlcG9ydC5jb3ZlcmFnZSkpCiAgICBvdXQuYXBwZW5kKCIiKQogICAgb3V0LmFwcGVuZCgiLS0tIikKICAgIG91dC5hcHBlbmQoIkdlbmVyYXRlZCBieSBLaUNhZCBQcmVmbGlnaHQgKG9wZW4gc291cmNlLCBNSVQpLiAiCiAgICAgICAgICAgICAgICJQYXJ0LXJpc2sgZGF0YSBpcyB0aGUgYnVuZGxlZCBTQU1QTEUgc25hcHNob3QsIG5vdCAiCiAgICAgICAgICAgICAgICJsaXZlIGRpc3RyaWJ1dG9yIGRhdGEuIikKICAgIHJldHVybiAiXG4iLmpvaW4ob3V0KSArICJcbiIKCgpkZWYgcmVuZGVyX2pzb24ocmVwb3J0KToKICAgIHJldHVybiBqc29uLmR1bXBzKHJlcG9ydC50b19kaWN0KCksIGluZGVudD0yKSArICJcbiIKCgpSRU5ERVJFUlMgPSB7InRleHQiOiByZW5kZXJfdGV4dCwgIm1kIjogcmVuZGVyX21hcmtkb3duLCAianNvbiI6IHJlbmRlcl9qc29ufQo=
+"""Render a Report as terminal text, one-page Markdown, or JSON.
+
+Output safety: every value interpolated into text/Markdown output is
+sanitised — C0 control characters and ESC are replaced, newlines are
+collapsed — because part values, references, filenames and titles are
+attacker-controllable strings in an untrusted project folder (a crafted
+MPN must not be able to forge a "VERDICT: PASS" line, break the
+Markdown table, or inject terminal escapes). JSON needs no such help:
+json.dumps escapes correctly, and is left untouched.
+"""
+
+import json
+import re
+
+from .finding import BLOCK, CAUTION, NOTE, SEVERITY_ORDER
+
+_VERDICT_BLURB = {
+    "PASS": "No blocking or caution findings. (Read Coverage — a "
+            "verdict only covers what was actually checked.)",
+    "CAUTION": "Nothing here breaks the build outright, but the "
+               "CAUTION items are worth sorting before you order.",
+    "BLOCK": "Do not order yet — the BLOCK items mean the board or "
+             "the parts order will be wrong.",
+}
+
+_CTRL = re.compile(r"[\x00-\x1f\x7f]")
+
+
+def _clean(text):
+    """One-line, control-free rendering of an untrusted string."""
+    return _CTRL.sub(" ", str(text)).strip()
+
+
+def _md(text):
+    return _clean(text).replace("|", "\\|")
+
+
+def _grouped(findings):
+    groups = {sev: [] for sev in SEVERITY_ORDER}
+    for f in findings:
+        groups[f.severity].append(f)
+    return groups
+
+
+def _coverage_lines(cov):
+    lines = []
+    sch = cov.get("schematic")
+    if sch:
+        extra = ""
+        if len(sch.get("files_loaded", [])) > 1:
+            extra = (f" (hierarchical: {len(sch['files_loaded'])} "
+                     f"sheets loaded)")
+        if sch.get("symbols_without_reference"):
+            extra += (f"; {sch['symbols_without_reference']} symbol(s) "
+                      "without a reference were excluded (see findings)")
+        lines.append(
+            f"Schematic: {sch['file']} — {sch['parts']} part(s), "
+            f"{sch['no_connect_markers']} explicit no-connect "
+            f"marker(s){extra}")
+    else:
+        lines.append("Schematic: NOT FOUND — cross-checks skipped")
+    pcb = cov.get("pcb")
+    if pcb:
+        furniture = pcb["footprints"] - pcb.get("part_footprints",
+                                                pcb["footprints"])
+        extra = (f" ({furniture} board-furniture footprint(s) — "
+                 "mounting holes, logos, labels — not counted as parts)"
+                 if furniture else "")
+        lines.append(
+            f"PCB: {pcb['file']} — {pcb.get('part_footprints', pcb['footprints'])} "
+            f"part footprint(s){extra}")
+    else:
+        lines.append("PCB: NOT FOUND — cross-checks skipped")
+    bom = cov.get("bom")
+    lines.append(
+        f"BOM: {bom['file']} — {bom['rows']} row(s) "
+        f"({bom.get('how_found', 'found')})"
+        if bom else "BOM: no usable CSV found — BOM and part-risk "
+                    "checks skipped (see findings)")
+    stats = cov.get("bom_stats") or {}
+    if stats.get("lcsc_only_rows"):
+        lines.append(
+            f"BOM identifiers: {stats['lcsc_only_rows']} row(s) are "
+            "identified by LCSC/JLCPCB part number (no MPN) — accepted "
+            "as identified")
+    for err in cov.get("parse_errors", []):
+        lines.append(f"Parse error: {err}")
+    for legacy in cov.get("legacy_schematics", []):
+        lines.append(f"Legacy schematic present (not supported): "
+                     f"{legacy}")
+    risk = cov.get("part_risk", {})
+    lines.append(
+        f"Part risk: {risk.get('mpns_checked', 0)} MPN(s) checked "
+        f"against {risk.get('dataset')} (snapshot "
+        f"{risk.get('snapshot_date')}, SAMPLE data — not live "
+        f"distributor data); {risk.get('mpns_found', 0)} found in "
+        "dataset")
+    cli = cov.get("kicad_cli", {})
+    if cli.get("available"):
+        lines.append(f"kicad-cli: found at {cli.get('path')}")
+        lines.append(f"  Official ERC: {cli.get('erc')}")
+        lines.append(f"  Official DRC: {cli.get('drc')}")
+    elif cov.get("mode"):
+        lines.append("kicad-cli: not applicable — standalone BOM mode")
+    else:
+        lines.append("kicad-cli: NOT FOUND — official DRC/ERC skipped "
+                     "(install KiCad to enable them); the built-in "
+                     "text checks above still ran")
+    return lines
+
+
+def render_text(report):
+    groups = _grouped(report.findings)
+    out = []
+    out.append(f"Preflight report for: {_clean(report.project_name)}")
+    out.append(f"Project folder: {_clean(report.folder)}")
+    out.append("")
+    counts = ", ".join(f"{len(groups[s])} {s}" for s in SEVERITY_ORDER)
+    out.append(f"Findings: {len(report.findings)} ({counts})")
+    for sev in SEVERITY_ORDER:
+        for f in groups[sev]:
+            loc = f" — {_clean(f.where)}" if f.where else ""
+            out.append(f"  [{sev}] {f.rule}{loc}")
+            out.append(f"      {_clean(f.message)}")
+            if f.evidence:
+                out.append(f"      > {_clean(f.evidence)}")
+    out.append("")
+    out.append("Coverage — what was actually checked:")
+    out.extend(f"  {_clean(line)}" for line in _coverage_lines(report.coverage))
+    out.append("")
+    out.append(f"VERDICT: {report.verdict}")
+    out.append(_VERDICT_BLURB[report.verdict])
+    return "\n".join(out) + "\n"
+
+
+def render_markdown(report):
+    groups = _grouped(report.findings)
+    out = []
+    out.append(f"# Preflight report — {_md(report.project_name)}")
+    out.append("")
+    out.append(f"**Verdict: {report.verdict}** — "
+               f"{_VERDICT_BLURB[report.verdict]}")
+    out.append("")
+    counts = ", ".join(f"{len(groups[s])} {s}" for s in SEVERITY_ORDER)
+    out.append(f"Findings: {len(report.findings)} ({counts}).")
+    for sev in SEVERITY_ORDER:
+        if not groups[sev]:
+            continue
+        out.append("")
+        out.append(f"## {sev} ({len(groups[sev])})")
+        out.append("")
+        out.append("| Rule | Where | Finding |")
+        out.append("| --- | --- | --- |")
+        for f in groups[sev]:
+            msg = _md(f.message)
+            if f.evidence:
+                msg += f" ({_md(f.evidence)})"
+            out.append(f"| {f.rule} | {_md(f.where) or '—'} | {msg} |")
+    out.append("")
+    out.append("## Coverage — what was actually checked")
+    out.append("")
+    out.extend(f"- {_md(line)}" for line in _coverage_lines(report.coverage))
+    out.append("")
+    out.append("---")
+    out.append("Generated by KiCad Preflight (open source, MIT). "
+               "Part-risk data is the bundled SAMPLE snapshot, not "
+               "live distributor data.")
+    return "\n".join(out) + "\n"
+
+
+def render_json(report):
+    return json.dumps(report.to_dict(), indent=2) + "\n"
+
+
+RENDERERS = {"text": render_text, "md": render_markdown, "json": render_json}

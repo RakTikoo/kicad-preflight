@@ -1,1 +1,147 @@
-IiIiS2lDYWQgUHJlZmxpZ2h0IENMSS4KClVzYWdlOgogICAgcHl0aG9uMyAtbSBwcmVmbGlnaHQgPHByb2plY3QtZm9sZGVyLW9yLWZpbGU+IFstLWZvcm1hdCB0ZXh0fG1kfGpzb25dCiAgICAgICAgICAgICAgICAgICAgICAgICBbLS1ib20gUEFUSF0gWy0tZGF0YXNldCBQQVRIXSBbLS1vdXRwdXQgUEFUSF0KICAgIHB5dGhvbjMgLW0gcHJlZmxpZ2h0IDxib20uY3N2PiAgIOKAlCBzdGFuZGFsb25lIEJPTSBtb2RlIChhbnkgRURBIHRvb2wpCgpFeGl0IGNvZGVzOiAwID0gUEFTUywgMSA9IENBVVRJT04sIDIgPSBCTE9DSywgMyA9IHVzYWdlIGVycm9yLgpUaGUgQ0xJIG5ldmVyIHByaW50cyBhIFB5dGhvbiB0cmFjZWJhY2s6IGJhZCB0YXJnZXRzLCBiYWQgZGF0YXNldHMsCnVud3JpdGFibGUgb3V0cHV0cyBhbmQgaW50ZXJuYWwgZXJyb3JzIGFsbCBleGl0IDMgd2l0aCBhIG1lc3NhZ2UuCiIiIgoKaW1wb3J0IGFyZ3BhcnNlCmltcG9ydCBvcwppbXBvcnQgc3lzCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aAoKZnJvbSAuIGltcG9ydCBlbmdpbmUKZnJvbSAuZmluZGluZyBpbXBvcnQgRVhJVF9DT0RFUywgRVhJVF9VU0FHRV9FUlJPUgpmcm9tIC5wYXJ0cmlzayBpbXBvcnQgRGF0YXNldEVycm9yCmZyb20gLnJlcG9ydCBpbXBvcnQgUkVOREVSRVJTCmZyb20gLnNleHByIGltcG9ydCBTZXhwckVycm9yCgpfUFJPSkVDVF9TVUZGSVhFUyA9IHsiLmtpY2FkX3BybyIsICIua2ljYWRfc2NoIiwgIi5raWNhZF9wY2IifQpfUFJPVEVDVEVEX1NVRkZJWEVTID0gX1BST0pFQ1RfU1VGRklYRVMgfCB7Ii5jc3YifQoKCmNsYXNzIF9QYXJzZXIoYXJncGFyc2UuQXJndW1lbnRQYXJzZXIpOgogICAgZGVmIGVycm9yKHNlbGYsIG1lc3NhZ2UpOgogICAgICAgICMgYXJncGFyc2UgZXhpdHMgMiBieSBkZWZhdWx0OyBQcmVmbGlnaHQgcmVzZXJ2ZXMgMiBmb3IgQkxPQ0ssCiAgICAgICAgIyBzbyB1c2FnZSBlcnJvcnMgZXhpdCAzIGluc3RlYWQuCiAgICAgICAgc2VsZi5wcmludF91c2FnZShzeXMuc3RkZXJyKQogICAgICAgIHByaW50KGYicHJlZmxpZ2h0OiBlcnJvcjoge21lc3NhZ2V9IiwgZmlsZT1zeXMuc3RkZXJyKQogICAgICAgIHN5cy5leGl0KEVYSVRfVVNBR0VfRVJST1IpCgoKZGVmIGJ1aWxkX3BhcnNlcigpOgogICAgcGFyc2VyID0gX1BhcnNlcigKICAgICAgICBwcm9nPSJwcmVmbGlnaHQiLAogICAgICAgIGRlc2NyaXB0aW9uPSJQcmUtZmFiIGNoZWNrcyBmb3IgYSBLaUNhZCBwcm9qZWN0OiBzY2hlbWF0aWMvUENCICIKICAgICAgICAgICAgICAgICAgICAiYWdyZWVtZW50LCBCT00gc2FuaXR5LCBhbmQgb2ZmbGluZSBwYXJ0IHJpc2sg4oCUIG9uZSAiCiAgICAgICAgICAgICAgICAgICAgInBsYWluLUVuZ2xpc2ggcmVwb3J0IGJlZm9yZSB5b3Ugb3JkZXIuIEEgbG9uZSBCT00gIgogICAgICAgICAgICAgICAgICAgICJDU1YgKGZyb20gYW55IEVEQSB0b29sKSBydW5zIHRoZSBCT00gY2hlY2tzIG9ubHkuIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoInRhcmdldCIsCiAgICAgICAgICAgICAgICAgICAgICAgIGhlbHA9IktpQ2FkIHByb2plY3QgZm9sZGVyLCBhIC5raWNhZF9wcm8gLyAiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIi5raWNhZF9zY2ggLyAua2ljYWRfcGNiIGZpbGUgaW5zaWRlIGl0LCAiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIm9yIGEgQk9NIC5jc3YgZm9yIHN0YW5kYWxvbmUgQk9NIG1vZGUiKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1mb3JtYXQiLCBjaG9pY2VzPXNvcnRlZChSRU5ERVJFUlMpLAogICAgICAgICAgICAgICAgICAgICAgICBkZWZhdWx0PSJ0ZXh0IiwgaGVscD0icmVwb3J0IGZvcm1hdCAoZGVmYXVsdDogdGV4dCkiKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1ib20iLCBkZWZhdWx0PU5vbmUsCiAgICAgICAgICAgICAgICAgICAgICAgIGhlbHA9IkJPTSBDU1YgdG8gdXNlIChkZWZhdWx0OiBhdXRvLWRldGVjdCBpbiAiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInRoZSBwcm9qZWN0IGZvbGRlcikiKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1kYXRhc2V0IiwgZGVmYXVsdD1Ob25lLAogICAgICAgICAgICAgICAgICAgICAgICBoZWxwPSJwYXJ0LXJpc2sgZGF0YXNldCBKU09OIChkZWZhdWx0OiB0aGUgIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICJidW5kbGVkIHNhbXBsZSBkYXRhc2V0KSIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLW91dHB1dCIsIGRlZmF1bHQ9Tm9uZSwKICAgICAgICAgICAgICAgICAgICAgICAgaGVscD0id3JpdGUgdGhlIHJlcG9ydCB0byB0aGlzIGZpbGUgaW5zdGVhZCBvZiAiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInN0ZG91dCIpCiAgICByZXR1cm4gcGFyc2VyCgoKZGVmIF9mYWlsKG1lc3NhZ2UpOgogICAgcHJpbnQoZiJwcmVmbGlnaHQ6IGVycm9yOiB7bWVzc2FnZX0iLCBmaWxlPXN5cy5zdGRlcnIpCiAgICByZXR1cm4gRVhJVF9VU0FHRV9FUlJPUgoKCmRlZiBtYWluKGFyZ3Y9Tm9uZSk6CiAgICBhcmdzID0gYnVpbGRfcGFyc2VyKCkucGFyc2VfYXJncyhhcmd2KQogICAgdGFyZ2V0ID0gUGF0aChhcmdzLnRhcmdldCkKICAgIGlmIG5vdCB0YXJnZXQuZXhpc3RzKCk6CiAgICAgICAgcmV0dXJuIF9mYWlsKGYibm8gc3VjaCBmaWxlIG9yIGZvbGRlcjoge3RhcmdldH0iKQogICAgaWYgYXJncy5ib20gYW5kIG5vdCBQYXRoKGFyZ3MuYm9tKS5pc19maWxlKCk6CiAgICAgICAgcmV0dXJuIF9mYWlsKGYiQk9NIGZpbGUgbm90IGZvdW5kOiB7YXJncy5ib219IikKICAgIGlmIGFyZ3MuZGF0YXNldCBhbmQgbm90IFBhdGgoYXJncy5kYXRhc2V0KS5pc19maWxlKCk6CiAgICAgICAgcmV0dXJuIF9mYWlsKGYiZGF0YXNldCBmaWxlIG5vdCBmb3VuZDoge2FyZ3MuZGF0YXNldH0iKQoKICAgIHN0YW5kYWxvbmVfYm9tID0gTm9uZQogICAgaWYgdGFyZ2V0LmlzX2ZpbGUoKToKICAgICAgICBzdWZmaXggPSB0YXJnZXQuc3VmZml4Lmxvd2VyKCkKICAgICAgICBpZiBzdWZmaXggPT0gIi5jc3YiOgogICAgICAgICAgICBzdGFuZGFsb25lX2JvbSA9IHRhcmdldAogICAgICAgIGVsaWYgc3VmZml4IG5vdCBpbiBfUFJPSkVDVF9TVUZGSVhFUzoKICAgICAgICAgICAgcmV0dXJuIF9mYWlsKAogICAgICAgICAgICAgICAgZiJmaWxlIHRhcmdldCBtdXN0IGJlIGEgLmtpY2FkX3BybywgLmtpY2FkX3NjaCwgIgogICAgICAgICAgICAgICAgZiIua2ljYWRfcGNiIG9yIC5jc3YgZmlsZSwgbm90IHt0YXJnZXQubmFtZSFyfSIpCiAgICBlbHNlOgogICAgICAgIGhhc19wcm9qZWN0ID0gYW55KG5leHQodGFyZ2V0Lmdsb2IocGF0KSwgTm9uZSkgaXMgbm90IE5vbmUKICAgICAgICAgICAgICAgICAgICAgICAgICBmb3IgcGF0IGluICgiKi5raWNhZF9zY2giLCAiKi5raWNhZF9wY2IiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICIqLmtpY2FkX3BybyIpKQogICAgICAgIGlmIG5vdCBoYXNfcHJvamVjdDoKICAgICAgICAgICAgY3N2cyA9IHNvcnRlZCh0YXJnZXQuZ2xvYigiKi5jc3YiKSkgKyBzb3J0ZWQodGFyZ2V0Lmdsb2IoIiouQ1NWIikpCiAgICAgICAgICAgIGlmIGxlbihjc3ZzKSA9PSAxOgogICAgICAgICAgICAgICAgc3RhbmRhbG9uZV9ib20gPSBjc3ZzWzBdCiAgICAgICAgICAgIGVsc2U6CiAgICAgICAgICAgICAgICByZXR1cm4gX2ZhaWwoCiAgICAgICAgICAgICAgICAgICAgZiJubyBLaUNhZCBwcm9qZWN0IGZpbGVzICgua2ljYWRfc2NoLy5raWNhZF9wY2IvIgogICAgICAgICAgICAgICAgICAgIGYiLmtpY2FkX3BybykgZm91bmQgaW4ge3RhcmdldH0iKQoKICAgIHRyeToKICAgICAgICBpZiBzdGFuZGFsb25lX2JvbSBpcyBub3QgTm9uZToKICAgICAgICAgICAgcmVwb3J0ID0gZW5naW5lLnJ1bl9ib21fb25seShzdGFuZGFsb25lX2JvbSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkYXRhc2V0X3BhdGg9YXJncy5kYXRhc2V0KQogICAgICAgICAgICBpbnB1dF9wYXRocyA9IHtzdGFuZGFsb25lX2JvbS5yZXNvbHZlKCl9CiAgICAgICAgZWxzZToKICAgICAgICAgICAgcmVwb3J0ID0gZW5naW5lLnJ1bih0YXJnZXQsIGJvbV9vdmVycmlkZT1hcmdzLmJvbSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkYXRhc2V0X3BhdGg9YXJncy5kYXRhc2V0KQogICAgICAgICAgICBmb2xkZXIgPSB0YXJnZXQgaWYgdGFyZ2V0LmlzX2RpcigpIGVsc2UgdGFyZ2V0LnBhcmVudAogICAgICAgICAgICBpbnB1dF9wYXRocyA9IHtwLnJlc29sdmUoKSBmb3IgcCBpbiBmb2xkZXIuaXRlcmRpcigpCiAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmIHAuc3VmZml4Lmxvd2VyKCkgaW4gX1BST1RFQ1RFRF9TVUZGSVhFU30KICAgIGV4Y2VwdCBEYXRhc2V0RXJyb3IgYXMgZXhjOgogICAgICAgIHJldHVybiBfZmFpbChzdHIoZXhjKSkKICAgIGV4Y2VwdCAoVmFsdWVFcnJvciwgU2V4cHJFcnJvcikgYXMgZXhjOgogICAgICAgIHJldHVybiBfZmFpbChzdHIoZXhjKSkKICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZXhjOiAgIyBubyB0cmFjZWJhY2tzLCBldmVyIChhdWRpdCBoYXJkZW5pbmcpCiAgICAgICAgcmV0dXJuIF9mYWlsKGYiaW50ZXJuYWwgZXJyb3IgKHt0eXBlKGV4YykuX19uYW1lX199KToge2V4Y30iKQoKICAgIHJlbmRlcmVkID0gUkVOREVSRVJTW2FyZ3MuZm9ybWF0XShyZXBvcnQpCiAgICBpZiBhcmdzLm91dHB1dDoKICAgICAgICBvdXRfcGF0aCA9IFBhdGgoYXJncy5vdXRwdXQpCiAgICAgICAgaWYgb3V0X3BhdGgucmVzb2x2ZSgpIGluIGlucHV0X3BhdGhzIG9yICgKICAgICAgICAgICAgICAgIG91dF9wYXRoLmV4aXN0cygpCiAgICAgICAgICAgICAgICBhbmQgb3V0X3BhdGguc3VmZml4Lmxvd2VyKCkgaW4gX1BST1RFQ1RFRF9TVUZGSVhFUyk6CiAgICAgICAgICAgIHJldHVybiBfZmFpbCgKICAgICAgICAgICAgICAgIGYicmVmdXNpbmcgdG8gb3ZlcndyaXRlIGEgcHJvamVjdC9CT00gZmlsZToge291dF9wYXRofSAiCiAgICAgICAgICAgICAgICAiKC0tb3V0cHV0IG11c3QgbmFtZSBhIG5ldyByZXBvcnQgZmlsZSkiKQogICAgICAgIHRyeToKICAgICAgICAgICAgb3V0X3BhdGgud3JpdGVfdGV4dChyZW5kZXJlZCwgZW5jb2Rpbmc9InV0Zi04IikKICAgICAgICBleGNlcHQgT1NFcnJvciBhcyBleGM6CiAgICAgICAgICAgIHJldHVybiBfZmFpbChmImNhbm5vdCB3cml0ZSByZXBvcnQgdG8ge291dF9wYXRofToge2V4Y30iKQogICAgICAgIHByaW50KGYiUmVwb3J0IHdyaXR0ZW4gdG8ge2FyZ3Mub3V0cHV0fSAiCiAgICAgICAgICAgICAgZiIodmVyZGljdDoge3JlcG9ydC52ZXJkaWN0fSkiKQogICAgZWxzZToKICAgICAgICB0cnk6CiAgICAgICAgICAgIHN5cy5zdGRvdXQud3JpdGUocmVuZGVyZWQpCiAgICAgICAgICAgIHN5cy5zdGRvdXQuZmx1c2goKQogICAgICAgIGV4Y2VwdCBCcm9rZW5QaXBlRXJyb3I6CiAgICAgICAgICAgICMgYHwgaGVhZGAgYW5kIGZyaWVuZHM6IGV4aXQgcXVpZXRseSwgbm8gdHJhY2ViYWNrLgogICAgICAgICAgICB0cnk6CiAgICAgICAgICAgICAgICBkZXZudWxsID0gb3Mub3Blbihvcy5kZXZudWxsLCBvcy5PX1dST05MWSkKICAgICAgICAgICAgICAgIG9zLmR1cDIoZGV2bnVsbCwgc3lzLnN0ZG91dC5maWxlbm8oKSkKICAgICAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgICAgICBwYXNzCiAgICByZXR1cm4gRVhJVF9DT0RFU1tyZXBvcnQudmVyZGljdF0KCgppZiBfX25hbWVfXyA9PSAiX19tYWluX18iOgogICAgc3lzLmV4aXQobWFpbigpKQo=
+"""KiCad Preflight CLI.
+
+Usage:
+    python3 -m preflight <project-folder-or-file> [--format text|md|json]
+                         [--bom PATH] [--dataset PATH] [--output PATH]
+    python3 -m preflight <bom.csv>   — standalone BOM mode (any EDA tool)
+
+Exit codes: 0 = PASS, 1 = CAUTION, 2 = BLOCK, 3 = usage error.
+The CLI never prints a Python traceback: bad targets, bad datasets,
+unwritable outputs and internal errors all exit 3 with a message.
+"""
+
+import argparse
+import os
+import sys
+from pathlib import Path
+
+from . import engine
+from .finding import EXIT_CODES, EXIT_USAGE_ERROR
+from .partrisk import DatasetError
+from .report import RENDERERS
+from .sexpr import SexprError
+
+_PROJECT_SUFFIXES = {".kicad_pro", ".kicad_sch", ".kicad_pcb"}
+_PROTECTED_SUFFIXES = _PROJECT_SUFFIXES | {".csv"}
+
+
+class _Parser(argparse.ArgumentParser):
+    def error(self, message):
+        # argparse exits 2 by default; Preflight reserves 2 for BLOCK,
+        # so usage errors exit 3 instead.
+        self.print_usage(sys.stderr)
+        print(f"preflight: error: {message}", file=sys.stderr)
+        sys.exit(EXIT_USAGE_ERROR)
+
+
+def build_parser():
+    parser = _Parser(
+        prog="preflight",
+        description="Pre-fab checks for a KiCad project: schematic/PCB "
+                    "agreement, BOM sanity, and offline part risk — one "
+                    "plain-English report before you order. A lone BOM "
+                    "CSV (from any EDA tool) runs the BOM checks only.")
+    parser.add_argument("target",
+                        help="KiCad project folder, a .kicad_pro / "
+                             ".kicad_sch / .kicad_pcb file inside it, "
+                             "or a BOM .csv for standalone BOM mode")
+    parser.add_argument("--format", choices=sorted(RENDERERS),
+                        default="text", help="report format (default: text)")
+    parser.add_argument("--bom", default=None,
+                        help="BOM CSV to use (default: auto-detect in "
+                             "the project folder)")
+    parser.add_argument("--dataset", default=None,
+                        help="part-risk dataset JSON (default: the "
+                             "bundled sample dataset)")
+    parser.add_argument("--output", default=None,
+                        help="write the report to this file instead of "
+                             "stdout")
+    return parser
+
+
+def _fail(message):
+    print(f"preflight: error: {message}", file=sys.stderr)
+    return EXIT_USAGE_ERROR
+
+
+def main(argv=None):
+    args = build_parser().parse_args(argv)
+    target = Path(args.target)
+    if not target.exists():
+        return _fail(f"no such file or folder: {target}")
+    if args.bom and not Path(args.bom).is_file():
+        return _fail(f"BOM file not found: {args.bom}")
+    if args.dataset and not Path(args.dataset).is_file():
+        return _fail(f"dataset file not found: {args.dataset}")
+
+    standalone_bom = None
+    if target.is_file():
+        suffix = target.suffix.lower()
+        if suffix == ".csv":
+            standalone_bom = target
+        elif suffix not in _PROJECT_SUFFIXES:
+            return _fail(
+                f"file target must be a .kicad_pro, .kicad_sch, "
+                f".kicad_pcb or .csv file, not {target.name!r}")
+    else:
+        has_project = any(next(target.glob(pat), None) is not None
+                          for pat in ("*.kicad_sch", "*.kicad_pcb",
+                                      "*.kicad_pro"))
+        if not has_project:
+            csvs = sorted(target.glob("*.csv")) + sorted(target.glob("*.CSV"))
+            if len(csvs) == 1:
+                standalone_bom = csvs[0]
+            else:
+                return _fail(
+                    f"no KiCad project files (.kicad_sch/.kicad_pcb/"
+                    f".kicad_pro) found in {target}")
+
+    try:
+        if standalone_bom is not None:
+            report = engine.run_bom_only(standalone_bom,
+                                         dataset_path=args.dataset)
+            input_paths = {standalone_bom.resolve()}
+        else:
+            report = engine.run(target, bom_override=args.bom,
+                                dataset_path=args.dataset)
+            folder = target if target.is_dir() else target.parent
+            input_paths = {p.resolve() for p in folder.iterdir()
+                           if p.suffix.lower() in _PROTECTED_SUFFIXES}
+    except DatasetError as exc:
+        return _fail(str(exc))
+    except (ValueError, SexprError) as exc:
+        return _fail(str(exc))
+    except Exception as exc:  # no tracebacks, ever (audit hardening)
+        return _fail(f"internal error ({type(exc).__name__}): {exc}")
+
+    rendered = RENDERERS[args.format](report)
+    if args.output:
+        out_path = Path(args.output)
+        if out_path.resolve() in input_paths or (
+                out_path.exists()
+                and out_path.suffix.lower() in _PROTECTED_SUFFIXES):
+            return _fail(
+                f"refusing to overwrite a project/BOM file: {out_path} "
+                "(--output must name a new report file)")
+        try:
+            out_path.write_text(rendered, encoding="utf-8")
+        except OSError as exc:
+            return _fail(f"cannot write report to {out_path}: {exc}")
+        print(f"Report written to {args.output} "
+              f"(verdict: {report.verdict})")
+    else:
+        try:
+            sys.stdout.write(rendered)
+            sys.stdout.flush()
+        except BrokenPipeError:
+            # `| head` and friends: exit quietly, no traceback.
+            try:
+                devnull = os.open(os.devnull, os.O_WRONLY)
+                os.dup2(devnull, sys.stdout.fileno())
+            except OSError:
+                pass
+    return EXIT_CODES[report.verdict]
+
+
+if __name__ == "__main__":
+    sys.exit(main())

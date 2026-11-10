@@ -1,1 +1,221 @@
-IiIiUHJlZmxpZ2h0IGVuZ2luZTogbG9hZCBhIHByb2plY3QsIHJ1biBldmVyeSBjaGVjayBsYXllciwgYnVpbGQgYSByZXBvcnQuCgpMYXllcnMsIGluIG9yZGVyOgogIDEuIEZpbGUvcGFyc2UgaW50ZWdyaXR5IChwcm9qZWN0LnB5KQogIDIuIFNjaGVtYXRpYyA8LT4gUENCIGNyb3NzLWNoZWNrcyArIHNjaGVtYXRpYyBwYXJ0IGNoZWNrcyAoY2hlY2tzLnB5KQogIDMuIEJPTSA8LT4gc2NoZW1hdGljIGNoZWNrcyAoYm9tY2hlY2tzLnB5IHZpYSBjaGVja3MucnVuX2JvbV9sYXllcikKICA0LiBPZmZsaW5lIHBhcnQtcmlzayBjaGVja3MgYWdhaW5zdCB0aGUgc2FtcGxlIGRhdGFzZXQgKHBhcnRyaXNrLnB5KQogIDUuIE9mZmljaWFsIGtpY2FkLWNsaSBEUkMvRVJDLCB3aGVuIGluc3RhbGxlZCAoa2ljYWRjbGkucHkpCgpUaGUgcmVwb3J0J3MgQ292ZXJhZ2Ugc2VjdGlvbiBzdGF0ZXMgZXhhY3RseSB3aGF0IGVhY2ggbGF5ZXIgZGlkLCBhbmQKdGhlIHZlcmRpY3QgYWNjb3VudHMgZm9yIGl0OiBhbnl0aGluZyB0aGF0IGV4aXN0cyBidXQgY291bGQgbm90IGJlCmNoZWNrZWQgcHJvZHVjZXMgYSBCTE9DSywgYSBDQVVUSU9OLCBvciBhIFNDQU5fSU5DT01QTEVURSBmaW5kaW5nIOKAlAphIGNsZWFuIFBBU1MgbmV2ZXIgaGlkZXMgYSBza2lwcGVkIGNoZWNrLgoKQWxzbyBoZXJlOiBydW5fYm9tX29ubHkoKSwgdGhlIHN0YW5kYWxvbmUgQk9NIG1vZGUuIEl0IHJ1bnMgdGhlCnRvb2wtYWdub3N0aWMgQk9NIGxheWVyIChhbmQgcGFydCByaXNrKSBvbiBhIGxvbmUgQ1NWIOKAlCB0aGUgc2FtZSBjb2RlCnBhdGggYSBmdXR1cmUgZmFiLXNpdGUgYnJvd3NlciBleHRlbnNpb24gd291bGQgdXNlIGF0IGNoZWNrb3V0LCB3aGVyZQpubyBkZXNpZ24tdG9vbCBwcm9qZWN0IGV4aXN0cyBhdCBhbGwuCiIiIgoKZnJvbSBkYXRhY2xhc3NlcyBpbXBvcnQgZGF0YWNsYXNzLCBmaWVsZApmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKCmZyb20gLiBpbXBvcnQgYm9tY2hlY2tzLCBjaGVja3MsIGtpY2FkY2xpLCBwYXJ0cmlzawpmcm9tIC5ib20gaW1wb3J0IHBhcnNlX2JvbQpmcm9tIC5maW5kaW5nIGltcG9ydCBCTE9DSywgQ0FVVElPTiwgTk9URSwgRmluZGluZywgdmVyZGljdF9mb3IKZnJvbSAucHJvamVjdCBpbXBvcnQgbG9hZF9wcm9qZWN0LCByZWFkX3Byb2plY3RfZmlsZQpmcm9tIC5zZXhwciBpbXBvcnQgU2V4cHJFcnJvcgoKTUFYX0ZJTkRJTkdTID0gMjAwMCAgICAgICAgICAjIHJlcG9ydCBidWRnZXQ7IG92ZXJmbG93IGlzIHN0YXRlZCwgbm90IHNpbGVudAoKCkBkYXRhY2xhc3MKY2xhc3MgUmVwb3J0OgogICAgcHJvamVjdF9uYW1lOiBzdHIKICAgIGZvbGRlcjogc3RyCiAgICB2ZXJkaWN0OiBzdHIKICAgIGZpbmRpbmdzOiBsaXN0ID0gZmllbGQoZGVmYXVsdF9mYWN0b3J5PWxpc3QpCiAgICBjb3ZlcmFnZTogZGljdCA9IGZpZWxkKGRlZmF1bHRfZmFjdG9yeT1kaWN0KQoKICAgIGRlZiB0b19kaWN0KHNlbGYpOgogICAgICAgIHJldHVybiB7CiAgICAgICAgICAgICJwcm9qZWN0Ijogc2VsZi5wcm9qZWN0X25hbWUsCiAgICAgICAgICAgICJmb2xkZXIiOiBzZWxmLmZvbGRlciwKICAgICAgICAgICAgInZlcmRpY3QiOiBzZWxmLnZlcmRpY3QsCiAgICAgICAgICAgICJmaW5kaW5ncyI6IFtmLnRvX2RpY3QoKSBmb3IgZiBpbiBzZWxmLmZpbmRpbmdzXSwKICAgICAgICAgICAgImNvdmVyYWdlIjogc2VsZi5jb3ZlcmFnZSwKICAgICAgICB9CgoKZGVmIF9jYXAoZmluZGluZ3MpOgogICAgaWYgbGVuKGZpbmRpbmdzKSA8PSBNQVhfRklORElOR1M6CiAgICAgICAgcmV0dXJuIGZpbmRpbmdzCiAgICBrZXB0ID0gZmluZGluZ3NbOk1BWF9GSU5ESU5HU10KICAgIGtlcHQuYXBwZW5kKEZpbmRpbmcoCiAgICAgICAgIkZJTkRJTkdTX1RSVU5DQVRFRCIsIENBVVRJT04sCiAgICAgICAgZiJ7bGVuKGZpbmRpbmdzKSAtIE1BWF9GSU5ESU5HU30gZnVydGhlciBmaW5kaW5nKHMpIHdlcmUgbm90ICIKICAgICAgICBmImxpc3RlZCDigJQgdGhlIHJlcG9ydCBidWRnZXQgaXMge01BWF9GSU5ESU5HU30uIFRoZSB2ZXJkaWN0ICIKICAgICAgICAiYWxyZWFkeSByZWZsZWN0cyB0aGVtOyBmaXggdGhlIGxpc3RlZCBpdGVtcyBhbmQgcmUtcnVuLiIsCiAgICAgICAgd2hlcmU9InJlcG9ydCIpKQogICAgcmV0dXJuIGtlcHQKCgpkZWYgcnVuKHRhcmdldCwgYm9tX292ZXJyaWRlPU5vbmUsIGRhdGFzZXRfcGF0aD1Ob25lKToKICAgICIiIlJ1biBhbGwgY2hlY2tzIG9uIGB0YXJnZXRgIGFuZCByZXR1cm4gYSBSZXBvcnQuCgogICAgUmFpc2VzIHBhcnRyaXNrLkRhdGFzZXRFcnJvciBmb3IgYSBiYWQgdXNlci1zdXBwbGllZCBkYXRhc2V0IOKAlAogICAgdGhlIENMSSB0dXJucyB0aGF0IGludG8gYSB1c2FnZSBlcnJvciAoZXhpdCAzKS4iIiIKICAgIHByb2plY3QgPSBsb2FkX3Byb2plY3QodGFyZ2V0LCBib21fb3ZlcnJpZGU9Ym9tX292ZXJyaWRlKQogICAgZmluZGluZ3MgPSBbXQoKICAgIGZvciBwYXRoLCBlcnJvciBpbiBwcm9qZWN0LnBhcnNlX2Vycm9yczoKICAgICAgICBmaW5kaW5ncy5hcHBlbmQoRmluZGluZygKICAgICAgICAgICAgIlBST0pFQ1RfRklMRV9VTlBBUlNFQUJMRSIsIEJMT0NLLAogICAgICAgICAgICBmIntwYXRoLm5hbWV9IGV4aXN0cyBidXQgY291bGQgbm90IGJlIHBhcnNlZCBhcyBhIEtpQ2FkICIKICAgICAgICAgICAgZiJTLWV4cHJlc3Npb24gZmlsZSAoe2Vycm9yfSkuIFByZWZsaWdodCBjYW5ub3QgY2hlY2sgYSAiCiAgICAgICAgICAgICJmaWxlIGl0IGNhbm5vdCByZWFkLCBhbmQgY2hlY2tzIGRlcGVuZGluZyBvbiBpdCB3ZXJlICIKICAgICAgICAgICAgInNraXBwZWQgcmF0aGVyIHRoYW4gZ3Vlc3NlZC4iLAogICAgICAgICAgICB3aGVyZT1wYXRoLm5hbWUpKQoKICAgIGZpbmRpbmdzLmV4dGVuZChjaGVja3MucnVuX2Nyb3NzX2NoZWNrcyhwcm9qZWN0KSkKICAgIGJvbV9maW5kaW5ncywgYm9tX3N0YXRzID0gY2hlY2tzLnJ1bl9ib21fbGF5ZXIocHJvamVjdCkKICAgIGZpbmRpbmdzLmV4dGVuZChib21fZmluZGluZ3MpCgogICAgbWV0YSwgcGFydHMgPSBwYXJ0cmlzay5sb2FkX2RhdGFzZXQoZGF0YXNldF9wYXRoKQogICAgcmlza19maW5kaW5ncywgcmlza19zdGF0cyA9IHBhcnRyaXNrLnJ1bl9wYXJ0X3Jpc2tfY2hlY2tzKAogICAgICAgIHByb2plY3QsIG1ldGEsIHBhcnRzKQogICAgZmluZGluZ3MuZXh0ZW5kKHJpc2tfZmluZGluZ3MpCgogICAgY2xpX2ZpbmRpbmdzLCBjbGlfY292ZXJhZ2UgPSBraWNhZGNsaS5ydW5fb2ZmaWNpYWxfY2hlY2tzKHByb2plY3QpCiAgICBmaW5kaW5ncy5leHRlbmQoY2xpX2ZpbmRpbmdzKQogICAgaWYgY2xpX2NvdmVyYWdlLmdldCgiZmFpbGVkIik6CiAgICAgICAgZmluZGluZ3MuYXBwZW5kKEZpbmRpbmcoCiAgICAgICAgICAgICJLSUNBRF9DTElfRkFJTEVEIiwgQ0FVVElPTiwKICAgICAgICAgICAgImtpY2FkLWNsaSBpcyBpbnN0YWxsZWQgYnV0IGEgRFJDL0VSQyBydW4gZmFpbGVkLCBzbyB0aGUgIgogICAgICAgICAgICAib2ZmaWNpYWwgY2hlY2tzIGRpZCBub3QgY29udHJpYnV0ZSB0byB0aGlzIHJlcG9ydC4gVGhlICIKICAgICAgICAgICAgImJ1aWx0LWluIGNoZWNrcyBhYm92ZSBzdGlsbCByYW47IHNlZSBDb3ZlcmFnZSBmb3IgdGhlICIKICAgICAgICAgICAgImZhaWx1cmUgZGV0YWlsLiIsCiAgICAgICAgICAgIHdoZXJlPSJraWNhZC1jbGkiKSkKCiAgICAjIC0tLSBTQ0FOX0lOQ09NUExFVEU6IHRoaW5ncyB0aGF0IGV4aXN0IGJ1dCB3ZXJlIG5vdCBjaGVja2VkIC0tLS0tLS0KICAgIGluY29tcGxldGUgPSBbXQogICAgaWYgcHJvamVjdC51bmxvYWRlZF9zY2g6CiAgICAgICAgaW5jb21wbGV0ZS5hcHBlbmQoCiAgICAgICAgICAgICJzY2hlbWF0aWMgZmlsZShzKSBub3QgbG9hZGVkOiAiCiAgICAgICAgICAgICsgIiwgIi5qb2luKHAubmFtZSBmb3IgcCBpbiBwcm9qZWN0LnVubG9hZGVkX3NjaCkKICAgICAgICAgICAgKyAiIChhIGZvbGRlciBzaG91bGQgaG9sZCBvbmUgcHJvamVjdDsgZXh0cmEgZmlsZXMgYmVsb25nICIKICAgICAgICAgICAgICAidG8gYW5vdGhlciBwcm9qZWN0IG9yIGEgc3ViLXNoZWV0IHJlYWNoZWQgZnJvbSB0aGUgIgogICAgICAgICAgICAgICJyb290IHNoZWV0KSIpCiAgICBpZiBwcm9qZWN0LnVubG9hZGVkX3BjYjoKICAgICAgICBpbmNvbXBsZXRlLmFwcGVuZCgKICAgICAgICAgICAgIlBDQiBmaWxlKHMpIG5vdCBsb2FkZWQ6ICIKICAgICAgICAgICAgKyAiLCAiLmpvaW4ocC5uYW1lIGZvciBwIGluIHByb2plY3QudW5sb2FkZWRfcGNiKSkKICAgIGlmIHJpc2tfc3RhdHMuZ2V0KCJkYXRhc2V0X2VudHJpZXNfaW52YWxpZCIpOgogICAgICAgIGluY29tcGxldGUuYXBwZW5kKAogICAgICAgICAgICBmIntyaXNrX3N0YXRzWydkYXRhc2V0X2VudHJpZXNfaW52YWxpZCddfSBkYXRhc2V0ICIKICAgICAgICAgICAgImVudHIoaWVzKSB3ZXJlIHVudXNhYmxlIChzZWUgUEFSVF9EQVRBU0VUX0VOVFJZX0lOVkFMSUQpIikKICAgIGlmIGluY29tcGxldGU6CiAgICAgICAgZmluZGluZ3MuYXBwZW5kKEZpbmRpbmcoCiAgICAgICAgICAgICJTQ0FOX0lOQ09NUExFVEUiLCBDQVVUSU9OLAogICAgICAgICAgICAiU29tZSBpbnB1dCB3YXMgcHJlc2VudCBidXQgbm90IGNoZWNrZWQ6ICIKICAgICAgICAgICAgKyAiOyAiLmpvaW4oaW5jb21wbGV0ZSkKICAgICAgICAgICAgKyAiLiBUcmVhdCBhIFBBU1MgaGVyZSBhcyBjb3ZlcmluZyBvbmx5IHdoYXQgQ292ZXJhZ2UgIgogICAgICAgICAgICAgICJsaXN0cy4iLAogICAgICAgICAgICB3aGVyZT1zdHIocHJvamVjdC5mb2xkZXIpKSkKCiAgICBjb3ZlcmFnZSA9IHsKICAgICAgICAic2NoZW1hdGljIjogKAogICAgICAgICAgICB7ImZpbGUiOiBwcm9qZWN0LnNjaF9wYXRoLm5hbWUsCiAgICAgICAgICAgICAiZmlsZXNfbG9hZGVkIjogW3AubmFtZSBmb3IgcCBpbiBwcm9qZWN0LnNjaF9wYXRoc19sb2FkZWRdLAogICAgICAgICAgICAgInBhcnRzIjogbGVuKGNoZWNrcy5fc2NoX3BhcnRzKHByb2plY3QpKSwKICAgICAgICAgICAgICJub19jb25uZWN0X21hcmtlcnMiOiBwcm9qZWN0Lm5vX2Nvbm5lY3RzLAogICAgICAgICAgICAgInN5bWJvbHNfd2l0aG91dF9yZWZlcmVuY2UiOiBwcm9qZWN0LnNjaF9zeW1ib2xzX25vX3JlZn0KICAgICAgICAgICAgaWYgcHJvamVjdC5zY2hfcGF0aCBlbHNlIE5vbmUpLAogICAgICAgICJwY2IiOiAoCiAgICAgICAgICAgIHsiZmlsZSI6IHByb2plY3QucGNiX3BhdGgubmFtZSwKICAgICAgICAgICAgICJmb290cHJpbnRzIjogbGVuKHByb2plY3QuZm9vdHByaW50cyksCiAgICAgICAgICAgICAicGFydF9mb290cHJpbnRzIjogc3VtKDEgZm9yIGZwIGluIHByb2plY3QuZm9vdHByaW50cwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZiBmcC5pc19wYXJ0KSwKICAgICAgICAgICAgICJmb290cHJpbnRzX3dpdGhvdXRfcmVmZXJlbmNlIjoKICAgICAgICAgICAgICAgICBwcm9qZWN0LnBjYl9mb290cHJpbnRzX25vX3JlZn0KICAgICAgICAgICAgaWYgcHJvamVjdC5wY2JfcGF0aCBlbHNlIE5vbmUpLAogICAgICAgICJib20iOiAoCiAgICAgICAgICAgIHsiZmlsZSI6IHByb2plY3QuYm9tX3BhdGgubmFtZSwKICAgICAgICAgICAgICJyb3dzIjogbGVuKHByb2plY3QuYm9tX3Jvd3MpLAogICAgICAgICAgICAgImhvd19mb3VuZCI6IHByb2plY3QuYm9tX2F1dG9fbm90ZX0KICAgICAgICAgICAgaWYgcHJvamVjdC5ib21fcGF0aCBlbHNlIE5vbmUpLAogICAgICAgICJib21fc3RhdHMiOiBib21fc3RhdHMsCiAgICAgICAgInBhcnNlX2Vycm9ycyI6IFtmIntwLm5hbWV9OiB7ZX0iIGZvciBwLCBlIGluIHByb2plY3QucGFyc2VfZXJyb3JzXSwKICAgICAgICAibGVnYWN5X3NjaGVtYXRpY3MiOiBbcC5uYW1lIGZvciBwIGluIHByb2plY3QubGVnYWN5X3NjaF0sCiAgICAgICAgInBhcnRfcmlzayI6IHsKICAgICAgICAgICAgImRhdGFzZXQiOiBtZXRhLmdldCgibmFtZSIsICJzYW1wbGUgZGF0YXNldCIpLAogICAgICAgICAgICAic25hcHNob3RfZGF0ZSI6IG1ldGEuZ2V0KCJzbmFwc2hvdF9kYXRlIiwgInVua25vd24iKSwKICAgICAgICAgICAgImxpdmVfZGF0YSI6IEZhbHNlLAogICAgICAgICAgICAqKnJpc2tfc3RhdHMsCiAgICAgICAgfSwKICAgICAgICAia2ljYWRfY2xpIjogY2xpX2NvdmVyYWdlLAogICAgfQogICAgZmluZGluZ3MgPSBfY2FwKGZpbmRpbmdzKQogICAgcmV0dXJuIFJlcG9ydChwcm9qZWN0X25hbWU9cHJvamVjdC5uYW1lLAogICAgICAgICAgICAgICAgICBmb2xkZXI9c3RyKHByb2plY3QuZm9sZGVyKSwKICAgICAgICAgICAgICAgICAgdmVyZGljdD12ZXJkaWN0X2ZvcihmaW5kaW5ncyksCiAgICAgICAgICAgICAgICAgIGZpbmRpbmdzPWZpbmRpbmdzLAogICAgICAgICAgICAgICAgICBjb3ZlcmFnZT1jb3ZlcmFnZSkKCgpkZWYgcnVuX2JvbV9vbmx5KGJvbV9wYXRoLCBkYXRhc2V0X3BhdGg9Tm9uZSk6CiAgICAiIiJTdGFuZGFsb25lIEJPTSBtb2RlOiBjaGVjayBhIGxvbmUgQk9NIENTViAoYW55IEVEQSB0b29sJ3MgZXhwb3J0KS4KCiAgICBSb3ctaW50ZXJuYWwgQk9NIGNoZWNrcyArIHBhcnQgcmlzayBvbmx5LiBDb3ZlcmFnZSBzdGF0ZXMgcGxhaW5seQogICAgdGhhdCBubyBzY2hlbWF0aWMgd2FzIHN1cHBsaWVkLCBzbyBubyBjcm9zcy1jaGVja3MgcmFuLgogICAgUmFpc2VzIFZhbHVlRXJyb3IgKGJhZCBDU1YpIC8gRGF0YXNldEVycm9yIOKAlCBDTEkgbWFwcyBib3RoIHRvCiAgICB1c2FnZSBlcnJvcnMsIHNpbmNlIHRoZSB1c2VyIHBvaW50ZWQgYXQgdGhpcyBmaWxlIGV4cGxpY2l0bHkuCiAgICAiIiIKICAgIGJvbV9wYXRoID0gUGF0aChib21fcGF0aCkKICAgIHJvd3MgPSBwYXJzZV9ib20ocmVhZF9wcm9qZWN0X2ZpbGUoYm9tX3BhdGgpKQogICAgZmluZGluZ3MsIHN0YXRzID0gYm9tY2hlY2tzLnJ1bl9ib21fY2hlY2tzKAogICAgICAgIHJvd3MsIGJvbV9uYW1lPWJvbV9wYXRoLm5hbWUsIGV4cGVjdGVkPU5vbmUsIGFsbF9yZWZzPU5vbmUpCgogICAgbWV0YSwgcGFydHMgPSBwYXJ0cmlzay5sb2FkX2RhdGFzZXQoZGF0YXNldF9wYXRoKQoKICAgIEBkYXRhY2xhc3MKICAgIGNsYXNzIF9TaGltOgogICAgICAgIGJvbV9yb3dzOiBsaXN0CiAgICAgICAgYm9tX3BhdGg6IFBhdGgKICAgIHJpc2tfZmluZGluZ3MsIHJpc2tfc3RhdHMgPSBwYXJ0cmlzay5ydW5fcGFydF9yaXNrX2NoZWNrcygKICAgICAgICBfU2hpbShib21fcm93cz1yb3dzLCBib21fcGF0aD1ib21fcGF0aCksIG1ldGEsIHBhcnRzKQogICAgZmluZGluZ3MuZXh0ZW5kKHJpc2tfZmluZGluZ3MpCiAgICBmaW5kaW5ncy5hcHBlbmQoRmluZGluZygKICAgICAgICAiQk9NX09OTFlfTU9ERSIsIE5PVEUsCiAgICAgICAgIlN0YW5kYWxvbmUgQk9NIG1vZGU6IG5vIHNjaGVtYXRpYyBvciBQQ0Igd2FzIHN1cHBsaWVkLCBzbyAiCiAgICAgICAgIm9ubHkgQk9NLWludGVybmFsIGNoZWNrcyBhbmQgcGFydC1yaXNrIGNoZWNrcyByYW4uICIKICAgICAgICAiU2NoZW1hdGljIGNyb3NzLWNoZWNrcyAodW5rbm93biByZWZlcmVuY2VzLCBtaXNzaW5nIHBhcnRzLCAiCiAgICAgICAgImZvb3RwcmludCBhZ3JlZW1lbnQpIGRpZCBub3QgcnVuLiIsCiAgICAgICAgd2hlcmU9Ym9tX3BhdGgubmFtZSkpCiAgICBmaW5kaW5ncyA9IF9jYXAoZmluZGluZ3MpCiAgICBjb3ZlcmFnZSA9IHsKICAgICAgICAibW9kZSI6ICJzdGFuZGFsb25lIEJPTSAobm8gZGVzaWduIGZpbGVzKSIsCiAgICAgICAgInNjaGVtYXRpYyI6IE5vbmUsCiAgICAgICAgInBjYiI6IE5vbmUsCiAgICAgICAgImJvbSI6IHsiZmlsZSI6IGJvbV9wYXRoLm5hbWUsICJyb3dzIjogbGVuKHJvd3MpLAogICAgICAgICAgICAgICAgImhvd19mb3VuZCI6ICJnaXZlbiBvbiB0aGUgY29tbWFuZCBsaW5lIn0sCiAgICAgICAgImJvbV9zdGF0cyI6IHN0YXRzLAogICAgICAgICJwYXJzZV9lcnJvcnMiOiBbXSwKICAgICAgICAibGVnYWN5X3NjaGVtYXRpY3MiOiBbXSwKICAgICAgICAicGFydF9yaXNrIjogewogICAgICAgICAgICAiZGF0YXNldCI6IG1ldGEuZ2V0KCJuYW1lIiwgInNhbXBsZSBkYXRhc2V0IiksCiAgICAgICAgICAgICJzbmFwc2hvdF9kYXRlIjogbWV0YS5nZXQoInNuYXBzaG90X2RhdGUiLCAidW5rbm93biIpLAogICAgICAgICAgICAibGl2ZV9kYXRhIjogRmFsc2UsCiAgICAgICAgICAgICoqcmlza19zdGF0cywKICAgICAgICB9LAogICAgICAgICJraWNhZF9jbGkiOiB7ImF2YWlsYWJsZSI6IEZhbHNlLAogICAgICAgICAgICAgICAgICAgICAgImVyYyI6ICJub3QgYXBwbGljYWJsZSDigJQgc3RhbmRhbG9uZSBCT00gbW9kZSIsCiAgICAgICAgICAgICAgICAgICAgICAiZHJjIjogIm5vdCBhcHBsaWNhYmxlIOKAlCBzdGFuZGFsb25lIEJPTSBtb2RlIiwKICAgICAgICAgICAgICAgICAgICAgICJmYWlsZWQiOiBGYWxzZX0sCiAgICB9CiAgICByZXR1cm4gUmVwb3J0KHByb2plY3RfbmFtZT1mIkJPTToge2JvbV9wYXRoLm5hbWV9IiwKICAgICAgICAgICAgICAgICAgZm9sZGVyPXN0cihib21fcGF0aC5wYXJlbnQpLAogICAgICAgICAgICAgICAgICB2ZXJkaWN0PXZlcmRpY3RfZm9yKGZpbmRpbmdzKSwKICAgICAgICAgICAgICAgICAgZmluZGluZ3M9ZmluZGluZ3MsCiAgICAgICAgICAgICAgICAgIGNvdmVyYWdlPWNvdmVyYWdlKQo=
+"""Preflight engine: load a project, run every check layer, build a report.
+
+Layers, in order:
+  1. File/parse integrity (project.py)
+  2. Schematic <-> PCB cross-checks + schematic part checks (checks.py)
+  3. BOM <-> schematic checks (bomchecks.py via checks.run_bom_layer)
+  4. Offline part-risk checks against the sample dataset (partrisk.py)
+  5. Official kicad-cli DRC/ERC, when installed (kicadcli.py)
+
+The report's Coverage section states exactly what each layer did, and
+the verdict accounts for it: anything that exists but could not be
+checked produces a BLOCK, a CAUTION, or a SCAN_INCOMPLETE finding —
+a clean PASS never hides a skipped check.
+
+Also here: run_bom_only(), the standalone BOM mode. It runs the
+tool-agnostic BOM layer (and part risk) on a lone CSV — the same code
+path a future fab-site browser extension would use at checkout, where
+no design-tool project exists at all.
+"""
+
+from dataclasses import dataclass, field
+from pathlib import Path
+
+from . import bomchecks, checks, kicadcli, partrisk
+from .bom import parse_bom
+from .finding import BLOCK, CAUTION, NOTE, Finding, verdict_for
+from .project import load_project, read_project_file
+from .sexpr import SexprError
+
+MAX_FINDINGS = 2000          # report budget; overflow is stated, not silent
+
+
+@dataclass
+class Report:
+    project_name: str
+    folder: str
+    verdict: str
+    findings: list = field(default_factory=list)
+    coverage: dict = field(default_factory=dict)
+
+    def to_dict(self):
+        return {
+            "project": self.project_name,
+            "folder": self.folder,
+            "verdict": self.verdict,
+            "findings": [f.to_dict() for f in self.findings],
+            "coverage": self.coverage,
+        }
+
+
+def _cap(findings):
+    if len(findings) <= MAX_FINDINGS:
+        return findings
+    kept = findings[:MAX_FINDINGS]
+    kept.append(Finding(
+        "FINDINGS_TRUNCATED", CAUTION,
+        f"{len(findings) - MAX_FINDINGS} further finding(s) were not "
+        f"listed — the report budget is {MAX_FINDINGS}. The verdict "
+        "already reflects them; fix the listed items and re-run.",
+        where="report"))
+    return kept
+
+
+def run(target, bom_override=None, dataset_path=None):
+    """Run all checks on `target` and return a Report.
+
+    Raises partrisk.DatasetError for a bad user-supplied dataset —
+    the CLI turns that into a usage error (exit 3)."""
+    project = load_project(target, bom_override=bom_override)
+    findings = []
+
+    for path, error in project.parse_errors:
+        findings.append(Finding(
+            "PROJECT_FILE_UNPARSEABLE", BLOCK,
+            f"{path.name} exists but could not be parsed as a KiCad "
+            f"S-expression file ({error}). Preflight cannot check a "
+            "file it cannot read, and checks depending on it were "
+            "skipped rather than guessed.",
+            where=path.name))
+
+    findings.extend(checks.run_cross_checks(project))
+    bom_findings, bom_stats = checks.run_bom_layer(project)
+    findings.extend(bom_findings)
+
+    meta, parts = partrisk.load_dataset(dataset_path)
+    risk_findings, risk_stats = partrisk.run_part_risk_checks(
+        project, meta, parts)
+    findings.extend(risk_findings)
+
+    cli_findings, cli_coverage = kicadcli.run_official_checks(project)
+    findings.extend(cli_findings)
+    if cli_coverage.get("failed"):
+        findings.append(Finding(
+            "KICAD_CLI_FAILED", CAUTION,
+            "kicad-cli is installed but a DRC/ERC run failed, so the "
+            "official checks did not contribute to this report. The "
+            "built-in checks above still ran; see Coverage for the "
+            "failure detail.",
+            where="kicad-cli"))
+
+    # --- SCAN_INCOMPLETE: things that exist but were not checked -------
+    incomplete = []
+    if project.unloaded_sch:
+        incomplete.append(
+            "schematic file(s) not loaded: "
+            + ", ".join(p.name for p in project.unloaded_sch)
+            + " (a folder should hold one project; extra files belong "
+              "to another project or a sub-sheet reached from the "
+              "root sheet)")
+    if project.unloaded_pcb:
+        incomplete.append(
+            "PCB file(s) not loaded: "
+            + ", ".join(p.name for p in project.unloaded_pcb))
+    if risk_stats.get("dataset_entries_invalid"):
+        incomplete.append(
+            f"{risk_stats['dataset_entries_invalid']} dataset "
+            "entr(ies) were unusable (see PART_DATASET_ENTRY_INVALID)")
+    if incomplete:
+        findings.append(Finding(
+            "SCAN_INCOMPLETE", CAUTION,
+            "Some input was present but not checked: "
+            + "; ".join(incomplete)
+            + ". Treat a PASS here as covering only what Coverage "
+              "lists.",
+            where=str(project.folder)))
+
+    coverage = {
+        "schematic": (
+            {"file": project.sch_path.name,
+             "files_loaded": [p.name for p in project.sch_paths_loaded],
+             "parts": len(checks._sch_parts(project)),
+             "no_connect_markers": project.no_connects,
+             "symbols_without_reference": project.sch_symbols_no_ref}
+            if project.sch_path else None),
+        "pcb": (
+            {"file": project.pcb_path.name,
+             "footprints": len(project.footprints),
+             "part_footprints": sum(1 for fp in project.footprints
+                                    if fp.is_part),
+             "footprints_without_reference":
+                 project.pcb_footprints_no_ref}
+            if project.pcb_path else None),
+        "bom": (
+            {"file": project.bom_path.name,
+             "rows": len(project.bom_rows),
+             "how_found": project.bom_auto_note}
+            if project.bom_path else None),
+        "bom_stats": bom_stats,
+        "parse_errors": [f"{p.name}: {e}" for p, e in project.parse_errors],
+        "legacy_schematics": [p.name for p in project.legacy_sch],
+        "part_risk": {
+            "dataset": meta.get("name", "sample dataset"),
+            "snapshot_date": meta.get("snapshot_date", "unknown"),
+            "live_data": False,
+            **risk_stats,
+        },
+        "kicad_cli": cli_coverage,
+    }
+    findings = _cap(findings)
+    return Report(project_name=project.name,
+                  folder=str(project.folder),
+                  verdict=verdict_for(findings),
+                  findings=findings,
+                  coverage=coverage)
+
+
+def run_bom_only(bom_path, dataset_path=None):
+    """Standalone BOM mode: check a lone BOM CSV (any EDA tool's export).
+
+    Row-internal BOM checks + part risk only. Coverage states plainly
+    that no schematic was supplied, so no cross-checks ran.
+    Raises ValueError (bad CSV) / DatasetError — CLI maps both to
+    usage errors, since the user pointed at this file explicitly.
+    """
+    bom_path = Path(bom_path)
+    rows = parse_bom(read_project_file(bom_path))
+    findings, stats = bomchecks.run_bom_checks(
+        rows, bom_name=bom_path.name, expected=None, all_refs=None)
+
+    meta, parts = partrisk.load_dataset(dataset_path)
+
+    @dataclass
+    class _Shim:
+        bom_rows: list
+        bom_path: Path
+    risk_findings, risk_stats = partrisk.run_part_risk_checks(
+        _Shim(bom_rows=rows, bom_path=bom_path), meta, parts)
+    findings.extend(risk_findings)
+    findings.append(Finding(
+        "BOM_ONLY_MODE", NOTE,
+        "Standalone BOM mode: no schematic or PCB was supplied, so "
+        "only BOM-internal checks and part-risk checks ran. "
+        "Schematic cross-checks (unknown references, missing parts, "
+        "footprint agreement) did not run.",
+        where=bom_path.name))
+    findings = _cap(findings)
+    coverage = {
+        "mode": "standalone BOM (no design files)",
+        "schematic": None,
+        "pcb": None,
+        "bom": {"file": bom_path.name, "rows": len(rows),
+                "how_found": "given on the command line"},
+        "bom_stats": stats,
+        "parse_errors": [],
+        "legacy_schematics": [],
+        "part_risk": {
+            "dataset": meta.get("name", "sample dataset"),
+            "snapshot_date": meta.get("snapshot_date", "unknown"),
+            "live_data": False,
+            **risk_stats,
+        },
+        "kicad_cli": {"available": False,
+                      "erc": "not applicable — standalone BOM mode",
+                      "drc": "not applicable — standalone BOM mode",
+                      "failed": False},
+    }
+    return Report(project_name=f"BOM: {bom_path.name}",
+                  folder=str(bom_path.parent),
+                  verdict=verdict_for(findings),
+                  findings=findings,
+                  coverage=coverage)

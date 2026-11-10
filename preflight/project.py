@@ -1,1 +1,458 @@
-IiIiTG9hZCBhIEtpQ2FkIHByb2plY3QgZnJvbSBkaXNrOiBzY2hlbWF0aWMocyksIFBDQiwgYW5kIEJPTS4KCkV2ZXJ5dGhpbmcgaXMgcGFyc2VkIGZyb20gS2lDYWQncyBvd24gdGV4dCBmb3JtYXRzIOKAlCAua2ljYWRfc2NoIGFuZAoua2ljYWRfcGNiIGFyZSBTLWV4cHJlc3Npb25zLCB0aGUgQk9NIGlzIENTViAoc2VlIGJvbS5weSksIC5raWNhZF9wcm8KaXMgSlNPTiAob25seSB0aGUgcHJvamVjdCBuYW1lIGlzIHJlYWQgZnJvbSBpdCkuIE5vIEtpQ2FkIGluc3RhbGxhdGlvbgppcyByZXF1aXJlZCBmb3IgdGhpcyBsYXllcjsgdGhlIG9mZmljaWFsIERSQy9FUkMgY2hlY2tzIGxpdmUgaW4Ka2ljYWRjbGkucHkgYW5kIGFyZSBvcHRpb25hbC4KCkZvcm1hdHM6IEtpQ2FkIDYsIDcgYW5kIDggcHJvamVjdCBmaWxlcy4gT24gdGhlIFBDQiBzaWRlLCBLaUNhZCA2CnN0b3JlcyBmb290cHJpbnQgcmVmZXJlbmNlcyBhcyAoZnBfdGV4dCByZWZlcmVuY2UgIlIxIiAuLi4pIHdoaWxlCktpQ2FkIDcvOCB1c2UgKHByb3BlcnR5ICJSZWZlcmVuY2UiICJSMSIgLi4uKSDigJQgYm90aCBhcmUgcmVhZC4KSGllcmFyY2hpY2FsIHNjaGVtYXRpY3MgYXJlIGZvbGxvd2VkOiAoc2hlZXQgLi4uKSBibG9ja3MgaW4gdGhlIHJvb3QKc2hlZXQgbmFtZSBzdWItc2hlZXQgZmlsZXMsIHdoaWNoIGFyZSBsb2FkZWQgYW5kIG1lcmdlZC4gTGVnYWN5CktpQ2FkIDw9NSAuc2NoIGZpbGVzIGFyZSByZXBvcnRlZCwgbm90IHNpbGVudGx5IG1pc3JlYWQuCgpTYWZldHk6IGV2ZXJ5IGZpbGUgaXMgc3RhdC1jaGVja2VkIGJlZm9yZSByZWFkaW5nIOKAlCBpdCBtdXN0IGJlIGEKcmVndWxhciBmaWxlIChhIEZJRk8gb3IgZGV2aWNlIHdvdWxkIGJsb2NrIGZvcmV2ZXIpIGFuZCB3aXRoaW4gdGhlCnNpemUgYnVkZ2V0IOKAlCBhbmQgZGVjb2RlZCBhcyBzdHJpY3QgVVRGLTggKHVuZGVjb2RhYmxlIGJ5dGVzIGJlY29tZSBhCnBhcnNlIGVycm9yLCBuZXZlciBzaWxlbnRseSByZXdyaXR0ZW4gY2hhcmFjdGVycykuCiIiIgoKaW1wb3J0IGpzb24KaW1wb3J0IG9zCmltcG9ydCByZQppbXBvcnQgc3RhdApmcm9tIGRhdGFjbGFzc2VzIGltcG9ydCBkYXRhY2xhc3MsIGZpZWxkCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aAoKZnJvbSAuIGltcG9ydCBzZXhwcgpmcm9tIC5ib20gaW1wb3J0IEJvbVJvdywgcGFyc2VfYm9tICAjIG5vcWE6IEY0MDEgIChyZS1leHBvcnRlZCkKZnJvbSAuc2V4cHIgaW1wb3J0IFNleHByRXJyb3IKCk1BWF9GSUxFX0JZVEVTID0gNjQgKiAxMDI0ICogMTAyNCAgICAjIDY0IE1CIHBlciBwcm9qZWN0IGZpbGUgKGJ1ZGdldCkKCl9ERVNJR05BVE9SID0gcmUuY29tcGlsZShyIl5bQS1aYS16XXsxLDR9XGQrJCIpCgpfTVBOX1BST1BfS0VZUyA9IHsibXBuIiwgIm1hbnVmYWN0dXJlcnBhcnRudW1iZXIiLCAibWFudWZhY3R1cmVycGFydG5vIiwKICAgICAgICAgICAgICAgICAgIm1mcnBhcnRudW1iZXIiLCAibWZycGFydCIsICJwYXJ0bnVtYmVyIiwgIm1wYXJ0bm8ifQoKCmRlZiBpc19kZXNpZ25hdG9yKHJlZik6CiAgICAiIiJUcnVlIGZvciBvcmRpbmFyeSByZWZlcmVuY2UgZGVzaWduYXRvcnMgKFIxLCBDMTIsIFUzLCBLMDAsIFRQMSkuCiAgICBQbGFjZWhvbGRlciBvciB0b29sLWdlbmVyYXRlZCByZWZzIChSRUYqKiwgRyoqKiwga2lidXp6YXJkLVhYWFgpCiAgICBhcmUgbm90IGRlc2lnbmF0b3JzLiIiIgogICAgcmV0dXJuIGJvb2wocmVmKSBhbmQgYm9vbChfREVTSUdOQVRPUi5tYXRjaChyZWYpKQoKCiMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiMgRGF0YSBtb2RlbAojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKCkBkYXRhY2xhc3MKY2xhc3MgU3ltYm9sOgogICAgIiIiT25lIHBsYWNlZCBzY2hlbWF0aWMgc3ltYm9sIChhIGNvbXBvbmVudCBpbnN0YW5jZSkuIiIiCgogICAgcmVmOiBzdHIKICAgIHZhbHVlOiBzdHIgPSAiIgogICAgZm9vdHByaW50OiBzdHIgPSAiIiAgICAgICAgICAjICIiIHdoZW4gdGhlIHByb3BlcnR5IGlzIGVtcHR5LCBOb25lIHdoZW4gYWJzZW50CiAgICBsaWJfaWQ6IHN0ciA9ICIiCiAgICB1bml0OiBpbnQgPSAxCiAgICBpbl9ib206IGJvb2wgPSBUcnVlCiAgICBvbl9ib2FyZDogYm9vbCA9IFRydWUKICAgIGRucDogYm9vbCA9IEZhbHNlCiAgICBwcm9wczogZGljdCA9IGZpZWxkKGRlZmF1bHRfZmFjdG9yeT1kaWN0KQogICAgc2hlZXQ6IHN0ciA9ICIiICAgICAgICAgICAgICAjIGZpbGUgdGhlIHN5bWJvbCBjYW1lIGZyb20KCiAgICBAcHJvcGVydHkKICAgIGRlZiBpc19wb3dlcihzZWxmKToKICAgICAgICAjIFBvd2VyIHN5bWJvbHMgKCNQV1IwMSwgI0ZMRzAxLCAuLi4pIGFyZSBuZXQgZmxhZ3MsIG5vdCBwYXJ0cy4KICAgICAgICByZXR1cm4gc2VsZi5yZWYuc3RhcnRzd2l0aCgiIyIpCgogICAgQHByb3BlcnR5CiAgICBkZWYgbXBuKHNlbGYpOgogICAgICAgIGZvciBrZXksIHZhbCBpbiBzZWxmLnByb3BzLml0ZW1zKCk6CiAgICAgICAgICAgIGlmIHJlLnN1YihyIlteYS16MC05XSIsICIiLCBrZXkubG93ZXIoKSkgaW4gX01QTl9QUk9QX0tFWVM6CiAgICAgICAgICAgICAgICByZXR1cm4gdmFsCiAgICAgICAgcmV0dXJuIE5vbmUgICAgICAgICAgICAgICAjIG5vIE1QTiBwcm9wZXJ0eSBzdG9yZWQgaW4gdGhlIHNjaGVtYXRpYwoKICAgIEBwcm9wZXJ0eQogICAgZGVmIGRhdGFzaGVldChzZWxmKToKICAgICAgICByZXR1cm4gc2VsZi5wcm9wcy5nZXQoIkRhdGFzaGVldCIpCgoKQGRhdGFjbGFzcwpjbGFzcyBGb290cHJpbnRJbnN0OgogICAgIiIiT25lIGZvb3RwcmludCBpbnN0YW5jZSBwbGFjZWQgb24gdGhlIFBDQi4iIiIKCiAgICByZWY6IHN0cgogICAgbmFtZTogc3RyID0gIiIgICAgICAgICAgICAgICAjIGZ1bGwgIkxpYnJhcnk6Rm9vdHByaW50IiBzdHJpbmcKICAgIHZhbHVlOiBzdHIgPSAiIgogICAgYm9hcmRfb25seTogYm9vbCA9IEZhbHNlICAgICAjIChhdHRyIC4uLiBib2FyZF9vbmx5IC4uLikKICAgIGV4Y2x1ZGVfZnJvbV9ib206IGJvb2wgPSBGYWxzZQoKICAgIEBwcm9wZXJ0eQogICAgZGVmIGlzX3BhcnQoc2VsZik6CiAgICAgICAgIiIiQSByZWFsIGNvbXBvbmVudCBwb3NpdGlvbiB2cyBib2FyZCBmdXJuaXR1cmUgKG1vdW50aW5nIGhvbGVzCiAgICAgICAgbWFya2VkIGJvYXJkLW9ubHksIHNpbGtzY3JlZW4gbG9nb3MvbGFiZWxzIHdpdGggZ2VuZXJhdGVkIG9yCiAgICAgICAgcGxhY2Vob2xkZXIgcmVmcykuIE1lbWJlcnNoaXAgYW5kIGR1cGxpY2F0ZSBjaGVja3Mgb25seSBldmVyCiAgICAgICAgY29uc2lkZXIgcGFydHMuIiIiCiAgICAgICAgcmV0dXJuIGlzX2Rlc2lnbmF0b3Ioc2VsZi5yZWYpIGFuZCBub3Qgc2VsZi5ib2FyZF9vbmx5CgoKQGRhdGFjbGFzcwpjbGFzcyBQcm9qZWN0OgogICAgbmFtZTogc3RyID0gIiIKICAgIGZvbGRlcjogUGF0aCA9IE5vbmUKICAgIHByb19wYXRoOiBQYXRoID0gTm9uZQogICAgc2NoX3BhdGg6IFBhdGggPSBOb25lCiAgICBzY2hfcGF0aHNfbG9hZGVkOiBsaXN0ID0gZmllbGQoZGVmYXVsdF9mYWN0b3J5PWxpc3QpICAgIyBpbmNsLiBzdWItc2hlZXRzCiAgICBtaXNzaW5nX3NoZWV0czogbGlzdCA9IGZpZWxkKGRlZmF1bHRfZmFjdG9yeT1saXN0KSAgICAgIyBTaGVldGZpbGUgcmVmcyBub3Qgb24gZGlzawogICAgdW5sb2FkZWRfc2NoOiBsaXN0ID0gZmllbGQoZGVmYXVsdF9mYWN0b3J5PWxpc3QpICAgICAgICMgLmtpY2FkX3NjaCBmaWxlcyBub3QgbG9hZGVkCiAgICB1bmxvYWRlZF9wY2I6IGxpc3QgPSBmaWVsZChkZWZhdWx0X2ZhY3Rvcnk9bGlzdCkgICAgICAgIyAua2ljYWRfcGNiIGZpbGVzIG5vdCBsb2FkZWQKICAgIGxlZ2FjeV9zY2g6IGxpc3QgPSBmaWVsZChkZWZhdWx0X2ZhY3Rvcnk9bGlzdCkgICAgICAgICAjIGxlZ2FjeSAuc2NoIGZpbGVzIHByZXNlbnQKICAgIHBjYl9wYXRoOiBQYXRoID0gTm9uZQogICAgYm9tX3BhdGg6IFBhdGggPSBOb25lCiAgICBib21fYXV0b19ub3RlOiBzdHIgPSAiIiAgICAgICMgaG93IHRoZSBCT00gd2FzIGNob3NlbiwgZm9yIENvdmVyYWdlCiAgICBzeW1ib2xzOiBsaXN0ID0gZmllbGQoZGVmYXVsdF9mYWN0b3J5PWxpc3QpCiAgICBmb290cHJpbnRzOiBsaXN0ID0gZmllbGQoZGVmYXVsdF9mYWN0b3J5PWxpc3QpCiAgICBib21fcm93czogbGlzdCA9IGZpZWxkKGRlZmF1bHRfZmFjdG9yeT1saXN0KQogICAgYm9tX2Vycm9yOiBzdHIgPSAiIiAgICAgICAgICAjIHNldCB3aGVuIGEgQk9NIGZpbGUgZXhpc3RzIGJ1dCB3b24ndCBwYXJzZQogICAgbm9fY29ubmVjdHM6IGludCA9IDAKICAgIHNjaF9zeW1ib2xzX25vX3JlZjogaW50ID0gMCAgIyBwbGFjZWQgc3ltYm9scyBza2lwcGVkOiBubyBSZWZlcmVuY2UKICAgIHBjYl9mb290cHJpbnRzX25vX3JlZjogaW50ID0gMAogICAgcGFyc2VfZXJyb3JzOiBsaXN0ID0gZmllbGQoZGVmYXVsdF9mYWN0b3J5PWxpc3QpICAjIChwYXRoLCBlcnJvciBtZXNzYWdlKQoKICAgIEBwcm9wZXJ0eQogICAgZGVmIHNjaF9mYWlsZWQoc2VsZik6CiAgICAgICAgcmV0dXJuIGFueShwID09IHNlbGYuc2NoX3BhdGggZm9yIHAsIF8gaW4gc2VsZi5wYXJzZV9lcnJvcnMpCgogICAgQHByb3BlcnR5CiAgICBkZWYgcGNiX2ZhaWxlZChzZWxmKToKICAgICAgICByZXR1cm4gYW55KHAgPT0gc2VsZi5wY2JfcGF0aCBmb3IgcCwgXyBpbiBzZWxmLnBhcnNlX2Vycm9ycykKCgojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQojIFNhZmUgcmVhZGluZwojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKCmRlZiByZWFkX3Byb2plY3RfZmlsZShwYXRoKToKICAgICIiIlJlYWQgYSBwcm9qZWN0IGZpbGUgYXMgc3RyaWN0IFVURi04IHRleHQsIHdpdGggYnVkZ2V0cy4KCiAgICBSYWlzZXMgU2V4cHJFcnJvciAocmVjb3JkZWQgYnkgY2FsbGVycyBhcyBhIHBhcnNlIGVycm9yKSBmb3IKICAgIG5vbi1yZWd1bGFyIGZpbGVzLCBvdmVyc2l6ZSBmaWxlcywgYW5kIHVuZGVjb2RhYmxlIGJ5dGVzIOKAlCBuZXZlcgogICAgYmxvY2tzIG9uIGEgRklGTywgbmV2ZXIgc2lsZW50bHkgcmV3cml0ZXMgY2hhcmFjdGVycy4KICAgICIiIgogICAgdHJ5OgogICAgICAgIHN0ID0gb3Muc3RhdChwYXRoKQogICAgZXhjZXB0IE9TRXJyb3IgYXMgZXhjOgogICAgICAgIHJhaXNlIFNleHByRXJyb3IoZiJjYW5ub3Qgc3RhdCBmaWxlICh7ZXhjfSkiKQogICAgaWYgbm90IHN0YXQuU19JU1JFRyhzdC5zdF9tb2RlKToKICAgICAgICByYWlzZSBTZXhwckVycm9yKCJub3QgYSByZWd1bGFyIGZpbGUgKEZJRk8vZGV2aWNlL2RpcmVjdG9yeT8pIOKAlCAiCiAgICAgICAgICAgICAgICAgICAgICAgICAicmVmdXNpbmcgdG8gcmVhZCBpdCIpCiAgICBpZiBzdC5zdF9zaXplID4gTUFYX0ZJTEVfQllURVM6CiAgICAgICAgcmFpc2UgU2V4cHJFcnJvcihmImZpbGUgaXMge3N0LnN0X3NpemV9IGJ5dGVzLCBvdmVyIHRoZSAiCiAgICAgICAgICAgICAgICAgICAgICAgICBmIntNQVhfRklMRV9CWVRFU30tYnl0ZSBzY2FuIGJ1ZGdldCIpCiAgICB0cnk6CiAgICAgICAgZGF0YSA9IFBhdGgocGF0aCkucmVhZF9ieXRlcygpCiAgICBleGNlcHQgT1NFcnJvciBhcyBleGM6CiAgICAgICAgcmFpc2UgU2V4cHJFcnJvcihmImNhbm5vdCByZWFkIGZpbGUgKHtleGN9KSIpCiAgICB0cnk6CiAgICAgICAgcmV0dXJuIGRhdGEuZGVjb2RlKCJ1dGYtOCIpCiAgICBleGNlcHQgVW5pY29kZURlY29kZUVycm9yIGFzIGV4YzoKICAgICAgICByYWlzZSBTZXhwckVycm9yKGYibm90IHZhbGlkIFVURi04ICh7ZXhjfSkg4oCUIHJlZnVzaW5nIHRvIGd1ZXNzICIKICAgICAgICAgICAgICAgICAgICAgICAgICJhdCBjb3JydXB0ZWQgY2hhcmFjdGVycyIpCgoKIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KIyBTY2hlbWF0aWMgLyBQQ0IgcGFyc2luZwojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKCmRlZiBfcHJvcGVydGllcyhub2RlKToKICAgIHByb3BzID0ge30KICAgIGZvciBwcm9wIGluIHNleHByLmNoaWxkcmVuKG5vZGUsICJwcm9wZXJ0eSIpOgogICAgICAgIGlmIGxlbihwcm9wKSA+PSAzIGFuZCBpc2luc3RhbmNlKHByb3BbMV0sIHN0cik6CiAgICAgICAgICAgIHByb3BzW3Byb3BbMV1dID0gcHJvcFsyXSBpZiBpc2luc3RhbmNlKHByb3BbMl0sIHN0cikgZWxzZSAiIgogICAgcmV0dXJuIHByb3BzCgoKZGVmIF9mbGFnKG5vZGUsIG5hbWUsIGRlZmF1bHQpOgogICAgZmxhZyA9IHNleHByLmNoaWxkKG5vZGUsIG5hbWUpCiAgICBpZiBmbGFnIGlzIG5vdCBOb25lIGFuZCBsZW4oZmxhZykgPj0gMiBhbmQgaXNpbnN0YW5jZShmbGFnWzFdLCBzdHIpOgogICAgICAgIHJldHVybiBmbGFnWzFdLnN0cmlwKCkubG93ZXIoKSA9PSAieWVzIgogICAgcmV0dXJuIGRlZmF1bHQKCgpkZWYgcGFyc2Vfc2NoZW1hdGljKHRleHQsIHNvdXJjZV9uYW1lPSIiKToKICAgICIiIlJldHVybiAoc3ltYm9scywgbm9fY29ubmVjdHMsIHRpdGxlLCBzaGVldF9maWxlcywgc2tpcHBlZF9ub19yZWYpCiAgICBmcm9tIC5raWNhZF9zY2ggdGV4dC4gRXZlcnkgKGtpY2FkX3NjaCAuLi4pIHJvb3QgaW4gdGhlIGZpbGUgaXMKICAgIHJlYWQ7IHBsYWNlZCBzeW1ib2xzIGFyZSB0aGUgcm9vdCdzIGRpcmVjdCAoc3ltYm9sIC4uLikgY2hpbGRyZW4KICAgIChkZWZpbml0aW9ucyBpbnNpZGUgKGxpYl9zeW1ib2xzIC4uLikgc2hhcmUgdGhlIHNoYXBlIGFuZCBhcmUKICAgIGNvcnJlY3RseSBpZ25vcmVkKS4iIiIKICAgIGZvcm1zID0gc2V4cHIucGFyc2UodGV4dCkKICAgIHJvb3RzID0gW2YgZm9yIGYgaW4gZm9ybXMgaWYgc2V4cHIuaGVhZChmKSA9PSAia2ljYWRfc2NoIl0KICAgIGlmIG5vdCByb290czoKICAgICAgICByYWlzZSBTZXhwckVycm9yKCJubyAoa2ljYWRfc2NoIC4uLikgcm9vdCBmb3JtIOKAlCBsZWdhY3kgS2lDYWQgPD01ICIKICAgICAgICAgICAgICAgICAgICAgICAgICJzY2hlbWF0aWMgZm9ybWF0IGlzIG5vdCBzdXBwb3J0ZWQiKQogICAgc3ltYm9scyA9IFtdCiAgICBub19jb25uZWN0cyA9IDAKICAgIHRpdGxlID0gIiIKICAgIHNoZWV0X2ZpbGVzID0gW10KICAgIHNraXBwZWRfbm9fcmVmID0gMAogICAgZm9yIHJvb3QgaW4gcm9vdHM6CiAgICAgICAgZm9yIG5vZGUgaW4gc2V4cHIuY2hpbGRyZW4ocm9vdCwgInN5bWJvbCIpOgogICAgICAgICAgICBwcm9wcyA9IF9wcm9wZXJ0aWVzKG5vZGUpCiAgICAgICAgICAgIHJlZiA9IHByb3BzLmdldCgiUmVmZXJlbmNlIiwgIiIpLnN0cmlwKCkKICAgICAgICAgICAgaWYgbm90IHJlZjoKICAgICAgICAgICAgICAgICMgQW4gdW5hbm5vdGF0ZWQgc3ltYm9sOiBjb3VudGVkIGFuZCByZXBvcnRlZCBieSB0aGUKICAgICAgICAgICAgICAgICMgY2FsbGVyLCBuZXZlciBzaWxlbnRseSBkcm9wcGVkIChhdWRpdCBmaW5kaW5nIDIyKS4KICAgICAgICAgICAgICAgIGlmIHByb3BzLmdldCgiVmFsdWUiKSBvciBwcm9wcy5nZXQoIkZvb3RwcmludCIpOgogICAgICAgICAgICAgICAgICAgIHNraXBwZWRfbm9fcmVmICs9IDEKICAgICAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgICAgIGxpYiA9IHNleHByLmNoaWxkKG5vZGUsICJsaWJfaWQiKQogICAgICAgICAgICB1bml0X25vZGUgPSBzZXhwci5jaGlsZChub2RlLCAidW5pdCIpCiAgICAgICAgICAgIHVuaXQgPSAxCiAgICAgICAgICAgIGlmIHVuaXRfbm9kZSBpcyBub3QgTm9uZSBhbmQgbGVuKHVuaXRfbm9kZSkgPj0gMjoKICAgICAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgICAgICB1bml0ID0gaW50KHVuaXRfbm9kZVsxXSkKICAgICAgICAgICAgICAgIGV4Y2VwdCAoVHlwZUVycm9yLCBWYWx1ZUVycm9yKToKICAgICAgICAgICAgICAgICAgICB1bml0ID0gMQogICAgICAgICAgICB2YWx1ZSA9IHByb3BzLmdldCgiVmFsdWUiLCAiIikKICAgICAgICAgICAgc3ltYm9scy5hcHBlbmQoU3ltYm9sKAogICAgICAgICAgICAgICAgcmVmPXJlZiwKICAgICAgICAgICAgICAgIHZhbHVlPXZhbHVlLAogICAgICAgICAgICAgICAgZm9vdHByaW50PXByb3BzLmdldCgiRm9vdHByaW50IiwgTm9uZSksCiAgICAgICAgICAgICAgICBsaWJfaWQ9bGliWzFdIGlmIGxpYiBpcyBub3QgTm9uZSBhbmQgbGVuKGxpYikgPj0gMgogICAgICAgICAgICAgICAgICAgICAgIGFuZCBpc2luc3RhbmNlKGxpYlsxXSwgc3RyKSBlbHNlICIiLAogICAgICAgICAgICAgICAgdW5pdD11bml0LAogICAgICAgICAgICAgICAgaW5fYm9tPV9mbGFnKG5vZGUsICJpbl9ib20iLCBUcnVlKSwKICAgICAgICAgICAgICAgIG9uX2JvYXJkPV9mbGFnKG5vZGUsICJvbl9ib2FyZCIsIFRydWUpLAogICAgICAgICAgICAgICAgIyBLaUNhZCA2IGVuY29kZXMgRE5QIGFzIHRoZSB2YWx1ZSB0ZXh0ICsgKGluX2JvbSBubyk7CiAgICAgICAgICAgICAgICAjIEtpQ2FkIDcrIGhhcyBhbiBleHBsaWNpdCAoZG5wIHllcykgbm9kZS4KICAgICAgICAgICAgICAgIGRucD1fZmxhZyhub2RlLCAiZG5wIiwgRmFsc2UpCiAgICAgICAgICAgICAgICAgICAgb3IgdmFsdWUuc3RyaXAoKS51cHBlcigpID09ICJETlAiLAogICAgICAgICAgICAgICAgcHJvcHM9cHJvcHMsCiAgICAgICAgICAgICAgICBzaGVldD1zb3VyY2VfbmFtZSwKICAgICAgICAgICAgKSkKICAgICAgICBub19jb25uZWN0cyArPSBzdW0oMSBmb3IgXyBpbiBzZXhwci5jaGlsZHJlbihyb290LCAibm9fY29ubmVjdCIpKQogICAgICAgIGZvciBzaGVldCBpbiBzZXhwci5jaGlsZHJlbihyb290LCAic2hlZXQiKToKICAgICAgICAgICAgc3Byb3BzID0gX3Byb3BlcnRpZXMoc2hlZXQpCiAgICAgICAgICAgIGlmIHNwcm9wcy5nZXQoIlNoZWV0ZmlsZSIpOgogICAgICAgICAgICAgICAgc2hlZXRfZmlsZXMuYXBwZW5kKHNwcm9wc1siU2hlZXRmaWxlIl0pCiAgICAgICAgaWYgbm90IHRpdGxlOgogICAgICAgICAgICB0aXRsZV9ibG9jayA9IHNleHByLmNoaWxkKHJvb3QsICJ0aXRsZV9ibG9jayIpCiAgICAgICAgICAgIGlmIHRpdGxlX2Jsb2NrIGlzIG5vdCBOb25lOgogICAgICAgICAgICAgICAgdGl0bGVfbm9kZSA9IHNleHByLmNoaWxkKHRpdGxlX2Jsb2NrLCAidGl0bGUiKQogICAgICAgICAgICAgICAgaWYgdGl0bGVfbm9kZSBpcyBub3QgTm9uZSBhbmQgbGVuKHRpdGxlX25vZGUpID49IDIgXAogICAgICAgICAgICAgICAgICAgICAgICBhbmQgaXNpbnN0YW5jZSh0aXRsZV9ub2RlWzFdLCBzdHIpOgogICAgICAgICAgICAgICAgICAgIHRpdGxlID0gdGl0bGVfbm9kZVsxXQogICAgcmV0dXJuIHN5bWJvbHMsIG5vX2Nvbm5lY3RzLCB0aXRsZSwgc2hlZXRfZmlsZXMsIHNraXBwZWRfbm9fcmVmCgoKZGVmIHBhcnNlX3BjYih0ZXh0KToKICAgICIiIlJldHVybiBhIGxpc3Qgb2YgRm9vdHByaW50SW5zdCBmcm9tIC5raWNhZF9wY2IgdGV4dC4KCiAgICBSZWZlcmVuY2VzL3ZhbHVlcyBhcmUgcmVhZCBmcm9tIEJPVEggc3RvcmFnZSBzdHlsZXM6IEtpQ2FkIDcvOAogICAgKHByb3BlcnR5ICJSZWZlcmVuY2UiIC4uLikgYW5kIEtpQ2FkIDYgKGZwX3RleHQgcmVmZXJlbmNlIC4uLikuCiAgICAoYXR0ciAuLi4pIGZsYWdzIGFyZSBjYXB0dXJlZCAoYm9hcmRfb25seSwgZXhjbHVkZV9mcm9tX2JvbSkuCiAgICBGb290cHJpbnRzIHdpdGggbm8gcmVmZXJlbmNlIGF0IGFsbCBhcmUgY291bnRlZCBieSB0aGUgY2FsbGVyIHZpYQogICAgdGhlIHNlY29uZCByZXR1cm4gdmFsdWUuIiIiCiAgICBmb3JtcyA9IHNleHByLnBhcnNlKHRleHQpCiAgICByb290ID0gbmV4dCgoZiBmb3IgZiBpbiBmb3JtcyBpZiBzZXhwci5oZWFkKGYpID09ICJraWNhZF9wY2IiKSwgTm9uZSkKICAgIGlmIHJvb3QgaXMgTm9uZToKICAgICAgICByYWlzZSBTZXhwckVycm9yKCJubyAoa2ljYWRfcGNiIC4uLikgcm9vdCBmb3JtIikKICAgIGZvb3RwcmludHMgPSBbXQogICAgc2tpcHBlZF9ub19yZWYgPSAwCiAgICBmb3Igbm9kZSBpbiBzZXhwci5jaGlsZHJlbihyb290LCAiZm9vdHByaW50Iik6CiAgICAgICAgbmFtZSA9IG5vZGVbMV0gaWYgbGVuKG5vZGUpID49IDIgYW5kIGlzaW5zdGFuY2Uobm9kZVsxXSwgc3RyKSBlbHNlICIiCiAgICAgICAgcHJvcHMgPSBfcHJvcGVydGllcyhub2RlKQogICAgICAgIHJlZiA9IHByb3BzLmdldCgiUmVmZXJlbmNlIiwgIiIpLnN0cmlwKCkKICAgICAgICB2YWx1ZSA9IHByb3BzLmdldCgiVmFsdWUiLCAiIikKICAgICAgICBmb3IgZnBfdGV4dCBpbiBzZXhwci5jaGlsZHJlbihub2RlLCAiZnBfdGV4dCIpOgogICAgICAgICAgICBpZiBsZW4oZnBfdGV4dCkgPj0gMyBhbmQgaXNpbnN0YW5jZShmcF90ZXh0WzJdLCBzdHIpOgogICAgICAgICAgICAgICAgaWYgZnBfdGV4dFsxXSA9PSAicmVmZXJlbmNlIiBhbmQgbm90IHJlZjoKICAgICAgICAgICAgICAgICAgICByZWYgPSBmcF90ZXh0WzJdLnN0cmlwKCkKICAgICAgICAgICAgICAgIGVsaWYgZnBfdGV4dFsxXSA9PSAidmFsdWUiIGFuZCBub3QgdmFsdWU6CiAgICAgICAgICAgICAgICAgICAgdmFsdWUgPSBmcF90ZXh0WzJdCiAgICAgICAgaWYgbm90IHJlZjoKICAgICAgICAgICAgc2tpcHBlZF9ub19yZWYgKz0gMQogICAgICAgICAgICBjb250aW51ZQogICAgICAgIGF0dHIgPSBzZXhwci5jaGlsZChub2RlLCAiYXR0ciIpCiAgICAgICAgYXR0cl90b2tlbnMgPSBzZXQoKQogICAgICAgIGlmIGF0dHIgaXMgbm90IE5vbmU6CiAgICAgICAgICAgIGF0dHJfdG9rZW5zID0ge2EgZm9yIGEgaW4gYXR0clsxOl0gaWYgaXNpbnN0YW5jZShhLCBzdHIpfQogICAgICAgIGZvb3RwcmludHMuYXBwZW5kKEZvb3RwcmludEluc3QoCiAgICAgICAgICAgIHJlZj1yZWYsIG5hbWU9bmFtZSwgdmFsdWU9dmFsdWUsCiAgICAgICAgICAgIGJvYXJkX29ubHk9ImJvYXJkX29ubHkiIGluIGF0dHJfdG9rZW5zLAogICAgICAgICAgICBleGNsdWRlX2Zyb21fYm9tPSJleGNsdWRlX2Zyb21fYm9tIiBpbiBhdHRyX3Rva2VucykpCiAgICByZXR1cm4gZm9vdHByaW50cywgc2tpcHBlZF9ub19yZWYKCgojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQojIFByb2plY3QgZGlzY292ZXJ5IC8gbG9hZGluZwojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKCmRlZiBfZmlyc3QoZm9sZGVyLCBwYXR0ZXJuKToKICAgIG1hdGNoZXMgPSBzb3J0ZWQoZm9sZGVyLmdsb2IocGF0dGVybikpCiAgICByZXR1cm4gbWF0Y2hlc1swXSBpZiBtYXRjaGVzIGVsc2UgTm9uZQoKCmRlZiBfcGljayhmb2xkZXIsIHN0ZW0sIHBhdHRlcm4pOgogICAgIiIiUHJlZmVyIHRoZSBmaWxlIHdob3NlIHN0ZW0gbWF0Y2hlcyB0aGUgcHJvamVjdCBzdGVtLCBlbHNlIHRoZSBmaXJzdC4iIiIKICAgIGlmIHN0ZW06CiAgICAgICAgY2FuZGlkYXRlID0gZm9sZGVyIC8gcGF0dGVybi5yZXBsYWNlKCIqIiwgc3RlbSkKICAgICAgICBpZiBjYW5kaWRhdGUuaXNfZmlsZSgpOgogICAgICAgICAgICByZXR1cm4gY2FuZGlkYXRlCiAgICByZXR1cm4gX2ZpcnN0KGZvbGRlciwgcGF0dGVybikKCgpkZWYgZmluZF9ib20oZm9sZGVyLCBzdGVtKToKICAgICIiIkF1dG8tZGV0ZWN0IHRoZSBCT00gQ1NWIGluIGEgZm9sZGVyLiBSZXR1cm5zIChwYXRoLCBub3RlKS4KCiAgICBDYW5kaWRhdGVzIGFyZSB0cmllZCBpbiBvcmRlciDigJQgZmlsZXMgd2l0aCAnYm9tJyBpbiB0aGUgbmFtZSBmaXJzdAogICAgKGFueSBjYXNlKSwgdGhlbiBhbnkgb3RoZXIgQ1NWIOKAlCBhbmQgdGhlIGZpcnN0IHdob3NlIGhlYWRlciBwYXJzZXMKICAgIGFzIGEgQk9NIHdpbnMsIHNvIGEgcGljay1hbmQtcGxhY2UgQ1NWIGlzIG5ldmVyIG1pc3Rha2VuIGZvciB0aGUKICAgIEJPTS4gUmV0dXJucyAoTm9uZSwgbm90ZSkgd2hlbiBubyBDU1YgcGFyc2VzIGFzIGEgQk9NOyBhIGJvbS1uYW1lZAogICAgZmlsZSB0aGF0IGZhaWxzIHRvIHBhcnNlIGlzIHJldHVybmVkIGFzIChwYXRoLCBub3RlKSBzbyB0aGUgY2FsbGVyCiAgICBjYW4gcmVwb3J0IGl0IGFzIHVucmVhZGFibGUgaW5zdGVhZCBvZiBwcmV0ZW5kaW5nIHRoZXJlIGlzIG5vIEJPTS4KICAgICIiIgogICAgY2FuZGlkYXRlcyA9IHNvcnRlZChmb2xkZXIuZ2xvYigiKi5jc3YiKSkgKyBzb3J0ZWQoZm9sZGVyLmdsb2IoIiouQ1NWIikpCiAgICBzZWVuLCBvcmRlcmVkID0gc2V0KCksIFtdCiAgICBmb3IgY2FuZCBpbiBjYW5kaWRhdGVzOgogICAgICAgIGlmIGNhbmQgbm90IGluIHNlZW46CiAgICAgICAgICAgIHNlZW4uYWRkKGNhbmQpCiAgICAgICAgICAgIG9yZGVyZWQuYXBwZW5kKGNhbmQpCiAgICBib21fbmFtZWQgPSBbYyBmb3IgYyBpbiBvcmRlcmVkIGlmICJib20iIGluIGMubmFtZS5sb3dlcigpXQogICAgb3JkZXJlZCA9IGJvbV9uYW1lZCArIFtjIGZvciBjIGluIG9yZGVyZWQgaWYgYyBub3QgaW4gYm9tX25hbWVkXQogICAgZmlyc3RfYm9tX25hbWVkX2ZhaWx1cmUgPSBOb25lCiAgICBmb3IgY2FuZCBpbiBvcmRlcmVkOgogICAgICAgIHRyeToKICAgICAgICAgICAgcGFyc2VfYm9tKHJlYWRfcHJvamVjdF9maWxlKGNhbmQpKQogICAgICAgICAgICByZXR1cm4gY2FuZCwgKCJhdXRvLWRldGVjdGVkIiBpZiBsZW4ob3JkZXJlZCkgPiAxCiAgICAgICAgICAgICAgICAgICAgICAgICAgZWxzZSAiZm91bmQgaW4gcHJvamVjdCBmb2xkZXIiKQogICAgICAgIGV4Y2VwdCAoVmFsdWVFcnJvciwgU2V4cHJFcnJvcik6CiAgICAgICAgICAgIGlmIGNhbmQgaW4gYm9tX25hbWVkIGFuZCBmaXJzdF9ib21fbmFtZWRfZmFpbHVyZSBpcyBOb25lOgogICAgICAgICAgICAgICAgZmlyc3RfYm9tX25hbWVkX2ZhaWx1cmUgPSBjYW5kCiAgICAgICAgICAgIGNvbnRpbnVlCiAgICBpZiBmaXJzdF9ib21fbmFtZWRfZmFpbHVyZSBpcyBub3QgTm9uZToKICAgICAgICByZXR1cm4gZmlyc3RfYm9tX25hbWVkX2ZhaWx1cmUsICJuYW1lZCBsaWtlIGEgQk9NIGJ1dCB1bnBhcnNlYWJsZSIKICAgIHJldHVybiBOb25lLCAoIkNTViBmaWxlcyBwcmVzZW50IGJ1dCBub25lIHBhcnNlcyBhcyBhIEJPTSIKICAgICAgICAgICAgICAgICAgaWYgb3JkZXJlZCBlbHNlICJubyBDU1YgZm91bmQiKQoKCmRlZiBsb2FkX3Byb2plY3QodGFyZ2V0LCBib21fb3ZlcnJpZGU9Tm9uZSk6CiAgICAiIiJMb2FkIHRoZSBwcm9qZWN0IGF0IGB0YXJnZXRgIChhIGZvbGRlciBvciBhIHByb2plY3Qvc2NoZW1hdGljL1BDQiBmaWxlKS4KCiAgICBSZXR1cm5zIGEgUHJvamVjdC4gRmlsZXMgdGhhdCBleGlzdCBidXQgZmFpbCB0byBwYXJzZSBhcmUgcmVjb3JkZWQgaW4KICAgIHByb2plY3QucGFyc2VfZXJyb3JzIHJhdGhlciB0aGFuIHJhaXNpbmcg4oCUIHRoZSByZXBvcnQgdHVybnMgdGhlbSBpbnRvCiAgICBCTE9DSyBmaW5kaW5ncyBpbnN0ZWFkIG9mIGNyYXNoaW5nLgogICAgIiIiCiAgICB0YXJnZXQgPSBQYXRoKHRhcmdldCkKICAgIGlmIHRhcmdldC5pc19maWxlKCk6CiAgICAgICAgZm9sZGVyID0gdGFyZ2V0LnBhcmVudAogICAgICAgIHN0ZW1faGludCA9IHRhcmdldC5zdGVtCiAgICBlbHNlOgogICAgICAgIGZvbGRlciA9IHRhcmdldAogICAgICAgIHN0ZW1faGludCA9IE5vbmUKCiAgICBwcm9qZWN0ID0gUHJvamVjdChmb2xkZXI9Zm9sZGVyKQoKICAgIHBybyA9IE5vbmUKICAgIGlmIHRhcmdldC5pc19maWxlKCkgYW5kIHRhcmdldC5zdWZmaXggPT0gIi5raWNhZF9wcm8iOgogICAgICAgIHBybyA9IHRhcmdldAogICAgZWxzZToKICAgICAgICBwcm8gPSBfZmlyc3QoZm9sZGVyLCAiKi5raWNhZF9wcm8iKQogICAgcHJvamVjdC5wcm9fcGF0aCA9IHBybwoKICAgIHN0ZW0gPSBzdGVtX2hpbnQgb3IgKHByby5zdGVtIGlmIHBybyBlbHNlIE5vbmUpCgogICAgaWYgdGFyZ2V0LmlzX2ZpbGUoKSBhbmQgdGFyZ2V0LnN1ZmZpeCA9PSAiLmtpY2FkX3NjaCI6CiAgICAgICAgcHJvamVjdC5zY2hfcGF0aCA9IHRhcmdldAogICAgZWxzZToKICAgICAgICBwcm9qZWN0LnNjaF9wYXRoID0gX3BpY2soZm9sZGVyLCBzdGVtLCAiKi5raWNhZF9zY2giKQogICAgaWYgdGFyZ2V0LmlzX2ZpbGUoKSBhbmQgdGFyZ2V0LnN1ZmZpeCA9PSAiLmtpY2FkX3BjYiI6CiAgICAgICAgcHJvamVjdC5wY2JfcGF0aCA9IHRhcmdldAogICAgZWxzZToKICAgICAgICBwcm9qZWN0LnBjYl9wYXRoID0gX3BpY2soZm9sZGVyLCBzdGVtLCAiKi5raWNhZF9wY2IiKQoKICAgIHByb2plY3QubGVnYWN5X3NjaCA9IHNvcnRlZChmb2xkZXIuZ2xvYigiKi5zY2giKSkKICAgIGFsbF9zY2ggPSBzb3J0ZWQoZm9sZGVyLmdsb2IoIioua2ljYWRfc2NoIikpCiAgICBhbGxfcGNiID0gc29ydGVkKGZvbGRlci5nbG9iKCIqLmtpY2FkX3BjYiIpKQoKICAgICMgLS0tIHNjaGVtYXRpYyhzKTogcm9vdCBzaGVldCArIGhpZXJhcmNoaWNhbCBzdWItc2hlZXRzIC0tLS0tLS0tLS0tCiAgICBuYW1lID0gIiIKICAgIGxvYWRlZCA9IHNldCgpCiAgICBxdWV1ZSA9IFtwcm9qZWN0LnNjaF9wYXRoXSBpZiBwcm9qZWN0LnNjaF9wYXRoIGVsc2UgW10KICAgIHdoaWxlIHF1ZXVlOgogICAgICAgIHNjaF9wYXRoID0gcXVldWUucG9wKDApCiAgICAgICAgaWYgc2NoX3BhdGggaXMgTm9uZSBvciBzY2hfcGF0aCBpbiBsb2FkZWQ6CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgbG9hZGVkLmFkZChzY2hfcGF0aCkKICAgICAgICBwcm9qZWN0LnNjaF9wYXRoc19sb2FkZWQuYXBwZW5kKHNjaF9wYXRoKQogICAgICAgIHRyeToKICAgICAgICAgICAgc3ltYm9scywgbm9fY29ubmVjdHMsIHRpdGxlLCBzaGVldF9maWxlcywgc2tpcHBlZCA9IFwKICAgICAgICAgICAgICAgIHBhcnNlX3NjaGVtYXRpYyhyZWFkX3Byb2plY3RfZmlsZShzY2hfcGF0aCksCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc291cmNlX25hbWU9c2NoX3BhdGgubmFtZSkKICAgICAgICAgICAgcHJvamVjdC5zeW1ib2xzLmV4dGVuZChzeW1ib2xzKQogICAgICAgICAgICBwcm9qZWN0Lm5vX2Nvbm5lY3RzICs9IG5vX2Nvbm5lY3RzCiAgICAgICAgICAgIHByb2plY3Quc2NoX3N5bWJvbHNfbm9fcmVmICs9IHNraXBwZWQKICAgICAgICAgICAgaWYgbm90IG5hbWU6CiAgICAgICAgICAgICAgICBuYW1lID0gdGl0bGUKICAgICAgICAgICAgZm9yIHNoZWV0X2ZpbGUgaW4gc2hlZXRfZmlsZXM6CiAgICAgICAgICAgICAgICBzdWIgPSAoc2NoX3BhdGgucGFyZW50IC8gc2hlZXRfZmlsZSkKICAgICAgICAgICAgICAgIGlmIHN1Yi5pc19maWxlKCk6CiAgICAgICAgICAgICAgICAgICAgaWYgc3ViIG5vdCBpbiBsb2FkZWQgYW5kIHN1YiBub3QgaW4gcXVldWU6CiAgICAgICAgICAgICAgICAgICAgICAgIHF1ZXVlLmFwcGVuZChzdWIpCiAgICAgICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgICAgIHByb2plY3QubWlzc2luZ19zaGVldHMuYXBwZW5kKHNoZWV0X2ZpbGUpCiAgICAgICAgZXhjZXB0IFNleHByRXJyb3IgYXMgZXhjOgogICAgICAgICAgICBwcm9qZWN0LnBhcnNlX2Vycm9ycy5hcHBlbmQoKHNjaF9wYXRoLCBzdHIoZXhjKSkpCiAgICBwcm9qZWN0LnVubG9hZGVkX3NjaCA9IFtwIGZvciBwIGluIGFsbF9zY2ggaWYgcCBub3QgaW4gbG9hZGVkXQogICAgcHJvamVjdC51bmxvYWRlZF9wY2IgPSBbcCBmb3IgcCBpbiBhbGxfcGNiIGlmIHAgIT0gcHJvamVjdC5wY2JfcGF0aF0KCiAgICAjIC0tLSBQQ0IgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiAgICBpZiBwcm9qZWN0LnBjYl9wYXRoIGlzIG5vdCBOb25lOgogICAgICAgIHRyeToKICAgICAgICAgICAgcHJvamVjdC5mb290cHJpbnRzLCBwcm9qZWN0LnBjYl9mb290cHJpbnRzX25vX3JlZiA9IHBhcnNlX3BjYigKICAgICAgICAgICAgICAgIHJlYWRfcHJvamVjdF9maWxlKHByb2plY3QucGNiX3BhdGgpKQogICAgICAgIGV4Y2VwdCBTZXhwckVycm9yIGFzIGV4YzoKICAgICAgICAgICAgcHJvamVjdC5wYXJzZV9lcnJvcnMuYXBwZW5kKChwcm9qZWN0LnBjYl9wYXRoLCBzdHIoZXhjKSkpCgogICAgIyAtLS0gcHJvamVjdCBuYW1lOiBzY2hlbWF0aWMgdGl0bGUgPiAua2ljYWRfcHJvID4gZmlsZSBzdGVtIC0tLS0tLS0tCiAgICBpZiBub3QgbmFtZSBhbmQgcHJvIGlzIG5vdCBOb25lOgogICAgICAgIHRyeToKICAgICAgICAgICAgbWV0YSA9IGpzb24ubG9hZHMocmVhZF9wcm9qZWN0X2ZpbGUocHJvKSkKICAgICAgICAgICAgZmlsZW5hbWUgPSAiIgogICAgICAgICAgICBpZiBpc2luc3RhbmNlKG1ldGEsIGRpY3QpOgogICAgICAgICAgICAgICAgaW5uZXIgPSBtZXRhLmdldCgibWV0YSIpCiAgICAgICAgICAgICAgICBpZiBpc2luc3RhbmNlKGlubmVyLCBkaWN0KToKICAgICAgICAgICAgICAgICAgICBjYW5kaWRhdGUgPSBpbm5lci5nZXQoImZpbGVuYW1lIiwgIiIpCiAgICAgICAgICAgICAgICAgICAgaWYgaXNpbnN0YW5jZShjYW5kaWRhdGUsIHN0cik6CiAgICAgICAgICAgICAgICAgICAgICAgIGZpbGVuYW1lID0gY2FuZGlkYXRlCiAgICAgICAgICAgIG5hbWUgPSBQYXRoKGZpbGVuYW1lKS5zdGVtIGlmIGZpbGVuYW1lIGVsc2UgcHJvLnN0ZW0KICAgICAgICBleGNlcHQgKFNleHByRXJyb3IsIFZhbHVlRXJyb3IpOgogICAgICAgICAgICBuYW1lID0gcHJvLnN0ZW0KICAgIGlmIG5vdCBuYW1lOgogICAgICAgIGZvciBwYXRoIGluIChwcm9qZWN0LnNjaF9wYXRoLCBwcm9qZWN0LnBjYl9wYXRoKToKICAgICAgICAgICAgaWYgcGF0aCBpcyBub3QgTm9uZToKICAgICAgICAgICAgICAgIG5hbWUgPSBwYXRoLnN0ZW0KICAgICAgICAgICAgICAgIGJyZWFrCiAgICBwcm9qZWN0Lm5hbWUgPSBuYW1lIG9yIGZvbGRlci5uYW1lCgogICAgIyAtLS0gQk9NIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiAgICBib21fcGF0aCA9IFBhdGgoYm9tX292ZXJyaWRlKSBpZiBib21fb3ZlcnJpZGUgZWxzZSBOb25lCiAgICBpZiBib21fcGF0aCBpcyBOb25lOgogICAgICAgIGJvbV9wYXRoLCBwcm9qZWN0LmJvbV9hdXRvX25vdGUgPSBmaW5kX2JvbShmb2xkZXIsIHN0ZW0pCiAgICBlbHNlOgogICAgICAgIHByb2plY3QuYm9tX2F1dG9fbm90ZSA9ICJnaXZlbiBvbiB0aGUgY29tbWFuZCBsaW5lIgogICAgcHJvamVjdC5ib21fcGF0aCA9IGJvbV9wYXRoCiAgICBpZiBib21fcGF0aCBpcyBub3QgTm9uZToKICAgICAgICB0cnk6CiAgICAgICAgICAgIHByb2plY3QuYm9tX3Jvd3MgPSBwYXJzZV9ib20ocmVhZF9wcm9qZWN0X2ZpbGUoYm9tX3BhdGgpKQogICAgICAgIGV4Y2VwdCAoVmFsdWVFcnJvciwgU2V4cHJFcnJvcikgYXMgZXhjOgogICAgICAgICAgICBwcm9qZWN0LmJvbV9lcnJvciA9IHN0cihleGMpCiAgICByZXR1cm4gcHJvamVjdAo=
+"""Load a KiCad project from disk: schematic(s), PCB, and BOM.
+
+Everything is parsed from KiCad's own text formats — .kicad_sch and
+.kicad_pcb are S-expressions, the BOM is CSV (see bom.py), .kicad_pro
+is JSON (only the project name is read from it). No KiCad installation
+is required for this layer; the official DRC/ERC checks live in
+kicadcli.py and are optional.
+
+Formats: KiCad 6, 7 and 8 project files. On the PCB side, KiCad 6
+stores footprint references as (fp_text reference "R1" ...) while
+KiCad 7/8 use (property "Reference" "R1" ...) — both are read.
+Hierarchical schematics are followed: (sheet ...) blocks in the root
+sheet name sub-sheet files, which are loaded and merged. Legacy
+KiCad <=5 .sch files are reported, not silently misread.
+
+Safety: every file is stat-checked before reading — it must be a
+regular file (a FIFO or device would block forever) and within the
+size budget — and decoded as strict UTF-8 (undecodable bytes become a
+parse error, never silently rewritten characters).
+"""
+
+import json
+import os
+import re
+import stat
+from dataclasses import dataclass, field
+from pathlib import Path
+
+from . import sexpr
+from .bom import BomRow, parse_bom  # noqa: F401  (re-exported)
+from .sexpr import SexprError
+
+MAX_FILE_BYTES = 64 * 1024 * 1024    # 64 MB per project file (budget)
+
+_DESIGNATOR = re.compile(r"^[A-Za-z]{1,4}\d+$")
+
+_MPN_PROP_KEYS = {"mpn", "manufacturerpartnumber", "manufacturerpartno",
+                  "mfrpartnumber", "mfrpart", "partnumber", "mpartno"}
+
+
+def is_designator(ref):
+    """True for ordinary reference designators (R1, C12, U3, K00, TP1).
+    Placeholder or tool-generated refs (REF**, G***, kibuzzard-XXXX)
+    are not designators."""
+    return bool(ref) and bool(_DESIGNATOR.match(ref))
+
+
+# ---------------------------------------------------------------------------
+# Data model
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class Symbol:
+    """One placed schematic symbol (a component instance)."""
+
+    ref: str
+    value: str = ""
+    footprint: str = ""          # "" when the property is empty, None when absent
+    lib_id: str = ""
+    unit: int = 1
+    in_bom: bool = True
+    on_board: bool = True
+    dnp: bool = False
+    props: dict = field(default_factory=dict)
+    sheet: str = ""              # file the symbol came from
+
+    @property
+    def is_power(self):
+        # Power symbols (#PWR01, #FLG01, ...) are net flags, not parts.
+        return self.ref.startswith("#")
+
+    @property
+    def mpn(self):
+        for key, val in self.props.items():
+            if re.sub(r"[^a-z0-9]", "", key.lower()) in _MPN_PROP_KEYS:
+                return val
+        return None               # no MPN property stored in the schematic
+
+    @property
+    def datasheet(self):
+        return self.props.get("Datasheet")
+
+
+@dataclass
+class FootprintInst:
+    """One footprint instance placed on the PCB."""
+
+    ref: str
+    name: str = ""               # full "Library:Footprint" string
+    value: str = ""
+    board_only: bool = False     # (attr ... board_only ...)
+    exclude_from_bom: bool = False
+
+    @property
+    def is_part(self):
+        """A real component position vs board furniture (mounting holes
+        marked board-only, silkscreen logos/labels with generated or
+        placeholder refs). Membership and duplicate checks only ever
+        consider parts."""
+        return is_designator(self.ref) and not self.board_only
+
+
+@dataclass
+class Project:
+    name: str = ""
+    folder: Path = None
+    pro_path: Path = None
+    sch_path: Path = None
+    sch_paths_loaded: list = field(default_factory=list)   # incl. sub-sheets
+    missing_sheets: list = field(default_factory=list)     # Sheetfile refs not on disk
+    unloaded_sch: list = field(default_factory=list)       # .kicad_sch files not loaded
+    unloaded_pcb: list = field(default_factory=list)       # .kicad_pcb files not loaded
+    legacy_sch: list = field(default_factory=list)         # legacy .sch files present
+    pcb_path: Path = None
+    bom_path: Path = None
+    bom_auto_note: str = ""      # how the BOM was chosen, for Coverage
+    symbols: list = field(default_factory=list)
+    footprints: list = field(default_factory=list)
+    bom_rows: list = field(default_factory=list)
+    bom_error: str = ""          # set when a BOM file exists but won't parse
+    no_connects: int = 0
+    sch_symbols_no_ref: int = 0  # placed symbols skipped: no Reference
+    pcb_footprints_no_ref: int = 0
+    parse_errors: list = field(default_factory=list)  # (path, error message)
+
+    @property
+    def sch_failed(self):
+        return any(p == self.sch_path for p, _ in self.parse_errors)
+
+    @property
+    def pcb_failed(self):
+        return any(p == self.pcb_path for p, _ in self.parse_errors)
+
+
+# ---------------------------------------------------------------------------
+# Safe reading
+# ---------------------------------------------------------------------------
+
+
+def read_project_file(path):
+    """Read a project file as strict UTF-8 text, with budgets.
+
+    Raises SexprError (recorded by callers as a parse error) for
+    non-regular files, oversize files, and undecodable bytes — never
+    blocks on a FIFO, never silently rewrites characters.
+    """
+    try:
+        st = os.stat(path)
+    except OSError as exc:
+        raise SexprError(f"cannot stat file ({exc})")
+    if not stat.S_ISREG(st.st_mode):
+        raise SexprError("not a regular file (FIFO/device/directory?) — "
+                         "refusing to read it")
+    if st.st_size > MAX_FILE_BYTES:
+        raise SexprError(f"file is {st.st_size} bytes, over the "
+                         f"{MAX_FILE_BYTES}-byte scan budget")
+    try:
+        data = Path(path).read_bytes()
+    except OSError as exc:
+        raise SexprError(f"cannot read file ({exc})")
+    try:
+        return data.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise SexprError(f"not valid UTF-8 ({exc}) — refusing to guess "
+                         "at corrupted characters")
+
+
+# ---------------------------------------------------------------------------
+# Schematic / PCB parsing
+# ---------------------------------------------------------------------------
+
+
+def _properties(node):
+    props = {}
+    for prop in sexpr.children(node, "property"):
+        if len(prop) >= 3 and isinstance(prop[1], str):
+            props[prop[1]] = prop[2] if isinstance(prop[2], str) else ""
+    return props
+
+
+def _flag(node, name, default):
+    flag = sexpr.child(node, name)
+    if flag is not None and len(flag) >= 2 and isinstance(flag[1], str):
+        return flag[1].strip().lower() == "yes"
+    return default
+
+
+def parse_schematic(text, source_name=""):
+    """Return (symbols, no_connects, title, sheet_files, skipped_no_ref)
+    from .kicad_sch text. Every (kicad_sch ...) root in the file is
+    read; placed symbols are the root's direct (symbol ...) children
+    (definitions inside (lib_symbols ...) share the shape and are
+    correctly ignored)."""
+    forms = sexpr.parse(text)
+    roots = [f for f in forms if sexpr.head(f) == "kicad_sch"]
+    if not roots:
+        raise SexprError("no (kicad_sch ...) root form — legacy KiCad <=5 "
+                         "schematic format is not supported")
+    symbols = []
+    no_connects = 0
+    title = ""
+    sheet_files = []
+    skipped_no_ref = 0
+    for root in roots:
+        for node in sexpr.children(root, "symbol"):
+            props = _properties(node)
+            ref = props.get("Reference", "").strip()
+            if not ref:
+                # An unannotated symbol: counted and reported by the
+                # caller, never silently dropped (audit finding 22).
+                if props.get("Value") or props.get("Footprint"):
+                    skipped_no_ref += 1
+                continue
+            lib = sexpr.child(node, "lib_id")
+            unit_node = sexpr.child(node, "unit")
+            unit = 1
+            if unit_node is not None and len(unit_node) >= 2:
+                try:
+                    unit = int(unit_node[1])
+                except (TypeError, ValueError):
+                    unit = 1
+            value = props.get("Value", "")
+            symbols.append(Symbol(
+                ref=ref,
+                value=value,
+                footprint=props.get("Footprint", None),
+                lib_id=lib[1] if lib is not None and len(lib) >= 2
+                       and isinstance(lib[1], str) else "",
+                unit=unit,
+                in_bom=_flag(node, "in_bom", True),
+                on_board=_flag(node, "on_board", True),
+                # KiCad 6 encodes DNP as the value text + (in_bom no);
+                # KiCad 7+ has an explicit (dnp yes) node.
+                dnp=_flag(node, "dnp", False)
+                    or value.strip().upper() == "DNP",
+                props=props,
+                sheet=source_name,
+            ))
+        no_connects += sum(1 for _ in sexpr.children(root, "no_connect"))
+        for sheet in sexpr.children(root, "sheet"):
+            sprops = _properties(sheet)
+            if sprops.get("Sheetfile"):
+                sheet_files.append(sprops["Sheetfile"])
+        if not title:
+            title_block = sexpr.child(root, "title_block")
+            if title_block is not None:
+                title_node = sexpr.child(title_block, "title")
+                if title_node is not None and len(title_node) >= 2 \
+                        and isinstance(title_node[1], str):
+                    title = title_node[1]
+    return symbols, no_connects, title, sheet_files, skipped_no_ref
+
+
+def parse_pcb(text):
+    """Return a list of FootprintInst from .kicad_pcb text.
+
+    References/values are read from BOTH storage styles: KiCad 7/8
+    (property "Reference" ...) and KiCad 6 (fp_text reference ...).
+    (attr ...) flags are captured (board_only, exclude_from_bom).
+    Footprints with no reference at all are counted by the caller via
+    the second return value."""
+    forms = sexpr.parse(text)
+    root = next((f for f in forms if sexpr.head(f) == "kicad_pcb"), None)
+    if root is None:
+        raise SexprError("no (kicad_pcb ...) root form")
+    footprints = []
+    skipped_no_ref = 0
+    for node in sexpr.children(root, "footprint"):
+        name = node[1] if len(node) >= 2 and isinstance(node[1], str) else ""
+        props = _properties(node)
+        ref = props.get("Reference", "").strip()
+        value = props.get("Value", "")
+        for fp_text in sexpr.children(node, "fp_text"):
+            if len(fp_text) >= 3 and isinstance(fp_text[2], str):
+                if fp_text[1] == "reference" and not ref:
+                    ref = fp_text[2].strip()
+                elif fp_text[1] == "value" and not value:
+                    value = fp_text[2]
+        if not ref:
+            skipped_no_ref += 1
+            continue
+        attr = sexpr.child(node, "attr")
+        attr_tokens = set()
+        if attr is not None:
+            attr_tokens = {a for a in attr[1:] if isinstance(a, str)}
+        footprints.append(FootprintInst(
+            ref=ref, name=name, value=value,
+            board_only="board_only" in attr_tokens,
+            exclude_from_bom="exclude_from_bom" in attr_tokens))
+    return footprints, skipped_no_ref
+
+
+# ---------------------------------------------------------------------------
+# Project discovery / loading
+# ---------------------------------------------------------------------------
+
+
+def _first(folder, pattern):
+    matches = sorted(folder.glob(pattern))
+    return matches[0] if matches else None
+
+
+def _pick(folder, stem, pattern):
+    """Prefer the file whose stem matches the project stem, else the first."""
+    if stem:
+        candidate = folder / pattern.replace("*", stem)
+        if candidate.is_file():
+            return candidate
+    return _first(folder, pattern)
+
+
+def find_bom(folder, stem):
+    """Auto-detect the BOM CSV in a folder. Returns (path, note).
+
+    Candidates are tried in order — files with 'bom' in the name first
+    (any case), then any other CSV — and the first whose header parses
+    as a BOM wins, so a pick-and-place CSV is never mistaken for the
+    BOM. Returns (None, note) when no CSV parses as a BOM; a bom-named
+    file that fails to parse is returned as (path, note) so the caller
+    can report it as unreadable instead of pretending there is no BOM.
+    """
+    candidates = sorted(folder.glob("*.csv")) + sorted(folder.glob("*.CSV"))
+    seen, ordered = set(), []
+    for cand in candidates:
+        if cand not in seen:
+            seen.add(cand)
+            ordered.append(cand)
+    bom_named = [c for c in ordered if "bom" in c.name.lower()]
+    ordered = bom_named + [c for c in ordered if c not in bom_named]
+    first_bom_named_failure = None
+    for cand in ordered:
+        try:
+            parse_bom(read_project_file(cand))
+            return cand, ("auto-detected" if len(ordered) > 1
+                          else "found in project folder")
+        except (ValueError, SexprError):
+            if cand in bom_named and first_bom_named_failure is None:
+                first_bom_named_failure = cand
+            continue
+    if first_bom_named_failure is not None:
+        return first_bom_named_failure, "named like a BOM but unparseable"
+    return None, ("CSV files present but none parses as a BOM"
+                  if ordered else "no CSV found")
+
+
+def load_project(target, bom_override=None):
+    """Load the project at `target` (a folder or a project/schematic/PCB file).
+
+    Returns a Project. Files that exist but fail to parse are recorded in
+    project.parse_errors rather than raising — the report turns them into
+    BLOCK findings instead of crashing.
+    """
+    target = Path(target)
+    if target.is_file():
+        folder = target.parent
+        stem_hint = target.stem
+    else:
+        folder = target
+        stem_hint = None
+
+    project = Project(folder=folder)
+
+    pro = None
+    if target.is_file() and target.suffix == ".kicad_pro":
+        pro = target
+    else:
+        pro = _first(folder, "*.kicad_pro")
+    project.pro_path = pro
+
+    stem = stem_hint or (pro.stem if pro else None)
+
+    if target.is_file() and target.suffix == ".kicad_sch":
+        project.sch_path = target
+    else:
+        project.sch_path = _pick(folder, stem, "*.kicad_sch")
+    if target.is_file() and target.suffix == ".kicad_pcb":
+        project.pcb_path = target
+    else:
+        project.pcb_path = _pick(folder, stem, "*.kicad_pcb")
+
+    project.legacy_sch = sorted(folder.glob("*.sch"))
+    all_sch = sorted(folder.glob("*.kicad_sch"))
+    all_pcb = sorted(folder.glob("*.kicad_pcb"))
+
+    # --- schematic(s): root sheet + hierarchical sub-sheets -----------
+    name = ""
+    loaded = set()
+    queue = [project.sch_path] if project.sch_path else []
+    while queue:
+        sch_path = queue.pop(0)
+        if sch_path is None or sch_path in loaded:
+            continue
+        loaded.add(sch_path)
+        project.sch_paths_loaded.append(sch_path)
+        try:
+            symbols, no_connects, title, sheet_files, skipped = \
+                parse_schematic(read_project_file(sch_path),
+                                source_name=sch_path.name)
+            project.symbols.extend(symbols)
+            project.no_connects += no_connects
+            project.sch_symbols_no_ref += skipped
+            if not name:
+                name = title
+            for sheet_file in sheet_files:
+                sub = (sch_path.parent / sheet_file)
+                if sub.is_file():
+                    if sub not in loaded and sub not in queue:
+                        queue.append(sub)
+                else:
+                    project.missing_sheets.append(sheet_file)
+        except SexprError as exc:
+            project.parse_errors.append((sch_path, str(exc)))
+    project.unloaded_sch = [p for p in all_sch if p not in loaded]
+    project.unloaded_pcb = [p for p in all_pcb if p != project.pcb_path]
+
+    # --- PCB ------------------------------------------------------------
+    if project.pcb_path is not None:
+        try:
+            project.footprints, project.pcb_footprints_no_ref = parse_pcb(
+                read_project_file(project.pcb_path))
+        except SexprError as exc:
+            project.parse_errors.append((project.pcb_path, str(exc)))
+
+    # --- project name: schematic title > .kicad_pro > file stem --------
+    if not name and pro is not None:
+        try:
+            meta = json.loads(read_project_file(pro))
+            filename = ""
+            if isinstance(meta, dict):
+                inner = meta.get("meta")
+                if isinstance(inner, dict):
+                    candidate = inner.get("filename", "")
+                    if isinstance(candidate, str):
+                        filename = candidate
+            name = Path(filename).stem if filename else pro.stem
+        except (SexprError, ValueError):
+            name = pro.stem
+    if not name:
+        for path in (project.sch_path, project.pcb_path):
+            if path is not None:
+                name = path.stem
+                break
+    project.name = name or folder.name
+
+    # --- BOM --------------------------------------------------------------
+    bom_path = Path(bom_override) if bom_override else None
+    if bom_path is None:
+        bom_path, project.bom_auto_note = find_bom(folder, stem)
+    else:
+        project.bom_auto_note = "given on the command line"
+    project.bom_path = bom_path
+    if bom_path is not None:
+        try:
+            project.bom_rows = parse_bom(read_project_file(bom_path))
+        except (ValueError, SexprError) as exc:
+            project.bom_error = str(exc)
+    return project

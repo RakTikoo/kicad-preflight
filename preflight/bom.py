@@ -1,1 +1,153 @@
-IiIiQk9NIENTViBwYXJzaW5nIOKAlCBkZWxpYmVyYXRlbHkgaW5kZXBlbmRlbnQgb2YgdGhlIEtpQ2FkIHBhcnNlci4KCkEgQk9NIGlzIGEgQk9NIGluIGFueSBFREEgdG9vbDogS2lDYWQsIEpMQ1BDQiwgQWx0aXVtLCBFYWdsZS9GdXNpb24gYW5kCkVhc3lFREEgZXhwb3J0cyBkaWZmZXIgaW4gaGVhZGVyIHNwZWxsaW5ncywgbm90IGluIHRoZSBwcm9ibGVtcyB0aGV5CmNhcnJ5LiBUaGlzIG1vZHVsZSAoYW5kIGJvbWNoZWNrcy5weSkgaW1wb3J0cyBub3RoaW5nIEtpQ2FkLXNwZWNpZmljLApzbyB0aGUgQk9NIGxheWVyIGNhbiBiZSByZXVzZWQg4oCUIGFuZCBydW4gc3RhbmRhbG9uZSBvbiBhIENTViDigJQgd2l0aG91dAp0aGUgc2NoZW1hdGljL1BDQiBwYXJzZXIuIFNlZSBFWFRFTlNJT05TX0FORF9HSVRIVUIubWQgwqcxIChzY29wZToKS2lDYWQtZmlyc3QsIG5vdCBLaUNhZC1vbmx5KS4KIiIiCgppbXBvcnQgY3N2CmltcG9ydCBpbwppbXBvcnQgcmUKZnJvbSBkYXRhY2xhc3NlcyBpbXBvcnQgZGF0YWNsYXNzLCBmaWVsZAoKIyBCdWRnZXRzIChzdGF0ZWQgaW4gdGhlIFJFQURNRSk6IGEgQk9NIHBhc3QgdGhlc2UgbGltaXRzIGlzIHJlcG9ydGVkCiMgYXMgdW5yZWFkYWJsZSByYXRoZXIgdGhhbiBwYXJzZWQgd2l0aG91dCBib3VuZC4KTUFYX0JPTV9ST1dTID0gMjBfMDAwCk1BWF9SRUZTX1BFUl9ST1cgPSA1XzAwMApDU1ZfRklFTERfTElNSVQgPSAxXzAwMF8wMDAgICAgICAgICAgIyBjaGFycyBwZXIgZmllbGQgKGRlbGliZXJhdGUgY2FwKQoKY3N2LmZpZWxkX3NpemVfbGltaXQoQ1NWX0ZJRUxEX0xJTUlUKQoKX0hFQURFUl9BTElBU0VTID0gewogICAgInJlZnMiOiB7InJlZmVyZW5jZSIsICJyZWZlcmVuY2VzIiwgInJlZiIsICJyZWZzIiwgImRlc2lnbmF0b3IiLAogICAgICAgICAgICAgImRlc2lnbmF0b3JzIiwgInJlZmRlcyJ9LAogICAgInF0eSI6IHsicXVhbnRpdHkiLCAicXR5IiwgInFudHkiLCAiY291bnQifSwKICAgICJ2YWx1ZSI6IHsidmFsdWUiLCAidmFsIiwgImNvbXBvbmVudCIsICJjb21tZW50In0sCiAgICAiZm9vdHByaW50IjogeyJmb290cHJpbnQiLCAicGFja2FnZSJ9LAogICAgIm1wbiI6IHsibXBuIiwgIm1hbnVmYWN0dXJlcnBhcnRudW1iZXIiLCAibWFudWZhY3R1cmVycGFydG5vIiwKICAgICAgICAgICAgIm1mcnBhcnRudW1iZXIiLCAibWZycGFydCIsICJwYXJ0bnVtYmVyIiwgIm1wYXJ0bm8iLAogICAgICAgICAgICAibWFudWZhY3R1cmVycGFydCJ9LAogICAgIm1hbnVmYWN0dXJlciI6IHsibWFudWZhY3R1cmVyIiwgIm1mciIsICJicmFuZCJ9LAogICAgImxjc2MiOiB7Imxjc2MiLCAibGNzY3BhcnQiLCAibGNzY3BhcnRubyIsICJsY3NjcGFydG51bWJlciIsCiAgICAgICAgICAgICAibGNzY3BhcnRudW1iZXIxIiwgImpsY3BjYnBhcnQiLCAiamxjcGNicGFydG5vIiwKICAgICAgICAgICAgICJqbGNwY2JwYXJ0bnVtYmVyIn0sCiAgICAiZGVzY3JpcHRpb24iOiB7ImRlc2NyaXB0aW9uIiwgImRlc2MifSwKfQoKCkBkYXRhY2xhc3MKY2xhc3MgQm9tUm93OgogICAgbGluZV9ubzogaW50CiAgICByZWZzOiBsaXN0ID0gZmllbGQoZGVmYXVsdF9mYWN0b3J5PWxpc3QpCiAgICBxdHlfcmF3OiBzdHIgPSAiIgogICAgcXR5OiBpbnQgPSBOb25lICAgICAgICAgICAgICAjIE5vbmUgd2hlbiB0aGUgcXVhbnRpdHkgaXMgbm90IGEgd2hvbGUgbnVtYmVyCiAgICB2YWx1ZTogc3RyID0gIiIKICAgIGZvb3RwcmludDogc3RyID0gIiIKICAgIG1wbjogc3RyID0gIiIKICAgIG1hbnVmYWN0dXJlcjogc3RyID0gIiIKICAgIGxjc2M6IHN0ciA9ICIiCgoKX1JFRl9SQU5HRSA9IHJlLmNvbXBpbGUociJeKFtBLVphLXpdKykoXGQrKVxzKi1ccyooPzooW0EtWmEtel0rKVxzKik/KFxkKykkIikKX1NQQUNFRF9SQU5HRSA9IHJlLmNvbXBpbGUociIoW0EtWmEtel0rXGQrKVxzKy1ccysoW0EtWmEtel0rXGQrKSIpCgoKZGVmIF9ub3JtX2hlYWRlcihjZWxsKToKICAgIHJldHVybiByZS5zdWIociJbXmEtejAtOV0iLCAiIiwgKGNlbGwgb3IgIiIpLmxvd2VyKCkpCgoKZGVmIHBhcnNlX2Rlc2lnbmF0b3JzKGNlbGwpOgogICAgIiIiU3BsaXQgYSByZWZlcmVuY2UgbGlzdCAoIlIxLCBSMiwgUjUiKSBpbnRvIGRlc2lnbmF0b3JzLgoKICAgIEJvdGggZG9jdW1lbnRlZCByYW5nZSBmb3JtcyBhcmUgZXhwYW5kZWQ6ICJSMS1SMyIgYW5kICJSMS0zIgogICAgKGFuZCB0aGUgc3BhY2VkICJSMSAtIFIzIikuIEFueXRoaW5nIHRoYXQgZG9lcyBub3QgbG9vayBsaWtlIGEKICAgIGRlc2lnbmF0b3IgaXMga2VwdCB2ZXJiYXRpbSBzbyB0aGUgY2hlY2tzIGNhbiBmbGFnIGl0LiBFeHBhbnNpb24KICAgIGlzIGNhcHBlZCAoMjAwIHBlciByYW5nZSwgTUFYX1JFRlNfUEVSX1JPVyBwZXIgY2VsbCkuCiAgICAiIiIKICAgIHRleHQgPSBfU1BBQ0VEX1JBTkdFLnN1YihyIlwxLVwyIiwgKGNlbGwgb3IgIiIpLnN0cmlwKCkpCiAgICByZWZzID0gW10KICAgIGZvciB0b2tlbiBpbiByZS5zcGxpdChyIlssO1xzXSsiLCB0ZXh0KToKICAgICAgICBpZiBub3QgdG9rZW46CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgbSA9IF9SRUZfUkFOR0UubWF0Y2godG9rZW4pCiAgICAgICAgaWYgbToKICAgICAgICAgICAgcHJlZml4LCBzdGFydCwgcHJlZml4MiwgZW5kID0gKG0uZ3JvdXAoMSksIGludChtLmdyb3VwKDIpKSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG0uZ3JvdXAoMyksIGludChtLmdyb3VwKDQpKSkKICAgICAgICAgICAgaWYgKHByZWZpeDIgaXMgTm9uZSBvciBwcmVmaXgyID09IHByZWZpeCkgXAogICAgICAgICAgICAgICAgICAgIGFuZCBlbmQgPj0gc3RhcnQgYW5kIGVuZCAtIHN0YXJ0IDw9IDIwMDoKICAgICAgICAgICAgICAgIHJlZnMuZXh0ZW5kKGYie3ByZWZpeH17bn0iIGZvciBuIGluIHJhbmdlKHN0YXJ0LCBlbmQgKyAxKSkKICAgICAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgcmVmcy5hcHBlbmQodG9rZW4pCiAgICAgICAgaWYgbGVuKHJlZnMpID49IE1BWF9SRUZTX1BFUl9ST1c6CiAgICAgICAgICAgIGJyZWFrCiAgICByZXR1cm4gcmVmc1s6TUFYX1JFRlNfUEVSX1JPV10KCgpkZWYgX3BhcnNlX3F0eShxdHlfcmF3KToKICAgICIiIldob2xlLW51bWJlciBxdWFudGl0eSBvciBOb25lLiBObyBzaWxlbnQgdHJ1bmNhdGlvbiwgbm8gb3ZlcmZsb3c6CiAgICAnMi45JyAtPiBOb25lLCAnMWU5OTknLydpbmYnIC0+IE5vbmUsICczLjAnIC0+IDMsICcgMyAnIGhhbmRsZWQgYnkKICAgIHRoZSBjYWxsZXIncyBzdHJpcC4iIiIKICAgIGlmIG5vdCBxdHlfcmF3OgogICAgICAgIHJldHVybiBOb25lCiAgICB0cnk6CiAgICAgICAgcmV0dXJuIGludChxdHlfcmF3KQogICAgZXhjZXB0IFZhbHVlRXJyb3I6CiAgICAgICAgcGFzcwogICAgdHJ5OgogICAgICAgIHZhbHVlID0gZmxvYXQocXR5X3JhdykKICAgIGV4Y2VwdCBWYWx1ZUVycm9yOgogICAgICAgIHJldHVybiBOb25lCiAgICBpZiB2YWx1ZSAhPSB2YWx1ZSBvciB2YWx1ZSBpbiAoZmxvYXQoImluZiIpLCBmbG9hdCgiLWluZiIpKToKICAgICAgICByZXR1cm4gTm9uZQogICAgaWYgdmFsdWUuaXNfaW50ZWdlcigpIGFuZCBhYnModmFsdWUpIDwgMWU5OgogICAgICAgIHJldHVybiBpbnQodmFsdWUpCiAgICByZXR1cm4gTm9uZQoKCmRlZiBwYXJzZV9ib20odGV4dCk6CiAgICAiIiJQYXJzZSBCT00gQ1NWIHRleHQgaW50byBCb21Sb3cgb2JqZWN0cy4gUmFpc2VzIFZhbHVlRXJyb3Igb24gYmFkIHNoYXBlLiIiIgogICAgdHJ5OgogICAgICAgIHJlYWRlciA9IGNzdi5yZWFkZXIoaW8uU3RyaW5nSU8odGV4dCkpCiAgICAgICAgcm93cyA9IFtyIGZvciByIGluIHJlYWRlciBpZiBhbnkoKGMgb3IgIiIpLnN0cmlwKCkgZm9yIGMgaW4gcildCiAgICBleGNlcHQgY3N2LkVycm9yIGFzIGV4YzoKICAgICAgICByYWlzZSBWYWx1ZUVycm9yKGYiQ1NWIHBhcnNlIGVycm9yOiB7ZXhjfSIpIGZyb20gZXhjCiAgICBpZiBub3Qgcm93czoKICAgICAgICByYWlzZSBWYWx1ZUVycm9yKCJCT00gZmlsZSBpcyBlbXB0eSIpCiAgICBpZiBsZW4ocm93cykgLSAxID4gTUFYX0JPTV9ST1dTOgogICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoZiJCT00gaGFzIG1vcmUgdGhhbiB7TUFYX0JPTV9ST1dTfSByb3dzICIKICAgICAgICAgICAgICAgICAgICAgICAgICIoc2NhbiBidWRnZXQpIOKAlCBzcGxpdCBpdCBvciByYWlzZSB0aGUgYnVkZ2V0ICIKICAgICAgICAgICAgICAgICAgICAgICAgICJpbiBwcmVmbGlnaHQvYm9tLnB5IikKICAgIGhlYWRlciA9IFtfbm9ybV9oZWFkZXIoYykgZm9yIGMgaW4gcm93c1swXV0KICAgIGNvbG1hcCA9IHt9CiAgICBmb3IgaWR4LCBuYW1lIGluIGVudW1lcmF0ZShoZWFkZXIpOgogICAgICAgIGZvciBmaWVsZF9uYW1lLCBhbGlhc2VzIGluIF9IRUFERVJfQUxJQVNFUy5pdGVtcygpOgogICAgICAgICAgICBpZiBuYW1lIGluIGFsaWFzZXMgYW5kIGZpZWxkX25hbWUgbm90IGluIGNvbG1hcDoKICAgICAgICAgICAgICAgIGNvbG1hcFtmaWVsZF9uYW1lXSA9IGlkeAogICAgaWYgInJlZnMiIG5vdCBpbiBjb2xtYXA6CiAgICAgICAgcmFpc2UgVmFsdWVFcnJvcigKICAgICAgICAgICAgIm5vIHJlY29nbmlzYWJsZSByZWZlcmVuY2UvZGVzaWduYXRvciBjb2x1bW4gaW4gQk9NIGhlYWRlcjogIgogICAgICAgICAgICArICIsICIuam9pbihyb3dzWzBdKSkKICAgIGJvbV9yb3dzID0gW10KICAgIGZvciBvZmZzZXQsIHJhdyBpbiBlbnVtZXJhdGUocm93c1sxOl0pOgogICAgICAgIGRlZiBjZWxsKGZpZWxkX25hbWUpOgogICAgICAgICAgICBpZHggPSBjb2xtYXAuZ2V0KGZpZWxkX25hbWUpCiAgICAgICAgICAgIGlmIGlkeCBpcyBOb25lIG9yIGlkeCA+PSBsZW4ocmF3KToKICAgICAgICAgICAgICAgIHJldHVybiAiIgogICAgICAgICAgICByZXR1cm4gKHJhd1tpZHhdIG9yICIiKS5zdHJpcCgpCgogICAgICAgIHF0eV9yYXcgPSBjZWxsKCJxdHkiKQogICAgICAgIGJvbV9yb3dzLmFwcGVuZChCb21Sb3coCiAgICAgICAgICAgIGxpbmVfbm89b2Zmc2V0ICsgMiwKICAgICAgICAgICAgcmVmcz1wYXJzZV9kZXNpZ25hdG9ycyhjZWxsKCJyZWZzIikpLAogICAgICAgICAgICBxdHlfcmF3PXF0eV9yYXcsCiAgICAgICAgICAgIHF0eT1fcGFyc2VfcXR5KHF0eV9yYXcpLAogICAgICAgICAgICB2YWx1ZT1jZWxsKCJ2YWx1ZSIpLAogICAgICAgICAgICBmb290cHJpbnQ9Y2VsbCgiZm9vdHByaW50IiksCiAgICAgICAgICAgIG1wbj1jZWxsKCJtcG4iKSwKICAgICAgICAgICAgbWFudWZhY3R1cmVyPWNlbGwoIm1hbnVmYWN0dXJlciIpLAogICAgICAgICAgICBsY3NjPWNlbGwoImxjc2MiKSwKICAgICAgICApKQogICAgcmV0dXJuIGJvbV9yb3dzCg==
+"""BOM CSV parsing — deliberately independent of the KiCad parser.
+
+A BOM is a BOM in any EDA tool: KiCad, JLCPCB, Altium, Eagle/Fusion and
+EasyEDA exports differ in header spellings, not in the problems they
+carry. This module (and bomchecks.py) imports nothing KiCad-specific,
+so the BOM layer can be reused — and run standalone on a CSV — without
+the schematic/PCB parser. See EXTENSIONS_AND_GITHUB.md §1 (scope:
+KiCad-first, not KiCad-only).
+"""
+
+import csv
+import io
+import re
+from dataclasses import dataclass, field
+
+# Budgets (stated in the README): a BOM past these limits is reported
+# as unreadable rather than parsed without bound.
+MAX_BOM_ROWS = 20_000
+MAX_REFS_PER_ROW = 5_000
+CSV_FIELD_LIMIT = 1_000_000          # chars per field (deliberate cap)
+
+csv.field_size_limit(CSV_FIELD_LIMIT)
+
+_HEADER_ALIASES = {
+    "refs": {"reference", "references", "ref", "refs", "designator",
+             "designators", "refdes"},
+    "qty": {"quantity", "qty", "qnty", "count"},
+    "value": {"value", "val", "component", "comment"},
+    "footprint": {"footprint", "package"},
+    "mpn": {"mpn", "manufacturerpartnumber", "manufacturerpartno",
+            "mfrpartnumber", "mfrpart", "partnumber", "mpartno",
+            "manufacturerpart"},
+    "manufacturer": {"manufacturer", "mfr", "brand"},
+    "lcsc": {"lcsc", "lcscpart", "lcscpartno", "lcscpartnumber",
+             "lcscpartnumber1", "jlcpcbpart", "jlcpcbpartno",
+             "jlcpcbpartnumber"},
+    "description": {"description", "desc"},
+}
+
+
+@dataclass
+class BomRow:
+    line_no: int
+    refs: list = field(default_factory=list)
+    qty_raw: str = ""
+    qty: int = None              # None when the quantity is not a whole number
+    value: str = ""
+    footprint: str = ""
+    mpn: str = ""
+    manufacturer: str = ""
+    lcsc: str = ""
+
+
+_REF_RANGE = re.compile(r"^([A-Za-z]+)(\d+)\s*-\s*(?:([A-Za-z]+)\s*)?(\d+)$")
+_SPACED_RANGE = re.compile(r"([A-Za-z]+\d+)\s+-\s+([A-Za-z]+\d+)")
+
+
+def _norm_header(cell):
+    return re.sub(r"[^a-z0-9]", "", (cell or "").lower())
+
+
+def parse_designators(cell):
+    """Split a reference list ("R1, R2, R5") into designators.
+
+    Both documented range forms are expanded: "R1-R3" and "R1-3"
+    (and the spaced "R1 - R3"). Anything that does not look like a
+    designator is kept verbatim so the checks can flag it. Expansion
+    is capped (200 per range, MAX_REFS_PER_ROW per cell).
+    """
+    text = _SPACED_RANGE.sub(r"\1-\2", (cell or "").strip())
+    refs = []
+    for token in re.split(r"[,;\s]+", text):
+        if not token:
+            continue
+        m = _REF_RANGE.match(token)
+        if m:
+            prefix, start, prefix2, end = (m.group(1), int(m.group(2)),
+                                           m.group(3), int(m.group(4)))
+            if (prefix2 is None or prefix2 == prefix) \
+                    and end >= start and end - start <= 200:
+                refs.extend(f"{prefix}{n}" for n in range(start, end + 1))
+                continue
+        refs.append(token)
+        if len(refs) >= MAX_REFS_PER_ROW:
+            break
+    return refs[:MAX_REFS_PER_ROW]
+
+
+def _parse_qty(qty_raw):
+    """Whole-number quantity or None. No silent truncation, no overflow:
+    '2.9' -> None, '1e999'/'inf' -> None, '3.0' -> 3, ' 3 ' handled by
+    the caller's strip."""
+    if not qty_raw:
+        return None
+    try:
+        return int(qty_raw)
+    except ValueError:
+        pass
+    try:
+        value = float(qty_raw)
+    except ValueError:
+        return None
+    if value != value or value in (float("inf"), float("-inf")):
+        return None
+    if value.is_integer() and abs(value) < 1e9:
+        return int(value)
+    return None
+
+
+def parse_bom(text):
+    """Parse BOM CSV text into BomRow objects. Raises ValueError on bad shape."""
+    try:
+        reader = csv.reader(io.StringIO(text))
+        rows = [r for r in reader if any((c or "").strip() for c in r)]
+    except csv.Error as exc:
+        raise ValueError(f"CSV parse error: {exc}") from exc
+    if not rows:
+        raise ValueError("BOM file is empty")
+    if len(rows) - 1 > MAX_BOM_ROWS:
+        raise ValueError(f"BOM has more than {MAX_BOM_ROWS} rows "
+                         "(scan budget) — split it or raise the budget "
+                         "in preflight/bom.py")
+    header = [_norm_header(c) for c in rows[0]]
+    colmap = {}
+    for idx, name in enumerate(header):
+        for field_name, aliases in _HEADER_ALIASES.items():
+            if name in aliases and field_name not in colmap:
+                colmap[field_name] = idx
+    if "refs" not in colmap:
+        raise ValueError(
+            "no recognisable reference/designator column in BOM header: "
+            + ", ".join(rows[0]))
+    bom_rows = []
+    for offset, raw in enumerate(rows[1:]):
+        def cell(field_name):
+            idx = colmap.get(field_name)
+            if idx is None or idx >= len(raw):
+                return ""
+            return (raw[idx] or "").strip()
+
+        qty_raw = cell("qty")
+        bom_rows.append(BomRow(
+            line_no=offset + 2,
+            refs=parse_designators(cell("refs")),
+            qty_raw=qty_raw,
+            qty=_parse_qty(qty_raw),
+            value=cell("value"),
+            footprint=cell("footprint"),
+            mpn=cell("mpn"),
+            manufacturer=cell("manufacturer"),
+            lcsc=cell("lcsc"),
+        ))
+    return bom_rows

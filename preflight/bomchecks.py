@@ -1,1 +1,157 @@
-IiIiQk9NIGNoZWNrcyDigJQgdG9vbC1hZ25vc3RpYywgZGVsaWJlcmF0ZWx5IEtpQ2FkLWZyZWUuCgpUaGVzZSBjaGVja3MgY29uc3VtZSBwYXJzZWQgQk9NIHJvd3MgKGJvbS5weSkgYW5kLCB3aGVuIGF2YWlsYWJsZSwgYQpwYXJ0cyBsaXN0ICh7cmVmOiBvYmplY3Qgd2l0aCAudmFsdWUvLmZvb3RwcmludC8uZG5wLy5pbl9ib219KS4gV2l0aCBubwpwYXJ0cyBsaXN0IHRoZXkgc3RpbGwgcnVuIGV2ZXJ5IHJvdy1pbnRlcm5hbCBjaGVjayDigJQgdGhhdCBpcyB0aGUKc3RhbmRhbG9uZS1CT00gbW9kZSwgdXNhYmxlIG9uIGEgQ1NWIGV4cG9ydGVkIGZyb20gYW55IEVEQSB0b29sCihLaUNhZC1maXJzdCwgbm90IEtpQ2FkLW9ubHk7IHNlZSBFWFRFTlNJT05TX0FORF9HSVRIVUIubWQgwqcxKS4KTm90aGluZyBpbiB0aGlzIG1vZHVsZSBpbXBvcnRzIHRoZSBLaUNhZCBwYXJzZXIuCiIiIgoKZnJvbSAuZmluZGluZyBpbXBvcnQgQkxPQ0ssIENBVVRJT04sIE5PVEUsIEZpbmRpbmcKClBMQUNFSE9MREVSX01QTlMgPSB7In4iLCAidGJkIiwgInRiYSIsICJuL2EiLCAibmEiLCAiLSIsICI/IiwgIngiLCAieHgiLAogICAgICAgICAgICAgICAgICAgICJ4eHgiLCAibm9uZSIsICJ1bmtub3duIiwgImRucCIsICJubyBwYXJ0In0KCgpkZWYgX25vcm0odGV4dCk6CiAgICByZXR1cm4gIiAiLmpvaW4oKHRleHQgb3IgIiIpLnN0cmlwKCkubG93ZXIoKS5zcGxpdCgpKQoKCmRlZiBydW5fYm9tX2NoZWNrcyhyb3dzLCBib21fbmFtZT0iQk9NIiwgZXhwZWN0ZWQ9Tm9uZSwgYWxsX3JlZnM9Tm9uZSwKICAgICAgICAgICAgICAgICAgIHNjaF9uYW1lPSJzY2hlbWF0aWMiKToKICAgICIiIkNoZWNrIEJPTSByb3dzLgoKICAgIGV4cGVjdGVkOiB7cmVmOiBwYXJ0fSBmb3IgcGFydHMgdGhhdCBiZWxvbmcgaW4gdGhlIEJPTSwgb3IgTm9uZQogICAgKHN0YW5kYWxvbmUgbW9kZSDigJQgc2NoZW1hdGljLWRlcGVuZGVudCBjaGVja3MgYXJlIHNraXBwZWQpLgogICAgYWxsX3JlZnM6IHNldCBvZiBldmVyeSBzY2hlbWF0aWMgcmVmIChzdXBlcnNldCBvZiBleHBlY3RlZCksIG9yIE5vbmUuCiAgICAiIiIKICAgIGZpbmRpbmdzID0gW10KICAgIHNlZW5fcmVmcyA9IHt9CiAgICBsY3NjX29ubHlfcm93cyA9IDAKCiAgICBmb3Igcm93IGluIHJvd3M6CiAgICAgICAgd2hlcmUgPSBmIntib21fbmFtZX0gbGluZSB7cm93LmxpbmVfbm99IgogICAgICAgIHJlZnNfbGFiZWwgPSAiLCAiLmpvaW4ocm93LnJlZnMpIG9yICJubyByZWZlcmVuY2VzIgoKICAgICAgICBmb3IgcmVmIGluIHJvdy5yZWZzOgogICAgICAgICAgICBpZiByZWYgaW4gc2Vlbl9yZWZzOgogICAgICAgICAgICAgICAgZmluZGluZ3MuYXBwZW5kKEZpbmRpbmcoCiAgICAgICAgICAgICAgICAgICAgIkJPTV9EVVBMSUNBVEVfUkVGRVJFTkNFIiwgQ0FVVElPTiwKICAgICAgICAgICAgICAgICAgICBmIntyZWZ9IGFwcGVhcnMgaW4gdGhlIEJPTSB0d2ljZSAobGluZXMgIgogICAgICAgICAgICAgICAgICAgIGYie3NlZW5fcmVmc1tyZWZdfSBhbmQge3Jvdy5saW5lX25vfSkuIE9uZSBvZiB0aGUgcm93cyAiCiAgICAgICAgICAgICAgICAgICAgIndpbGwgZG91YmxlLW9yZGVyIG9yIHNoYWRvdyB0aGUgb3RoZXIuIiwKICAgICAgICAgICAgICAgICAgICB3aGVyZT13aGVyZSkpCiAgICAgICAgICAgIGVsc2U6CiAgICAgICAgICAgICAgICBzZWVuX3JlZnNbcmVmXSA9IHJvdy5saW5lX25vCiAgICAgICAgICAgIGlmIGV4cGVjdGVkIGlzIG5vdCBOb25lIGFuZCByZWYgbm90IGluIGFsbF9yZWZzOgogICAgICAgICAgICAgICAgZmluZGluZ3MuYXBwZW5kKEZpbmRpbmcoCiAgICAgICAgICAgICAgICAgICAgIkJPTV9VTktOT1dOX1JFRkVSRU5DRSIsIEJMT0NLLAogICAgICAgICAgICAgICAgICAgIGYiVGhlIEJPTSBsaXN0cyB7cmVmfSwgYnV0IHRoZXJlIGlzIG5vIHtyZWZ9IGluIHRoZSAiCiAgICAgICAgICAgICAgICAgICAgInNjaGVtYXRpYy4gWW91IHdvdWxkIG9yZGVyIGEgcGFydCB0aGUgZGVzaWduIGRvZXMgIgogICAgICAgICAgICAgICAgICAgICJub3QgdXNlIOKAlCBvciB0aGUgc2NoZW1hdGljIGlzIG1pc3NpbmcgYSBwYXJ0LiIsCiAgICAgICAgICAgICAgICAgICAgd2hlcmU9d2hlcmUsIGV2aWRlbmNlPWYiQk9NIGxpbmU6IHtyZWZ9IikpCiAgICAgICAgICAgIGVsaWYgZXhwZWN0ZWQgaXMgbm90IE5vbmUgYW5kIHJlZiBub3QgaW4gZXhwZWN0ZWQ6CiAgICAgICAgICAgICAgICBmaW5kaW5ncy5hcHBlbmQoRmluZGluZygKICAgICAgICAgICAgICAgICAgICAiQk9NX1BBUlRfTk9UX09SREVSQUJMRSIsIENBVVRJT04sCiAgICAgICAgICAgICAgICAgICAgZiJUaGUgQk9NIGxpc3RzIHtyZWZ9LCBidXQgaW4gdGhlIHNjaGVtYXRpYyB7cmVmfSBpcyAiCiAgICAgICAgICAgICAgICAgICAgIm1hcmtlZCBkby1ub3QtcG9wdWxhdGUgLyBub3QtaW4tQk9NLiBPcmRlcmluZyBpdCAiCiAgICAgICAgICAgICAgICAgICAgImJ1eXMgYSBwYXJ0IHRoZSBidWlsZCBkb2VzIG5vdCBmaXQg4oCUIG9yIHRoZSAiCiAgICAgICAgICAgICAgICAgICAgInNjaGVtYXRpYyBmbGFnIGlzIHdyb25nLiIsCiAgICAgICAgICAgICAgICAgICAgd2hlcmU9d2hlcmUsIGV2aWRlbmNlPWYiQk9NIGxpbmU6IHtyZWZ9IikpCgogICAgICAgIGlmIG5vdCByb3cucmVmczoKICAgICAgICAgICAgaWYgcm93LnF0eV9yYXcgb3Igcm93Lm1wbiBvciByb3cudmFsdWUgb3Igcm93Lmxjc2M6CiAgICAgICAgICAgICAgICBmaW5kaW5ncy5hcHBlbmQoRmluZGluZygKICAgICAgICAgICAgICAgICAgICAiQk9NX1JPV19XSVRIT1VUX1JFRkVSRU5DRVMiLCBDQVVUSU9OLAogICAgICAgICAgICAgICAgICAgIGYiQk9NIGxpbmUge3Jvdy5saW5lX25vfSBoYXMgcXVhbnRpdHkvcGFydCBkYXRhICIKICAgICAgICAgICAgICAgICAgICBmIihxdHkgJ3tyb3cucXR5X3JhdyBvciAn4oCUJ30nLCB2YWx1ZSAiCiAgICAgICAgICAgICAgICAgICAgZiIne3Jvdy52YWx1ZSBvciAn4oCUJ30nKSBidXQgbGlzdHMgbm8gcmVmZXJlbmNlICIKICAgICAgICAgICAgICAgICAgICAiZGVzaWduYXRvcnMuIEl0IGNhbm5vdCBiZSBtYXRjaGVkIHRvIHRoZSBkZXNpZ24gIgogICAgICAgICAgICAgICAgICAgICJhbmQgd2lsbCBiZSBzaWxlbnRseSBpZ25vcmVkIGJ5IGFzc2VtYmxlcnMuIiwKICAgICAgICAgICAgICAgICAgICB3aGVyZT13aGVyZSkpCiAgICAgICAgICAgIGNvbnRpbnVlCgogICAgICAgIGlmIHJvdy5xdHkgaXMgTm9uZSBvciByb3cucXR5ICE9IGxlbihyb3cucmVmcyk6CiAgICAgICAgICAgIGZpbmRpbmdzLmFwcGVuZChGaW5kaW5nKAogICAgICAgICAgICAgICAgIkJPTV9RVUFOVElUWV9NSVNNQVRDSCIsIEJMT0NLLAogICAgICAgICAgICAgICAgZiJCT00gbGluZSB7cm93LmxpbmVfbm99IHNheXMgcXVhbnRpdHkgIgogICAgICAgICAgICAgICAgZiIne3Jvdy5xdHlfcmF3IG9yICcoYmxhbmspJ30nIGJ1dCBsaXN0cyAiCiAgICAgICAgICAgICAgICBmIntsZW4ocm93LnJlZnMpfSByZWZlcmVuY2UocykgIgogICAgICAgICAgICAgICAgZiIoeycsICcuam9pbihyb3cucmVmcyl9KS4gVGhlIG9yZGVyIHF1YW50aXR5ICIKICAgICAgICAgICAgICAgICJhbmQgdGhlIGRlc2lnbiBkaXNhZ3JlZS4iLAogICAgICAgICAgICAgICAgd2hlcmU9d2hlcmUsCiAgICAgICAgICAgICAgICBldmlkZW5jZT1mInF0eT17cm93LnF0eV9yYXchcn0gcmVmcz17bGVuKHJvdy5yZWZzKX0iKSkKCiAgICAgICAgbXBuX25vcm0gPSBfbm9ybShyb3cubXBuKQogICAgICAgIGlmIG1wbl9ub3JtIGluIFBMQUNFSE9MREVSX01QTlMgYW5kIHJvdy5tcG4uc3RyaXAoKToKICAgICAgICAgICAgZmluZGluZ3MuYXBwZW5kKEZpbmRpbmcoCiAgICAgICAgICAgICAgICAiQk9NX1BMQUNFSE9MREVSX01QTiIsIENBVVRJT04sCiAgICAgICAgICAgICAgICBmIkJPTSBsaW5lIHtyb3cubGluZV9ub30gKHtyZWZzX2xhYmVsfSkgaGFzIGEgcGxhY2Vob2xkZXIgIgogICAgICAgICAgICAgICAgZiJtYW51ZmFjdHVyZXIgcGFydCBudW1iZXIgKCd7cm93Lm1wbn0nKS4gUmVwbGFjZSBpdCAiCiAgICAgICAgICAgICAgICAid2l0aCB0aGUgcmVhbCBNUE4gYmVmb3JlIG9yZGVyaW5nIOKAlCBhIHBsYWNlaG9sZGVyICIKICAgICAgICAgICAgICAgICJvcmRlcnMgd2hhdGV2ZXIgdGhlIGRpc3RyaWJ1dG9yIGd1ZXNzZXMuIiwKICAgICAgICAgICAgICAgIHdoZXJlPXdoZXJlKSkKICAgICAgICBlbGlmIG5vdCByb3cubXBuIGFuZCBub3Qgcm93Lmxjc2M6CiAgICAgICAgICAgIGZpbmRpbmdzLmFwcGVuZChGaW5kaW5nKAogICAgICAgICAgICAgICAgIkJPTV9NSVNTSU5HX01QTiIsIENBVVRJT04sCiAgICAgICAgICAgICAgICBmIkJPTSBsaW5lIHtyb3cubGluZV9ub30gKHtyZWZzX2xhYmVsfSkgaGFzIG5vICIKICAgICAgICAgICAgICAgICJtYW51ZmFjdHVyZXIgcGFydCBudW1iZXIgYW5kIG5vIExDU0MvSkxDUENCIHBhcnQgIgogICAgICAgICAgICAgICAgIm51bWJlci4gV2l0aG91dCBvbmUsIHRoZSBkaXN0cmlidXRvciDigJQgYW5kICIKICAgICAgICAgICAgICAgICJQcmVmbGlnaHQncyBwYXJ0LXJpc2sgY2hlY2tzIOKAlCBjYW5ub3QgdGVsbCBleGFjdGx5ICIKICAgICAgICAgICAgICAgICJ3aGljaCBwYXJ0IHlvdSBtZWFuLiIsCiAgICAgICAgICAgICAgICB3aGVyZT13aGVyZSkpCiAgICAgICAgZWxpZiBub3Qgcm93Lm1wbiBhbmQgcm93Lmxjc2M6CiAgICAgICAgICAgIGxjc2Nfb25seV9yb3dzICs9IDEKCiAgICAgICAgaWYgbm90IHJvdy5mb290cHJpbnQ6CiAgICAgICAgICAgIGZpbmRpbmdzLmFwcGVuZChGaW5kaW5nKAogICAgICAgICAgICAgICAgIkJPTV9NSVNTSU5HX0ZPT1RQUklOVCIsIENBVVRJT04sCiAgICAgICAgICAgICAgICBmIkJPTSBsaW5lIHtyb3cubGluZV9ub30gKHtyZWZzX2xhYmVsfSkgaGFzIG5vICIKICAgICAgICAgICAgICAgICJmb290cHJpbnQvcGFja2FnZS4gVGhlIGFzc2VtYmxlciBjYW5ub3QgY29uZmlybSB0aGUgIgogICAgICAgICAgICAgICAgInBhcnQgcGh5c2ljYWxseSBtYXRjaGVzIHRoZSBib2FyZC4iLAogICAgICAgICAgICAgICAgd2hlcmU9d2hlcmUpKQoKICAgICAgICAjIENyb3NzLWNoZWNrcyBhZ2FpbnN0IHRoZSBzY2hlbWF0aWMgcGFydCAoZmlyc3QgcmVmJ3MgcGFydCBpcwogICAgICAgICMgdGhlIHJvdydzIGlkZW50aXR5IGluIGEgZ3JvdXBlZCBCT00pLgogICAgICAgIGlmIGV4cGVjdGVkIGlzIG5vdCBOb25lIGFuZCByb3cucmVmczoKICAgICAgICAgICAgcGFydCA9IG5leHQoKGV4cGVjdGVkW3JdIGZvciByIGluIHJvdy5yZWZzIGlmIHIgaW4gZXhwZWN0ZWQpLAogICAgICAgICAgICAgICAgICAgICAgICBOb25lKQogICAgICAgICAgICBpZiBwYXJ0IGlzIG5vdCBOb25lOgogICAgICAgICAgICAgICAgaWYgcm93LmZvb3RwcmludCBhbmQgcGFydC5mb290cHJpbnQgXAogICAgICAgICAgICAgICAgICAgICAgICBhbmQgX25vcm0ocm93LmZvb3RwcmludCkgIT0gX25vcm0ocGFydC5mb290cHJpbnQpOgogICAgICAgICAgICAgICAgICAgIGZpbmRpbmdzLmFwcGVuZChGaW5kaW5nKAogICAgICAgICAgICAgICAgICAgICAgICAiQk9NX0ZPT1RQUklOVF9NSVNNQVRDSCIsIENBVVRJT04sCiAgICAgICAgICAgICAgICAgICAgICAgIGYiQk9NIGxpbmUge3Jvdy5saW5lX25vfSAoe3JlZnNfbGFiZWx9KSBnaXZlcyAiCiAgICAgICAgICAgICAgICAgICAgICAgIGYiZm9vdHByaW50ICd7cm93LmZvb3RwcmludH0nIGJ1dCB0aGUgc2NoZW1hdGljICIKICAgICAgICAgICAgICAgICAgICAgICAgZiJzYXlzICd7cGFydC5mb290cHJpbnR9Jy4gT25lIG9mIHRoZW0gaXMgdGhlICIKICAgICAgICAgICAgICAgICAgICAgICAgInBhY2thZ2UgdGhhdCB3aWxsIGFjdHVhbGx5IGJlIHNvbGRlcmVkIOKAlCBtYWtlICIKICAgICAgICAgICAgICAgICAgICAgICAgInRoZW0gYWdyZWUuIiwKICAgICAgICAgICAgICAgICAgICAgICAgd2hlcmU9d2hlcmUsCiAgICAgICAgICAgICAgICAgICAgICAgIGV2aWRlbmNlPWYiYm9tPXtyb3cuZm9vdHByaW50fSAgIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBmInNjaGVtYXRpYz17cGFydC5mb290cHJpbnR9IikpCiAgICAgICAgICAgICAgICBpZiByb3cudmFsdWUgYW5kIHBhcnQudmFsdWU6CiAgICAgICAgICAgICAgICAgICAgYnYsIHN2ID0gX25vcm0ocm93LnZhbHVlKSwgX25vcm0ocGFydC52YWx1ZSkKICAgICAgICAgICAgICAgICAgICBpZiBidiAhPSBzdiBhbmQgYnYgbm90IGluIHN2IGFuZCBzdiBub3QgaW4gYnY6CiAgICAgICAgICAgICAgICAgICAgICAgIGZpbmRpbmdzLmFwcGVuZChGaW5kaW5nKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIkJPTV9WQUxVRV9ESUZGRVJTIiwgTk9URSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGYiQk9NIGxpbmUge3Jvdy5saW5lX25vfSAoe3JlZnNfbGFiZWx9KSAiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBmImRlc2NyaWJlcyB0aGUgcGFydCBhcyAne3Jvdy52YWx1ZX0nIGJ1dCAiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBmInRoZSBzY2hlbWF0aWMgdmFsdWUgaXMgJ3twYXJ0LnZhbHVlfScuICIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJXb3J0aCBhIGxvb2sg4oCUIEJPTSB0b29scyBvZnRlbiBub3JtYWxpc2UgIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgInZhbHVlcywgc28gdGhpcyBtYXkgYmUgaGFybWxlc3MuIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHdoZXJlPXdoZXJlLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgZXZpZGVuY2U9ZiJib209e3Jvdy52YWx1ZSFyfSAgIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZiJzY2hlbWF0aWM9e3BhcnQudmFsdWUhcn0iKSkKCiAgICBpZiBleHBlY3RlZCBpcyBub3QgTm9uZToKICAgICAgICBmb3IgcmVmIGluIHNvcnRlZChleHBlY3RlZCk6CiAgICAgICAgICAgIGlmIHJlZiBub3QgaW4gc2Vlbl9yZWZzOgogICAgICAgICAgICAgICAgZmluZGluZ3MuYXBwZW5kKEZpbmRpbmcoCiAgICAgICAgICAgICAgICAgICAgIlNDSEVNQVRJQ19QQVJUX01JU1NJTkdfRlJPTV9CT00iLCBDQVVUSU9OLAogICAgICAgICAgICAgICAgICAgIGYie3JlZn0gKHtleHBlY3RlZFtyZWZdLnZhbHVlIG9yICdwYXJ0J30pIGlzIGluIHRoZSAiCiAgICAgICAgICAgICAgICAgICAgInNjaGVtYXRpYyBidXQgbWlzc2luZyBmcm9tIHRoZSBCT00uIEl0IHdpbGwgbm90IGJlICIKICAgICAgICAgICAgICAgICAgICAib3JkZXJlZCBvciBhc3NlbWJsZWQuIiwKICAgICAgICAgICAgICAgICAgICB3aGVyZT1mIntzY2hfbmFtZX0gwrcge3JlZn0iKSkKICAgIHJldHVybiBmaW5kaW5ncywgeyJsY3NjX29ubHlfcm93cyI6IGxjc2Nfb25seV9yb3dzLAogICAgICAgICAgICAgICAgICAgICAgInJlZnNfc2VlbiI6IGxlbihzZWVuX3JlZnMpfQo=
+"""BOM checks — tool-agnostic, deliberately KiCad-free.
+
+These checks consume parsed BOM rows (bom.py) and, when available, a
+parts list ({ref: object with .value/.footprint/.dnp/.in_bom}). With no
+parts list they still run every row-internal check — that is the
+standalone-BOM mode, usable on a CSV exported from any EDA tool
+(KiCad-first, not KiCad-only; see EXTENSIONS_AND_GITHUB.md §1).
+Nothing in this module imports the KiCad parser.
+"""
+
+from .finding import BLOCK, CAUTION, NOTE, Finding
+
+PLACEHOLDER_MPNS = {"~", "tbd", "tba", "n/a", "na", "-", "?", "x", "xx",
+                    "xxx", "none", "unknown", "dnp", "no part"}
+
+
+def _norm(text):
+    return " ".join((text or "").strip().lower().split())
+
+
+def run_bom_checks(rows, bom_name="BOM", expected=None, all_refs=None,
+                   sch_name="schematic"):
+    """Check BOM rows.
+
+    expected: {ref: part} for parts that belong in the BOM, or None
+    (standalone mode — schematic-dependent checks are skipped).
+    all_refs: set of every schematic ref (superset of expected), or None.
+    """
+    findings = []
+    seen_refs = {}
+    lcsc_only_rows = 0
+
+    for row in rows:
+        where = f"{bom_name} line {row.line_no}"
+        refs_label = ", ".join(row.refs) or "no references"
+
+        for ref in row.refs:
+            if ref in seen_refs:
+                findings.append(Finding(
+                    "BOM_DUPLICATE_REFERENCE", CAUTION,
+                    f"{ref} appears in the BOM twice (lines "
+                    f"{seen_refs[ref]} and {row.line_no}). One of the rows "
+                    "will double-order or shadow the other.",
+                    where=where))
+            else:
+                seen_refs[ref] = row.line_no
+            if expected is not None and ref not in all_refs:
+                findings.append(Finding(
+                    "BOM_UNKNOWN_REFERENCE", BLOCK,
+                    f"The BOM lists {ref}, but there is no {ref} in the "
+                    "schematic. You would order a part the design does "
+                    "not use — or the schematic is missing a part.",
+                    where=where, evidence=f"BOM line: {ref}"))
+            elif expected is not None and ref not in expected:
+                findings.append(Finding(
+                    "BOM_PART_NOT_ORDERABLE", CAUTION,
+                    f"The BOM lists {ref}, but in the schematic {ref} is "
+                    "marked do-not-populate / not-in-BOM. Ordering it "
+                    "buys a part the build does not fit — or the "
+                    "schematic flag is wrong.",
+                    where=where, evidence=f"BOM line: {ref}"))
+
+        if not row.refs:
+            if row.qty_raw or row.mpn or row.value or row.lcsc:
+                findings.append(Finding(
+                    "BOM_ROW_WITHOUT_REFERENCES", CAUTION,
+                    f"BOM line {row.line_no} has quantity/part data "
+                    f"(qty '{row.qty_raw or '—'}', value "
+                    f"'{row.value or '—'}') but lists no reference "
+                    "designators. It cannot be matched to the design "
+                    "and will be silently ignored by assemblers.",
+                    where=where))
+            continue
+
+        if row.qty is None or row.qty != len(row.refs):
+            findings.append(Finding(
+                "BOM_QUANTITY_MISMATCH", BLOCK,
+                f"BOM line {row.line_no} says quantity "
+                f"'{row.qty_raw or '(blank)'}' but lists "
+                f"{len(row.refs)} reference(s) "
+                f"({', '.join(row.refs)}). The order quantity "
+                "and the design disagree.",
+                where=where,
+                evidence=f"qty={row.qty_raw!r} refs={len(row.refs)}"))
+
+        mpn_norm = _norm(row.mpn)
+        if mpn_norm in PLACEHOLDER_MPNS and row.mpn.strip():
+            findings.append(Finding(
+                "BOM_PLACEHOLDER_MPN", CAUTION,
+                f"BOM line {row.line_no} ({refs_label}) has a placeholder "
+                f"manufacturer part number ('{row.mpn}'). Replace it "
+                "with the real MPN before ordering — a placeholder "
+                "orders whatever the distributor guesses.",
+                where=where))
+        elif not row.mpn and not row.lcsc:
+            findings.append(Finding(
+                "BOM_MISSING_MPN", CAUTION,
+                f"BOM line {row.line_no} ({refs_label}) has no "
+                "manufacturer part number and no LCSC/JLCPCB part "
+                "number. Without one, the distributor — and "
+                "Preflight's part-risk checks — cannot tell exactly "
+                "which part you mean.",
+                where=where))
+        elif not row.mpn and row.lcsc:
+            lcsc_only_rows += 1
+
+        if not row.footprint:
+            findings.append(Finding(
+                "BOM_MISSING_FOOTPRINT", CAUTION,
+                f"BOM line {row.line_no} ({refs_label}) has no "
+                "footprint/package. The assembler cannot confirm the "
+                "part physically matches the board.",
+                where=where))
+
+        # Cross-checks against the schematic part (first ref's part is
+        # the row's identity in a grouped BOM).
+        if expected is not None and row.refs:
+            part = next((expected[r] for r in row.refs if r in expected),
+                        None)
+            if part is not None:
+                if row.footprint and part.footprint \
+                        and _norm(row.footprint) != _norm(part.footprint):
+                    findings.append(Finding(
+                        "BOM_FOOTPRINT_MISMATCH", CAUTION,
+                        f"BOM line {row.line_no} ({refs_label}) gives "
+                        f"footprint '{row.footprint}' but the schematic "
+                        f"says '{part.footprint}'. One of them is the "
+                        "package that will actually be soldered — make "
+                        "them agree.",
+                        where=where,
+                        evidence=f"bom={row.footprint}  "
+                                 f"schematic={part.footprint}"))
+                if row.value and part.value:
+                    bv, sv = _norm(row.value), _norm(part.value)
+                    if bv != sv and bv not in sv and sv not in bv:
+                        findings.append(Finding(
+                            "BOM_VALUE_DIFFERS", NOTE,
+                            f"BOM line {row.line_no} ({refs_label}) "
+                            f"describes the part as '{row.value}' but "
+                            f"the schematic value is '{part.value}'. "
+                            "Worth a look — BOM tools often normalise "
+                            "values, so this may be harmless.",
+                            where=where,
+                            evidence=f"bom={row.value!r}  "
+                                     f"schematic={part.value!r}"))
+
+    if expected is not None:
+        for ref in sorted(expected):
+            if ref not in seen_refs:
+                findings.append(Finding(
+                    "SCHEMATIC_PART_MISSING_FROM_BOM", CAUTION,
+                    f"{ref} ({expected[ref].value or 'part'}) is in the "
+                    "schematic but missing from the BOM. It will not be "
+                    "ordered or assembled.",
+                    where=f"{sch_name} · {ref}"))
+    return findings, {"lcsc_only_rows": lcsc_only_rows,
+                      "refs_seen": len(seen_refs)}

@@ -1,1 +1,61 @@
-IiIiU2hhcmVkIGZpbmRpbmcgdHlwZSBhbmQgc2V2ZXJpdHkvdmVyZGljdCB2b2NhYnVsYXJ5IGZvciBQcmVmbGlnaHQuCgpTZXZlcml0eSBtb2RlbCAocGxhaW4gRW5nbGlzaCwgaW4gdGhlIHJlcG9ydCk6CiAgQkxPQ0sgICDigJQgdGhlIGJvYXJkIG9yIHRoZSBvcmRlciB3aWxsIGJlIHdyb25nIGlmIHlvdSBwcm9jZWVkLgogIENBVVRJT04g4oCUIHJpc2t5LCBpbmNvbXBsZXRlLCBvciBjb3VsZCBub3QgYmUgZnVsbHkgY2hlY2tlZDsgbG9vawogICAgICAgICAgICBiZWZvcmUgb3JkZXJpbmcuCiAgTk9URSAgICDigJQgYSBoZWFkcy11cCBvbmx5OyBuZXZlciBjaGFuZ2VzIHRoZSB2ZXJkaWN0IG9uIGl0cyBvd24uCgpWZXJkaWN0cyAobWlycm9yaW5nIHRoZSBTa2lsbFNjYW4gY29udmVudGlvbik6CiAgUEFTUyAgICDigJQgbm8gQkxPQ0ssIG5vIENBVVRJT04gZmluZGluZ3MuCiAgQ0FVVElPTiDigJQgYXQgbGVhc3Qgb25lIENBVVRJT04sIG5vIEJMT0NLLgogIEJMT0NLICAg4oCUIGF0IGxlYXN0IG9uZSBCTE9DSyBmaW5kaW5nLgoKRXhpdCBjb2RlczogMCA9IFBBU1MsIDEgPSBDQVVUSU9OLCAyID0gQkxPQ0ssIDMgPSB1c2FnZSAvIElPIGVycm9yLgpBIFBBU1MgaXMgb25seSBhcyBnb29kIGFzIHRoZSByZXBvcnQncyBDb3ZlcmFnZSBzZWN0aW9uOiB3aGVuZXZlciBhCmZpbGUgb3IgbGF5ZXIgY291bGQgbm90IGJlIGNoZWNrZWQsIGEgU0NBTl9JTkNPTVBMRVRFIGZpbmRpbmcgKG9yIGEKbW9yZSBzcGVjaWZpYyBCTE9DSy9DQVVUSU9OKSBzYXlzIHNvIOKAlCBhIGNsZWFuIHZlcmRpY3QgbmV2ZXIgaGlkZXMgYQpza2lwcGVkIGNoZWNrLgoiIiIKCmZyb20gZGF0YWNsYXNzZXMgaW1wb3J0IGRhdGFjbGFzcwoKQkxPQ0sgPSAiQkxPQ0siCkNBVVRJT04gPSAiQ0FVVElPTiIKTk9URSA9ICJOT1RFIgoKU0VWRVJJVFlfT1JERVIgPSBbQkxPQ0ssIENBVVRJT04sIE5PVEVdCgpQQVNTID0gIlBBU1MiClZFUkRJQ1RfQ0FVVElPTiA9ICJDQVVUSU9OIgpWRVJESUNUX0JMT0NLID0gIkJMT0NLIgoKRVhJVF9DT0RFUyA9IHtQQVNTOiAwLCBWRVJESUNUX0NBVVRJT046IDEsIFZFUkRJQ1RfQkxPQ0s6IDJ9CkVYSVRfVVNBR0VfRVJST1IgPSAzCgoKQGRhdGFjbGFzcwpjbGFzcyBGaW5kaW5nOgogICAgcnVsZTogc3RyCiAgICBzZXZlcml0eTogc3RyCiAgICBtZXNzYWdlOiBzdHIKICAgIHdoZXJlOiBzdHIgPSAiIiAgICAgICAjIGUuZy4gImxlZC1ib2FyZC5raWNhZF9zY2ggwrcgRDEiCiAgICBldmlkZW5jZTogc3RyID0gIiIgICAgIyB0aGUgZXhhY3QgdmFsdWUvbGluZSB0aGF0IHRyaWdnZXJlZCBpdAoKICAgIGRlZiB0b19kaWN0KHNlbGYpOgogICAgICAgIHJldHVybiB7CiAgICAgICAgICAgICJydWxlIjogc2VsZi5ydWxlLAogICAgICAgICAgICAic2V2ZXJpdHkiOiBzZWxmLnNldmVyaXR5LAogICAgICAgICAgICAibWVzc2FnZSI6IHNlbGYubWVzc2FnZSwKICAgICAgICAgICAgIndoZXJlIjogc2VsZi53aGVyZSwKICAgICAgICAgICAgImV2aWRlbmNlIjogc2VsZi5ldmlkZW5jZSwKICAgICAgICB9CgoKZGVmIHZlcmRpY3RfZm9yKGZpbmRpbmdzKToKICAgIHNldmVyaXRpZXMgPSB7Zi5zZXZlcml0eSBmb3IgZiBpbiBmaW5kaW5nc30KICAgIGlmIEJMT0NLIGluIHNldmVyaXRpZXM6CiAgICAgICAgcmV0dXJuIFZFUkRJQ1RfQkxPQ0sKICAgIGlmIENBVVRJT04gaW4gc2V2ZXJpdGllczoKICAgICAgICByZXR1cm4gVkVSRElDVF9DQVVUSU9OCiAgICByZXR1cm4gUEFTUwo=
+"""Shared finding type and severity/verdict vocabulary for Preflight.
+
+Severity model (plain English, in the report):
+  BLOCK   — the board or the order will be wrong if you proceed.
+  CAUTION — risky, incomplete, or could not be fully checked; look
+            before ordering.
+  NOTE    — a heads-up only; never changes the verdict on its own.
+
+Verdicts (mirroring the SkillScan convention):
+  PASS    — no BLOCK, no CAUTION findings.
+  CAUTION — at least one CAUTION, no BLOCK.
+  BLOCK   — at least one BLOCK finding.
+
+Exit codes: 0 = PASS, 1 = CAUTION, 2 = BLOCK, 3 = usage / IO error.
+A PASS is only as good as the report's Coverage section: whenever a
+file or layer could not be checked, a SCAN_INCOMPLETE finding (or a
+more specific BLOCK/CAUTION) says so — a clean verdict never hides a
+skipped check.
+"""
+
+from dataclasses import dataclass
+
+BLOCK = "BLOCK"
+CAUTION = "CAUTION"
+NOTE = "NOTE"
+
+SEVERITY_ORDER = [BLOCK, CAUTION, NOTE]
+
+PASS = "PASS"
+VERDICT_CAUTION = "CAUTION"
+VERDICT_BLOCK = "BLOCK"
+
+EXIT_CODES = {PASS: 0, VERDICT_CAUTION: 1, VERDICT_BLOCK: 2}
+EXIT_USAGE_ERROR = 3
+
+
+@dataclass
+class Finding:
+    rule: str
+    severity: str
+    message: str
+    where: str = ""       # e.g. "led-board.kicad_sch · D1"
+    evidence: str = ""    # the exact value/line that triggered it
+
+    def to_dict(self):
+        return {
+            "rule": self.rule,
+            "severity": self.severity,
+            "message": self.message,
+            "where": self.where,
+            "evidence": self.evidence,
+        }
+
+
+def verdict_for(findings):
+    severities = {f.severity for f in findings}
+    if BLOCK in severities:
+        return VERDICT_BLOCK
+    if CAUTION in severities:
+        return VERDICT_CAUTION
+    return PASS
