@@ -1,1 +1,48 @@
-PiAqKlBBVVNFRCDigJQgSC0xQiBHQVRFIChkZWNpZGVkIDIwMjYtMTEtMDksIH4vd29ya3NwYWNlL2FnZW50aWMtc3Bpa2VzL0gxQl9HQVRFLm1kKS4qKgo+IFRoaXMgZHJhZnQgaXMgQ0FOQ0VMTEVEIGFzIGEgZGVsaXZlcmFibGUuIEl0IGlzIG5vdCByZWFkeSB0byBnbyBhbmQgbXVzdCBub3QgYmUKPiBwb3N0ZWQuIEl0IHN0YXlzIG9uIGZpbGUgb25seSBzbyB0aGUgbGF1bmNoIGNhbiBiZSByZS1kYXRlZCBhbmQgcmV2aXNpdGVkIGFmdGVyCj4gUmFrc2hpdCBpcyBiYWNrIGluIEluZGlhIChGZWLigJNNYXIgMjAyNykgb3IgYW4gaW1taWdyYXRpb24gYXR0b3JuZXkgZ2l2ZXMgYSBjbGVhcgo+IG9waW5pb24uIEdyb3d0aCB1bnRpbCB0aGVuIGlzIG9yZ2FuaWMgb25seS4KCiMgRFJBRlQg4oCUIFNob3cgSE4KIyBUYXJnZXQgZGF0ZTogU3VuIEphbiAxMCwgMjAyNy4gRE8gTk9UIFBPU1QgZWFybHkuCiMgUmFrc2hpdCBwb3N0czsgU3BhcmsgZHJhZnRzIGNvbW1lbnQgcmVwbGllcyBkdXJpbmcgdGhlIHdpbmRvdy4KClRpdGxlOiBTaG93IEhOOiBLaUNhZCBQcmVmbGlnaHQg4oCTIGNoZWNrIHlvdXIgYm9hcmQgYmVmb3JlIHlvdSBwYXkgdG8gaGF2ZSBpdCBtYWRlCgpUZXh0OgoKSSBrZXB0IG5lYXJseSBvcmRlcmluZyBib2FyZHMgd2l0aCBkdW1iIG1pc3Rha2VzIGluIHRoZW0g4oCUIGEgcmVzaXN0b3IKaW4gdGhlIHNjaGVtYXRpYyB0aGF0IG5ldmVyIGdvdCBwbGFjZWQgb24gdGhlIFBDQiwgYSBmb290cHJpbnQgdGhhdApkaXNhZ3JlZWQgYmV0d2VlbiBzY2hlbWF0aWMgYW5kIGJvYXJkLCBhIEJPTSB3aG9zZSBxdWFudGl0eSBkaWRuJ3QKbWF0Y2ggaXRzIG93biByZWZlcmVuY2UgbGlzdCwgYSBjaGlwIHRoYXQgaGFkIGdvbmUgb2Jzb2xldGUuIEtpQ2FkJ3MKRFJDL0VSQyBjYXRjaCBub25lIG9mIHRoYXQ7IHRoZXkgY2hlY2sgdGhlIGRlc2lnbiwgbm90IHRoZSAqb3JkZXIqLgoKS2lDYWQgUHJlZmxpZ2h0IGlzIGEgQ0xJICsgS2lDYWQgcGx1Z2luIChNSVQsIHB1cmUgUHl0aG9uIHN0ZGxpYikgdGhhdApjaGVja3MgdGhlIG9yZGVyOiBzY2hlbWF0aWPihpRQQ0IgYWdyZWVtZW50LCBCT00gc2FuaXR5LCBhbmQgb2ZmbGluZQpwYXJ0LXJpc2sgZmxhZ3MuIFZlcmRpY3RzIGFyZSBQQVNTIC8gQ0FVVElPTiAvIEJMT0NLIGZyb20gZGV0ZXJtaW5pc3RpYwpydWxlcyBvbmx5IOKAlCBubyBMTE0g4oCUIGFuZCBldmVyeSBmaW5kaW5nIG5hbWVzIHRoZSBwYXJ0IGFuZCB0aGUgdHdvCnZhbHVlcyB0aGF0IGRpc2FncmVlLCBzbyBpdCdzIHZlcmlmaWFibGUgYnkgaGFuZC4KCkhvbmVzdCBwYXJ0czoKCi0gVGhlIHBhcnQtcmlzayBkYXRhIGluIHYwLnggaXMgYSBzbWFsbCBidW5kbGVkIFNBTVBMRSBzbmFwc2hvdCwgbm90CiAgbGl2ZSBkaXN0cmlidXRvciBkYXRhLiBUaGUgcmVwb3J0IHNheXMgc28gb24gaXRzIGZhY2UuCi0gSXQgY2FuJ3Qgc2VlIGluc2lkZSB5b3VyIGRlc2lnbiB0aGUgd2F5IEVSQyBjYW47IHdoZW4ga2ljYWQtY2xpIGlzCiAgaW5zdGFsbGVkIGl0IHNoZWxscyBvdXQgdG8gdGhlIG9mZmljaWFsIERSQy9FUkMgYW5kIGZvbGRzIHRob3NlCiAgcmVzdWx0cyBpbiBpbnN0ZWFkIG9mIHJlaW1wbGVtZW50aW5nIHRoZW0uCi0gSXQgd2FzIHRlc3RlZCBhZ2FpbnN0IHJlYWwgb3Blbi1zb3VyY2UgYm9hcmRzIChVcHN5IERlc2t5LCB0aGUKICBFU1AzMiBSdXN0IGJvYXJkLCBQaWFudG9yIOKAlCBjb3JwdXMgd2l0aCBsaWNlbmNlcyBpbiB0aGUgcmVwbykgcGx1cyBhCiAgZGVsaWJlcmF0ZWx5IGJyb2tlbiBib2FyZC4gVGhlIGZpcnN0IHZlcnNpb24gZmxhZ2dlZCB0aGUgY2xlYW4KICBib2FyZHMgYmFkbHkgKEtpQ2FkIDYgZm9vdHByaW50IGZvcm1hdCwgbW9zdGx5KTsgdGhlIHJldmlldyB0aGF0CiAgY2F1Z2h0IHRoYXQsIHdpdGggYmVmb3JlL2FmdGVyIG51bWJlcnMsIGlzIGluIHRoZSByZXBvJ3MgUkVWSUVXCiAgZG9jcy4gSSdkIHJhdGhlciBzaG93IHRoYXQgdGhhbiBwcmV0ZW5kIHZlcnNpb24gb25lIHdhcyByaWdodC4KClRoZSBCT00gY2hlY2tzIHdvcmsgb24gYSBDU1YgZnJvbSBhbnkgRURBIHRvb2wg4oCUIEtpQ2FkIGlzIHRoZSB3ZWRnZSwKbm90IHRoZSBsaW1pdC4gVGhlIENMSSBpcyBhbHNvIHRoZSB0ZXN0YWJsZSBmb3JtOyB0aGUgcGx1Z2luIGlzIHRoZQpzYW1lIGVuZ2luZSB3aXRoIGEgZGlhbG9nLgoKUmVwbzogaHR0cHM6Ly9naXRodWIuY29tL1Jha1Rpa29vL2tpY2FkLXByZWZsaWdodAoKV2hhdCBJJ2QgbG92ZSBmcm9tIEhOOiBib2FyZHMgaXQgZmxhZ3MgdW5mYWlybHksIGFuZCBmYXVsdHMgaXQKbWlzc2VzLiBCb3RoIGFyZSBpc3N1ZSB0ZW1wbGF0ZXMgaW4gdGhlIHJlcG8uCg==
+> **PAUSED — H-1B GATE (decided 2026-11-09, ~/workspace/agentic-spikes/H1B_GATE.md).**
+> This draft is CANCELLED as a deliverable. It is not ready to go and must not be
+> posted. It stays on file only so the launch can be re-dated and revisited after
+> Rakshit is back in India (Feb–Mar 2027) or an immigration attorney gives a clear
+> opinion. Growth until then is organic only.
+
+# DRAFT — Show HN
+# Target date: Sun Jan 10, 2027. DO NOT POST early.
+# Rakshit posts; Spark drafts comment replies during the window.
+
+Title: Show HN: KiCad Preflight – check your board before you pay to have it made
+
+Text:
+
+I kept nearly ordering boards with dumb mistakes in them — a resistor
+in the schematic that never got placed on the PCB, a footprint that
+disagreed between schematic and board, a BOM whose quantity didn't
+match its own reference list, a chip that had gone obsolete. KiCad's
+DRC/ERC catch none of that; they check the design, not the *order*.
+
+KiCad Preflight is a CLI + KiCad plugin (MIT, pure Python stdlib) that
+checks the order: schematic↔PCB agreement, BOM sanity, and offline
+part-risk flags. Verdicts are PASS / CAUTION / BLOCK from deterministic
+rules only — no LLM — and every finding names the part and the two
+values that disagree, so it's verifiable by hand.
+
+Honest parts:
+
+- The part-risk data in v0.x is a small bundled SAMPLE snapshot, not
+  live distributor data. The report says so on its face.
+- It can't see inside your design the way ERC can; when kicad-cli is
+  installed it shells out to the official DRC/ERC and folds those
+  results in instead of reimplementing them.
+- It was tested against real open-source boards (Upsy Desky, the
+  ESP32 Rust board, Piantor — corpus with licences in the repo) plus a
+  deliberately broken board. The first version flagged the clean
+  boards badly (KiCad 6 footprint format, mostly); the review that
+  caught that, with before/after numbers, is in the repo's REVIEW
+  docs. I'd rather show that than pretend version one was right.
+
+The BOM checks work on a CSV from any EDA tool — KiCad is the wedge,
+not the limit. The CLI is also the testable form; the plugin is the
+same engine with a dialog.
+
+Repo: https://github.com/RakTikoo/kicad-preflight
+
+What I'd love from HN: boards it flags unfairly, and faults it
+misses. Both are issue templates in the repo.
