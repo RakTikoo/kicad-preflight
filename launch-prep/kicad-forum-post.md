@@ -1,1 +1,53 @@
-PiAqKlBBVVNFRCDigJQgSC0xQiBHQVRFIChkZWNpZGVkIDIwMjYtMTEtMDksIH4vd29ya3NwYWNlL2FnZW50aWMtc3Bpa2VzL0gxQl9HQVRFLm1kKS4qKgo+IFRoaXMgZHJhZnQgaXMgQ0FOQ0VMTEVEIGFzIGEgZGVsaXZlcmFibGUuIEl0IGlzIG5vdCByZWFkeSB0byBnbyBhbmQgbXVzdCBub3QgYmUKPiBwb3N0ZWQuIEl0IHN0YXlzIG9uIGZpbGUgb25seSBzbyB0aGUgbGF1bmNoIGNhbiBiZSByZS1kYXRlZCBhbmQgcmV2aXNpdGVkIGFmdGVyCj4gUmFrc2hpdCBpcyBiYWNrIGluIEluZGlhIChGZWLigJNNYXIgMjAyNykgb3IgYW4gaW1taWdyYXRpb24gYXR0b3JuZXkgZ2l2ZXMgYSBjbGVhcgo+IG9waW5pb24uIEdyb3d0aCB1bnRpbCB0aGVuIGlzIG9yZ2FuaWMgb25seS4KCiMgRFJBRlQg4oCUIEtpQ2FkIGZvcnVtLCBFeHRlcm5hbCBQbHVnaW5zIGNhdGVnb3J5CiMgVGFyZ2V0IGRhdGU6IFR1ZSBKYW4gNSwgMjAyNyAobGF1bmNoIHN0YWNrIGRheSAyKS4gRE8gTk9UIFBPU1QgZWFybHkuCiMgRm9ydW0gY29udmVudGlvbnM6IHdoYXQgaXQgZG9lcywgc2NyZWVuc2hvdHMvR0lGLCB3aGVyZSB0byBnZXQgaXQsCiMgaG93IHRvIHJlcG9ydCBidWdzIChHaXRIdWIg4oCUIHRoZSB0aHJlYWQgaXMgbm90IGFuIGlzc3VlIHRyYWNrZXIpLCBsaWNlbmNlLgojIFJha3NoaXQgcG9zdHMgZnJvbSBoaXMgb3duIHdhcm1lZC11cCBhY2NvdW50IChhY2NvdW50IG1hZGUgRGVjIDIwMjYpLgoKVGl0bGU6IEtpQ2FkIFByZWZsaWdodCDigJQgY2hlY2sgeW91ciBib2FyZCBiZWZvcmUgeW91IHBheSB0byBoYXZlIGl0IG1hZGUKCkhpIGFsbCDigJQgSSBidWlsdCBhIHBsdWdpbiArIENMSSB0aGF0IHJ1bnMgYSAicHJlZmxpZ2h0IiBwYXNzIG92ZXIgYQpLaUNhZCBwcm9qZWN0IGF0IHRoZSBtb21lbnQgeW91J3JlIGFib3V0IHRvIGV4cG9ydCBHZXJiZXJzIGFuZCBvcmRlciwKYW5kIGZsYWdzIHRoZSB0aGluZ3MgRFJDL0VSQyBkb24ndCBsb29rIGF0OgoKLSBzY2hlbWF0aWMg4oaUIFBDQiBkaXNhZ3JlZW1lbnQ6IGEgcGFydCBpbiB0aGUgc2NoZW1hdGljIHdpdGggbm8KICBmb290cHJpbnQgb24gdGhlIGJvYXJkLCBhIGZvb3RwcmludCB3aG9zZSBsaWJyYXJ5IG5hbWUgZG9lc24ndCBtYXRjaAogIHRoZSBzY2hlbWF0aWMsIGR1cGxpY2F0ZSByZWZlcmVuY2VzLCBzdHJheSBmb290cHJpbnRzCi0gQk9NIHByb2JsZW1zOiByZWZlcmVuY2VzIHRoYXQgZG9uJ3QgZXhpc3QsIHF1YW50aXR5IHRoYXQgZG9lc24ndAogIG1hdGNoIHRoZSByZWZlcmVuY2UgbGlzdCwgbWlzc2luZyBvciBwbGFjZWhvbGRlciBtYW51ZmFjdHVyZXIgcGFydAogIG51bWJlcnMsIEROUCBwYXJ0cyB0aGF0IHNudWNrIGludG8gdGhlIG9yZGVyCi0gcGFydCByaXNrIChvZmZsaW5lIHNhbXBsZSBkYXRhIGluIHYwLngsIGxhYmVsbGVkIGFzIHN1Y2gpOiBvYnNvbGV0ZQogIHBhcnRzLCBsb3cgc3RvY2ssIGxvbmcgbGVhZCB0aW1lcwotIHdoZW4gYGtpY2FkLWNsaWAgaXMgaW5zdGFsbGVkLCB0aGUgb2ZmaWNpYWwgRFJDL0VSQyByZXN1bHRzIGFyZQogIGZvbGRlZCBpbnRvIHRoZSBzYW1lIG9uZS1wYWdlIHJlcG9ydAoKRXZlcnkgY2hlY2sgaXMgYSBkZXRlcm1pbmlzdGljIHJ1bGUg4oCUIG5vIEFJIGRlY2lkZXMgYW55dGhpbmcg4oCUIGFuZApldmVyeSBmaW5kaW5nIG5hbWVzIHRoZSBleGFjdCBwYXJ0IGFuZCB0aGUgZXhhY3QgdmFsdWVzIHRoYXQgZGlzYWdyZWUsCnNvIHlvdSBjYW4gdmVyaWZ5IGl0IGJ5IGhhbmQgaW4gc2Vjb25kcy4gVGhlIHJlcG9ydCBlbmRzIHdpdGggYQpjb3ZlcmFnZSBzZWN0aW9uIHN0YXRpbmcgd2hhdCB3YXMgYWN0dWFsbHkgY2hlY2tlZDsgaWYgYSBmaWxlIGNvdWxkbid0CmJlIHBhcnNlZCwgdGhlIHZlcmRpY3Qgc2F5cyBzbyBpbnN0ZWFkIG9mIHBhc3NpbmcgcXVpZXRseS4KCltkZW1vIEdJRjogYnJva2VuIGJvYXJkIOKGkiByZXBvcnQg4oaSIGZpeCDihpIgY2xlYW4gcmUtcnVuXQoKKipHZXQgaXQqKgotIEluIEtpQ2FkOiBhZGQgdGhpcyBQQ00gcmVwb3NpdG9yeSBVUkwgaW4gdGhlIFBsdWdpbiBhbmQgQ29udGVudAogIE1hbmFnZXIg4oaSIE1hbmFnZTogW3NlbGYtaG9zdGVkIHJlcG8gVVJMXSAob2ZmaWNpYWwgUENNIHN1Ym1pc3Npb24KICBmb2xsb3dzIGxhdGVyIGluIEphbnVhcnkpCi0gR2l0SHViOiBodHRwczovL2dpdGh1Yi5jb20vUmFrVGlrb28va2ljYWQtcHJlZmxpZ2h0IChDTEkgaW5jbHVkZWQg4oCUCiAgaXQgYWxzbyBzY2FucyBhIHN0YW5kYWxvbmUgQk9NIENTViBmcm9tIGFueSBFREEgdG9vbCkKCioqTGljZW5jZToqKiBNSVQuICoqQnVncyAvIGZhbHNlIHBvc2l0aXZlczoqKiBwbGVhc2UgdXNlIEdpdEh1YiBpc3N1ZXMK4oCUIHRoZXJlJ3MgYSB0ZW1wbGF0ZSBzcGVjaWZpY2FsbHkgZm9yICJ0aGUgY2hlY2tlciBmbGFnZ2VkIG15IGdvb2QKYm9hcmQiLCB3aGljaCBpcyB0aGUgcmVwb3J0IEkgbW9zdCB3YW50LiBUaGlzIHRocmVhZCBpcyBmb3IgcXVlc3Rpb25zCmFuZCBkaXNjdXNzaW9uLCBub3QgYW4gaXNzdWUgdHJhY2tlci4KCkZlZWRiYWNrIEkgZXNwZWNpYWxseSB3YW50OiBib2FyZHMgaXQgZmxhZ3MgdW5mYWlybHksIGFuZCByZWFsIGZhdWx0cwppdCBtaXNzZWQuIEJvdGggbWFrZSB0aGUgcnVsZSBzZXQgYmV0dGVyLgoK4oCUIFJha3NoaXQK
+> **PAUSED — H-1B GATE (decided 2026-11-09, ~/workspace/agentic-spikes/H1B_GATE.md).**
+> This draft is CANCELLED as a deliverable. It is not ready to go and must not be
+> posted. It stays on file only so the launch can be re-dated and revisited after
+> Rakshit is back in India (Feb–Mar 2027) or an immigration attorney gives a clear
+> opinion. Growth until then is organic only.
+
+# DRAFT — KiCad forum, External Plugins category
+# Target date: Tue Jan 5, 2027 (launch stack day 2). DO NOT POST early.
+# Forum conventions: what it does, screenshots/GIF, where to get it,
+# how to report bugs (GitHub — the thread is not an issue tracker), licence.
+# Rakshit posts from his own warmed-up account (account made Dec 2026).
+
+Title: KiCad Preflight — check your board before you pay to have it made
+
+Hi all — I built a plugin + CLI that runs a "preflight" pass over a
+KiCad project at the moment you're about to export Gerbers and order,
+and flags the things DRC/ERC don't look at:
+
+- schematic ↔ PCB disagreement: a part in the schematic with no
+  footprint on the board, a footprint whose library name doesn't match
+  the schematic, duplicate references, stray footprints
+- BOM problems: references that don't exist, quantity that doesn't
+  match the reference list, missing or placeholder manufacturer part
+  numbers, DNP parts that snuck into the order
+- part risk (offline sample data in v0.x, labelled as such): obsolete
+  parts, low stock, long lead times
+- when `kicad-cli` is installed, the official DRC/ERC results are
+  folded into the same one-page report
+
+Every check is a deterministic rule — no AI decides anything — and
+every finding names the exact part and the exact values that disagree,
+so you can verify it by hand in seconds. The report ends with a
+coverage section stating what was actually checked; if a file couldn't
+be parsed, the verdict says so instead of passing quietly.
+
+[demo GIF: broken board → report → fix → clean re-run]
+
+**Get it**
+- In KiCad: add this PCM repository URL in the Plugin and Content
+  Manager → Manage: [self-hosted repo URL] (official PCM submission
+  follows later in January)
+- GitHub: https://github.com/RakTikoo/kicad-preflight (CLI included —
+  it also scans a standalone BOM CSV from any EDA tool)
+
+**Licence:** MIT. **Bugs / false positives:** please use GitHub issues
+— there's a template specifically for "the checker flagged my good
+board", which is the report I most want. This thread is for questions
+and discussion, not an issue tracker.
+
+Feedback I especially want: boards it flags unfairly, and real faults
+it missed. Both make the rule set better.
+
+— Rakshit

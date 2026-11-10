@@ -1,1 +1,98 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJCdWlsZCB0aGUgS2lDYWQgUENNIHBhY2thZ2UgZm9yIEtpQ2FkIFByZWZsaWdodC4KClByb2R1Y2VzLCB1bmRlciBwY20vZGlzdC86CiAgKiBjb20uZ2l0aHViLlJha1Rpa29vLmtpY2FkLXByZWZsaWdodC08dmVyc2lvbj4uemlwIOKAlCB0aGUgcGFja2FnZQogICAgYXJjaGl2ZSAobWV0YWRhdGEuanNvbiBXSVRIT1VUIGRvd25sb2FkXyoga2V5cywgcGVyIHRoZSBvZmZpY2lhbAogICAgYWRkb25zIGd1aWRlOiBhIGZpbGUgY2Fubm90IGNhcnJ5IGl0cyBvd24gaGFzaCksCiAgKiBtZXRhZGF0YS1zdWJtaXNzaW9uLmpzb24g4oCUIHRoZSBtZXRhZGF0YSBXSVRIIGRvd25sb2FkX3NoYTI1NiAvCiAgICBkb3dubG9hZF9zaXplIC8gaW5zdGFsbF9zaXplIC8gZG93bmxvYWRfdXJsIGZpbGxlZCBpbjsgdGhpcyBpcyB0aGUKICAgIGZpbGUgc3VibWl0dGVkIGJ5IG1lcmdlIHJlcXVlc3QgdG8KICAgIGh0dHBzOi8vZ2l0bGFiLmNvbS9raWNhZC9hZGRvbnMvbWV0YWRhdGEgd2hlbiBSYWtzaGl0IGFwcHJvdmVzIHRoZQogICAgb2ZmaWNpYWwtcmVwbyBzdWJtaXNzaW9uIChKYW4gMTUsIDIwMjcgaW4gdGhlIGxhdW5jaCBwbGFuKSwKICAqIHJlcG9zaXRvcnkuanNvbiArIHBhY2thZ2VzLmpzb24g4oCUIGEgc2VsZi1ob3N0ZWQgdGhpcmQtcGFydHkgUENNCiAgICByZXBvc2l0b3J5IChsYXVuY2ggcGxhbjogbGl2ZSBKYW4gNCwgMjAyNywgYmVmb3JlIHRoZSBvZmZpY2lhbAogICAgbGlzdGluZyBleGlzdHMpLgoKVGhlIGVuZ2luZSBwYWNrYWdlICguLi9wcmVmbGlnaHQvKSBpcyBjb3BpZWQgaW50byB0aGUgYXJjaGl2ZSB1bmRlcgpwbHVnaW5zLyBzbyB0aGUgcGx1Z2luIGFuZCB0aGUgQ0xJIHJ1biB0aGUgaWRlbnRpY2FsIGNvZGUuCgpVc2FnZTogcHl0aG9uMyBwY20vYnVpbGRfcGNtLnB5IFstLWRvd25sb2FkLWJhc2UgVVJMXQpEb2VzIE5PVCB1cGxvYWQgb3Igc3VibWl0IGFueXRoaW5nIGFueXdoZXJlLgoiIiIKCmltcG9ydCBhcmdwYXJzZQppbXBvcnQgaGFzaGxpYgppbXBvcnQganNvbgppbXBvcnQgc2h1dGlsCmltcG9ydCB6aXBmaWxlCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aAoKSEVSRSA9IFBhdGgoX19maWxlX18pLnBhcmVudApST09UID0gSEVSRS5wYXJlbnQKUEtHID0gSEVSRSAvICJwYWNrYWdlIgpESVNUID0gSEVSRSAvICJkaXN0IgpJREVOVElGSUVSID0gImNvbS5naXRodWIuUmFrVGlrb28ua2ljYWQtcHJlZmxpZ2h0IgoKCmRlZiBtYWluKCk6CiAgICBhcCA9IGFyZ3BhcnNlLkFyZ3VtZW50UGFyc2VyKCkKICAgIGFwLmFkZF9hcmd1bWVudCgiLS1kb3dubG9hZC1iYXNlIiwKICAgICAgICAgICAgICAgICAgICBkZWZhdWx0PSJodHRwczovL2dpdGh1Yi5jb20vUmFrVGlrb28va2ljYWQtcHJlZmxpZ2h0IgogICAgICAgICAgICAgICAgICAgICAgICAgICAgIi9yZWxlYXNlcy9kb3dubG9hZCIpCiAgICBhcmdzID0gYXAucGFyc2VfYXJncygpCgogICAgbWV0YSA9IGpzb24ubG9hZHMoKFBLRyAvICJtZXRhZGF0YS5qc29uIikucmVhZF90ZXh0KGVuY29kaW5nPSJ1dGYtOCIpKQogICAgdmVyc2lvbiA9IG1ldGFbInZlcnNpb25zIl1bMF1bInZlcnNpb24iXQogICAgaWYgRElTVC5leGlzdHMoKToKICAgICAgICBzaHV0aWwucm10cmVlKERJU1QpCiAgICBzdGFnZSA9IERJU1QgLyAic3RhZ2UiCiAgICBwbHVnaW5zID0gc3RhZ2UgLyAicGx1Z2lucyIKICAgIHBsdWdpbnMubWtkaXIocGFyZW50cz1UcnVlKQogICAgIyBQbHVnaW4gZW50cnkgcG9pbnQgKyBpY29uLCB0aGVuIHRoZSBlbmdpbmUgcGFja2FnZSBpdHNlbGYuCiAgICBmb3IgZiBpbiAoUEtHIC8gInBsdWdpbnMiKS5pdGVyZGlyKCk6CiAgICAgICAgc2h1dGlsLmNvcHkyKGYsIHBsdWdpbnMgLyBmLm5hbWUpCiAgICBzaHV0aWwuY29weXRyZWUoUk9PVCAvICJwcmVmbGlnaHQiLCBwbHVnaW5zIC8gInByZWZsaWdodCIsCiAgICAgICAgICAgICAgICAgICAgaWdub3JlPXNodXRpbC5pZ25vcmVfcGF0dGVybnMoIl9fcHljYWNoZV9fIikpCiAgICBzaHV0aWwuY29weXRyZWUoUEtHIC8gInJlc291cmNlcyIsIHN0YWdlIC8gInJlc291cmNlcyIpCiAgICBzaHV0aWwuY29weTIoUEtHIC8gIm1ldGFkYXRhLmpzb24iLCBzdGFnZSAvICJtZXRhZGF0YS5qc29uIikKCiAgICB6aXBfbmFtZSA9IGYie0lERU5USUZJRVJ9LXt2ZXJzaW9ufS56aXAiCiAgICB6aXBfcGF0aCA9IERJU1QgLyB6aXBfbmFtZQogICAgaW5zdGFsbF9zaXplID0gMAogICAgd2l0aCB6aXBmaWxlLlppcEZpbGUoemlwX3BhdGgsICJ3IiwgemlwZmlsZS5aSVBfREVGTEFURUQpIGFzIHpmOgogICAgICAgIGZvciBwYXRoIGluIHNvcnRlZChzdGFnZS5yZ2xvYigiKiIpKToKICAgICAgICAgICAgaWYgcGF0aC5pc19maWxlKCk6CiAgICAgICAgICAgICAgICBpbnN0YWxsX3NpemUgKz0gcGF0aC5zdGF0KCkuc3Rfc2l6ZQogICAgICAgICAgICAgICAgemYud3JpdGUocGF0aCwgcGF0aC5yZWxhdGl2ZV90byhzdGFnZSkpCiAgICBibG9iID0gemlwX3BhdGgucmVhZF9ieXRlcygpCiAgICBzaGEgPSBoYXNobGliLnNoYTI1NihibG9iKS5oZXhkaWdlc3QoKQoKICAgIGRvd25sb2FkX3VybCA9IGYie2FyZ3MuZG93bmxvYWRfYmFzZX0vdnt2ZXJzaW9ufS97emlwX25hbWV9IgogICAgc3VibWlzc2lvbiA9IGpzb24ubG9hZHMoanNvbi5kdW1wcyhtZXRhKSkKICAgIHN1Ym1pc3Npb25bInZlcnNpb25zIl1bMF0udXBkYXRlKHsKICAgICAgICAiZG93bmxvYWRfc2hhMjU2Ijogc2hhLAogICAgICAgICJkb3dubG9hZF9zaXplIjogbGVuKGJsb2IpLAogICAgICAgICJkb3dubG9hZF91cmwiOiBkb3dubG9hZF91cmwsCiAgICAgICAgImluc3RhbGxfc2l6ZSI6IGluc3RhbGxfc2l6ZSwKICAgIH0pCiAgICAoRElTVCAvICJtZXRhZGF0YS1zdWJtaXNzaW9uLmpzb24iKS53cml0ZV90ZXh0KAogICAgICAgIGpzb24uZHVtcHMoc3VibWlzc2lvbiwgaW5kZW50PTQpICsgIlxuIiwgZW5jb2Rpbmc9InV0Zi04IikKCiAgICAoRElTVCAvICJyZXBvc2l0b3J5Lmpzb24iKS53cml0ZV90ZXh0KGpzb24uZHVtcHMoewogICAgICAgICIkc2NoZW1hIjogImh0dHBzOi8vZ28ua2ljYWQub3JnL3BjbS9zY2hlbWFzL3YyIiwKICAgICAgICAibmFtZSI6ICJLaUNhZCBQcmVmbGlnaHQgKHRoaXJkLXBhcnR5KSIsCiAgICAgICAgImRlc2NyaXB0aW9uIjogIlNlbGYtaG9zdGVkIHJlcG9zaXRvcnkgZm9yIEtpQ2FkIFByZWZsaWdodCwgIgogICAgICAgICAgICAgICAgICAgICAgICJ1c2VkIHVudGlsIHRoZSBvZmZpY2lhbCBQQ00gbGlzdGluZyBsYW5kcy4iLAogICAgICAgICJtYWludGFpbmVyIjogbWV0YVsiYXV0aG9yIl0sCiAgICB9LCBpbmRlbnQ9NCkgKyAiXG4iLCBlbmNvZGluZz0idXRmLTgiKQogICAgKERJU1QgLyAicGFja2FnZXMuanNvbiIpLndyaXRlX3RleHQoCiAgICAgICAganNvbi5kdW1wcyhbc3VibWlzc2lvbl0sIGluZGVudD00KSArICJcbiIsIGVuY29kaW5nPSJ1dGYtOCIpCgogICAgcHJpbnQoZiJCdWlsdCB7emlwX3BhdGh9ICh7bGVuKGJsb2IpfSBieXRlcywgc2hhMjU2IHtzaGFbOjE2XX3igKYpIikKICAgIHByaW50KGYiSW5zdGFsbCBzaXplIHtpbnN0YWxsX3NpemV9IGJ5dGVzOyBkb3dubG9hZCBVUkwge2Rvd25sb2FkX3VybH0iKQogICAgcHJpbnQoIk5vdGhpbmcgd2FzIHVwbG9hZGVkIG9yIHN1Ym1pdHRlZC4iKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK
+#!/usr/bin/env python3
+"""Build the KiCad PCM package for KiCad Preflight.
+
+Produces, under pcm/dist/:
+  * com.github.RakTikoo.kicad-preflight-<version>.zip — the package
+    archive (metadata.json WITHOUT download_* keys, per the official
+    addons guide: a file cannot carry its own hash),
+  * metadata-submission.json — the metadata WITH download_sha256 /
+    download_size / install_size / download_url filled in; this is the
+    file submitted by merge request to
+    https://gitlab.com/kicad/addons/metadata when Rakshit approves the
+    official-repo submission (Jan 15, 2027 in the launch plan),
+  * repository.json + packages.json — a self-hosted third-party PCM
+    repository (launch plan: live Jan 4, 2027, before the official
+    listing exists).
+
+The engine package (../preflight/) is copied into the archive under
+plugins/ so the plugin and the CLI run the identical code.
+
+Usage: python3 pcm/build_pcm.py [--download-base URL]
+Does NOT upload or submit anything anywhere.
+"""
+
+import argparse
+import hashlib
+import json
+import shutil
+import zipfile
+from pathlib import Path
+
+HERE = Path(__file__).parent
+ROOT = HERE.parent
+PKG = HERE / "package"
+DIST = HERE / "dist"
+IDENTIFIER = "com.github.RakTikoo.kicad-preflight"
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--download-base",
+                    default="https://github.com/RakTikoo/kicad-preflight"
+                            "/releases/download")
+    args = ap.parse_args()
+
+    meta = json.loads((PKG / "metadata.json").read_text(encoding="utf-8"))
+    version = meta["versions"][0]["version"]
+    if DIST.exists():
+        shutil.rmtree(DIST)
+    stage = DIST / "stage"
+    plugins = stage / "plugins"
+    plugins.mkdir(parents=True)
+    # Plugin entry point + icon, then the engine package itself.
+    for f in (PKG / "plugins").iterdir():
+        shutil.copy2(f, plugins / f.name)
+    shutil.copytree(ROOT / "preflight", plugins / "preflight",
+                    ignore=shutil.ignore_patterns("__pycache__"))
+    shutil.copytree(PKG / "resources", stage / "resources")
+    shutil.copy2(PKG / "metadata.json", stage / "metadata.json")
+
+    zip_name = f"{IDENTIFIER}-{version}.zip"
+    zip_path = DIST / zip_name
+    install_size = 0
+    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
+        for path in sorted(stage.rglob("*")):
+            if path.is_file():
+                install_size += path.stat().st_size
+                zf.write(path, path.relative_to(stage))
+    blob = zip_path.read_bytes()
+    sha = hashlib.sha256(blob).hexdigest()
+
+    download_url = f"{args.download_base}/v{version}/{zip_name}"
+    submission = json.loads(json.dumps(meta))
+    submission["versions"][0].update({
+        "download_sha256": sha,
+        "download_size": len(blob),
+        "download_url": download_url,
+        "install_size": install_size,
+    })
+    (DIST / "metadata-submission.json").write_text(
+        json.dumps(submission, indent=4) + "\n", encoding="utf-8")
+
+    (DIST / "repository.json").write_text(json.dumps({
+        "$schema": "https://go.kicad.org/pcm/schemas/v2",
+        "name": "KiCad Preflight (third-party)",
+        "description": "Self-hosted repository for KiCad Preflight, "
+                       "used until the official PCM listing lands.",
+        "maintainer": meta["author"],
+    }, indent=4) + "\n", encoding="utf-8")
+    (DIST / "packages.json").write_text(
+        json.dumps([submission], indent=4) + "\n", encoding="utf-8")
+
+    print(f"Built {zip_path} ({len(blob)} bytes, sha256 {sha[:16]}…)")
+    print(f"Install size {install_size} bytes; download URL {download_url}")
+    print("Nothing was uploaded or submitted.")
+
+
+if __name__ == "__main__":
+    main()

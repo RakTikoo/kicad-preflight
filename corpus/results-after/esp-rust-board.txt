@@ -1,1 +1,19 @@
-UHJlZmxpZ2h0IHJlcG9ydCBmb3I6IEVTUDMyLUMzLURldktpdC1SVVNULTEKUHJvamVjdCBmb2xkZXI6IGNvcnB1cy9wcm9qZWN0cy9lc3AtcnVzdC1ib2FyZC9oYXJkd2FyZS9lc3AtcnVzdC1ib2FyZAoKRmluZGluZ3M6IDIgKDAgQkxPQ0ssIDEgQ0FVVElPTiwgMSBOT1RFKQogIFtDQVVUSU9OXSBCT01fTUlTU0lOR19NUE4g4oCUIGVzcC1ydXN0LWJvYXJkLmNzdiBsaW5lIDI1CiAgICAgIEJPTSBsaW5lIDI1IChVMikgaGFzIG5vIG1hbnVmYWN0dXJlciBwYXJ0IG51bWJlciBhbmQgbm8gTENTQy9KTENQQ0IgcGFydCBudW1iZXIuIFdpdGhvdXQgb25lLCB0aGUgZGlzdHJpYnV0b3Ig4oCUIGFuZCBQcmVmbGlnaHQncyBwYXJ0LXJpc2sgY2hlY2tzIOKAlCBjYW5ub3QgdGVsbCBleGFjdGx5IHdoaWNoIHBhcnQgeW91IG1lYW4uCiAgW05PVEVdIFNDSEVNQVRJQ19EQVRBU0hFRVRfTUlTU0lORyDigJQgZXNwLXJ1c3QtYm9hcmQua2ljYWRfc2NoCiAgICAgIDUgcGFydChzKSBoYXZlIGFuIGVtcHR5IERhdGFzaGVldCBwcm9wZXJ0eSBpbiB0aGUgc2NoZW1hdGljIChKMSwgVTEsIFUyLCBVNCwgVTUpLiBGaW5lIGZvciBwYXNzaXZlczsgZm9yIHRoZSBvbmUgc3BlY2lhbCBwYXJ0LCB0aGUgZGF0YXNoZWV0IGlzIHdoZXJlIHRoZSBwaW5vdXQgdHJ1dGggbGl2ZXMuCgpDb3ZlcmFnZSDigJQgd2hhdCB3YXMgYWN0dWFsbHkgY2hlY2tlZDoKICBTY2hlbWF0aWM6IGVzcC1ydXN0LWJvYXJkLmtpY2FkX3NjaCDigJQgNTUgcGFydChzKSwgOSBleHBsaWNpdCBuby1jb25uZWN0IG1hcmtlcihzKQogIFBDQjogZXNwLXJ1c3QtYm9hcmQua2ljYWRfcGNiIOKAlCA1NSBwYXJ0IGZvb3RwcmludChzKSAoNDEgYm9hcmQtZnVybml0dXJlIGZvb3RwcmludChzKSDigJQgbW91bnRpbmcgaG9sZXMsIGxvZ29zLCBsYWJlbHMg4oCUIG5vdCBjb3VudGVkIGFzIHBhcnRzKQogIEJPTTogZXNwLXJ1c3QtYm9hcmQuY3N2IOKAlCAyNyByb3cocykgKGZvdW5kIGluIHByb2plY3QgZm9sZGVyKQogIEJPTSBpZGVudGlmaWVyczogMjYgcm93KHMpIGFyZSBpZGVudGlmaWVkIGJ5IExDU0MvSkxDUENCIHBhcnQgbnVtYmVyIChubyBNUE4pIOKAlCBhY2NlcHRlZCBhcyBpZGVudGlmaWVkCiAgUGFydCByaXNrOiAwIE1QTihzKSBjaGVja2VkIGFnYWluc3QgUHJlZmxpZ2h0IHNhbXBsZSBkaXN0cmlidXRvciBkYXRhc2V0IChzbmFwc2hvdCAyMDI2LTExLTA5LCBTQU1QTEUgZGF0YSDigJQgbm90IGxpdmUgZGlzdHJpYnV0b3IgZGF0YSk7IDAgZm91bmQgaW4gZGF0YXNldAogIGtpY2FkLWNsaTogTk9UIEZPVU5EIOKAlCBvZmZpY2lhbCBEUkMvRVJDIHNraXBwZWQgKGluc3RhbGwgS2lDYWQgdG8gZW5hYmxlIHRoZW0pOyB0aGUgYnVpbHQtaW4gdGV4dCBjaGVja3MgYWJvdmUgc3RpbGwgcmFuCgpWRVJESUNUOiBDQVVUSU9OCk5vdGhpbmcgaGVyZSBicmVha3MgdGhlIGJ1aWxkIG91dHJpZ2h0LCBidXQgdGhlIENBVVRJT04gaXRlbXMgYXJlIHdvcnRoIHNvcnRpbmcgYmVmb3JlIHlvdSBvcmRlci4K
+Preflight report for: ESP32-C3-DevKit-RUST-1
+Project folder: corpus/projects/esp-rust-board/hardware/esp-rust-board
+
+Findings: 2 (0 BLOCK, 1 CAUTION, 1 NOTE)
+  [CAUTION] BOM_MISSING_MPN — esp-rust-board.csv line 25
+      BOM line 25 (U2) has no manufacturer part number and no LCSC/JLCPCB part number. Without one, the distributor — and Preflight's part-risk checks — cannot tell exactly which part you mean.
+  [NOTE] SCHEMATIC_DATASHEET_MISSING — esp-rust-board.kicad_sch
+      5 part(s) have an empty Datasheet property in the schematic (J1, U1, U2, U4, U5). Fine for passives; for the one special part, the datasheet is where the pinout truth lives.
+
+Coverage — what was actually checked:
+  Schematic: esp-rust-board.kicad_sch — 55 part(s), 9 explicit no-connect marker(s)
+  PCB: esp-rust-board.kicad_pcb — 55 part footprint(s) (41 board-furniture footprint(s) — mounting holes, logos, labels — not counted as parts)
+  BOM: esp-rust-board.csv — 27 row(s) (found in project folder)
+  BOM identifiers: 26 row(s) are identified by LCSC/JLCPCB part number (no MPN) — accepted as identified
+  Part risk: 0 MPN(s) checked against Preflight sample distributor dataset (snapshot 2026-11-09, SAMPLE data — not live distributor data); 0 found in dataset
+  kicad-cli: NOT FOUND — official DRC/ERC skipped (install KiCad to enable them); the built-in text checks above still ran
+
+VERDICT: CAUTION
+Nothing here breaks the build outright, but the CAUTION items are worth sorting before you order.
