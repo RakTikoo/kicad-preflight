@@ -1,1 +1,22 @@
-LS0tCm5hbWU6IEZhbHNlIHBvc2l0aXZlIOKAlCB0aGUgY2hlY2tlciBmbGFnZ2VkIG15IGdvb2QgYm9hcmQKYWJvdXQ6IFByZWZsaWdodCBmbGFnZ2VkIGEgYm9hcmQgeW91IGJlbGlldmUgaXMgY29ycmVjdC4gVGhlc2UgcmVwb3J0cyBhcmUgdGhlIGhpZ2hlc3QtdmFsdWUgaXNzdWVzIHRoaXMgcHJvamVjdCBnZXRzLgp0aXRsZTogIltmYWxzZSBwb3NpdGl2ZV0gIgpsYWJlbHM6IGZhbHNlLXBvc2l0aXZlCi0tLQoKKipSdWxlIHRoYXQgZmlyZWQqKiAoZnJvbSB0aGUgcmVwb3J0LCBlLmcuIGBGT09UUFJJTlRfTUlTTUFUQ0hgKToKCioqUHJlZmxpZ2h0IHZlcnNpb24qKiAoYHByZWZsaWdodC9fX2luaXRfXy5weWApIGFuZCBLaUNhZCB2ZXJzaW9uIHRoYXQKcHJvZHVjZWQgdGhlIHByb2plY3QgZmlsZXM6CgoqKldoYXQgdGhlIGNoZWNrZXIgc2FpZCoqIChwYXN0ZSB0aGUgZmluZGluZyBsaW5lcyk6CgoqKldoeSB0aGUgYm9hcmQgaXMgYWN0dWFsbHkgZmluZSoqICh3aGF0IFByZWZsaWdodCBtaXN1bmRlcnN0b29kIOKAlCBhCmxpYnJhcnkgY29udmVudGlvbiwgYSBETlAgcGFydCwgYSBtZWNoYW5pY2FsIGZvb3RwcmludCwgYSBtdWx0aS1zaGVldApsYXlvdXQsIOKApik6CgoqKkNhbiB5b3Ugc2hhcmUgdGhlIHByb2plY3QgKG9yIGEgbWluaW1hbCB2ZXJzaW9uIG9mIGl0KT8qKgpBIHppcHBlZCBmb2xkZXIgdGhhdCByZXByb2R1Y2VzIHRoZSBmaW5kaW5nIGlzIGlkZWFsLiBQcm9qZWN0IGZpbGVzIGFyZQpvbmx5IGV2ZXIgcGFyc2VkIGFzIHRleHQg4oCUIG5ldmVyIG9wZW5lZCBpbiBhIGZhYiBmbG93LiBSZW1vdmUgYW55dGhpbmcKeW91IGNvbnNpZGVyIHByaXZhdGUgZmlyc3Q7IGEgbWluaW1hbCByZXBybyBpcyBiZXR0ZXIgdGhhbiBhIGZ1bGwgYm9hcmQuCg==
+---
+name: False positive — the checker flagged my good board
+about: Preflight flagged a board you believe is correct. These reports are the highest-value issues this project gets.
+title: "[false positive] "
+labels: false-positive
+---
+
+**Rule that fired** (from the report, e.g. `FOOTPRINT_MISMATCH`):
+
+**Preflight version** (`preflight/__init__.py`) and KiCad version that
+produced the project files:
+
+**What the checker said** (paste the finding lines):
+
+**Why the board is actually fine** (what Preflight misunderstood — a
+library convention, a DNP part, a mechanical footprint, a multi-sheet
+layout, …):
+
+**Can you share the project (or a minimal version of it)?**
+A zipped folder that reproduces the finding is ideal. Project files are
+only ever parsed as text — never opened in a fab flow. Remove anything
+you consider private first; a minimal repro is better than a full board.
