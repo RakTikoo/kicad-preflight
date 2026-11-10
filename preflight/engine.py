@@ -3,9 +3,12 @@
 Layers, in order:
   1. File/parse integrity (project.py)
   2. Schematic <-> PCB cross-checks + schematic part checks (checks.py)
-  3. BOM <-> schematic checks (bomchecks.py via checks.run_bom_layer)
-  4. Offline part-risk checks against the sample dataset (partrisk.py)
-  5. Official kicad-cli DRC/ERC, when installed (kicadcli.py)
+  3. KiCad file-format version handling (checks.run_version_checks)
+  4. Fabrication readiness: outline, zone fills, fab capability
+     minimums, position-file agreement (fabchecks.py)
+  5. BOM <-> schematic checks (bomchecks.py via checks.run_bom_layer)
+  6. Offline part-risk checks against the sample dataset (partrisk.py)
+  7. Official kicad-cli DRC/ERC, when installed (kicadcli.py)
 
 The report's Coverage section states exactly what each layer did, and
 the verdict accounts for it: anything that exists but could not be
@@ -21,7 +24,7 @@ no design-tool project exists at all.
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from . import bomchecks, checks, kicadcli, partrisk
+from . import bomchecks, checks, fabchecks, kicadcli, partrisk
 from .bom import parse_bom
 from .finding import BLOCK, CAUTION, NOTE, Finding, verdict_for
 from .project import load_project, read_project_file
@@ -79,8 +82,11 @@ def run(target, bom_override=None, dataset_path=None):
             where=path.name))
 
     findings.extend(checks.run_cross_checks(project))
+    findings.extend(checks.run_version_checks(project))
+    findings.extend(fabchecks.run_fab_checks(project))
     bom_findings, bom_stats = checks.run_bom_layer(project)
     findings.extend(bom_findings)
+    findings.extend(fabchecks.run_cpl_checks(project))
 
     meta, parts = partrisk.load_dataset(dataset_path)
     risk_findings, risk_stats = partrisk.run_part_risk_checks(
@@ -145,6 +151,38 @@ def run(target, bom_override=None, dataset_path=None):
              "rows": len(project.bom_rows),
              "how_found": project.bom_auto_note}
             if project.bom_path else None),
+        "file_versions": {
+            "schematic": (
+                {"format_version": project.sch_format_version,
+                 "generator_version": project.sch_generator or None}
+                if project.sch_path else None),
+            "pcb": (
+                {"format_version": project.pcb_format_version,
+                 "generator_version": project.pcb_generator or None}
+                if project.pcb_path else None),
+            "tested_range": "KiCad 6-8 file formats",
+        },
+        "geometry": (
+            {"segments_measured": len(project.geometry.segment_widths),
+             "vias_measured": max(len(project.geometry.via_sizes),
+                                  len(project.geometry.via_drills)),
+             "plated_drills_measured": len(project.geometry.pad_drills),
+             "plated_rings_measured": len(project.geometry.pad_rings),
+             "slots_measured": len(project.geometry.slot_widths),
+             "zones": project.geometry.zones_total,
+             "zones_unfilled": project.geometry.zones_unfilled,
+             "edge_cuts_items": project.geometry.edge_items,
+             "dimensions_unreadable": project.geometry.unparsed_dims}
+            if project.pcb_path else None),
+        "placement": (
+            {"file": project.cpl_path.name,
+             "files": [Path(p).name for p in project.cpl_files],
+             "rows": len(project.cpl_refs),
+             "how_found": project.cpl_auto_note,
+             "broken_files": [name for name, _ in project.cpl_broken],
+             "error": project.cpl_error or None}
+            if project.cpl_path else
+            {"file": None, "how_found": project.cpl_auto_note}),
         "bom_stats": bom_stats,
         "parse_errors": [f"{p.name}: {e}" for p, e in project.parse_errors],
         "legacy_schematics": [p.name for p in project.legacy_sch],

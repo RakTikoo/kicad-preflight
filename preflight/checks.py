@@ -281,7 +281,6 @@ def run_bom_layer(project):
     findings = []
     bom_name = project.bom_path.name if project.bom_path else "BOM"
     sch_name = project.sch_path.name if project.sch_path else "schematic"
-
     if project.bom_error:
         findings.append(Finding(
             "BOM_UNREADABLE", BLOCK,
@@ -299,8 +298,7 @@ def run_bom_layer(project):
                 "distributor and assembler actually see.",
                 where=str(project.folder)))
         return findings, {}
-    if project.sch_path is None or project.sch_failed:
-        # Standalone-ish: row-internal checks only; schematic-dependent
+    if project.sch_path is None or project.sch_failed:        # Standalone-ish: row-internal checks only; schematic-dependent
         # claims would be fabricated from an unreadable schematic.
         rows_findings, stats = bomchecks.run_bom_checks(
             project.bom_rows, bom_name=bom_name, expected=None,
@@ -313,3 +311,99 @@ def run_bom_layer(project):
         project.bom_rows, bom_name=bom_name, expected=expected,
         all_refs=all_refs, sch_name=sch_name)
     return findings + rows_findings, stats
+
+
+# ---------------------------------------------------------------------------
+# KiCad file-format version handling (v0.3)
+#
+# Preflight is tested against KiCad 6/7/8 files. Format stamps:
+#   schematic (version ...): 6=20211123, 7=20230121, 8=20231120,
+#                            9=20250114, 10=20260306
+#   pcb       (version ...): 6=20211014, 7=20221018, 8=20240108,
+#                            9=20241229, 10=20260206
+# (Anchors from real KiCad-written files; see docs/COVERAGE.md.)
+# A file stamped newer than the tested range is still parsed — the
+# core symbol/footprint model is stable — but KiCad 9 added embedded
+# files, tables and pad stacks, and KiCad 10 added design variants
+# (per-variant BOM/DNP overrides), jumpers and back-drilling, which
+# this parser does NOT fully understand. The honest behaviour is to
+# say so at CAUTION, never to let such a file pass in silence.
+# ---------------------------------------------------------------------------
+
+_SCH_TESTED_MAX = 20231120      # KiCad 8 schematic format
+_PCB_TESTED_MAX = 20240108      # KiCad 8 board format
+_SCH_KNOWN_MIN = 20211123       # KiCad 6 schematic format
+_PCB_KNOWN_MIN = 20211014       # KiCad 6 board format
+
+
+def _generator_major(generator):
+    text = str(generator).strip()
+    if text[:1] in ("v", "V"):
+        text = text[1:]
+    try:
+        return int(text.split(".")[0])
+    except (TypeError, ValueError):
+        return None
+
+
+def run_version_checks(project):
+    findings = []
+    checks = []
+    if project.sch_path is not None and not project.sch_failed:
+        checks.append(("schematic", project.sch_path.name,
+                       project.sch_format_version, project.sch_generator,
+                       project.sch_stamp_raw,
+                       _SCH_TESTED_MAX, _SCH_KNOWN_MIN))
+    for name, version, generator, stamp_raw in project.sub_sch_versions:
+        checks.append(("schematic", name, version, generator, stamp_raw,
+                       _SCH_TESTED_MAX, _SCH_KNOWN_MIN))
+    if project.pcb_path is not None and not project.pcb_failed:
+        checks.append(("PCB", project.pcb_path.name,
+                       project.pcb_format_version, project.pcb_generator,
+                       project.pcb_stamp_raw,
+                       _PCB_TESTED_MAX, _PCB_KNOWN_MIN))
+    for kind, name, version, generator, stamp_raw, tested_max, \
+            known_min in checks:
+        major = _generator_major(generator)
+        newer = (version is not None and version > tested_max) \
+            or (major is not None and major >= 9)
+        older = version is not None and version < known_min
+        unreadable = bool(stamp_raw)
+        if not (newer or older or unreadable):
+            continue
+        stamp = []
+        if version is not None:
+            stamp.append(f"format version {version}")
+        if generator:
+            stamp.append(f"generator_version {generator}")
+        if stamp_raw:
+            stamp.append(f"unreadable stamp ({stamp_raw})")
+        stamp_text = ", ".join(stamp) or "an unrecognised format stamp"
+        if unreadable and not (newer or older):
+            message = (
+                f"This {kind} file carries a format stamp Preflight "
+                f"cannot interpret ({stamp_text}). A stamp that cannot "
+                "be read cannot be confirmed as a tested KiCad 6–8 "
+                "format, so the file is treated as untested rather "
+                "than silently passed.")
+        elif newer:
+            message = (
+                f"This {kind} file was written by a newer KiCad than "
+                f"Preflight is tested against ({stamp_text}; tested "
+                "range: KiCad 6–8). The core agreement checks ran, "
+                "but newer constructs — KiCad 9's embedded files, "
+                "tables and pad stacks, KiCad 10's design variants "
+                "(per-variant BOM/DNP), jumpers and back-drilling — "
+                "are not fully parsed, so treat a PASS with care and "
+                "sanity-check the findings by hand.")
+        else:
+            message = (
+                f"This {kind} file carries {stamp_text}, older than "
+                "the KiCad 6 format Preflight is tested against. It "
+                "was parsed on a best-effort basis; constructs from "
+                "that era may be misread, so treat a PASS with care.")
+        findings.append(Finding(
+            "KICAD_VERSION_UNTESTED", CAUTION, message, where=name,
+            evidence=f"format_version={version if version is not None else '—'} "
+                     f"generator_version={generator or '—'}"))
+    return findings

@@ -8,6 +8,9 @@ standalone-BOM mode, usable on a CSV exported from any EDA tool
 Nothing in this module imports the KiCad parser.
 """
 
+import re
+import unicodedata
+
 from .finding import BLOCK, CAUTION, NOTE, Finding
 
 PLACEHOLDER_MPNS = {"~", "tbd", "tba", "n/a", "na", "-", "?", "x", "xx",
@@ -16,6 +19,27 @@ PLACEHOLDER_MPNS = {"~", "tbd", "tba", "n/a", "na", "-", "?", "x", "xx",
 
 def _norm(text):
     return " ".join((text or "").strip().lower().split())
+
+
+_DASHES = "-\u2010\u2011\u2012\u2013\u2014\u2015\u2212"
+
+
+def _pn_key(text):
+    """Grouping key for a part number: distributor data writes the
+    same number with and without dashes ('RC0805FR-07330RL' vs
+    'RC0805FR07330RL', hyphen vs en-dash) and with stray spaces, so
+    grouping strips whitespace and every dash variant."""
+    text = unicodedata.normalize("NFC", text or "").casefold()
+    return re.sub(r"[\s" + re.escape(_DASHES) + r"]+", "", text)
+
+
+def _squash(text):
+    """Comparison key for values/footprints in the conflict check:
+    whitespace-insensitive ('10k' == '10 k'), case-insensitive, and
+    unicode-normalised (micro sign U+00B5 == Greek mu U+03BC)."""
+    text = unicodedata.normalize("NFC", text or "").casefold()
+    text = text.replace("\u00b5", "\u03bc")
+    return re.sub(r"\s+", "", text)
 
 
 def run_bom_checks(rows, bom_name="BOM", expected=None, all_refs=None,
@@ -153,5 +177,51 @@ def run_bom_checks(rows, bom_name="BOM", expected=None, all_refs=None,
                     "schematic but missing from the BOM. It will not be "
                     "ordered or assembled.",
                     where=f"{sch_name} · {ref}"))
+
+    # --- one part number, two different parts (v0.3) -------------------
+    # A manufacturer/LCSC part number identifies ONE physical part.
+    # When the same number appears on rows describing different parts
+    # (different value or different footprint), one of the rows is a
+    # copy-paste error and the order will contain the wrong part —
+    # the syntactic half of the value<->part-number mismatch class;
+    # the semantic half (does this number really MEAN that value?)
+    # needs a live catalogue and stays a documented gap.
+    for field_name, label in (("mpn", "manufacturer part number"),
+                              ("lcsc", "LCSC part number")):
+        groups = {}
+        for row in rows:
+            if _norm(getattr(row, field_name)) in PLACEHOLDER_MPNS:
+                continue        # placeholders identify nothing
+            number = _pn_key(getattr(row, field_name))
+            if not number:
+                continue
+            groups.setdefault(number, []).append(row)
+        for number in sorted(groups):
+            group = groups[number]
+            if len(group) < 2:
+                continue
+            # Fire decision compares whitespace-insensitively: '10k'
+            # and '10 k' are the same value, not two different parts.
+            values = sorted({_squash(r.value) for r in group if r.value})
+            footprints = sorted({_squash(r.footprint)
+                                 for r in group if r.footprint})
+            if len(values) <= 1 and len(footprints) <= 1:
+                continue        # same part, split across rows: normal
+            display = group[0].mpn if field_name == "mpn" else group[0].lcsc
+            shown_values = sorted({_norm(r.value) for r in group if r.value})
+            shown_fps = sorted({_norm(r.footprint)
+                                for r in group if r.footprint})
+            lines = ", ".join(str(r.line_no) for r in group)
+            findings.append(Finding(
+                "BOM_PART_NUMBER_CONFLICT", CAUTION,
+                f"{label} '{display}' is used on {len(group)} BOM "
+                f"rows (lines {lines}) that describe different parts "
+                f"(values: {', '.join(shown_values) or '—'}; "
+                f"footprints: {', '.join(shown_fps) or '—'}). One "
+                "part number cannot be two different parts — one row "
+                "is likely a copy-paste error and would order the "
+                "wrong part.",
+                where=f"{bom_name} lines {lines}",
+                evidence=f"{field_name}={display}"))
     return findings, {"lcsc_only_rows": lcsc_only_rows,
                       "refs_seen": len(seen_refs)}

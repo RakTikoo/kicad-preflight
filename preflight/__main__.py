@@ -117,7 +117,27 @@ def main(argv=None):
     rendered = RENDERERS[args.format](report)
     if args.output:
         out_path = Path(args.output)
-        if out_path.resolve() in input_paths or (
+        # The dataset and an explicitly given BOM are inputs too,
+        # whatever their suffix or location (audit/red-team G07).
+        extra_inputs = set()
+        for extra in (args.dataset, args.bom):
+            if extra:
+                extra_inputs.add(Path(extra).resolve())
+        protected = input_paths | extra_inputs
+        same_file = False
+        if out_path.exists():
+            for candidate in protected:
+                try:
+                    if candidate.exists() \
+                            and os.path.samefile(out_path, candidate):
+                        same_file = True
+                        break
+                except OSError:
+                    continue
+        # samefile() also catches HARDLINKS: a report.txt that is a
+        # second name for the .kicad_pcb shares its inode, which no
+        # path or suffix check can see (red-team G09).
+        if out_path.resolve() in protected or same_file or (
                 out_path.exists()
                 and out_path.suffix.lower() in _PROTECTED_SUFFIXES):
             return _fail(

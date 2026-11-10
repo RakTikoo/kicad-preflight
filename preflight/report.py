@@ -83,6 +83,53 @@ def _coverage_lines(cov):
             f"BOM identifiers: {stats['lcsc_only_rows']} row(s) are "
             "identified by LCSC/JLCPCB part number (no MPN) — accepted "
             "as identified")
+    versions = cov.get("file_versions") or {}
+    ver_bits = []
+    for kind in ("schematic", "pcb"):
+        entry = versions.get(kind)
+        if entry:
+            stamp = entry.get("format_version")
+            gen = entry.get("generator_version")
+            ver_bits.append(
+                f"{kind} format {stamp if stamp is not None else '?'}"
+                + (f" (KiCad {gen})" if gen else ""))
+    if ver_bits:
+        lines.append(
+            "File versions: " + ", ".join(ver_bits)
+            + f" — tested range: {versions.get('tested_range', '?')}")
+    geo = cov.get("geometry")
+    if geo:
+        unreadable = geo.get("dimensions_unreadable", 0)
+        lines.append(
+            f"Board measurements: {geo['segments_measured']} track "
+            f"segment(s), {geo['vias_measured']} via(s), "
+            f"{geo['plated_drills_measured']} plated drill(s), "
+            f"{geo['plated_rings_measured']} plated ring(s), "
+            f"{geo['slots_measured']} slot(s) measured against fab "
+            f"minimums; {geo['zones']} zone(s) "
+            f"({geo['zones_unfilled']} unfilled); "
+            f"{geo['edge_cuts_items']} outline item(s) on Edge.Cuts"
+            + (f"; {unreadable} dimension value(s) unreadable "
+               "(see findings)" if unreadable else ""))
+    placement = cov.get("placement")
+    if placement and placement.get("file"):
+        files = placement.get("files") or []
+        merged = (f" (merged {len(files)} position files)"
+                  if len(files) > 1 else "")
+        lines.append(
+            f"Position file: {placement['file']} — "
+            f"{placement.get('rows', 0)} row(s) checked against the "
+            f"PCB (assembly orders only){merged}")
+        for broken in placement.get("broken_files", []):
+            lines.append(
+                f"Position file not readable: {broken} (see findings)")
+        if placement.get("error"):
+            lines.append(
+                f"Position file error: {placement['error']}")
+    elif placement is not None and cov.get("pcb"):
+        lines.append(
+            "Position file: none found — CPL agreement not checked "
+            "(only needed for assembly orders)")
     for err in cov.get("parse_errors", []):
         lines.append(f"Parse error: {err}")
     for legacy in cov.get("legacy_schematics", []):
