@@ -1,1 +1,94 @@
-IyBPcGVuLVNvdXJjZSBUZXN0IENvcnB1cyDigJQgU291cmNlcyBhbmQgTGljZW5jZXMKCkFsbCByZWFsLWJvYXJkIHRlc3QgZGF0YSBmb3IgS2lDYWQgUHJlZmxpZ2h0IGNvbWVzIGZyb20gZ2VudWluZWx5Cm9wZW4tc291cmNlIEtpQ2FkIHByb2plY3RzIHB1Ymxpc2hlZCBvbiBHaXRIdWIuIE5vdGhpbmcgaGVyZSB3YXMgd3JpdHRlbgpieSB0aGUgUHJlZmxpZ2h0IHRlYW0gZXhjZXB0IHRoZSBsYWJlbGxlZCBtdXRhdGlvbnMgaW4gYGJyb2tlbi9gLgoKRG93bmxvYWQgbWV0aG9kICgyMDI2LTExLTA5KTogYGdpdCBjbG9uZWAgdGhyb3VnaCB0aGlzIG1hY2hpbmUncyBwcm94eQp0aW1lZCBvdXQgcmVwZWF0ZWRseSwgc28gZWFjaCBwcm9qZWN0IHdhcyBkb3dubG9hZGVkIGFzIGEgdGFyYmFsbCBvZiBhbgpleGFjdCBjb21taXQgZnJvbSBjb2RlbG9hZC5naXRodWIuY29tCihgaHR0cHM6Ly9jb2RlbG9hZC5naXRodWIuY29tLzxvd25lcj4vPHJlcG8+L3Rhci5nei88Y29tbWl0LXNoYT5gKS4KVGhlIGNvbW1pdCBTSEEgYW5kIHRhcmJhbGwgU0hBLTI1NiBhcmUgcmVjb3JkZWQgcGVyIHByb2plY3QsIHNvIHRoZQpjb3JwdXMgaXMgYnl0ZS1yZXByb2R1Y2libGUuIFRhcmJhbGxzIGFyZSBrZXB0IGluIGBkb3dubG9hZHMvYCwKZXh0cmFjdGVkIHRyZWVzIGluIGBwcm9qZWN0cy9gLgoKIyMgMS4gVXBzeSBEZXNreSDigJQgdGpob3JuZXIvdXBzeS1kZXNreQotIFVSTDogaHR0cHM6Ly9naXRodWIuY29tL3RqaG9ybmVyL3Vwc3ktZGVza3kKLSBDb21taXQ6IGM2NDIxNmI5MWNhODE4YjBmOWExYTFlYzNjNmJhOTJkY2M1ZjcwNTYgKDIwMjYtMDgtMjIpCi0gVGFyYmFsbCBTSEEtMjU2OiBkYWYwNmU5ZWY5MzEzY2FlMWQzMDFlMTMwZDEzZDY3ZTNmOTlkNGQ0YWJlODEyZDY4OTBiNTk5OGZhOGY2M2Y5Ci0gTGljZW5jZTogKipNSVQqKiAoYExJQ0VOU0UtTUlUYCwgIkNvcHlyaWdodCAyMDIyIFRKIEhvcm5lciDigJQgUGVybWlzc2lvbgogIGlzIGhlcmVieSBncmFudGVkLCBmcmVlIG9mIGNoYXJnZeKApiIpIGZvciBzb2Z0d2FyZS9QQ0IsIHBsdXMKICBgTElDRU5TRS1DQ2AgKENyZWF0aXZlIENvbW1vbnMpIGZvciBvdGhlciBjb250ZW50LiBSZWFkIGluIGZ1bGwgZnJvbQogIHRoZSBleHRyYWN0ZWQgdHJlZSBvbiAyMDI2LTExLTA5LgotIEJvYXJkIHVzZWQ6IGBwcm9qZWN0cy91cHN5LWRlc2t5L3BjYi9gIOKAlCB1cHN5LWRlc2t5LmtpY2FkX3NjaCArCiAgdXBzeS1kZXNreS5raWNhZF9wY2IgKEtpQ2FkIDcvOCBmb3JtYXQ6IGZvb3RwcmludCByZWZlcmVuY2VzIHN0b3JlZCBhcwogIGAocHJvcGVydHkgIlJlZmVyZW5jZSIg4oCmKWApLiBObyBCT00gQ1NWIHNoaXBzIGluIHRoZSByZXBvJ3MgcGNiIGZvbGRlci4KCiMjIDIuIEVTUDMyIFJ1c3QgQm9hcmQg4oCUIGVzcC1ycy9lc3AtcnVzdC1ib2FyZAotIFVSTDogaHR0cHM6Ly9naXRodWIuY29tL2VzcC1ycy9lc3AtcnVzdC1ib2FyZAotIENvbW1pdDogZWZlMWU4YWQ1YzZkYmMyM2I0MzY1ZmVmMzVhZjI3NTQ1YmMxMzgxZCAoMjAyNS0wNS0yMCkKLSBUYXJiYWxsIFNIQS0yNTY6IGQ4NjM0NGU3MGE1NzUyNzcyNGQyN2NhZWNlYTJlNmQ1MzVjMDBkYjc3YjllYWZkNWI1MDYxZjIzZWNiMWFkYzQKLSBMaWNlbmNlOiAqKkNFUk4gT3BlbiBIYXJkd2FyZSBMaWNlbmNlIHYyIOKAlCBQZXJtaXNzaXZlKioKICAoYExJQ0VOU0UtQ0VSTi1PSExgLCBmaXJzdCBsaW5lIHJlYWQgZnJvbSB0aGUgZXh0cmFjdGVkIHRyZWU6CiAgIkNFUk4gT3BlbiBIYXJkd2FyZSBMaWNlbmNlIFZlcnNpb24gMiAtIFBlcm1pc3NpdmUiKS4KLSBCb2FyZCB1c2VkOiBgcHJvamVjdHMvZXNwLXJ1c3QtYm9hcmQvaGFyZHdhcmUvZXNwLXJ1c3QtYm9hcmQvYCDigJQKICBlc3AtcnVzdC1ib2FyZC5raWNhZF9zY2ggKyBlc3AtcnVzdC1ib2FyZC5raWNhZF9wY2IgKFBDQiBmaWxlIHZlcnNpb24KICAyMDIxMTAxNCA9IEtpQ2FkIDYgZm9ybWF0OiBmb290cHJpbnQgcmVmZXJlbmNlcyBzdG9yZWQgYXMKICBgKGZwX3RleHQgcmVmZXJlbmNlIOKApilgKSArIGEgcmVhbCBCT00sIGBlc3AtcnVzdC1ib2FyZC5jc3ZgLgoKIyMgMy4gUGlhbnRvciDigJQgYmVla2VlYi9waWFudG9yCi0gVVJMOiBodHRwczovL2dpdGh1Yi5jb20vYmVla2VlYi9waWFudG9yCi0gQ29tbWl0OiBjZDg0N2FmYjRmOWE4NmU4YzFjOGUzNmYyNDMxNDA2NDQwMTNhZmIyICgyMDIzLTA4LTIzKQotIFRhcmJhbGwgU0hBLTI1NjogMmUxZTE5ZmIxODU3OGEyNDM1NmYzNTAwMmU2NjNkNDJjMDViZjNhMjZiZDRmYWIzYWU4MjFkZWM0YjVlYjA3ZAotIExpY2VuY2U6ICoqR05VIEdQTCB2MyoqIChgTElDRU5TRWAsICJHTlUgR0VORVJBTCBQVUJMSUMgTElDRU5TRQogIFZlcnNpb24gMywgMjkgSnVuZSAyMDA3IikuCi0gQm9hcmRzIHVzZWQ6IGBwcm9qZWN0cy9waWFudG9yL3BjYi9sZWZ0L2AgYW5kIGBwcm9qZWN0cy9waWFudG9yL3BjYi9yaWdodC9gCiAg4oCUIGVhY2gga2V5Ym9hcmRfcGNiLmtpY2FkX3NjaCArIGtleWJvYXJkX3BjYi5raWNhZF9wY2IgKEtpQ2FkIDYgZm9ybWF0KS4KICBObyBCT00gQ1NWIHNoaXBzIHdpdGggdGhlIGJvYXJkcy4KCiMjIENvbnNpZGVyZWQgYW5kIHJlamVjdGVkCi0gKipLQ09SRVMvS0NPUkVTLUNTUFMtdG8tQVRYLUNvbnZlcnRlcioqIChjb21taXQgYzEzNTViZmPigKYpOiBkb3dubG9hZGVkCiAgYW5kIGluc3BlY3RlZCwgdGhlbiAqKmRyb3BwZWQqKi4gSXRzIGBMSUNFTlNFYCBpcyBhIGN1c3RvbSwgbm9uLXN0YW5kYXJkCiAgIktDT1JFUyBMaWNlbnNlIHYxLjAiIChDaGluZXNlIHRleHQpIOKAlCBub3QgYSByZWNvZ25pc2VkIG9wZW4gbGljZW5jZSwKICB3aGljaCBmYWlscyB0aGlzIGNvcnB1cydzICJjbGVhciBvcGVuIGxpY2VuY2UiIHJ1bGUuIEl0cyBzY2hlbWF0aWMgaXMKICBhbHNvIGEgbGVnYWN5IEtpQ2FkIOKJpDUgYC5zY2hgIGZpbGUsIG91dHNpZGUgUHJlZmxpZ2h0J3Mgc3VwcG9ydGVkCiAgZm9ybWF0cy4gRGVsZXRlZCBmcm9tIHRoZSBjb3JwdXMgMjAyNi0xMS0wOTsgcmVjb3JkZWQgaGVyZSBzbyB0aGUKICByZWplY3Rpb24gaXMgYXVkaXRhYmxlLgotICoqSGFucWFxYS9QQ0JfQnVzaW5lc3NfQ2FyZCoqIChHUEwtMy4wKTogbGljZW5jZSBpcyBmaW5lLCBidXQgdGhlIHJlcG8KICBzaGlwcyBvbmx5IGEgZGVjb3JhdGl2ZSBgLmtpY2FkX3BjYmAgd2l0aCBubyBzY2hlbWF0aWMsIHNvIGl0IGNhbm5vdAogIGV4ZXJjaXNlIHNjaGVtYXRpY+KGlFBDQiBjaGVja3MuIE5vdCB1c2VkLgoKIyMgQmFzZWxpbmUgcmVzdWx0cyBvbiB0aGUgQ0xFQU4gcHJvamVjdHMgKHYwLCBiZWZvcmUgZml4ZXMsIDIwMjYtMTEtMDkpCkZ1bGwgb3V0cHV0cyBpbiBgcmVzdWx0cy1iZWZvcmUvYC4KCnwgUHJvamVjdCB8IHYwIHZlcmRpY3QgfCBGaW5kaW5ncyB8CnwgLS0tIHwgLS0tIHwgLS0tIHwKfCB1cHN5LWRlc2t5IHwgQkxPQ0tFRCAoZXhpdCAyKSB8IDMgKDMgQkxPQ0spIHwKfCBlc3AtcnVzdC1ib2FyZCB8IEJMT0NLRUQgKGV4aXQgMikgfCA4MiAoNTUgQkxPQ0ssIDI3IEZJWC1GSVJTVCkgfAp8IHBpYW50b3ItbGVmdCB8IEJMT0NLRUQgKGV4aXQgMikgfCAzMyAoMzMgQkxPQ0spIHwKfCBwaWFudG9yLXJpZ2h0IHwgQkxPQ0tFRCAoZXhpdCAyKSB8IDMzICgzMyBCTE9DSykgfAp8IHNhbXBsZXMvZ29vZCAoc3ludGhldGljKSB8IFJFQURZIChleGl0IDApIHwgMCB8CgpSb290IGNhdXNlIG9mIG1vc3QgY2xlYW4tYm9hcmQgQkxPQ0tzIChjb25maXJtZWQgYnkgZGlyZWN0IGluc3BlY3Rpb24pOgp0aGUgdjAgUENCIHBhcnNlciBvbmx5IHJlY29nbmlzZWQgS2lDYWQgNy84LXN0eWxlCmAocHJvcGVydHkgIlJlZmVyZW5jZSIg4oCmKWAgZm9vdHByaW50IHJlZmVyZW5jZXMuIE9uIEtpQ2FkIDYgYm9hcmRzCihlc3AtcnVzdC1ib2FyZCwgcGlhbnRvcikgaXQgcGFyc2VkICoqMCBmb290cHJpbnRzKiosIHNvIGV2ZXJ5IHNjaGVtYXRpYwpwYXJ0IHdhcyBmbGFnZ2VkIFNDSF9QQVJUX05PVF9PTl9QQ0IuIE9uIHVwc3ktZGVza3ksIG5vbi1wYXJ0IGZvb3RwcmludHMKd2l0aCB1bmFubm90YXRlZCByZWZlcmVuY2VzIChgUkVGKipgLCBlLmcuIGxvZ29zKSB3ZXJlIGZsYWdnZWQgYXMKZHVwbGljYXRlcy9zdHJheXMuIFNlZSB0aGUgcmV2aWV3IGZvbGRlciBmb3IgdGhlIGFkdmVyc2FyaWFsIHdvcmsgdGhhdApmb2xsb3dlZCBmcm9tIHRoaXMgYmFzZWxpbmUuCgojIyBSZS1ydW4gYWZ0ZXIgdGhlIHYwLjIgZml4IHJvdW5kICgyMDI2LTExLTA5KQoKVGhlIHYwLjEgdmVyZGljdHMgYWJvdmUgd2VyZSB0aGUgcmV2aWV3J3MgImJlZm9yZSIgc3RhdGUgKDEyNC8xMjQgQkxPQ0sKZmluZGluZ3Mgb24gdGhlc2UgYm9hcmRzIHdlcmUgZmFsc2UgcG9zaXRpdmVzIOKAlCBzZWUgdGhlIGFkdmVyc2FyaWFsCnJldmlldyByZWNvcmQpLiBBZnRlciB0aGUgZml4IHJvdW5kIChlbmdpbmUgMC4yLjApOgoKfCBQcm9qZWN0IHwgVmVyZGljdCB8IEZpbmRpbmdzIHwKfCAtLS0gfCAtLS0gfCAtLS0gfAp8IHVwc3ktZGVza3kgfCBDQVVUSU9OIHwgQk9NX01JU1NJTkcgb25seSAodGhlIGJvYXJkIHNoaXBzIG5vIEJPTSDigJQgZmFpcikuIHwKfCBlc3AtcnVzdC1ib2FyZCB8IENBVVRJT04gfCBCT01fTUlTU0lOR19NUE4gZm9yIFUyICh0aGUgY2Vuc3VzJ3Mgb25lIHRydWUgZmluZGluZykgKyAxIE5PVEUuIHwKfCBwaWFudG9yIGxlZnQvcmlnaHQgfCBCTE9DSyB8IDggZmluZGluZ3MsIGFsbCBoYW5kLXZlcmlmaWVkIHRydWU6IGR1cGxpY2F0ZSBIMS9INCBtb3VudGluZy1ob2xlIGRlc2lnbmF0b3JzICh1cHN0cmVhbSBmaWxlcyByZWFsbHkgY29udGFpbiB0d28gSDEgYW5kIHR3byBINCksIDQgYWdncmVnYXRlZCBnZW51aW5lIGZvb3RwcmludCBtaXNtYXRjaGVzLCBCT01fTUlTU0lORywgTk9URS4gfAoKYHJ1bl9jb3JwdXNfdGVzdHMucHlgIHBpbnMgdGhlc2UgZXhwZWN0YXRpb25zOyB0aGUgYnJva2VuIGNvcnB1cyBzdGlsbApmaXJlcyA2LzYgbGFiZWxsZWQgcnVsZXMuCg==
+# Open-Source Test Corpus — Sources and Licences
+
+All real-board test data for KiCad Preflight comes from genuinely
+open-source KiCad projects published on GitHub. Nothing here was written
+by the Preflight team except the labelled mutations in `broken/`.
+
+Download method (2026-11-09): `git clone` through this machine's proxy
+timed out repeatedly, so each project was downloaded as a tarball of an
+exact commit from codeload.github.com
+(`https://codeload.github.com/<owner>/<repo>/tar.gz/<commit-sha>`).
+The commit SHA and tarball SHA-256 are recorded per project, so the
+corpus is byte-reproducible. Tarballs are kept in `downloads/`,
+extracted trees in `projects/`.
+
+## 1. Upsy Desky — tjhorner/upsy-desky
+- URL: https://github.com/tjhorner/upsy-desky
+- Commit: c64216b91ca818b0f9a1a1ec3c6ba92dcc5f7056 (2026-08-22)
+- Tarball SHA-256: daf06e9ef9313cae1d301e130d13d67e3f99d4d4abe812d6890b5998fa8f63f9
+- Licence: **MIT** (`LICENSE-MIT`, "Copyright 2022 TJ Horner — Permission
+  is hereby granted, free of charge…") for software/PCB, plus
+  `LICENSE-CC` (Creative Commons) for other content. Read in full from
+  the extracted tree on 2026-11-09.
+- Board used: `projects/upsy-desky/pcb/` — upsy-desky.kicad_sch +
+  upsy-desky.kicad_pcb (KiCad 7/8 format: footprint references stored as
+  `(property "Reference" …)`). No BOM CSV ships in the repo's pcb folder.
+
+## 2. ESP32 Rust Board — esp-rs/esp-rust-board
+- URL: https://github.com/esp-rs/esp-rust-board
+- Commit: efe1e8ad5c6dbc23b4365fef35af27545bc1381d (2025-05-20)
+- Tarball SHA-256: d86344e70a57527724d27caecea2e6d535c00db77b9eafd5b5061f23ecb1adc4
+- Licence: **CERN Open Hardware Licence v2 — Permissive**
+  (`LICENSE-CERN-OHL`, first line read from the extracted tree:
+  "CERN Open Hardware Licence Version 2 - Permissive").
+- Board used: `projects/esp-rust-board/hardware/esp-rust-board/` —
+  esp-rust-board.kicad_sch + esp-rust-board.kicad_pcb (PCB file version
+  20211014 = KiCad 6 format: footprint references stored as
+  `(fp_text reference …)`) + a real BOM, `esp-rust-board.csv`.
+
+## 3. Piantor — beekeeb/piantor
+- URL: https://github.com/beekeeb/piantor
+- Commit: cd847afb4f9a86e8c1c8e36f243140644013afb2 (2023-08-23)
+- Tarball SHA-256: 2e1e19fb18578a24356f35002e663d42c05bf3a26bd4fab3ae821dec4b5eb07d
+- Licence: **GNU GPL v3** (`LICENSE`, "GNU GENERAL PUBLIC LICENSE
+  Version 3, 29 June 2007").
+- Boards used: `projects/piantor/pcb/left/` and `projects/piantor/pcb/right/`
+  — each keyboard_pcb.kicad_sch + keyboard_pcb.kicad_pcb (KiCad 6 format).
+  No BOM CSV ships with the boards.
+
+## Considered and rejected
+- **KCORES/KCORES-CSPS-to-ATX-Converter** (commit c1355bfc…): downloaded
+  and inspected, then **dropped**. Its `LICENSE` is a custom, non-standard
+  "KCORES License v1.0" (Chinese text) — not a recognised open licence,
+  which fails this corpus's "clear open licence" rule. Its schematic is
+  also a legacy KiCad ≤5 `.sch` file, outside Preflight's supported
+  formats. Deleted from the corpus 2026-11-09; recorded here so the
+  rejection is auditable.
+- **Hanqaqa/PCB_Business_Card** (GPL-3.0): licence is fine, but the repo
+  ships only a decorative `.kicad_pcb` with no schematic, so it cannot
+  exercise schematic↔PCB checks. Not used.
+
+## Baseline results on the CLEAN projects (v0, before fixes, 2026-11-09)
+Full outputs in `results-before/`.
+
+| Project | v0 verdict | Findings |
+| --- | --- | --- |
+| upsy-desky | BLOCKED (exit 2) | 3 (3 BLOCK) |
+| esp-rust-board | BLOCKED (exit 2) | 82 (55 BLOCK, 27 FIX-FIRST) |
+| piantor-left | BLOCKED (exit 2) | 33 (33 BLOCK) |
+| piantor-right | BLOCKED (exit 2) | 33 (33 BLOCK) |
+| samples/good (synthetic) | READY (exit 0) | 0 |
+
+Root cause of most clean-board BLOCKs (confirmed by direct inspection):
+the v0 PCB parser only recognised KiCad 7/8-style
+`(property "Reference" …)` footprint references. On KiCad 6 boards
+(esp-rust-board, piantor) it parsed **0 footprints**, so every schematic
+part was flagged SCH_PART_NOT_ON_PCB. On upsy-desky, non-part footprints
+with unannotated references (`REF**`, e.g. logos) were flagged as
+duplicates/strays. See the review folder for the adversarial work that
+followed from this baseline.
+
+## Re-run after the v0.2 fix round (2026-11-09)
+
+The v0.1 verdicts above were the review's "before" state (124/124 BLOCK
+findings on these boards were false positives — see the adversarial
+review record). After the fix round (engine 0.2.0):
+
+| Project | Verdict | Findings |
+| --- | --- | --- |
+| upsy-desky | CAUTION | BOM_MISSING only (the board ships no BOM — fair). |
+| esp-rust-board | CAUTION | BOM_MISSING_MPN for U2 (the census's one true finding) + 1 NOTE. |
+| piantor left/right | BLOCK | 8 findings, all hand-verified true: duplicate H1/H4 mounting-hole designators (upstream files really contain two H1 and two H4), 4 aggregated genuine footprint mismatches, BOM_MISSING, NOTE. |
+
+`run_corpus_tests.py` pins these expectations; the broken corpus still
+fires 6/6 labelled rules.
