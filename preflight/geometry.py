@@ -1,0 +1,1133 @@
+"""Geometry-lite: a conservative distance-checking subset (v0.4).
+
+This is NOT KiCad's DRC. It checks three things from the copper
+objects project.py extracts (pads, tracks, arcs, vias), using exact
+shape mathematics where the file gives exact shapes:
+
+  * copper clearance — the minimum distance between copper objects
+    on the same layer that belong to DIFFERENT nets, against the
+    board's own stated clearance (the .kicad_pro design rules /
+    netclass clearances) when stated, else the published fab
+    minimum trace spacing of 0.10 mm (JLCPCB + PCBWay standard
+    process, 1–2 layer 1 oz; docs/COVERAGE.md sources);
+  * copper-to-edge — the minimum distance from any copper object
+    to the Edge.Cuts outline, against the board's stated
+    min_copper_edge_clearance when stated, else 0.20 mm (the
+    cross-fab safe minimum from the same research);
+  * outline closure — whether the root-level Edge.Cuts items chain
+    into closed loops.
+
+Conservatism rules (a false violation on a legal board is the worst
+outcome this module can produce):
+
+  * Shapes are exact: circles, rectangles at their real rotation,
+    ovals and arcs (arcs are subdivided into chords whose sagitta
+    is bounded; a pair is flagged only when even the largest
+    possible true distance is below the threshold). Roundrects are
+    computed as their exact core rectangle plus corner radius.
+  * Custom and trapezoid pads are not modelled (project.py counts
+    them) — no invented outlines.
+  * Objects whose net is unknown (no net stated, or net 0) never
+    take part in clearance pairs; they are counted in Coverage.
+  * Zone copper is excluded entirely: KiCad's filler generates it
+    under zone-specific clearance settings, so netclass thresholds
+    do not apply to it. Zones are counted in Coverage.
+  * Hard budgets (objects, pair computations): exceeding one
+    abstains the whole geometry layer with a CAUTION, never a
+    partial verdict presented as complete.
+
+Distances are computed on (core, radius) shape pairs — a core is a
+point, a segment, or an oriented rectangle, and the true shape is
+the core inflated by its radius (a disk for circles/vias, a capsule
+for tracks/ovals, a rounded rectangle for roundrect pads). The
+identity dist(A⊕rA, B⊕rB) = max(0, dist(A, B) − rA − rB) makes
+every pair exact for these shapes.
+
+Pad positions use KiCad's rotation convention — rotating a local
+point by angle t maps (x, y) to (x·cos t + y·sin t, −x·sin t +
+y·cos t) in file coordinates — verified empirically: on the three
+open-source corpus boards, pad centres computed this way coincide
+with same-net track endpoints, while the textbook Y-up convention
+matches none.
+"""
+
+import fnmatch
+import math
+from dataclasses import dataclass
+
+from .finding import BLOCK, CAUTION, Finding
+
+# Published standard-process minimums (mm) — docs/COVERAGE.md.
+FAB_CLEARANCE_MIN = 0.10     # min trace spacing, both fabs, 1–2L 1 oz
+FAB_EDGE_CLEARANCE_MIN = 0.20  # copper-to-routed-edge, cross-fab safe
+
+MAX_OBJECTS = 40000          # copper objects after arc subdivision
+MAX_PAIR_CHECKS = 2000000    # exact distance computations per board
+MAX_CELL_OBJECTS = 8192      # per grid cell — degenerate-distribution
+                             # guard (a real 1 mm cell never holds this
+                             # many copper objects; a crafted one would
+                             # make candidate enumeration quadratic)
+MAX_OUTLINE_PIECES = 100000  # subdivided outline centrelines
+ARC_SAGITTA = 0.005          # mm; arc/chord approximation bound
+# Measurement tolerance: file coordinates are decimal text rounded
+# from the CAD database, and routed boards sit exactly ON their
+# design-rule clearance all over — manufactured corpus boards show
+# dense clusters of pairs 0.0005–0.001 mm under the stated rule
+# (rounding noise, two orders below any fab's process tolerance).
+# A pair is flagged only when it is below the threshold by more
+# than this tolerance, so geometry-lite reports real encroachments,
+# not rounding dust.
+MEASURE_TOLERANCE = 0.002    # mm
+MAX_ARC_PIECES = 1024
+CHAIN_TOLERANCE = 0.01       # mm; outline endpoint matching
+MAX_EDGE_ELEMS = 5000
+# Grid-insertion guards (v0.4 review RT-01): an object whose
+# expanded bbox spans more grid cells than this is not inserted
+# cell-by-cell at all — it joins a per-layer "wide" list that is
+# tested against everything. One 2,000,000 mm segment otherwise
+# inserted itself into millions of cells (19 s / 850 MB for a
+# two-object board).
+MAX_OBJ_CELLS = 2048         # per object / per outline piece
+MAX_GRID_INSERTIONS = 8000000
+MAX_WIDE_OBJECTS = 256       # wide objects per layer before abstain
+# Candidate pairs EXAMINED (before any net/bbox filtering) across
+# a board: the pair-measurement budget alone cannot bound the
+# enumeration itself — a few thousand same-net tracks packed into
+# one cell generate millions of candidates and zero measurements
+# (audit F1). Past this, the check abstains honestly.
+MAX_CANDIDATE_PAIRS = 5000000
+OUTLINE_NEAR_MISS = 0.1      # mm; fragments of a shattered outline
+
+
+# ---------------------------------------------------------------------------
+# Shape cores and exact distances
+# ---------------------------------------------------------------------------
+# A core is a tuple: ("pt", x, y) | ("seg", x1, y1, x2, y2) |
+# ("obb", cx, cy, ux, uy, vx, vy, hw, hh) — centre, two unit axes,
+# half extents. A shape is (core, radius).
+
+
+def _d_pt_pt(ax, ay, bx, by):
+    return math.hypot(ax - bx, ay - by)
+
+
+def _d_pt_seg(px, py, x1, y1, x2, y2):
+    dx, dy = x2 - x1, y2 - y1
+    length_sq = dx * dx + dy * dy
+    if length_sq == 0.0:
+        return math.hypot(px - x1, py - y1)
+    t = ((px - x1) * dx + (py - y1) * dy) / length_sq
+    t = max(0.0, min(1.0, t))
+    return math.hypot(px - (x1 + t * dx), py - (y1 + t * dy))
+
+
+def _seg_intersect(ax, ay, bx, by, cx, cy, dx, dy):
+    def orient(px, py, qx, qy, rx, ry):
+        return (qx - px) * (ry - py) - (qy - py) * (rx - px)
+    d1 = orient(cx, cy, dx, dy, ax, ay)
+    d2 = orient(cx, cy, dx, dy, bx, by)
+    d3 = orient(ax, ay, bx, by, cx, cy)
+    d4 = orient(ax, ay, bx, by, dx, dy)
+    return ((d1 > 0) != (d2 > 0) and (d3 > 0) != (d4 > 0)
+            and d1 != 0 and d2 != 0 and d3 != 0 and d4 != 0)
+
+
+def _d_seg_seg(a, b):
+    _, ax, ay, bx, by = a
+    _, cx, cy, dx, dy = b
+    if _seg_intersect(ax, ay, bx, by, cx, cy, dx, dy):
+        return 0.0
+    return min(
+        _d_pt_seg(ax, ay, cx, cy, dx, dy),
+        _d_pt_seg(bx, by, cx, cy, dx, dy),
+        _d_pt_seg(cx, cy, ax, ay, bx, by),
+        _d_pt_seg(dx, dy, ax, ay, bx, by))
+
+
+def _pt_in_obb(px, py, obb):
+    _, cx, cy, ux, uy, vx, vy, hw, hh = obb
+    dx, dy = px - cx, py - cy
+    return abs(dx * ux + dy * uy) <= hw and abs(dx * vx + dy * vy) <= hh
+
+
+def _d_pt_obb(px, py, obb):
+    _, cx, cy, ux, uy, vx, vy, hw, hh = obb
+    dx, dy = px - cx, py - cy
+    lx, ly = dx * ux + dy * uy, dx * vx + dy * vy
+    qx = max(abs(lx) - hw, 0.0)
+    qy = max(abs(ly) - hh, 0.0)
+    return math.hypot(qx, qy)
+
+
+def _obb_corners(obb):
+    _, cx, cy, ux, uy, vx, vy, hw, hh = obb
+    return [(cx + su * hw * ux + sv * hh * vx,
+             cy + su * hw * uy + sv * hh * vy)
+            for su in (1, -1) for sv in (1, -1)]
+
+
+def _obb_edges(obb):
+    _, cx, cy, ux, uy, vx, vy, hw, hh = obb
+    pts = []
+    for su, sv in [(1, 1), (1, -1), (-1, -1), (-1, 1)]:
+        pts.append((cx + su * hw * ux + sv * hh * vx,
+                    cy + su * hw * uy + sv * hh * vy))
+    return [("seg", pts[i][0], pts[i][1],
+             pts[(i + 1) % 4][0], pts[(i + 1) % 4][1]) for i in range(4)]
+
+
+def _d_seg_obb(seg, obb):
+    _, ax, ay, bx, by = seg
+    if _pt_in_obb(ax, ay, obb) or _pt_in_obb(bx, by, obb):
+        return 0.0
+    return min(_d_seg_seg(seg, edge) for edge in _obb_edges(obb))
+
+
+def _d_obb_obb(a, b):
+    for (px, py) in _obb_corners(a):
+        if _pt_in_obb(px, py, b):
+            return 0.0
+    for (px, py) in _obb_corners(b):
+        if _pt_in_obb(px, py, a):
+            return 0.0
+    return min(_d_seg_seg(ea, eb)
+               for ea in _obb_edges(a) for eb in _obb_edges(b))
+
+
+def _d_core(a, b):
+    ka, kb = a[0], b[0]
+    if ka == "pt":
+        if kb == "pt":
+            return _d_pt_pt(a[1], a[2], b[1], b[2])
+        if kb == "seg":
+            return _d_pt_seg(a[1], a[2], b[1], b[2], b[3], b[4])
+        return _d_pt_obb(a[1], a[2], b)
+    if ka == "seg":
+        if kb == "pt":
+            return _d_pt_seg(b[1], b[2], a[1], a[2], a[3], a[4])
+        if kb == "seg":
+            return _d_seg_seg(a, b)
+        return _d_seg_obb(a, b)
+    # a is obb
+    if kb == "pt":
+        return _d_pt_obb(b[1], b[2], a)
+    if kb == "seg":
+        return _d_seg_obb(b, a)
+    return _d_obb_obb(a, b)
+
+
+def _core_bbox(core, radius):
+    kind = core[0]
+    if kind == "pt":
+        xs, ys = (core[1],), (core[2],)
+    elif kind == "seg":
+        xs, ys = (core[1], core[3]), (core[2], core[4])
+    else:
+        corners = _obb_corners(core)
+        xs = [c[0] for c in corners]
+        ys = [c[1] for c in corners]
+    return (min(xs) - radius, min(ys) - radius,
+            max(xs) + radius, max(ys) + radius)
+
+
+# ---------------------------------------------------------------------------
+# Arc / curve subdivision (sagitta-bounded)
+# ---------------------------------------------------------------------------
+
+
+def _circle_pieces(cx, cy, radius):
+    """(segment, sagitta) pieces for a full circle, generated
+    directly. Routing a circle through the 3-point arc path with
+    start == end degenerates to a single point (audit F2), which
+    silently disabled copper-to-edge on round boards."""
+    if radius <= ARC_SAGITTA:
+        # The whole disk lies within `radius` of the chord.
+        return [((cx - radius, cy, cx + radius, cy), radius)]
+    max_step = 2.0 * math.acos(max(-1.0, 1.0 - ARC_SAGITTA / radius))
+    n = max(8, min(MAX_ARC_PIECES,
+                   int(math.ceil(2.0 * math.pi / max_step))))
+    sagitta = radius * (1.0 - math.cos(math.pi / n))
+    pts = [(cx + radius * math.cos(2.0 * math.pi * i / n),
+            cy + radius * math.sin(2.0 * math.pi * i / n))
+           for i in range(n)]
+    return [((pts[i][0], pts[i][1],
+              pts[(i + 1) % n][0], pts[(i + 1) % n][1]), sagitta)
+            for i in range(n)]
+
+
+def _arc_pieces(sx, sy, mx, my, ex, ey):
+    """Subdivide a 3-point arc into (segment, sagitta) pieces.
+
+    Returns a list of ((x1, y1, x2, y2), sagitta). A degenerate arc
+    (collinear points) becomes one straight segment whose sagitta
+    is the mid point's distance from the chord — the true curve
+    stays within that bound of the chord."""
+    if (sx, sy) == (ex, ey) and (mx, my) != (sx, sy):
+        # A genuine 360-degree arc: start == end zeroes the
+        # circle-through-3-points determinant below. KiCad places
+        # the mid point on the arc; treating start/mid as
+        # antipodal recovers the circle (audit F2).
+        ccx, ccy = (sx + mx) / 2.0, (sy + my) / 2.0
+        r = math.hypot(sx - ccx, sy - ccy)
+        if r > 0 and abs(math.hypot(mx - ccx, my - ccy) - r) \
+                <= max(0.01, 0.01 * r):
+            return _circle_pieces(ccx, ccy, r)
+    chord_sag = _d_pt_seg(mx, my, sx, sy, ex, ey)
+    # Circle through the three points (perpendicular bisector).
+    d = 2.0 * (sx * (my - ey) + mx * (ey - sy) + ex * (sy - my))
+    if abs(d) < 1e-12:
+        return [((sx, sy, ex, ey), chord_sag)]
+    ux = ((sx * sx + sy * sy) * (my - ey) + (mx * mx + my * my) * (ey - sy)
+          + (ex * ex + ey * ey) * (sy - my)) / d
+    uy = ((sx * sx + sy * sy) * (ex - mx) + (mx * mx + my * my) * (sx - ex)
+          + (ex * ex + ey * ey) * (mx - sx)) / d
+    radius = math.hypot(sx - ux, sy - uy)
+    if radius <= ARC_SAGITTA or not math.isfinite(radius):
+        return [((sx, sy, ex, ey), chord_sag)]
+    a0 = math.atan2(sy - uy, sx - ux)
+    a1 = math.atan2(my - uy, mx - ux)
+    a2 = math.atan2(ey - uy, ex - ux)
+    # Sweep from a0 to a2 passing through a1.
+    def _norm(a):
+        return a % (2.0 * math.pi)
+    ccw_total = _norm(a2 - a0)
+    ccw_mid = _norm(a1 - a0)
+    if ccw_mid <= ccw_total:
+        sweep = ccw_total
+    else:
+        sweep = ccw_total - 2.0 * math.pi
+    max_step = 2.0 * math.acos(max(-1.0, 1.0 - ARC_SAGITTA / radius))
+    pieces = int(math.ceil(abs(sweep) / max_step)) if max_step > 0 else 1
+    pieces = max(1, min(pieces, MAX_ARC_PIECES))
+    step = sweep / pieces
+    sagitta = radius * (1.0 - math.cos(step / 2.0))
+    pts = [(ux + radius * math.cos(a0 + step * i),
+            uy + radius * math.sin(a0 + step * i))
+           for i in range(pieces + 1)]
+    pts[0] = (sx, sy)
+    pts[-1] = (ex, ey)
+    return [((pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1]), sagitta)
+            for i in range(pieces)]
+
+
+def _bezier_pieces(pts):
+    """Subdivide a cubic Bézier into (segment, bound) pieces by de
+    Casteljau splitting until the control polygon is flat within
+    ARC_SAGITTA of the chord (the curve stays inside the control
+    polygon's convex hull, so the bound is sound)."""
+    out = []
+
+    def _flat(p):
+        return max(_d_pt_seg(p[1][0], p[1][1], p[0][0], p[0][1],
+                             p[3][0], p[3][1]),
+                   _d_pt_seg(p[2][0], p[2][1], p[0][0], p[0][1],
+                             p[3][0], p[3][1]))
+
+    def _split(p):
+        def mid(a, b):
+            return ((a[0] + b[0]) / 2.0, (a[1] + b[1]) / 2.0)
+        q0, q1, q2 = mid(p[0], p[1]), mid(p[1], p[2]), mid(p[2], p[3])
+        r0, r1 = mid(q0, q1), mid(q1, q2)
+        s = mid(r0, r1)
+        return (p[0], q0, r0, s), (s, r1, q2, p[3])
+
+    stack = [tuple(pts)]
+    guard = 0
+    while stack and guard < 4096:
+        guard += 1
+        curve = stack.pop()
+        flat = _flat(curve)
+        if flat <= ARC_SAGITTA or guard > 2048:
+            out.append(((curve[0][0], curve[0][1],
+                         curve[3][0], curve[3][1]), flat))
+        else:
+            left, right = _split(curve)
+            stack.append(right)
+            stack.append(left)
+    out.sort(key=lambda piece: piece[0])
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Copper objects
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class _Obj:
+    core: tuple
+    radius: float
+    unc: float                   # distance uncertainty bound (arcs)
+    layers: tuple
+    net_key: object              # ("id", n) / ("name", s) / None
+    net_name: str
+    desc: str
+    bbox: tuple = ()
+
+
+def _net_key(net_id, net_name):
+    if net_id is not None and net_id != 0:
+        return ("id", net_id)
+    if net_name:
+        return ("name", net_name)
+    return None
+
+
+def _short(text, limit=40):
+    text = str(text)
+    return text if len(text) <= limit else text[:limit] + "…"
+
+
+def _pad_shape(pad):
+    """(core, radius) for a modelled pad, in absolute board coords."""
+    cx, cy = pad.cx, pad.cy
+    if pad.shape == "circle" or (pad.sx == pad.sy and pad.shape == "oval"):
+        return ("pt", cx, cy), pad.sx / 2.0
+    if pad.shape == "oval":
+        r = min(pad.sx, pad.sy) / 2.0
+        half = (max(pad.sx, pad.sy) - min(pad.sx, pad.sy)) / 2.0
+        if pad.sx >= pad.sy:
+            dx, dy = pad.ux * half, pad.uy * half
+        else:
+            dx, dy = pad.vx * half, pad.vy * half
+        return ("seg", cx - dx, cy - dy, cx + dx, cy + dy), r
+    if pad.shape == "rect":
+        return ("obb", cx, cy, pad.ux, pad.uy, pad.vx, pad.vy,
+                pad.sx / 2.0, pad.sy / 2.0), 0.0
+    # roundrect: exact core rectangle + corner radius
+    r = pad.rratio * min(pad.sx, pad.sy)
+    hw = max(pad.sx / 2.0 - r, 0.0)
+    hh = max(pad.sy / 2.0 - r, 0.0)
+    return ("obb", cx, cy, pad.ux, pad.uy, pad.vx, pad.vy, hw, hh), r
+
+
+def _build_objects(project, legacy_sign=None):
+    """All copper distance objects + the outline centrelines.
+
+    Returns (objects, outline_pieces, total_objects,
+    total_outline_pieces). The lists are CAPPED at their budgets
+    while the totals count everything: arc subdivision can
+    amplify one small file ~6,000x, so the budgets must bite
+    during construction, not after it (audit F3). outline_pieces
+    are (x1, y1, x2, y2, unc) centreline segments with zero
+    width. `legacy_sign` is the sweep direction the
+    outline-closure evaluation settled on for legacy
+    (angle ...) arcs; without it those arcs contribute no
+    centreline (RT-18)."""
+    geo = project.geometry
+    objects = []
+    total_objects = 0
+
+    def _add(obj):
+        nonlocal total_objects
+        total_objects += 1
+        if len(objects) <= MAX_OBJECTS:
+            objects.append(obj)
+
+    for pad in geo.pads:
+        core, radius = _pad_shape(pad)
+        desc = f"pad {_short(pad.ref)}"
+        if pad.name:
+            desc += f"·{_short(pad.name, 12)}"
+        _add(_Obj(core, radius, 0.0, pad.layers,
+                  _net_key(pad.net_id, pad.net_name),
+                  pad.net_name, desc))
+    for track in geo.tracks:
+        _add(_Obj(
+            ("seg", track.x1, track.y1, track.x2, track.y2),
+            track.width / 2.0, 0.0, (track.layer,),
+            _net_key(track.net_id, track.net_name), track.net_name,
+            f"track on {_short(track.layer, 16)}"))
+    for arc in geo.arcs:
+        for (seg, sag) in _arc_pieces(arc.sx, arc.sy, arc.mx, arc.my,
+                                      arc.ex, arc.ey):
+            _add(_Obj(
+                ("seg",) + seg, arc.width / 2.0, sag, (arc.layer,),
+                _net_key(arc.net_id, arc.net_name), arc.net_name,
+                f"arc track on {_short(arc.layer, 16)}"))
+    for via in geo.vias:
+        _add(_Obj(
+            ("pt", via.cx, via.cy), via.size / 2.0, 0.0, via.layers,
+            _net_key(via.net_id, via.net_name), via.net_name, "via"))
+    for elem, width in geo.gr_copper:
+        for (seg, unc) in _elem_pieces(elem):
+            _add(_Obj(
+                ("seg",) + seg, width / 2.0, unc,
+                tuple(geo.copper_layers), None, "",
+                "drawn copper graphic"))
+    outline = []
+    total_pieces = 0
+    for elem in geo.edge_elems:
+        for (seg, unc) in _elem_pieces(elem, legacy_sign):
+            total_pieces += 1
+            if len(outline) <= MAX_OUTLINE_PIECES:
+                outline.append(seg + (unc,))
+    for obj in objects:
+        obj.bbox = _core_bbox(obj.core, obj.radius)
+    return objects, outline, total_objects, total_pieces
+
+
+def _elem_pieces(elem, legacy_sign=None):
+    """(segment, unc) centrelines for an outline/graphic element."""
+    kind = elem.kind
+    if kind == "line":
+        (x1, y1), (x2, y2) = elem.pts
+        return [((x1, y1, x2, y2), 0.0)]
+    if kind == "rect":
+        (x1, y1), (x2, y2) = elem.pts
+        corners = [(x1, y1), (x2, y1), (x2, y2), (x1, y2)]
+        return [((corners[i][0], corners[i][1],
+                  corners[(i + 1) % 4][0], corners[(i + 1) % 4][1]), 0.0)
+                for i in range(4)]
+    if kind == "poly":
+        pts = elem.pts
+        return [((pts[i][0], pts[i][1],
+                  pts[(i + 1) % len(pts)][0], pts[(i + 1) % len(pts)][1]),
+                 0.0) for i in range(len(pts))]
+    if kind == "circle":
+        (cx, cy), radius = elem.pts
+        return _circle_pieces(cx, cy, radius) if radius > 0 else []
+    if kind == "arc":
+        if len(elem.pts) == 3:
+            (sx, sy), (mx, my), (ex, ey) = elem.pts
+            return _arc_pieces(sx, sy, mx, my, ex, ey)
+        if elem.angle is not None and legacy_sign is not None:
+            # Legacy (angle ...) arc: rebuild start/mid/end from
+            # the centre, the on-arc point and the closure pass's
+            # chosen sweep direction (RT-18).
+            (cx, cy), (ex, ey) = elem.pts
+            dx, dy = ex - cx, ey - cy
+            mx, my = _rotate_b(dx, dy,
+                               legacy_sign * elem.angle / 2.0)
+            fx, fy = _rotate_b(dx, dy, legacy_sign * elem.angle)
+            return _arc_pieces(ex, ey, cx + mx, cy + my,
+                               cx + fx, cy + fy)
+        return []       # legacy angle form, sign unknown: chain-only
+    if kind == "curve":
+        return _bezier_pieces(elem.pts)
+    return []
+
+
+# ---------------------------------------------------------------------------
+# Thresholds
+# ---------------------------------------------------------------------------
+
+
+def _class_clearance(net_name, rules):
+    classes = rules.get("netclasses") or {}
+    chosen = None
+    for pattern, cls in rules.get("netclass_patterns") or []:
+        if fnmatch.fnmatchcase(net_name or "", pattern):
+            # KiCad's pattern list is priority-ordered: the FIRST
+            # matching pattern assigns the class (v0.4 review
+            # RT-08/RT-11 — this originally kept the last match,
+            # which both over- and under-checked by pattern order).
+            chosen = cls
+            break
+    if chosen is not None and chosen in classes:
+        return classes[chosen]
+    return classes.get("Default")
+
+
+def _pair_threshold(name_a, name_b, rules, cache=None):
+    """(threshold, source) for a different-net pair.
+
+    `cache` memoises per-net class clearances across a run: the
+    pattern list is fnmatched per net name, and without the cache
+    a pair-dense board paid that cost per candidate pair."""
+    if cache is None:
+        cache = {}
+
+    def _cc(name):
+        if name not in cache:
+            cache[name] = _class_clearance(name, rules)
+        return cache[name]
+
+    values = [v for v in (_cc(name_a), _cc(name_b),
+                          rules.get("min_clearance")) if v]
+    if values:
+        return max(values), "board design rules"
+    return FAB_CLEARANCE_MIN, "published fab minimum"
+
+
+def _edge_threshold(rules):
+    stated = rules.get("min_copper_edge_clearance") if rules else None
+    if stated:
+        return stated, "board design rules"
+    return FAB_EDGE_CLEARANCE_MIN, "published fab minimum"
+
+
+# ---------------------------------------------------------------------------
+# The checks
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class _Stats:
+    objects: int = 0
+    pairs_checked: int = 0
+    pairs_unknown_net: int = 0
+    budget_exceeded: bool = False
+    clearance_threshold: float = None
+    clearance_source: str = ""
+    edge_threshold: float = None
+    edge_source: str = ""
+    outline_closed: bool = None
+    outline_elements: int = 0
+
+
+def _clearance_pass(objects, rules, stats):
+    """Yield (upper_bound_distance, lower_bound, a, b, layer, thr,
+    source) for every different-net pair that is certainly below
+    its threshold. Sets stats.pairs_checked / pairs_unknown_net."""
+    by_layer = {}
+    for idx, obj in enumerate(objects):
+        for layer in obj.layers:
+            by_layer.setdefault(layer, []).append(idx)
+    thresholds = set()
+    results = []
+    thr_cache = {}
+    examined = 0
+    for layer in sorted(by_layer):
+        idxs = by_layer[layer]
+        layer_objs = [objects[i] for i in idxs]
+        # Threshold ceiling for this layer (grid/search radius).
+        max_thr = FAB_CLEARANCE_MIN
+        for obj in layer_objs:
+            value, _ = _pair_threshold(obj.net_name, obj.net_name,
+                                       rules, thr_cache)
+            max_thr = max(max_thr, value)
+        cell = max(1.0, max_thr)
+        grid = {}
+        wide = []
+        insertions = 0
+        degenerate = False
+        for pos, obj in enumerate(layer_objs):
+            x0, y0, x1, y1 = obj.bbox
+            nx = int((x1 + max_thr) // cell) \
+                - int((x0 - max_thr) // cell) + 1
+            ny = int((y1 + max_thr) // cell) \
+                - int((y0 - max_thr) // cell) + 1
+            if nx * ny > MAX_OBJ_CELLS:
+                # Board-spanning object: never inserted cell-wise
+                # (RT-01); it is tested against everything instead.
+                wide.append(pos)
+                continue
+            for gx in range(int((x0 - max_thr) // cell),
+                            int((x1 + max_thr) // cell) + 1):
+                for gy in range(int((y0 - max_thr) // cell),
+                                int((y1 + max_thr) // cell) + 1):
+                    bucket = grid.setdefault((gx, gy), [])
+                    bucket.append(pos)
+                    insertions += 1
+                    if len(bucket) > MAX_CELL_OBJECTS \
+                            or insertions > MAX_GRID_INSERTIONS:
+                        degenerate = True
+        if len(wide) > MAX_WIDE_OBJECTS:
+            degenerate = True
+        if degenerate:
+            stats.budget_exceeded = True
+            return results
+        wide_set = set(wide)
+        seen = set()
+        for pos, obj in enumerate(layer_objs):
+            if pos in wide_set:
+                candidates = range(len(layer_objs))
+            else:
+                x0, y0, x1, y1 = obj.bbox
+                found = set(wide)
+                for gx in range(int((x0 - max_thr) // cell),
+                                int((x1 + max_thr) // cell) + 1):
+                    for gy in range(int((y0 - max_thr) // cell),
+                                    int((y1 + max_thr) // cell) + 1):
+                        found.update(grid.get((gx, gy), ()))
+                candidates = found
+            for other_pos in candidates:
+                if other_pos <= pos:
+                    continue
+                # Charge EVERY examined candidate to a budget
+                # (audit F1): the measurement budget below only
+                # counts pairs that survive net + bbox filtering,
+                # so dense same-net clusters otherwise enumerated
+                # without bound. (Iteration order over the
+                # candidate set does not affect results: pairs are
+                # deduplicated by `seen`, counts are sums, and
+                # findings are sorted before reporting.)
+                examined += 1
+                if examined > MAX_CANDIDATE_PAIRS:
+                    stats.budget_exceeded = True
+                    return results
+                pair = (idxs[pos], idxs[other_pos])
+                if pair in seen:
+                    continue
+                seen.add(pair)
+                other = layer_objs[other_pos]
+                if obj.net_key is None or other.net_key is None:
+                    stats.pairs_unknown_net += 1
+                    continue
+                if obj.net_key == other.net_key:
+                    continue
+                # Bounding-box lower bound: cheap reject.
+                ax0, ay0, ax1, ay1 = obj.bbox
+                bx0, by0, bx1, by1 = other.bbox
+                gap = math.hypot(max(bx0 - ax1, ax0 - bx1, 0.0),
+                                 max(by0 - ay1, ay0 - by1, 0.0))
+                thr, source = _pair_threshold(obj.net_name,
+                                              other.net_name, rules,
+                                              thr_cache)
+                thresholds.add((thr, source))
+                if gap >= thr:
+                    continue
+                stats.pairs_checked += 1
+                if stats.pairs_checked > MAX_PAIR_CHECKS:
+                    stats.budget_exceeded = True
+                    return results
+                dist = _d_core(obj.core, other.core) \
+                    - obj.radius - other.radius
+                upper = dist + obj.unc + other.unc
+                if upper < thr - MEASURE_TOLERANCE:
+                    results.append((dist - obj.unc - other.unc,
+                                    obj, other, layer, thr, source))
+    if thresholds:
+        top = max(thresholds)
+        stats.clearance_threshold, stats.clearance_source = top
+    return results
+
+
+def _rotate_b(vx, vy, deg):
+    """Rotate a vector by `deg` degrees in KiCad's file convention
+    (the same convention pad placement uses)."""
+    a = math.radians(deg)
+    c, s = math.cos(a), math.sin(a)
+    return (vx * c + vy * s, -vx * s + vy * c)
+
+
+def _elem_endpoints(elem, legacy_sign):
+    """(p1, p2) chain endpoints for an outline element, or None.
+
+    Legacy (angle ...) arcs are genuinely ambiguous in the wild:
+    KiCad <= 5 semantics store the arc circle's CENTRE in the
+    (start) node (v0.4 review RT-04), but converter-written files
+    exist that store the two endpoints and keep (angle) only as
+    the sweep. Callers therefore evaluate several readings —
+    `legacy_sign` is +1/-1 for the centre reading (sweep
+    direction) or "ends" for the endpoints reading."""
+    if elem.kind in ("line", "curve"):
+        return elem.pts[0], elem.pts[-1]
+    if elem.kind == "arc":
+        if elem.angle is not None:
+            if legacy_sign == "ends":
+                return elem.pts[0], elem.pts[1]
+            (cx, cy), (ex, ey) = elem.pts
+            rx, ry = _rotate_b(ex - cx, ey - cy,
+                               legacy_sign * elem.angle)
+            return (ex, ey), (cx + rx, cy + ry)
+        return elem.pts[0], elem.pts[-1]
+    return None
+
+
+def _outline_eval(edge_elems, legacy_sign):
+    """One closure evaluation under a legacy-arc sign choice.
+
+    Returns (closed, open_points, abstained); closed None means
+    abstain. Endpoints are PAIRED greedily by distance — exact
+    coincidences pair first — never transitively clustered, so
+    two legal joints a hair apart cannot merge into a phantom
+    opening (RT-03), and pairing is grid-bucketed rather than
+    all-pairs (RT-02: 17 s at the element budget). Semantics: an
+    open chain alongside a closed loop is a routed slot, a legal
+    Edge.Cuts construct; with NO closed loop anywhere, chained
+    but open elements — and fragments a hair from joining — are
+    the outline itself, broken (RT-12)."""
+    self_closed_kinds = {"circle", "rect", "poly"}
+    has_closed_elem = False
+    endpoints = []       # (x, y, elem_idx)
+    elem_ends = {}       # elem_idx -> (i, j) into endpoints
+    for idx, elem in enumerate(edge_elems):
+        if elem.kind in self_closed_kinds:
+            has_closed_elem = True
+            continue
+        ends = _elem_endpoints(elem, legacy_sign)
+        if ends is None:
+            continue
+        (x1, y1), (x2, y2) = ends
+        elem_ends[idx] = (len(endpoints), len(endpoints) + 1)
+        endpoints.append((x1, y1, idx))
+        endpoints.append((x2, y2, idx))
+    if not endpoints:
+        return (True, [], False) if has_closed_elem \
+            else (None, [], False)
+    tol = CHAIN_TOLERANCE
+    buckets = {}
+    for i, (x, y, _idx) in enumerate(endpoints):
+        buckets.setdefault((int(x // tol), int(y // tol)),
+                           []).append(i)
+    if any(len(v) > 1024 for v in buckets.values()):
+        return None, [], True
+    cand = []
+    tol_sq = tol * tol
+    for i, (x, y, _idx) in enumerate(endpoints):
+        cx, cy = int(x // tol), int(y // tol)
+        for gx in (cx - 1, cx, cx + 1):
+            for gy in (cy - 1, cy, cy + 1):
+                for j in buckets.get((gx, gy), ()):
+                    if j <= i:
+                        continue
+                    dx = endpoints[j][0] - x
+                    dy = endpoints[j][1] - y
+                    d2 = dx * dx + dy * dy
+                    if d2 <= tol_sq:
+                        cand.append((d2, i, j))
+        if len(cand) > 2000000:
+            return None, [], True
+    cand.sort()
+    partner = {}
+    for _d2, i, j in cand:
+        if i in partner or j in partner:
+            continue
+        ei, ej = endpoints[i][2], endpoints[j][2]
+        if ei == ej and edge_elems[ei].kind != "arc":
+            continue    # only a full-circle arc closes on itself
+        partner[i] = j
+        partner[j] = i
+    # Components: elements a pairing links.
+    parent = {idx: idx for idx in elem_ends}
+
+    def find(a):
+        while parent[a] != a:
+            parent[a] = parent[parent[a]]
+            a = parent[a]
+        return a
+
+    for i, j in partner.items():
+        ei, ej = endpoints[i][2], endpoints[j][2]
+        if ei != ej:
+            ra, rb = find(ei), find(ej)
+            if ra != rb:
+                parent[ra] = rb
+    components = {}
+    for idx in elem_ends:
+        components.setdefault(find(idx), []).append(idx)
+
+    def _near_foreign(x, y, member_set):
+        cx, cy = int(x // tol), int(y // tol)
+        limit = (2 * tol) * (2 * tol)
+        for gx in range(cx - 2, cx + 3):
+            for gy in range(cy - 2, cy + 3):
+                for j in buckets.get((gx, gy), ()):
+                    fx, fy, fidx = endpoints[j]
+                    if fidx in member_set:
+                        continue
+                    dx, dy = fx - x, fy - y
+                    if dx * dx + dy * dy <= limit:
+                        return True
+        return False
+
+    closed_exists = has_closed_elem
+    open_certain = []
+    abstained_any = False
+    loose_singles = []
+    for members in components.values():
+        member_set = set(members)
+        unmatched = [endpoints[k] for idx in members
+                     for k in elem_ends[idx] if k not in partner]
+        if not unmatched:
+            closed_exists = True
+            continue
+        if len(members) == 1 and len(unmatched) == 2:
+            loose_singles.append(members[0])
+            continue
+        if any(_near_foreign(x, y, member_set)
+               for x, y, _i in unmatched):
+            abstained_any = True
+        else:
+            open_certain.extend((x, y) for x, y, _i in unmatched)
+    if closed_exists:
+        return True, [], False
+    if open_certain:
+        return False, open_certain, abstained_any
+    if abstained_any:
+        return None, [], True
+    # Only lone elements remain. Fragments of one shattered
+    # outline sit within a hair of each other (RT-12); an
+    # isolated single abstains (a slot whose outline lives in a
+    # footprint, say) rather than guessing.
+    loose_pts = [endpoints[k] for idx in loose_singles
+                 for k in elem_ends[idx]]
+    near = {}
+    for n, (x, y, _i) in enumerate(loose_pts):
+        near.setdefault(
+            (int(x // OUTLINE_NEAR_MISS),
+             int(y // OUTLINE_NEAR_MISS)), []).append(n)
+    limit = OUTLINE_NEAR_MISS * OUTLINE_NEAR_MISS
+    for n, (x, y, idx) in enumerate(loose_pts):
+        cx, cy = int(x // OUTLINE_NEAR_MISS), \
+            int(y // OUTLINE_NEAR_MISS)
+        for gx in (cx - 1, cx, cx + 1):
+            for gy in (cy - 1, cy, cy + 1):
+                for m in near.get((gx, gy), ()):
+                    if m <= n or loose_pts[m][2] == idx:
+                        continue
+                    dx = loose_pts[m][0] - x
+                    dy = loose_pts[m][1] - y
+                    if dx * dx + dy * dy <= limit:
+                        return False, [(x, y),
+                                       (loose_pts[m][0],
+                                        loose_pts[m][1])], False
+    return None, [], True
+
+
+def _outline_state(edge_elems):
+    """(closed, open_endpoint_points, abstained, legacy_sign).
+
+    closed is True/False, or None when the check abstains (too
+    many elements, or the evidence is genuinely ambiguous).
+    legacy_sign is the sweep-direction choice under which legacy
+    (angle ...) arcs were evaluated — the copper-to-edge pass
+    reuses it to rebuild those arcs' centrelines (RT-18). When a
+    board has legacy arcs, every plausible reading is evaluated
+    (centre semantics under both sweep signs, and the endpoints
+    reading some converters write): a reading that closes the
+    outline wins; conflicting certain verdicts abstain rather
+    than guess (RT-04)."""
+    if not edge_elems:
+        return None, [], False, None
+    if len(edge_elems) > MAX_EDGE_ELEMS:
+        return None, [], True, None
+    has_legacy = any(elem.kind == "arc" and elem.angle is not None
+                     for elem in edge_elems)
+    if not has_legacy:
+        closed, points, abstained = _outline_eval(edge_elems, 1)
+        return closed, points, abstained, None
+    # Legacy (angle ...) arcs: evaluate every reading — centre
+    # semantics under both sweep signs, and the endpoints
+    # reading. A reading that closes the outline wins; the
+    # documented centre semantics is preferred on a tie (its
+    # centrelines can be rebuilt for the copper-to-edge pass,
+    # while an endpoints-reading arc stays chain-only — its
+    # bulge side is unknowable from the file). Conflicting
+    # certain verdicts across readings abstain rather than guess.
+    plus = _outline_eval(edge_elems, 1)
+    minus = _outline_eval(edge_elems, -1)
+    ends = _outline_eval(edge_elems, "ends")
+    if plus[0] is True and minus[0] is not True:
+        return plus[0], plus[1], plus[2], 1
+    if minus[0] is True and plus[0] is not True:
+        return minus[0], minus[1], minus[2], -1
+    if plus[0] is True and minus[0] is True:
+        return True, [], False, 1
+    if ends[0] is True:
+        return True, [], False, None
+    verdicts = {plus[0], minus[0], ends[0]}
+    if verdicts == {False}:
+        return False, plus[1], plus[2], 1
+    if False in verdicts:
+        return None, [], True, None
+    return plus[0], plus[1], plus[2], 1
+
+
+def _fmt(value):
+    return f"{value:.3f}".rstrip("0").rstrip(".") + " mm"
+
+
+def _net_label(obj):
+    if obj.net_key is None:
+        return "no net stated"
+    name = _short(obj.net_name, 24) if obj.net_name else "unnamed net"
+    return f"net {name}"
+
+
+def run_geometry_checks(project):
+    """Run the geometry-lite layer. Returns (findings, stats dict).
+
+    Runs only when a PCB was loaded and parsed; all abstentions are
+    expressed in the returned stats for the report's Coverage."""
+    findings = []
+    stats = {}
+    if project.pcb_path is None or project.pcb_failed:
+        return findings, stats
+    geo = project.geometry
+    rules = project.board_rules or {}
+    pcb_name = project.pcb_path.name
+    # Outline closure runs FIRST: it does not depend on the copper
+    # objects, so the object budget must not suppress a broken
+    # outline's BLOCK (v0.4 review RT-13). The sign it settles on
+    # for legacy arcs feeds the centreline rebuild in
+    # _build_objects.
+    closed, open_points, abstained, legacy_sign = \
+        _outline_state(geo.edge_elems)
+    objects, outline, total_objects, total_pieces = _build_objects(
+        project, legacy_sign if closed is not None else None)
+    gstats = _Stats(objects=total_objects,
+                    outline_elements=len(geo.edge_elems))
+
+    skipped_note = (
+        f"{geo.pads_unplaced + geo.items_unplaced} geometric "
+        "object(s) had unreadable coordinates and were excluded "
+        "from the geometry-lite distance checks")
+    stats.update({
+        "objects": total_objects,
+        "pads_modelled": len(geo.pads),
+        "pads_shape_skipped": geo.pads_shape_skipped,
+        "pads_non_copper": geo.pads_non_copper,
+        "objects_unplaced": geo.pads_unplaced + geo.items_unplaced,
+        "zones_excluded": geo.zones_total,
+        "outline_elements": len(geo.edge_elems),
+        "outline_closed": closed,
+        "outline_abstained": abstained,
+    })
+    gstats.outline_closed = closed
+    if closed is False:
+        where_pts = "; ".join(
+            f"({x:.2f}, {y:.2f})" for x, y in open_points[:4])
+        findings.append(Finding(
+            "BOARD_OUTLINE_OPEN", BLOCK,
+            "The board outline on Edge.Cuts does not close: "
+            f"{len(open_points)} outline endpoint(s) have no "
+            f"matching continuation ({where_pts}). An open outline "
+            "cannot be cut as drawn — both JLCPCB and PCBWay hold "
+            "orders over outline problems. Join the outline into a "
+            "closed loop (open chains alongside a closed loop are "
+            "treated as routed slots and never trigger this).",
+            where=pcb_name,
+            evidence=f"open_endpoints={len(open_points)}"))
+    if total_objects > MAX_OBJECTS:
+        findings.append(Finding(
+            "GEOMETRY_SKIPPED", CAUTION,
+            f"The board carries {total_objects} copper objects, over "
+            f"the geometry-lite budget of {MAX_OBJECTS}, so the "
+            "clearance and copper-to-edge checks did not run "
+            "(outline closure above is judged separately — it does "
+            "not depend on the copper objects). KiCad's own DRC "
+            "covers this board fully; the other Preflight checks "
+            "are unaffected.",
+            where=pcb_name,
+            evidence=f"objects={total_objects} budget={MAX_OBJECTS}"))
+        stats["budget_exceeded"] = True
+        return findings, stats
+
+    # --- copper clearance --------------------------------------------------
+    violations = _clearance_pass(objects, rules, gstats)
+    stats["pairs_checked"] = gstats.pairs_checked
+    stats["pairs_unknown_net"] = gstats.pairs_unknown_net
+    if gstats.clearance_threshold is not None:
+        stats.setdefault("clearance_threshold", gstats.clearance_threshold)
+        stats.setdefault("clearance_source", gstats.clearance_source)
+    if gstats.budget_exceeded:
+        findings.append(Finding(
+            "GEOMETRY_SKIPPED", CAUTION,
+            "The geometry-lite clearance check exceeded its "
+            "computation budget (candidate-pair enumeration or "
+            f"{MAX_PAIR_CHECKS} pair measurements) and was "
+            "abandoned rather than reported partially. KiCad's "
+            "own DRC covers this board fully.",
+            where=pcb_name))
+        stats["budget_exceeded"] = True
+    elif violations:
+        violations.sort(key=lambda v: (v[0] - v[4], v[0],
+                                       v[1].desc, v[2].desc))
+        worst = violations[0]
+        lower, a, b, layer, thr, source = worst
+        findings.append(Finding(
+            "GEOMETRY_CLEARANCE_BELOW_MIN", CAUTION,
+            f"{len(violations)} different-net copper pair(s) on "
+            f"the same layer sit closer than the applicable "
+            f"clearance — worst: {a.desc} ({_net_label(a)}) to "
+            f"{b.desc} ({_net_label(b)}) on {_short(layer, 16)} at "
+            f"{_fmt(max(lower, 0.0))} apart, below the "
+            f"{_fmt(thr)} minimum from the {source}. Geometry-lite "
+            "subset: pads, tracks, arcs and vias only — zones, "
+            "custom/trapezoid pads and footprint graphics are not "
+            "measured, and this is not a replacement for KiCad DRC.",
+            where=pcb_name,
+            evidence=f"pairs_below_min={len(violations)} "
+                     f"worst={max(lower, 0.0):.3f} "
+                     f"threshold={thr:.3f} source={source}"))
+        stats["clearance_violations"] = len(violations)
+        stats["clearance_threshold"] = thr
+        stats["clearance_source"] = source
+
+    # --- copper-to-edge ----------------------------------------------------
+    if total_pieces > MAX_OUTLINE_PIECES:
+        stats["edge_abstained"] = True
+        outline = []
+    if outline:
+        thr, source = _edge_threshold(rules)
+        stats["edge_threshold"] = thr
+        stats["edge_source"] = source
+        # Grid-index the outline pieces so a dense outline stays
+        # fast. Pieces spanning a huge number of cells are not
+        # inserted cell-wise (RT-01's shape, on the outline side):
+        # they join a wide list tested against every object.
+        cell = 2.0
+        grid = {}
+        wide_pieces = []
+        for pidx, (x1, y1, x2, y2, unc) in enumerate(outline):
+            nx = int(max(x1, x2) // cell) \
+                - int(min(x1, x2) // cell) + 1
+            ny = int(max(y1, y2) // cell) \
+                - int(min(y1, y2) // cell) + 1
+            if nx * ny > MAX_OBJ_CELLS:
+                wide_pieces.append(pidx)
+                continue
+            for gx in range(int(min(x1, x2) // cell),
+                            int(max(x1, x2) // cell) + 1):
+                for gy in range(int(min(y1, y2) // cell),
+                                int(max(y1, y2) // cell) + 1):
+                    grid.setdefault((gx, gy), []).append(pidx)
+        if len(wide_pieces) > 512:
+            stats["edge_abstained"] = True
+            outline = []
+    if outline:
+        worst = None
+        count = 0
+        for obj in objects:
+            x0, y0, x1, y1 = obj.bbox
+            nx = int((x1 + thr) // cell) - int((x0 - thr) // cell) + 1
+            ny = int((y1 + thr) // cell) - int((y0 - thr) // cell) + 1
+            if nx * ny > 4096:
+                # A board-spanning object: test every piece
+                # directly instead of walking millions of cells.
+                candidates = range(len(outline))
+            else:
+                found = set(wide_pieces)
+                for gx in range(int((x0 - thr) // cell),
+                                int((x1 + thr) // cell) + 1):
+                    for gy in range(int((y0 - thr) // cell),
+                                    int((y1 + thr) // cell) + 1):
+                        found.update(grid.get((gx, gy), ()))
+                candidates = found
+            best = None
+            for pidx in sorted(candidates):
+                px1, py1, px2, py2, unc = outline[pidx]
+                raw = _d_core(obj.core,
+                              ("seg", px1, py1, px2, py2)) - obj.radius
+                # Certain-violation bound: the true distance is at
+                # most raw + BOTH uncertainties (the old code added
+                # back only the outline's — arc copper could be
+                # flagged up to 2x sagitta early; red-team note).
+                upper = raw + obj.unc + unc
+                if best is None or upper < best[0]:
+                    best = (upper, raw - obj.unc - unc)
+            if best is not None and best[0] < thr - MEASURE_TOLERANCE:
+                count += 1
+                if worst is None or best[1] < worst[0]:
+                    worst = (best[1], obj)
+        if worst is not None:
+            findings.append(Finding(
+                "GEOMETRY_COPPER_TO_EDGE", CAUTION,
+                f"{count} copper object(s) sit closer than "
+                f"{_fmt(thr)} to the board outline — worst: "
+                f"{worst[1].desc} ({_net_label(worst[1])}) at "
+                f"{_fmt(max(worst[0], 0.0))} from the edge, below "
+                f"the minimum from the {source}. Copper too close "
+                "to a routed edge risks exposed copper and "
+                "delamination; fabs hold orders over it.",
+                where=pcb_name,
+                evidence=f"objects_below_min={count} "
+                         f"worst={max(worst[0], 0.0):.3f} "
+                         f"threshold={thr:.3f} source={source}"))
+            stats["edge_violations"] = count
+    stats["skipped_note"] = skipped_note \
+        if (geo.pads_unplaced + geo.items_unplaced) else ""
+    return findings, stats

@@ -44,6 +44,23 @@ def _grouped(findings):
 
 def _coverage_lines(cov):
     lines = []
+    gerber = cov.get("gerber")
+    if gerber:
+        layers = ", ".join(gerber.get("layers", [])) or "none"
+        schemes = ", ".join(gerber.get("schemes", [])) or "unknown"
+        lines.append(
+            f"Fabrication package: {gerber.get('files_classified', 0)} "
+            f"file(s) classified into layer roles ({layers}); "
+            f"naming scheme(s): {schemes}")
+        lines.append(
+            "Package checks are file-level only (presence, size, "
+            "naming consistency) — Gerber and drill file contents "
+            "are never parsed, and no board design was checked")
+        if gerber.get("unrecognised"):
+            lines.append(
+                f"Unrecognised fab-extension file(s): "
+                f"{', '.join(gerber['unrecognised'])} (see findings)")
+        return lines
     sch = cov.get("schematic")
     if sch:
         extra = ""
@@ -111,6 +128,41 @@ def _coverage_lines(cov):
             f"{geo['edge_cuts_items']} outline item(s) on Edge.Cuts"
             + (f"; {unreadable} dimension value(s) unreadable "
                "(see findings)" if unreadable else ""))
+    lite = cov.get("geometry_lite")
+    if lite:
+        bits = [
+            f"Geometry-lite (subset — not KiCad DRC): "
+            f"{lite.get('objects', 0)} copper object(s) measured "
+            "with exact shapes (pads, tracks, arcs, vias)"]
+        if lite.get("clearance_threshold") is not None:
+            bits.append(
+                f"clearance minimum "
+                f"{lite['clearance_threshold']:g} mm "
+                f"({lite.get('clearance_source', '')})")
+        if lite.get("edge_threshold") is not None:
+            bits.append(
+                f"copper-to-edge minimum "
+                f"{lite['edge_threshold']:g} mm "
+                f"({lite.get('edge_source', '')})")
+        if lite.get("outline_closed") is True:
+            bits.append("outline closed")
+        elif lite.get("outline_closed") is False:
+            bits.append("outline NOT closed (see findings)")
+        lines.append("; ".join(bits))
+        skipped = []
+        if lite.get("pads_shape_skipped"):
+            skipped.append(
+                f"{lite['pads_shape_skipped']} custom/trapezoid "
+                "pad(s)")
+        if lite.get("zones_excluded"):
+            skipped.append(
+                f"{lite['zones_excluded']} zone(s) (clearance is "
+                "set by KiCad's filler, not netclass rules)")
+        if skipped:
+            lines.append(
+                "Geometry-lite exclusions: " + " and ".join(skipped)
+                + " not distance-checked; copper objects with no "
+                  "stated net are never paired")
     placement = cov.get("placement")
     if placement and placement.get("file"):
         files = placement.get("files") or []

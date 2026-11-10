@@ -3,7 +3,12 @@
 Usage:
     python3 -m preflight <project-folder-or-file> [--format text|md|json]
                          [--bom PATH] [--dataset PATH] [--output PATH]
+                         [--gerber]
     python3 -m preflight <bom.csv>   — standalone BOM mode (any EDA tool)
+    python3 -m preflight <fab-output-folder> [--gerber]
+        — fabrication package mode: file-level checks on exported
+          Gerbers + drill files. Auto-detected when a folder holds
+          Gerber/drill files and no KiCad project; --gerber forces it.
 
 Exit codes: 0 = PASS, 1 = CAUTION, 2 = BLOCK, 3 = usage error.
 The CLI never prints a Python traceback: bad targets, bad datasets,
@@ -17,6 +22,7 @@ from pathlib import Path
 
 from . import engine
 from .finding import EXIT_CODES, EXIT_USAGE_ERROR
+from .gerber import is_gerber_package
 from .partrisk import DatasetError
 from .report import RENDERERS
 from .sexpr import SexprError
@@ -56,6 +62,10 @@ def build_parser():
     parser.add_argument("--output", default=None,
                         help="write the report to this file instead of "
                              "stdout")
+    parser.add_argument("--gerber", action="store_true",
+                        help="treat the target folder as a fabrication "
+                             "output package (Gerbers + drill files) and "
+                             "run file-level package checks only")
     return parser
 
 
@@ -75,7 +85,13 @@ def main(argv=None):
         return _fail(f"dataset file not found: {args.dataset}")
 
     standalone_bom = None
-    if target.is_file():
+    gerber_mode = False
+    if args.gerber:
+        if not target.is_dir():
+            return _fail("--gerber needs a folder of fabrication "
+                         "output files")
+        gerber_mode = True
+    elif target.is_file():
         suffix = target.suffix.lower()
         if suffix == ".csv":
             standalone_bom = target
@@ -84,11 +100,20 @@ def main(argv=None):
                 f"file target must be a .kicad_pro, .kicad_sch, "
                 f".kicad_pcb or .csv file, not {target.name!r}")
     else:
-        has_project = any(next(target.glob(pat), None) is not None
-                          for pat in ("*.kicad_sch", "*.kicad_pcb",
-                                      "*.kicad_pro"))
-        if not has_project:
-            csvs = sorted(target.glob("*.csv")) + sorted(target.glob("*.CSV"))
+        # Routing for a folder target. A project means a board or
+        # a schematic; a lone .kicad_pro still gets the project
+        # path (it reports NO_PROJECT_FILES) — but it must not
+        # hijack a fabrication-output folder out of Gerber
+        # auto-detection, so the package test runs first whenever
+        # no board/schematic exists (audit F8).
+        has_board = any(next(target.glob(pat), None) is not None
+                        for pat in ("*.kicad_sch", "*.kicad_pcb"))
+        has_pro = next(target.glob("*.kicad_pro"), None) is not None
+        if not has_board and is_gerber_package(target):
+            gerber_mode = True
+        elif not has_board and not has_pro:
+            csvs = sorted(target.glob("*.csv")) \
+                + sorted(target.glob("*.CSV"))
             if len(csvs) == 1:
                 standalone_bom = csvs[0]
             else:
@@ -97,7 +122,11 @@ def main(argv=None):
                     f".kicad_pro) found in {target}")
 
     try:
-        if standalone_bom is not None:
+        if gerber_mode:
+            report = engine.run_gerber_package(target)
+            input_paths = {p.resolve() for p in target.iterdir()
+                           if p.is_file()}
+        elif standalone_bom is not None:
             report = engine.run_bom_only(standalone_bom,
                                          dataset_path=args.dataset)
             input_paths = {standalone_bom.resolve()}

@@ -6,9 +6,12 @@ Layers, in order:
   3. KiCad file-format version handling (checks.run_version_checks)
   4. Fabrication readiness: outline, zone fills, fab capability
      minimums, position-file agreement (fabchecks.py)
-  5. BOM <-> schematic checks (bomchecks.py via checks.run_bom_layer)
-  6. Offline part-risk checks against the sample dataset (partrisk.py)
-  7. Official kicad-cli DRC/ERC, when installed (kicadcli.py)
+  5. Geometry-lite distance checks: different-net copper
+     clearance, copper-to-edge, outline closure from exact parsed
+     shapes (geometry.py) — a conservative subset, not KiCad DRC
+  6. BOM <-> schematic checks (bomchecks.py via checks.run_bom_layer)
+  7. Offline part-risk checks against the sample dataset (partrisk.py)
+  8. Official kicad-cli DRC/ERC, when installed (kicadcli.py)
 
 The report's Coverage section states exactly what each layer did, and
 the verdict accounts for it: anything that exists but could not be
@@ -19,14 +22,19 @@ Also here: run_bom_only(), the standalone BOM mode. It runs the
 tool-agnostic BOM layer (and part risk) on a lone CSV — the same code
 path a future fab-site browser extension would use at checkout, where
 no design-tool project exists at all.
+
+And run_gerber_package(), the fabrication-output mode: file-level
+checks on a folder of Gerbers + drill files (gerber.py), for the
+moment after export and before upload, when no project runs.
 """
 
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from . import bomchecks, checks, fabchecks, kicadcli, partrisk
+from . import bomchecks, checks, fabchecks, geometry, kicadcli, partrisk
 from .bom import parse_bom
 from .finding import BLOCK, CAUTION, NOTE, Finding, verdict_for
+from .gerber import run_gerber_checks
 from .project import load_project, read_project_file
 from .sexpr import SexprError
 
@@ -84,6 +92,8 @@ def run(target, bom_override=None, dataset_path=None):
     findings.extend(checks.run_cross_checks(project))
     findings.extend(checks.run_version_checks(project))
     findings.extend(fabchecks.run_fab_checks(project))
+    geo_findings, geo_stats = geometry.run_geometry_checks(project)
+    findings.extend(geo_findings)
     bom_findings, bom_stats = checks.run_bom_layer(project)
     findings.extend(bom_findings)
     findings.extend(fabchecks.run_cpl_checks(project))
@@ -121,6 +131,20 @@ def run(target, bom_override=None, dataset_path=None):
         incomplete.append(
             f"{risk_stats['dataset_entries_invalid']} dataset "
             "entr(ies) were unusable (see PART_DATASET_ENTRY_INVALID)")
+    if geo_stats.get("objects_unplaced"):
+        incomplete.append(
+            f"{geo_stats['objects_unplaced']} geometric object(s) in "
+            "the PCB had unreadable coordinates and were excluded "
+            "from the geometry-lite distance checks")
+    if geo_stats.get("outline_abstained"):
+        incomplete.append(
+            "the Edge.Cuts outline could not be closure-checked "
+            "(too many elements, or an endpoint too close to the "
+            "matching tolerance to judge)")
+    if geo_stats.get("edge_abstained"):
+        incomplete.append(
+            "the copper-to-edge check did not run (the subdivided "
+            "board outline exceeded the geometry budget)")
     if incomplete:
         findings.append(Finding(
             "SCAN_INCOMPLETE", CAUTION,
@@ -174,6 +198,7 @@ def run(target, bom_override=None, dataset_path=None):
              "edge_cuts_items": project.geometry.edge_items,
              "dimensions_unreadable": project.geometry.unparsed_dims}
             if project.pcb_path else None),
+        "geometry_lite": geo_stats if project.pcb_path else None,
         "placement": (
             {"file": project.cpl_path.name,
              "files": [Path(p).name for p in project.cpl_files],
@@ -254,6 +279,44 @@ def run_bom_only(bom_path, dataset_path=None):
     }
     return Report(project_name=f"BOM: {bom_path.name}",
                   folder=str(bom_path.parent),
+                  verdict=verdict_for(findings),
+                  findings=findings,
+                  coverage=coverage)
+
+
+def run_gerber_package(folder):
+    """Fabrication-output mode: file-level checks on a folder of
+    exported Gerbers + drill files (gerber.py). No project is loaded;
+    Coverage states plainly that only file presence/consistency was
+    checked, never Gerber contents."""
+    folder = Path(folder)
+    findings, gerber_coverage = run_gerber_checks(folder)
+    names = []
+    try:
+        names = sorted(p.name for p in folder.iterdir()
+                       if p.is_file() and not p.name.startswith("."))
+    except OSError:
+        names = []
+    findings = _cap(findings)
+    coverage = {
+        "mode": "fabrication output package (file-level checks only)",
+        "schematic": None,
+        "pcb": None,
+        "bom": None,
+        "bom_stats": {},
+        "parse_errors": [],
+        "legacy_schematics": [],
+        "part_risk": {"dataset": "not applicable — package mode",
+                      "snapshot_date": "n/a", "live_data": False},
+        "kicad_cli": {"available": False,
+                      "erc": "not applicable — package mode",
+                      "drc": "not applicable — package mode",
+                      "failed": False},
+        "gerber": gerber_coverage,
+        "files": names[:200],
+    }
+    return Report(project_name=f"Gerber package: {folder.name}",
+                  folder=str(folder),
                   verdict=verdict_for(findings),
                   findings=findings,
                   coverage=coverage)
