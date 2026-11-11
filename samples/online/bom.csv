@@ -1,0 +1,8 @@
+Reference,Quantity,Value,Footprint,MPN,Manufacturer,Description
+"R1,R2",2,10k,Resistor_SMD:R_0603_1608Metric,TEST-R-10K-0603,TestMfr,Chip resistor (catalogue will say 1k - planted semantic mismatch)
+R3,1,100R,Resistor_SMD:R_0603_1608Metric,TEST-R-PKG,TestMfr,Chip resistor (catalogue package will say 0805 - planted package mismatch)
+R4,5,330R,Resistor_SMD:R_0805_2012Metric,TEST-R-ZEROSTOCK,TestMfr,Chip resistor zero stock with price breaks
+C1,1,100n,Capacitor_SMD:C_0603_1608Metric,TEST-C-OBSOLETE,TestMfr,Ceramic capacitor obsolete
+R6,3,4R7,Resistor_SMD:R_0603_1608Metric,TEST-R-LOWLEAD,TestMfr,Chip resistor NRND low stock long lead
+C2,1,10uF,Capacitor_SMD:C_0805_2012Metric,TEST-C-UNSTATED,TestMfr,Ceramic capacitor with no catalogue parameters stated
+U1,1,IC,Package_SO:SOIC-8_3.9x4.9mm,TEST-NOT-FOUND-XYZ,TestMfr,Part the recorded catalogue does not contain
