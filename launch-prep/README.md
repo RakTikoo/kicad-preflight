@@ -24,6 +24,6 @@ drafts intact.
 
 What continues normally: building, testing, reviews, documentation,
 and the repo existing publicly as-is — growth is organic only
-(GitHub/Google search, word of mouth). The GitHub push itself still
-waits for Rakshit's one-tap approval after he reads the adversarial
-review.
+(GitHub/Google search, word of mouth). The GitHub push was approved
+and completed (latest wave v0.6.0, 2026-11-10); only the launch
+activity described in this folder remains paused.
