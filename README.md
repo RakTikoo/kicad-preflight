@@ -313,8 +313,14 @@ in the project's review record.
   `SCAN_INCOMPLETE`, not merged.
 - **Legacy formats** — KiCad ≤5 `.sch` files are reported as
   unsupported, not silently misread.
-- **Plugin untested in KiCad** — the `pcm/` skeleton has not run
-  inside a real KiCad; its test plan is in `pcm/README.md`.
+- **Plugin: runs inside KiCad; PCM discovery check pending** — the
+  `pcm/` package has run inside a real KiCad 8.0.9 PCB Editor: the
+  report dialog produced live findings on a real board and plugin
+  registration executes in-app (probe run on a VM under a virtual
+  display, 2026-11-10). What has not been verified yet is automatic
+  discovery by a stock desktop install — installing the PCM zip via
+  KiCad's Plugin and Content Manager and confirming the menu entry
+  appears. Status detail in `pcm/README.md`.
 
 ## Licence
 
