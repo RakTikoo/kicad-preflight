@@ -173,8 +173,24 @@ labels, and pin-level parity between the schematic netlist and
 the PCB's pads — membership differences, nets present on one side
 only, and renames. What cannot be resolved (missing library
 definitions, unmodelled pad shapes, bus-only pins) abstains and is
-counted in Coverage, never guessed. 83 rules in total; the full
-list is `docs/RULES.md`.
+counted in Coverage, never guessed.
+
+**v0.6 — KiCad bridge, project settings, zones, online parts**:
+when kicad-cli is installed, its DRC run now also surfaces
+unconnected items and KiCad's own schematic-parity conflicts, and
+the project's `.kicad_pro` ERC/DRC severities and exclusions are
+read and honoured by BOTH the official-checks layer and the
+matching native checks (waivers counted in Coverage). Geometry-lite
+measures stored filled zone polygons (with a chord-certainty
+tolerance proven against KiCad DRC itself). Parity membership now
+covers trapezoid and modelled custom pads, and ERC-lite covers the
+full set of ERROR cells in KiCad's documented pin-conflict matrix.
+An opt-in `--online` mode (API keys from environment variables
+only) checks live lifecycle/stock/lead time and price at DigiKey
+or Mouser, superseding the sample dataset per part, plus a
+semantic value↔part-number check for passives; without the flag
+the tool makes zero network calls and output is unchanged. 88
+rules in total; the full list is `docs/RULES.md`.
 
 **Part risk (offline)**: obsolete/EOL, out-of-stock, low stock, long
 lead time, single-source, not-recommended-for-new-designs — per BOM
@@ -268,17 +284,25 @@ worst-case runtime audit that refuted the first build's budget
 claims on crafted inputs. Every confirmed finding was fixed or
 documented as an accepted limit; the reviewers' inputs are now
 regression tests in the edge suite (§17).
+v0.5 (netlist / ERC-lite / parity) and v0.6 (KiCad bridge, project
+settings, zones, online parts) went through the same discipline —
+for v0.6 including a dedicated key-handling/network security pass
+over the online mode — with every wave's before/after numbers kept
+in the project's review record.
 
 ## Known limits
 
-- **No live distributor data** — part risk is only as real as the
-  dataset supplied (see above).
+- **Live distributor data is opt-in** — by default part risk is
+  only as real as the dataset supplied (see above); `--online`
+  checks live data at DigiKey/Mouser with API keys taken from
+  environment variables only.
 - **kicad-cli is optional** — without it there is no official DRC/ERC;
   Coverage always says which mode you got.
-- **Geometry is a subset, honestly labelled** — v0.4 measures
-  clearances and copper-to-edge for pads/tracks/arcs/vias with
-  exact shapes, and proves outline closure; it does not check
-  zones, custom/trapezoid pads, mask/silk/courtyard geometry,
+- **Geometry is a subset, honestly labelled** — geometry-lite
+  measures clearances and copper-to-edge for pads/tracks/arcs/vias
+  with exact shapes, filled zone polygons (with a chord-certainty
+  tolerance), and proves outline closure; it does not check
+  custom/trapezoid pad shapes, mask/silk/courtyard geometry,
   holes, or connectivity. Full spatial DRC remains kicad-cli's
   job (above), and `docs/COVERAGE.md` maps exactly which failure
   classes the subset leaves open. Gerber package checks are

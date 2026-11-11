@@ -48,12 +48,28 @@ CLEAN = {
                         # +5V, VBUS, GND, the unnamed USB-C VBUS and
                         # shield segments) have no power_out pin in
                         # the file data -- KiCad's power-pin test
-                        # accepts only power_out as a driver; plus
-                        # one SCAN_INCOMPLETE because parity abstains
-                        # per-ref on U3/U4, whose footprints contain
-                        # custom-shaped pads.
-                        "ERC_POWER_NOT_DRIVEN": 6,
-                        "SCAN_INCOMPLETE": 1}),
+                        # accepts only power_out as a driver.
+                        "ERC_POWER_NOT_DRIVEN": 6}),
+    # v0.6 notes for esp (no further pin entries):
+    # * Parity: U3/U4 are no longer unmeasurable -- custom pads
+    #   whose primitive set is modelled now carry membership
+    #   (WS3 section 1a), the widened parity run (23 nets) finds
+    #   zero differences, and the v0.5 SCAN_INCOMPLETE for this
+    #   board is gone.
+    # * Zones: six zone pairs on esp measure 0.1219 mm
+    #   chord-to-chord against the 0.127 mm Default clearance
+    #   (the +BATT/GND pair among them, brute-force verified).
+    #   KiCad's true-geometry DRC flags exactly two of the six
+    #   (GND/+3V3 on F.Cu and B.Cu, 0.1231/0.1251 mm actual); the
+    #   other four are at or above threshold in true geometry --
+    #   stored chord distance undershoots by up to ~0.005 mm and
+    #   cannot tell the pairs apart. Zone pairs are therefore
+    #   judged with a documented 0.006 mm certainty tolerance
+    #   (flag only certain violations, the geometry layer's
+    #   standing doctrine), so these two true violations are a
+    #   DOCUMENTED MISS, named here and in COVERAGE.md class 27
+    #   -- not a silent pass. Evidence: REVIEW.md section 12 and
+    #   v06-ws3/INTEGRATION.md section 1b.
     "projects/piantor/pcb/left":
         ("BLOCK", 2, {"DUPLICATE_REFERENCE_PCB": 2,
                       "FOOTPRINT_MISMATCH": 4,

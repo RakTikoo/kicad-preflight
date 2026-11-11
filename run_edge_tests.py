@@ -272,8 +272,35 @@ def main():
         d = mutate_pcb(copy_good(tmp / "zonefilled"),
                        add=zone.replace("{FILL}", filled))
         rep, rules = rules_of(d)
-        check("fab-zone-filled-ok", "ZONE_UNFILLED" not in rules
+        # v0.6: the zone rect above spans the whole board and its
+        # stored fill CONTAINS J1 pad 1 (net VBAT) -- a stale-fill
+        # clearance error, not a clean board. kicad-cli DRC on this
+        # exact file agrees: "zone clearance 0.5000 mm; actual
+        # 0.0000 mm". The filled-ok pin therefore uses a zone over
+        # verified-empty B.Cu copper (the only B.Cu objects on the
+        # good board are the two J1 pads at x<=23.4, y 29.1-30.9),
+        # and the original placement is pinned separately below.
+        check("fab-zone-filled-ok", "ZONE_UNFILLED" not in rules,
+              f"rules={rules}")
+        zone_ok = zone.replace("(xy 15 20) (xy 70 20) (xy 70 50) "
+                               "(xy 15 50)",
+                               "(xy 30 20) (xy 70 20) (xy 70 50) "
+                               "(xy 30 50)")
+        filled_ok = (' (filled_polygon (layer "B.Cu") (pts '
+                     '(xy 30 20) (xy 70 20) (xy 70 50) (xy 30 50)))')
+        d = mutate_pcb(copy_good(tmp / "zonefilledok"),
+                       add=zone_ok.replace("{FILL}", filled_ok))
+        rep, rules = rules_of(d)
+        check("fab-zone-filled-clean", "ZONE_UNFILLED" not in rules
               and rep["verdict"] == "PASS", f"rules={rules}")
+        # A stored fill polygon containing different-net copper is
+        # a clearance violation (stale fill), per KiCad's own DRC.
+        d = mutate_pcb(copy_good(tmp / "zonestale"),
+                       add=zone.replace("{FILL}", filled))
+        rep, rules = rules_of(d)
+        check("fab-zone-stale-fill",
+              "GEOMETRY_CLEARANCE_BELOW_MIN" in rules
+              and "ZONE_UNFILLED" not in rules, f"rules={rules}")
 
         # 14e. Drill tiers: 0.18 fires (PCBWay tier), 0.10 fires too,
         #      and the healthy 1.0 control stays silent (14b-14d runs).
