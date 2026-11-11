@@ -93,6 +93,33 @@ copper and no outline: GERBER_INNER_WITHOUT_BOTTOM +
 GERBER_OUTLINE_MISSING (BLOCKs) plus drill/mask/silkscreen
 cautions.
 
+## `netlist-clean/` — v0.5 netlist: PASS, zero findings
+
+A small matched schematic/PCB pair: connector → regulator → load,
+GND power symbols plus a PWR_FLAG, local labels, and PCB pads whose
+net membership matches the schematic exactly. Exercises ERC-lite
+and parity silence on a healthy design.
+
+## `netlist-hier/` — v0.5 netlist: PASS, zero findings
+
+A root sheet with one sub-sheet: a sheet pin bound to a
+hierarchical label inside, a global label crossing both sheets, a
+power symbol in the sub-sheet, and PCB nets named the way KiCad
+writes them (`/Sub/FEED`, `GND`, `SENSE_G`). Proves the hierarchy
+plumbing end to end.
+
+## `netlist-broken/` — v0.5 netlist: BLOCK, each fault exactly once
+
+Planted faults: two drivers shorted on VOUT
+(ERC_OUTPUT_CONFLICT), a power net with no power-output driver
+(ERC_POWER_NOT_DRIVEN), one unconnected pin (ERC_UNCONNECTED_PIN;
+a second pin carries a no-connect marker and stays silent), one
+pad moved to a different net on the PCB
+(PARITY_NET_MEMBERSHIP on both affected nets), one schematic-only
+net (PARITY_NET_SCH_ONLY), and one renamed net with identical
+membership (PARITY_NET_RENAMED, NOTE). One unrelated
+PART_NOT_IN_SAMPLE_DATA NOTE comes from the sample parts dataset.
+
 ## `real/` — optional, not asserted
 
 If real open-source KiCad projects were fetched during development, they
