@@ -18,7 +18,28 @@ and Content Manager, following the official KiCad addons guide
   (`repository.json` / `packages.json`) under `dist/`.
   It uploads and submits nothing.
 
-## Test plan (needs a real KiCad — none on the build machine)
+## Status (2026-11-10 probe) and remaining test plan
+
+Proven inside a real KiCad 8.0.9 PCB Editor (VM, virtual display): the
+built PCM zip was installed PCM-style into a KiCad profile, a driver
+plugin running inside the editor invoked this plugin's `Run()` with no
+patching, and the report dialog appeared over a real open board with
+the expected findings; `register()` executes cleanly in-app. So test
+plan steps 1–2 below are done in substance (step 2 was driven
+programmatically rather than by mouse — the dialog, engine and report
+are the real ones).
+
+Remaining — step 3, the desktop check: on a stock KiCad install, add
+the built zip via PCM → Manage, install, and confirm the entry appears
+under Tools → External Plugins and runs. In the probe environment,
+KiCad's startup scan did not auto-discover the identifier-named
+package folder (a plain-named sibling package in the same folder did
+load; the probe install was a hand extraction of KiCad, which
+misresolves some of its own resource paths the same way). Whether that
+is a scan-by-directory-name behaviour or an extraction artefact is
+exactly what the stock-install check settles.
+
+Original test plan, for reference:
 1. Copy `package/plugins/` (plus the built engine folder) into a KiCad
    plugin search path (`pcbnew.PLUGIN_DIRECTORIES_SEARCH`).
 2. Open the broken sample board in the PCB Editor; run
