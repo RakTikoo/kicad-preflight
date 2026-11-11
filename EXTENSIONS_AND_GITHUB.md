@@ -21,9 +21,10 @@ claim shipped unverified. That does not happen here — see §5.)
 > is gated. Dates from the old launch plan (Jan 4–15, 2027) are
 > non-events under the gate.
 
-**Status gate:** the GitHub repo is NOT created and nothing is pushed
-or submitted anywhere. Rakshit approves the push after reading the
-review (REVIEW.md in the review folder), same gate as SkillScan.
+**Status gate (updated 2026-11-11):** the GitHub repo is live and
+pushed (public, v0.6.0, CI green). What remains gated is submission
+and promotion only: no PCM official submission or listing, no launch
+activity, and no money of any kind, until Rakshit clears the gate.
 
 ---
 

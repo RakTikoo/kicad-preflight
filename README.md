@@ -80,9 +80,12 @@ $ python3 -m preflight production-bom.csv     # standalone BOM mode
 2. **A KiCad in-app plugin (in development)** — one click inside
    KiCad at the moment before Gerber export, wrapping this same
    engine, distributed through KiCad's **Plugin and Content Manager
-   (PCM)**. A skeleton package (identifier
-   `com.github.RakTikoo.kicad-preflight`) lives in `pcm/`; it has not
-   been run inside a real KiCad yet, and it says so.
+   (PCM)**. The package (identifier
+   `com.github.RakTikoo.kicad-preflight`) lives in `pcm/`; it has run
+   inside a real KiCad 8.0.9 PCB Editor (report dialog with live
+   findings, probe 2026-11-10) — automatic discovery by a stock PCM
+   install is the one check still pending, and the Limitations
+   section below says exactly that.
 
 ## Install / usage
 
