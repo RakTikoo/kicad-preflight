@@ -1,0 +1,4 @@
+Reference,Quantity,Value,Footprint,MPN
+J1,1,Conn 1x02,Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical,B2B-PH-K-S
+U1,1,Reg 3V3,Package_TO_SOT_SMD:SOT-23,LTST-C170KRKT
+R1,1,10k,Resistor_SMD:R_0805_2012Metric,RC0805FR-07330RL
