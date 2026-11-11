@@ -1,6 +1,6 @@
 # KiCad Preflight — Rule Reference
 
-Every deterministic rule in v0.3, its severity, and what triggers it.
+Every deterministic rule in v0.5, its severity, and what triggers it.
 Verdicts: any BLOCK → BLOCK (exit 2); else any CAUTION → CAUTION
 (exit 1); else PASS (exit 0). NOTE findings never change the verdict.
 Rules marked ◆ run in standalone BOM mode too (no schematic needed).
@@ -15,7 +15,7 @@ Rules marked ◆ run in standalone BOM mode too (no schematic needed).
 | MISSING_SCHEMATIC_FILE | BLOCK | PCB present, no .kicad_sch (a legacy .sch, if present, is named in the message). |
 | MISSING_SHEET_FILE | BLOCK | A hierarchical sub-sheet referenced by the root sheet is not on disk. |
 | PCB_NO_FOOTPRINTS_PARSED | BLOCK | PCB parsed to zero footprints while the schematic has parts — unplaced board or unreadable format; per-part blame is withheld. |
-| SCAN_INCOMPLETE | CAUTION | Extra KiCad files in the folder were not loaded (a second project), or dataset entries were unusable. |
+| SCAN_INCOMPLETE | CAUTION | Extra KiCad files in the folder were not loaded (a second project), dataset entries were unusable, or a layer abstained and says why in the message (netlist extraction/parity budget breach, a sheet file instantiated by multiple sheet blocks, parity-unmeasurable references). |
 | FINDINGS_TRUNCATED | CAUTION | More than 2,000 findings; the rest are counted, not listed. |
 | BOM_ONLY_MODE | NOTE | Standalone BOM run: cross-checks did not run, by design of the mode. |
 
@@ -134,7 +134,7 @@ endpoints and design-clearance landings on real boards.
 | --- | --- | --- |
 | GEOMETRY_CLEARANCE_BELOW_MIN | CAUTION | Copper objects on the same layer belonging to different nets sit closer than the applicable clearance (board rules first, else the 0.10 mm fab minimum). One aggregated finding naming the worst pair. |
 | GEOMETRY_COPPER_TO_EDGE | CAUTION | A copper object sits closer to the Edge.Cuts outline than the applicable minimum (board's stated edge clearance, else 0.20 mm). Edge-mounted connectors are the classic intentional case — the finding asks for a look, it does not claim an error. |
-| BOARD_OUTLINE_OPEN | BLOCK | Root-level Edge.Cuts lines/arcs/curves whose endpoints do not pair up within 0.01 mm, with no closed loop anywhere on the layer — the outline does not close and cannot be cut as drawn (this includes an outline shattered at every corner into near-miss fragments). Self-closed items (circles, rects, polys) always pass; open chains ALONGSIDE a closed loop never fire (they are routed slots, a legal construct), nor does a lone open element; an endpoint pattern too close to the tolerance to judge abstains instead of firing. Legacy `(angle ...)` arcs are chained under every reading real files use (centre-in-`(start)`, both sweep directions, and endpoints-in-`(start)`); conflicting readings abstain. |
+| BOARD_OUTLINE_OPEN | BLOCK | Root-level Edge.Cuts lines/arcs/curves whose endpoints do not pair up within 0.01 mm and whose chain is not a routed slot — the outline does not close and cannot be cut as drawn (this includes an outline shattered at every corner into near-miss fragments). An open chain counts as a routed slot only when every subdivided point of it lies strictly inside a closed loop's interior (a self-closed circle/rect/poly, or a chained loop); a point on or within 0.01 mm of a loop boundary is not inside, so a chain touching the outline fires as a notch. Self-closed items always pass as elements, but they never mask an unrelated open chain: deleting one side of an outer outline fires even when mounting-hole circles share the layer. With no closed loop anywhere, a lone open element still abstains rather than guessing, and an endpoint pattern too close to the tolerance to judge abstains instead of firing. Legacy `(angle ...)` arcs are chained under every reading real files use (centre-in-`(start)`, both sweep directions, and endpoints-in-`(start)`); conflicting readings abstain. |
 | GEOMETRY_SKIPPED | CAUTION | The geometry layer abstained: more than 40,000 copper objects, or the pair-measurement budget (2,000,000) was exceeded. The other layers are unaffected; KiCad DRC covers the board. |
 
 ## Gerber package (v0.4)
@@ -166,6 +166,82 @@ whose role cannot be determined is reported, never guessed.
 | GERBER_INNER_LAYER_GAP | CAUTION | Inner copper layers are not consecutive (e.g. .g1 and .g3 but no .g2). |
 | GERBER_MIXED_SCHEMES | NOTE | Layer files were classified via more than one naming scheme (drill/job files do not count) — usually two exports merged. |
 | GERBER_UNRECOGNISED_FILE | NOTE | A file has a Gerber/drill-style extension but its layer role could not be determined from its name (one per file). |
+
+## Netlist: ERC-lite + schematic<->PCB parity (v0.5)
+
+The schematic netlist is extracted natively: library pin
+definitions and placed-symbol transforms give every pin's
+connection point (verified empirically on real boards — 92.9–100%
+of computed pin points land on a wire, label, junction, no-connect
+marker or another pin), and union-find over wires, junctions,
+labels and sheet pins builds the nets. KiCad semantics throughout
+(Schematic Editor manual, ERC / labels / hierarchy sections;
+Schematic File Format spec, dev-docs.kicad.org): coincident points
+connect, a point on a wire segment connects, crossing wires
+connect only at a junction, labels connect by name within a sheet
+regardless of label type (local and hierarchical labels share one
+per-sheet namespace, and a global label's name also joins its own
+sheet's namespace; a global label additionally exports the name
+to every sheet), hierarchical labels additionally bind to the
+same-named sheet pin in the parent, and a hidden power_in pin on
+an ordinary symbol connects globally to the net named by the pin
+name — by name only: the pin is detached from whatever geometric
+component it happens to sit on. Coincidence is a distance test
+(EPS 0.0005 mm), not a rounded-bucket test. Whether a symbol is a
+power symbol follows the FILE: an embedded library definition's
+(power) flag decides; the `power:` lib_id prefix and `#` ref
+heuristics apply only when no definition is embedded. Power net
+names are exact (no whitespace stripping), like label names.
+When several power symbols land on one wire, ALL their names
+group that wire globally. Where KiCad's documentation and an
+earlier design assumption disagreed, the documentation won (see
+the power rules below). Abstentions: a schematic with no
+connectivity constructs at all stays silent; pins whose library
+definition is missing are counted as unresolved and excluded; a
+pin whose only connection is via a bus segment is bus-connected,
+counted and excluded; a sheet FILE instantiated by two or more
+sheet blocks abstains the whole layer (the loader resolves sheets
+per file, not per instance); extraction budgets (pins / wires /
+bus segments / labels / union-find work, including bus-touch
+point tests and parity pair examinations) turn a breach into
+SCAN_INCOMPLETE rather than a partial guess.
+
+| Rule | Severity | Trigger |
+| --- | --- | --- |
+| ERC_UNCONNECTED_PIN | CAUTION | A resolved pin joins no net and carries no no-connect marker at its point (aggregated per reference, pin numbers listed). Unit-common pins (drawn in every unit, `_0_1`) are ONE physical pin: connectivity is evaluated per (reference, pin number) across all unit instances, so a common pin wired or NC-marked on any instance counts as connected. KiCad ERC rates "pin not connected" an error; Preflight reports CAUTION — no-connect discipline in real libraries is inconsistent, and the pin may be intentionally open. No-connect-type pins never fire; pins of power symbols do (a floating power symbol is a real defect). Pins with no pin number in the library definition are unresolved (counted in Coverage), never reported here. |
+| ERC_POWER_NOT_DRIVEN | CAUTION | A net carries at least one power_in pin but no power_out pin. KiCad's documented power-pin test accepts ONLY a power_out pin as a driver — a regulator pin typed power_out, or a PWR_FLAG — never passive, output or bidirectional pins ("Input Power pin not driven by any Output Power pins", Schematic Editor manual, ERC section). KiCad rates it an error; CAUTION here, because real boards routinely feed rails through connectors/passives and KiCad users exclude this item per project — Preflight does not read ERC exclusions. One finding per net. |
+| ERC_OUTPUT_CONFLICT | BLOCK | A net ties together two output pins, an output and a power_out pin, or two power_out pins. All three pairings are errors in KiCad's documented pin-conflict matrix (Schematic Editor manual, ERC section) — including the two-PWR_FLAG case, since a PWR_FLAG's pin is power_out. When every conflicting driver is a power_out pin, the message names the overwhelmingly likely cause — duplicate PWR_FLAGs ("use one PWR_FLAG per net; remove the extra flag(s)") — instead of the outputs-shorted wording. BLOCK mirrors the severity of KICAD_ERC_VIOLATION for the same KiCad ERC error. One finding per net. |
+| ERC_DANGLING_LABEL | NOTE | A label (local, global or hierarchical) whose point touches no wire and no pin — it names nothing. KiCad ERC warns on these ("label not connected to anything"). One finding per label. |
+| PARITY_NET_MEMBERSHIP | BLOCK | A net matched between schematic and PCB (by name, or by sheet-qualified name for sub-sheet nets) whose in-scope pin/pad membership differs: pins present on one side only are listed (up to ~10 per side). Refs outside the shared part scope and unmeasurable refs (below) are suppressed, never blamed. |
+| PARITY_NET_SCH_ONLY | BLOCK | A named schematic net with in-scope members has no PCB counterpart — suppressed when every in-scope member ref is already missing from the PCB (the part-level rules own that blame) or when its membership exactly equals a PCB-only net's (a rename). Unnamed wire nets: if the net's membership is a subset of exactly ONE unmatched PCB net's membership, the two are paired and any membership asymmetry is reported as PARITY_NET_MEMBERSHIP naming the PCB net (no sch-only BLOCK); if the net spans several PCB nets, this rule stands. When two schematic nets share one display name (a sheet-local label net vs the global power net of the same name), name matching pairs by membership overlap first and findings carry the scoped schematic identity (name source and sheet files), so blame lands on the right twin. |
+| PARITY_NET_PCB_ONLY | BLOCK | Symmetric: a named PCB net with in-scope pads is absent from the schematic, with the same suppressions. |
+| PARITY_NET_RENAMED | NOTE | A schematic-only net and a PCB-only net with identical in-scope membership: the net was renamed between schematic and PCB. Membership is truth, so neither *_ONLY BLOCK fires. Unnamed schematic nets that match a PCB net's membership exactly are treated as matched silently. |
+
+Deliberately NOT shipped: ERC_INPUT_UNDRIVEN. KiCad warns/errors
+on input pins with no driver, but the pin-type matrix cannot
+judge nets driven through bidirectional or passive arrangements,
+and the measured counts on working corpus boards (12 / 7 / 4 / 4
+input-only nets on upsy-desky / esp-rust-board / piantor halves)
+show even a NOTE would flag every healthy board. The counts are
+reported in Coverage (`input_only_nets`) instead.
+
+Parity scope and abstentions: parts must be non-power, on-board,
+carry a footprint, and exist on both sides (reference presence is
+owned by SCH_PART_NOT_ON_PCB / PCB_PART_NOT_IN_SCHEMATIC, never
+re-blamed here). Membership counts only MODELLED pads — a
+footprint containing custom/trapezoid, unplaced or non-positive
+pads makes that reference unmeasurable: parity abstains for it
+and the engine reports SCAN_INCOMPLETE with the ref list.
+Non-plated (np_thru_hole) pads are not copper geometry, but they
+DO carry membership (pad name + net) and are counted here.
+KiCad's per-pad `unconnected-(REF-PadN)` pseudo-nets are not
+nets and are excluded (counted). Single-pin schematic nets are
+excluded from parity membership, and symbols whose library
+definition has no pins at all (e.g. mounting holes) are not
+parity refs. Limits: bus nets are excluded, a sheet file
+instantiated by multiple sheet blocks abstains the whole
+netlist layer, and IPC-format netlist import is not supported
+(docs/COVERAGE.md, class 29).
 
 ## Part risk ◆ (offline sample dataset — findings cite it)
 
