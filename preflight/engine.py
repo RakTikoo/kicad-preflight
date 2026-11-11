@@ -10,8 +10,13 @@ Layers, in order:
      clearance, copper-to-edge, outline closure from exact parsed
      shapes (geometry.py) — a conservative subset, not KiCad DRC
   6. BOM <-> schematic checks (bomchecks.py via checks.run_bom_layer)
-  7. Offline part-risk checks against the sample dataset (partrisk.py)
-  8. Official kicad-cli DRC/ERC, when installed (kicadcli.py)
+  7. Offline part-risk checks against the sample dataset (partrisk.py);
+     with --online, live distributor data (online.py, opt-in,
+     bring-your-own-key) supersedes the dataset per MPN
+  8. Official kicad-cli DRC/ERC, when installed (kicadcli.py) —
+     honouring the project's own .kicad_pro severity settings and
+     per-instance exclusions (kicadsettings.py), which also waive
+     or re-map matching native findings below
   9. Netlist: ERC-lite (unconnected pins, undriven power nets,
      output conflicts, dangling labels) and schematic<->PCB
      pin-level parity against the PCB's modelled pads
@@ -36,7 +41,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from . import (bomchecks, checks, fabchecks, geometry, kicadcli,
-               netlist, partrisk)
+               kicadsettings, netlist, partrisk)
 from .bom import parse_bom
 from .finding import BLOCK, CAUTION, NOTE, Finding, verdict_for
 from .gerber import run_gerber_checks
@@ -77,12 +82,156 @@ def _cap(findings):
     return kept
 
 
-def run(target, bom_override=None, dataset_path=None):
+# --- .kicad_pro waivers on native findings (v0.6, WS1 section 2) ------
+#
+# A project's own KiCad settings (severity map + per-instance
+# exclusions in .kicad_pro) are the user's stated answer to "how
+# serious is this class, and which instances did I already dismiss".
+# The kicad-cli adapter honours them for official findings; the same
+# settings object is applied here to the native findings that
+# correspond to a KiCad check, so a project cannot waive a violation
+# in KiCad and still be flagged for it natively. Mapping: native
+# rule -> (settings kind, KiCad type). Exclusions match natively
+# only when a finding's text carries the item UUID (kicadsettings
+# is deliberately strict about identity); ignore-types apply by
+# class. Severity overrides are honoured for the ERC-lite family
+# and, severity-half only, for parity (net_conflict): the project's
+# error/warning answer replaces Preflight's default mapping there.
+# Geometry severities are NOT remapped (they encode fab-minimum
+# semantics, not KiCad's), only dropped when waived.
+_NATIVE_WAIVERS = {
+    "ERC_UNCONNECTED_PIN": ("erc", "pin_not_connected"),
+    "ERC_POWER_NOT_DRIVEN": ("erc", "power_pin_not_driven"),
+    "ERC_OUTPUT_CONFLICT": ("erc", "pin_to_pin"),
+    "ERC_PIN_CONFLICT": ("erc", "pin_to_pin"),
+    "ERC_DANGLING_LABEL": ("erc", "label_dangling"),
+    "GEOMETRY_CLEARANCE_BELOW_MIN": ("drc", "clearance"),
+    "GEOMETRY_COPPER_TO_EDGE": ("drc", "copper_edge_clearance"),
+    "BOARD_OUTLINE_OPEN": ("drc", "invalid_outline"),
+}
+_NATIVE_SEVERITY_REMAP = {
+    "ERC_UNCONNECTED_PIN", "ERC_POWER_NOT_DRIVEN",
+    "ERC_OUTPUT_CONFLICT", "ERC_PIN_CONFLICT", "ERC_DANGLING_LABEL",
+}
+_PARITY_RULES = {"PARITY_NET_MEMBERSHIP", "PARITY_NET_SCH_ONLY",
+                 "PARITY_NET_PCB_ONLY", "PARITY_NET_RENAMED"}
+_NATIVE_EXTRA_ALIASES = {
+    # KiCad stores dangling global labels under their own type.
+    "ERC_DANGLING_LABEL": ("global_label_dangling",),
+}
+def _project_override(settings, kind, type_):
+    """The project's effective severity override for a KiCad type,
+    or None. Delegates to kicadsettings.effective_override — the
+    deviation-only rule (KiCad writes the full factory-default map
+    into every .kicad_pro, so a stated severity equal to the
+    factory default is not a project decision and must not remap
+    anything) lives there so the native checks and the kicad-cli
+    adapter apply it identically (v0.6 review RT-02)."""
+    return kicadsettings.effective_override(settings, kind, type_)
+
+
+def _apply_project_settings(findings, settings):
+    """Drop native findings the project waives in .kicad_pro and
+    apply its severity overrides where the mapping above allows.
+    Waivers are counted by the settings object and disclosed in
+    Coverage (coverage["project_settings"])."""
+    if settings is None:
+        return findings
+    kept = []
+    for f in findings:
+        if f.rule in _PARITY_RULES:
+            # Severity half only (WS1 caveat): per-instance
+            # exclusions name KiCad violations, not native parity
+            # results, so they are never reinterpreted here.
+            override = _project_override(settings, "drc", "net_conflict")
+            if override == "ignore":
+                settings.record_waiver("drc", "net_conflict", "ignore")
+                continue
+            if override == "warning" and f.severity == BLOCK:
+                f.severity = CAUTION
+            elif override == "error" and f.severity != BLOCK:
+                f.severity = BLOCK
+            kept.append(f)
+            continue
+        entry = _NATIVE_WAIVERS.get(f.rule)
+        if entry is None:
+            kept.append(f)
+            continue
+        kind, ktype = entry
+        # KiCad type strings only (v0.6 review RT-11): Preflight's
+        # own rule ids are NOT a waiver vocabulary KiCad writes, so
+        # they are never accepted as alias candidates. The one extra
+        # alias is another KiCad type (global_label_dangling).
+        aliases = _NATIVE_EXTRA_ALIASES.get(f.rule, ())
+        if settings.waived(kind, ktype,
+                           where_key=f"{f.where} {f.evidence}",
+                           aliases=aliases):
+            continue
+        if f.rule in _NATIVE_SEVERITY_REMAP:
+            override = _project_override(settings, kind, ktype)
+            if override == "error" and f.severity != BLOCK:
+                f.severity = BLOCK
+            elif override == "warning" and f.severity == BLOCK:
+                f.severity = CAUTION
+        kept.append(f)
+    return kept
+
+
+# --- online supersede (v0.6, WS2 section 2) ----------------------------
+
+_PART_RISK_RULES = {"PART_OBSOLETE", "PART_OUT_OF_STOCK",
+                    "PART_NOT_RECOMMENDED", "PART_LOW_STOCK",
+                    "PART_LONG_LEAD_TIME", "PART_SINGLE_SOURCE",
+                    "PART_NOT_IN_SAMPLE_DATA",
+                    "PART_DATASET_ENTRY_INVALID"}
+
+
+def _mpn_of(finding):
+    """The MPN a part-risk finding names: the text after the final
+    '·' in its `where` (both partrisk and online findings use the
+    '<file> line N · MPN' format)."""
+    return finding.where.rsplit("·", 1)[-1].strip()
+
+
+def _merge_online(offline_findings, online_findings, online_cov):
+    """Live data replaces the sample-dataset result per MPN — but
+    only as far as the live answer actually speaks (v0.6 review
+    RT-01): for every MPN the provider answered WITH usable
+    lifecycle/stock/lead data ('succeeded_mpns'), the whole offline
+    part-risk family for that MPN is dropped and the online
+    findings (possibly none — a healthy live part clears an
+    offline flag) stand in their place. For an MPN the provider
+    found but stated NO usable risk field for ('known_mpns'), only
+    PART_NOT_IN_SAMPLE_DATA is superseded — the provider does know
+    the part — while dataset risk findings stand, because silence
+    about a field is not evidence about it. Not-found MPNs and
+    total provider failure supersede nothing."""
+    succeeded = set(online_cov.get("succeeded_mpns") or [])
+    known = set(online_cov.get("known_mpns") or []) - succeeded
+    if not succeeded and not known:
+        return list(offline_findings) + list(online_findings)
+    kept = []
+    for f in offline_findings:
+        if f.rule in _PART_RISK_RULES and _mpn_of(f) in succeeded:
+            continue
+        if f.rule == "PART_NOT_IN_SAMPLE_DATA" and _mpn_of(f) in known:
+            continue
+        kept.append(f)
+    return kept + list(online_findings)
+
+
+def run(target, bom_override=None, dataset_path=None,
+        online=False, online_provider=None):
     """Run all checks on `target` and return a Report.
 
     Raises partrisk.DatasetError for a bad user-supplied dataset —
-    the CLI turns that into a usage error (exit 3)."""
+    the CLI turns that into a usage error (exit 3). With
+    online=True, the opt-in live part-data layer runs (online.py,
+    keys from environment variables only); the default False never
+    imports it, so an offline run makes zero network calls and its
+    output is unchanged."""
     project = load_project(target, bom_override=bom_override)
+    settings = kicadsettings.load_for_project(project)
     findings = []
 
     for path, error in project.parse_errors:
@@ -98,7 +247,7 @@ def run(target, bom_override=None, dataset_path=None):
     findings.extend(checks.run_version_checks(project))
     findings.extend(fabchecks.run_fab_checks(project))
     geo_findings, geo_stats = geometry.run_geometry_checks(project)
-    findings.extend(geo_findings)
+    findings.extend(_apply_project_settings(geo_findings, settings))
     bom_findings, bom_stats = checks.run_bom_layer(project)
     findings.extend(bom_findings)
     findings.extend(fabchecks.run_cpl_checks(project))
@@ -106,13 +255,22 @@ def run(target, bom_override=None, dataset_path=None):
     meta, parts = partrisk.load_dataset(dataset_path)
     risk_findings, risk_stats = partrisk.run_part_risk_checks(
         project, meta, parts)
+    online_cov = {"status": "off"}
+    if online:
+        from . import online as online_mod  # lazy: off == never imported
+        o_findings, o_cov = online_mod.online_checks(
+            project.bom_rows, provider=online_provider)
+        online_cov = o_cov["online"]
+        risk_findings = _merge_online(risk_findings, o_findings,
+                                      online_cov)
     findings.extend(risk_findings)
 
-    cli_findings, cli_coverage = kicadcli.run_official_checks(project)
+    cli_findings, cli_coverage = kicadcli.run_official_checks(
+        project, settings=settings)
     findings.extend(cli_findings)
 
     net_findings, net_stats = netlist.run_netlist_checks(project)
-    findings.extend(net_findings)
+    findings.extend(_apply_project_settings(net_findings, settings))
     if cli_coverage.get("failed"):
         findings.append(Finding(
             "KICAD_CLI_FAILED", CAUTION,
@@ -153,6 +311,36 @@ def run(target, bom_override=None, dataset_path=None):
         incomplete.append(
             "the copper-to-edge check did not run (the subdivided "
             "board outline exceeded the geometry budget)")
+    if geo_stats.get("zones_abstained"):
+        incomplete.append(
+            f"{geo_stats['zones_abstained']} zone(s) had no stored "
+            "filled polygon (absent, stale or empty fill) and were "
+            "excluded from the geometry-lite zone checks")
+    if geo_stats.get("zones_budget_exceeded"):
+        incomplete.append(
+            "the geometry-lite zone check exceeded its budget and "
+            "did not run")
+    if geo_stats.get("zones_containment_abstained"):
+        incomplete.append(
+            "zone containment (point-in-fill) testing exceeded its "
+            "budget; zone edge distances still ran")
+    if cli_coverage.get("parity_failed"):
+        incomplete.append(
+            "kicad-cli's schematic-parity DRC run failed, so the "
+            "official parity check did not contribute (the built-in "
+            "parity checks above still ran)")
+    _unrec = int(cli_coverage.get("unrecognised_severities", 0) or 0)
+    if _unrec:
+        # A violation whose severity string we could not map was
+        # dropped, not guessed (v0.6 review RT-05): a PASS must not
+        # hide that in a Coverage counter.
+        incomplete.append(
+            f"{_unrec} kicad-cli violation(s) carried a severity "
+            "Preflight does not recognise and were not shown")
+    if settings.source_path and not settings.present and settings.note:
+        incomplete.append(
+            "the project's KiCad settings (.kicad_pro) were present "
+            f"but could not be applied: {settings.note}")
     if net_stats.get("budget_exceeded"):
         incomplete.append(
             "netlist extraction exceeded its budget (pins/wires/"
@@ -184,9 +372,9 @@ def run(target, bom_override=None, dataset_path=None):
         incomplete.append(
             f"{len(net_stats['parity_unmeasurable_refs'])} part(s) "
             "were excluded from schematic<->PCB net parity because "
-            "their PCB pads could not be modelled (custom/trapezoid"
-            " or unplaced pads) or their schematic pins "
-            "could not be resolved: "
+            "their PCB pads could not be modelled in either sense "
+            "(custom pads with unmodelled primitives, or unplaced "
+            "pads) or their schematic pins could not be resolved: "
             + ", ".join(net_stats["parity_unmeasurable_refs"][:12]))
     if incomplete:
         findings.append(Finding(
@@ -258,9 +446,11 @@ def run(target, bom_override=None, dataset_path=None):
         "part_risk": {
             "dataset": meta.get("name", "sample dataset"),
             "snapshot_date": meta.get("snapshot_date", "unknown"),
-            "live_data": False,
+            "live_data": online_cov.get("status") in ("ok", "partial"),
             **risk_stats,
         },
+        "online": online_cov,
+        "project_settings": settings.coverage_stats(),
         "kicad_cli": cli_coverage,
     }
     findings = _cap(findings)
@@ -271,14 +461,16 @@ def run(target, bom_override=None, dataset_path=None):
                   coverage=coverage)
 
 
-def run_bom_only(bom_path, dataset_path=None):
+def run_bom_only(bom_path, dataset_path=None,
+                 online=False, online_provider=None):
     """Standalone BOM mode: check a lone BOM CSV (any EDA tool's export).
 
     Row-internal BOM checks + part risk only. Coverage states plainly
     that no schematic was supplied, so no cross-checks ran.
     Raises ValueError (bad CSV) / DatasetError — CLI maps both to
     usage errors, since the user pointed at this file explicitly.
-    """
+    With online=True the opt-in live part-data layer runs exactly as
+    in project mode (see run())."""
     bom_path = Path(bom_path)
     rows = parse_bom(read_project_file(bom_path))
     findings, stats = bomchecks.run_bom_checks(
@@ -292,6 +484,14 @@ def run_bom_only(bom_path, dataset_path=None):
         bom_path: Path
     risk_findings, risk_stats = partrisk.run_part_risk_checks(
         _Shim(bom_rows=rows, bom_path=bom_path), meta, parts)
+    online_cov = {"status": "off"}
+    if online:
+        from . import online as online_mod  # lazy: off == never imported
+        o_findings, o_cov = online_mod.online_checks(
+            rows, provider=online_provider)
+        online_cov = o_cov["online"]
+        risk_findings = _merge_online(risk_findings, o_findings,
+                                      online_cov)
     findings.extend(risk_findings)
     findings.append(Finding(
         "BOM_ONLY_MODE", NOTE,
@@ -313,9 +513,10 @@ def run_bom_only(bom_path, dataset_path=None):
         "part_risk": {
             "dataset": meta.get("name", "sample dataset"),
             "snapshot_date": meta.get("snapshot_date", "unknown"),
-            "live_data": False,
+            "live_data": online_cov.get("status") in ("ok", "partial"),
             **risk_stats,
         },
+        "online": online_cov,
         "kicad_cli": {"available": False,
                       "erc": "not applicable — standalone BOM mode",
                       "drc": "not applicable — standalone BOM mode",

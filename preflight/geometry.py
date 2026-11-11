@@ -29,9 +29,24 @@ outcome this module can produce):
     them) — no invented outlines.
   * Objects whose net is unknown (no net stated, or net 0) never
     take part in clearance pairs; they are counted in Coverage.
-  * Zone copper is excluded entirely: KiCad's filler generates it
-    under zone-specific clearance settings, so netclass thresholds
-    do not apply to it. Zones are counted in Coverage.
+  * Zone copper (v0.6): a zone's STORED filled polygons take part
+    in clearance and copper-to-edge in a separate budgeted pass
+    (_zone_clearance_pass / _zone_edge_pass below), measured with
+    the same pair thresholds as the other copper on the layer.
+    KiCad's file format stores each filled polygon as a single
+    ring with no hole sub-structure, so a ring is modelled as its
+    edge segments plus a containment test (a shape whose core
+    lies inside the ring is at distance 0 from the fill — the
+    stale-fill case, where a pad was moved after the fill was
+    generated). A zone with no readable filled polygon (absent /
+    stale / empty fill) abstains INDIVIDUALLY and is counted in
+    Coverage (zones_abstained), never silently dropped; zone
+    budgets exceeded abstain the zone pass the same way the main
+    budgets abstain this layer, with a GEOMETRY_SKIPPED finding.
+    Zone-zone pairs use the smaller polygon's edges against the
+    larger polygon's grid, and same-net pairs are skipped before
+    any enumeration, so a board-filling GND pour does not make
+    the pass quadratic.
   * Hard budgets (objects, pair computations): exceeding one
     abstains the whole geometry layer with a CAUTION, never a
     partial verdict presented as complete.
@@ -53,7 +68,7 @@ matches none.
 
 import fnmatch
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from .finding import BLOCK, CAUTION, Finding
 
@@ -103,6 +118,30 @@ OUTLINE_NEAR_MISS = 0.1      # mm; fragments of a shattered outline
 # a crafted outline abstains honestly instead of hanging.
 MAX_CONTAINMENT_POINTS = 200000   # subdivided points built
 MAX_CONTAINMENT_OPS = 2000000     # point-to-loop-edge tests
+# Zone pass budgets (v0.6 WS3): stored zone fills are the largest
+# geometry in real files (a board-filling pour's ring can carry
+# tens of thousands of points), so the zone pass has its own
+# budgets, separate from the object budgets above — exceeding one
+# abstains the zone pass only, counted in Coverage.
+MAX_ZONE_EDGES = 200000           # filled-polygon edges per board
+MAX_ZONE_CANDIDATE_CHECKS = 5000000   # candidate edges examined
+MAX_ZONE_PAIR_CHECKS = 2000000    # exact distance computations
+MAX_ZONE_CONTAINMENT_OPS = 2000000    # point-in-fill edge tests
+ZONE_Y_BUCKET = 1.0               # mm; point-in-fill ray-cast index
+# Zone-involving clearance pairs are judged with a wider
+# measurement tolerance than pad/track pairs: a stored fill's
+# boundary is a polygonal (chord) approximation of the offset
+# curve the filler generated, on BOTH sides of a zone pair, so
+# chord-to-chord distance undershoots the true clearance.
+# Measured against kicad-cli 8.0.9 DRC on esp-rust-board: the
+# two zone pairs KiCad flags measure 0.1231 / 0.1251 mm in its
+# true-geometry engine and 0.1219 mm here, and four further
+# pairs at the same measured 0.1219 mm are at or above the
+# 0.127 mm threshold in true geometry (undershoot up to
+# ~0.005 mm). 0.006 mm covers the observed undershoot; zone
+# encroachments smaller than that are a documented miss, the
+# same trade the object pass makes at MEASURE_TOLERANCE.
+ZONE_MEASURE_TOLERANCE = 0.006    # mm; zone-involving pairs only
 
 
 # ---------------------------------------------------------------------------
@@ -369,6 +408,13 @@ class _Obj:
     net_name: str
     desc: str
     bbox: tuple = ()
+    # True for a pad entry that shares its footprint position
+    # AND number with another entry — one electrical pad written
+    # as several padstack entries (e.g. an SMD tongue plus a
+    # thru-hole barrel for castellated modules). The zone pass
+    # skips these (see _zone_clearance_pass); the object pass
+    # measures every entry as before.
+    pad_group: bool = False
 
 
 def _net_key(net_id, net_name):
@@ -430,14 +476,22 @@ def _build_objects(project, legacy_sign=None):
         if len(objects) <= MAX_OBJECTS:
             objects.append(obj)
 
+    # Padstack groups: entries sharing (ref, number, position)
+    # are one pad written as multiple entries.
+    group_keys = {}
+    for pad in geo.pads:
+        key = (pad.ref, pad.name, round(pad.cx, 3), round(pad.cy, 3))
+        group_keys[key] = group_keys.get(key, 0) + 1
     for pad in geo.pads:
         core, radius = _pad_shape(pad)
         desc = f"pad {_short(pad.ref)}"
         if pad.name:
             desc += f"·{_short(pad.name, 12)}"
+        key = (pad.ref, pad.name, round(pad.cx, 3), round(pad.cy, 3))
         _add(_Obj(core, radius, 0.0, pad.layers,
                   _net_key(pad.net_id, pad.net_name),
-                  pad.net_name, desc))
+                  pad.net_name, desc,
+                  pad_group=group_keys.get(key, 0) > 1))
     for track in geo.tracks:
         _add(_Obj(
             ("seg", track.x1, track.y1, track.x2, track.y2),
@@ -698,6 +752,405 @@ def _clearance_pass(objects, rules, stats):
         top = max(thresholds)
         stats.clearance_threshold, stats.clearance_source = top
     return results
+
+
+# ---------------------------------------------------------------------------
+# Zone filled polygons (v0.6 WS3)
+# ---------------------------------------------------------------------------
+
+
+class _ZoneBudget(Exception):
+    """A zone-pass budget ran out: the zone pass abstains."""
+
+
+@dataclass
+class _ZonePoly:
+    layer: str = ""
+    pts: tuple = ()
+    edges: tuple = ()            # (x1, y1, x2, y2), zero-length dropped
+    bbox: tuple = ()
+    net_key: object = None
+    net_name: str = ""
+    desc: str = ""
+    obj: object = None           # reporting _Obj for this polygon
+    y_buckets: dict = field(default_factory=dict)   # row -> [edge idx]
+    y_wide: tuple = ()           # edges spanning too many rows
+
+
+def _build_zone_polys(project):
+    """(_ZonePoly list, stats) from project.geometry.zones_geo.
+
+    One _ZonePoly per readable filled-polygon ring. A zone with
+    no readable ring is counted abstained (zones_abstained =
+    zones_total - zones_modelled), consistent with the
+    GEOMETRY_SKIPPED accounting style: the count is disclosed,
+    never silent. Rings are closed (last point connects back to
+    the first; a stored closing repeat is harmless)."""
+    geo = project.geometry
+    polys = []
+    zones_modelled = 0
+    total_edges = 0
+    for zone in getattr(geo, "zones_geo", ()) or ():
+        modelled = False
+        label = zone.name or zone.net_name or "unnamed"
+        for layer, pts in zone.polygons:
+            if len(pts) < 3:
+                continue
+            ring = list(pts)
+            if ring[0] == ring[-1] and len(ring) > 1:
+                ring.pop()
+            if len(ring) < 3:
+                continue
+            edges = []
+            for i in range(len(ring)):
+                x1, y1 = ring[i]
+                x2, y2 = ring[(i + 1) % len(ring)]
+                if (x1, y1) != (x2, y2):
+                    edges.append((x1, y1, x2, y2))
+            if not edges:
+                continue
+            xs = [p[0] for p in ring]
+            ys = [p[1] for p in ring]
+            poly = _ZonePoly(
+                layer=layer, pts=tuple(ring), edges=tuple(edges),
+                bbox=(min(xs), min(ys), max(xs), max(ys)),
+                net_key=_net_key(zone.net_id, zone.net_name),
+                net_name=zone.net_name,
+                desc=f"zone {_short(label, 24)} filled polygon")
+            poly.obj = _Obj(("pt", ring[0][0], ring[0][1]), 0.0, 0.0,
+                            (layer,), poly.net_key, zone.net_name,
+                            poly.desc)
+            # Ray-cast index: edges bucketed by the 1 mm rows
+            # their y-range spans; an edge spanning >256 rows
+            # (a board-length straight side) joins y_wide instead
+            # of hundreds of buckets.
+            wide = []
+            for ei, (x1, y1, x2, y2) in enumerate(edges):
+                lo = int(min(y1, y2) // ZONE_Y_BUCKET)
+                hi = int(max(y1, y2) // ZONE_Y_BUCKET)
+                if hi - lo > 256:
+                    wide.append(ei)
+                    continue
+                for row in range(lo, hi + 1):
+                    poly.y_buckets.setdefault(row, []).append(ei)
+            poly.y_wide = tuple(wide)
+            polys.append(poly)
+            total_edges += len(edges)
+            modelled = True
+        if modelled:
+            zones_modelled += 1
+    stats = {
+        "zones_total_geo": len(getattr(geo, "zones_geo", ()) or ()),
+        "zones_modelled": zones_modelled,
+        "zones_abstained": geo.zones_total - zones_modelled,
+        "zones_polygons": len(polys),
+        "zones_edges": total_edges,
+        "zones_fill_unreadable": getattr(geo, "zones_fill_unreadable", 0),
+    }
+    return polys, stats
+
+
+def _zone_point_inside(poly, px, py, ops):
+    """True when (px, py) is inside the filled ring (even-odd ray
+    casting over the y-bucketed edges). `ops` is a shared [count]
+    containment budget; exceeding it raises _ZoneBudget and the
+    caller abstains containment only (edge distances still ran).
+    A point exactly on an edge is distance 0 from the fill, which
+    the edge pass already flags, so the ray test's boundary
+    ambiguity cannot hide a violation."""
+    x0, y0, x1, y1 = poly.bbox
+    if px < x0 or px > x1 or py < y0 or py > y1:
+        return False
+    inside = False
+    row = int(py // ZONE_Y_BUCKET)
+    for ei in list(poly.y_buckets.get(row, ())) + list(poly.y_wide):
+        ops[0] += 1
+        if ops[0] > MAX_ZONE_CONTAINMENT_OPS:
+            raise _ZoneBudget
+        ex1, ey1, ex2, ey2 = poly.edges[ei]
+        if (ey1 > py) != (ey2 > py):
+            xint = ex1 + (py - ey1) * (ex2 - ex1) / (ey2 - ey1)
+            if px < xint:
+                inside = not inside
+    return inside
+
+
+def _obj_rep_points(obj):
+    """Representative core points for a containment test: the
+    centre/extremes of the shape's core. If any lies inside a
+    fill while the shape's edge distance exceeds the threshold,
+    the shape's copper sits inside the fill (distance 0)."""
+    core = obj.core
+    if core[0] == "pt":
+        return [(core[1], core[2])]
+    if core[0] == "seg":
+        return [(core[1], core[2]),
+                ((core[1] + core[3]) / 2.0, (core[2] + core[4]) / 2.0),
+                (core[3], core[4])]
+    return [(core[1], core[2])] + _obb_corners(core)
+
+
+def _zone_grid(poly, cell, max_thr):
+    """(grid, wide) spatial index over one polygon's edges.
+    grid maps a cell to edge indices whose bbox touches it; an
+    edge spanning too many cells joins `wide` (tested against
+    every query on this polygon) instead of exploding the index
+    — the RT-01 guard, per polygon."""
+    grid = {}
+    wide = []
+    for ei, (x1, y1, x2, y2) in enumerate(poly.edges):
+        nx = int(max(x1, x2) // cell) - int(min(x1, x2) // cell) + 1
+        ny = int(max(y1, y2) // cell) - int(min(y1, y2) // cell) + 1
+        if nx * ny > MAX_OBJ_CELLS:
+            wide.append(ei)
+            continue
+        for gx in range(int(min(x1, x2) // cell),
+                        int(max(x1, x2) // cell) + 1):
+            for gy in range(int(min(y1, y2) // cell),
+                            int(max(y1, y2) // cell) + 1):
+                grid.setdefault((gx, gy), []).append(ei)
+    return grid, wide
+
+
+def _grid_candidates(grid, bbox, thr, cell):
+    """Edge indices stored in the cells a thr-expanded bbox spans."""
+    x0, y0, x1, y1 = bbox
+    found = set()
+    for gx in range(int((x0 - thr) // cell), int((x1 + thr) // cell) + 1):
+        for gy in range(int((y0 - thr) // cell),
+                        int((y1 + thr) // cell) + 1):
+            found.update(grid.get((gx, gy), ()))
+    return found
+
+
+def _zone_clearance_pass(polys, objects, rules):
+    """Zone clearance: filled polygons vs pads/tracks/arcs/vias
+    and vs other zones' filled polygons, per layer.
+
+    Returns (violations, counters, budget_exceeded) with
+    violations in _clearance_pass's tuple shape. A (polygon,
+    other) pair is counted ONCE at its minimum distance — a
+    polygon is one copper object, however many edges it has.
+    Containment (core point inside a different-net fill) records
+    distance 0 for the pair when the edge distance did not
+    already flag it.
+
+    Two evidence-based scopings (kicad-cli 8.0.9 DRC used as the
+    reference implementation; experiments in the v06-ws3 review
+    folder):
+    - Pairs are judged at ZONE_MEASURE_TOLERANCE, not
+      MEASURE_TOLERANCE: fill boundaries are chord approximations
+      on both sides of a zone pair (see the constant).
+    - Zone vs padstack-group pads (obj.pad_group) is NOT
+      measured. KiCad's filler clears a zone around one shape of
+      a multi-entry pad (for the RPi Pico footprint on piantor,
+      the thru-hole oval), leaving the other entry's copper (the
+      SMD tongue) inside the stored fill by up to ~0.39 mm;
+      KiCad's own DRC reports no violation there (verified on
+      the full board and on a verbatim zone+footprint reduction,
+      including with the pad moved to a foreign net), while a
+      lone SMD pad at the same position against the same fill
+      IS flagged. Measuring every entry's raw shape would
+      manufacture false positives on exactly this real-world
+      footprint class, so those pairs are skipped and counted
+      (padstack_pairs_skipped)."""
+    counters = {"pairs_checked": 0, "pairs_unknown_net": 0,
+                "candidate_checks": 0, "containment_abstained": False,
+                "padstack_pairs_skipped": 0}
+    if not polys:
+        return [], counters, False
+    total_edges = sum(len(p.edges) for p in polys)
+    if total_edges > MAX_ZONE_EDGES:
+        return [], counters, True
+    thr_cache = {}
+    by_layer = {}
+    for poly in polys:
+        by_layer.setdefault(poly.layer, []).append(poly)
+    obj_by_layer = {}
+    for obj in objects:
+        for layer in obj.layers:
+            obj_by_layer.setdefault(layer, []).append(obj)
+    best = {}                    # (id(a), id(b)) -> violation tuple
+
+    def _record(key, lower, a, b, layer, thr, source):
+        old = best.get(key)
+        if old is None or lower < old[0]:
+            best[key] = (lower, a, b, layer, thr, source)
+
+    ops = [0]
+    try:
+        for layer in sorted(by_layer):
+            layer_polys = by_layer[layer]
+            max_thr = FAB_CLEARANCE_MIN
+            for poly in layer_polys:
+                value, _ = _pair_threshold(poly.net_name, poly.net_name,
+                                           rules, thr_cache)
+                max_thr = max(max_thr, value)
+            for obj in obj_by_layer.get(layer, ()):
+                value, _ = _pair_threshold(obj.net_name, obj.net_name,
+                                           rules, thr_cache)
+                max_thr = max(max_thr, value)
+            cell = max(1.0, max_thr)
+            grids = {id(p): _zone_grid(p, cell, max_thr)
+                     for p in layer_polys}
+            # --- zone vs copper objects -------------------------------
+            for obj in obj_by_layer.get(layer, ()):
+                for poly in layer_polys:
+                    if obj.net_key is None or poly.net_key is None:
+                        counters["pairs_unknown_net"] += 1
+                        continue
+                    if obj.net_key == poly.net_key:
+                        continue
+                    if obj.pad_group:
+                        counters["padstack_pairs_skipped"] += 1
+                        continue
+                    thr, source = _pair_threshold(
+                        obj.net_name, poly.net_name, rules, thr_cache)
+                    grid, wide = grids[id(poly)]
+                    cand = _grid_candidates(grid, obj.bbox, max_thr, cell)
+                    cand.update(wide)
+                    pair_min = None
+                    for ei in cand:
+                        counters["candidate_checks"] += 1
+                        if counters["candidate_checks"] \
+                                > MAX_ZONE_CANDIDATE_CHECKS:
+                            return [], counters, True
+                        ex1, ey1, ex2, ey2 = poly.edges[ei]
+                        gap = math.hypot(
+                            max(min(ex1, ex2) - obj.bbox[2],
+                                obj.bbox[0] - max(ex1, ex2), 0.0),
+                            max(min(ey1, ey2) - obj.bbox[3],
+                                obj.bbox[1] - max(ey1, ey2), 0.0))
+                        if gap >= thr:
+                            continue
+                        counters["pairs_checked"] += 1
+                        if counters["pairs_checked"] \
+                                > MAX_ZONE_PAIR_CHECKS:
+                            return [], counters, True
+                        dist = _d_core(obj.core,
+                                       ("seg", ex1, ey1, ex2, ey2)) \
+                            - obj.radius
+                        if pair_min is None or dist < pair_min:
+                            pair_min = dist
+                    if pair_min is not None:
+                        upper = pair_min + obj.unc
+                        if upper < thr - ZONE_MEASURE_TOLERANCE:
+                            _record((id(poly), id(obj)),
+                                    pair_min - obj.unc, poly.obj, obj,
+                                    layer, thr, source)
+                            continue
+                    # Containment: the edge distance can exceed the
+                    # threshold while the shape sits deep inside
+                    # the fill (stale fill over a moved pad).
+                    if not counters["containment_abstained"]:
+                        try:
+                            for (px, py) in _obj_rep_points(obj):
+                                if _zone_point_inside(poly, px, py, ops):
+                                    _record((id(poly), id(obj)), 0.0,
+                                            poly.obj, obj, layer, thr,
+                                            source)
+                                    break
+                        except _ZoneBudget:
+                            counters["containment_abstained"] = True
+            # --- zone vs zone ------------------------------------------
+            for i, poly_a in enumerate(layer_polys):
+                for poly_b in layer_polys[i + 1:]:
+                    if poly_a.net_key is None or poly_b.net_key is None:
+                        counters["pairs_unknown_net"] += 1
+                        continue
+                    if poly_a.net_key == poly_b.net_key:
+                        continue
+                    thr, source = _pair_threshold(
+                        poly_a.net_name, poly_b.net_name, rules, thr_cache)
+                    small, big = (poly_a, poly_b) \
+                        if len(poly_a.edges) <= len(poly_b.edges) \
+                        else (poly_b, poly_a)
+                    grid, wide = grids[id(big)]
+                    pair_min = None
+                    for (ex1, ey1, ex2, ey2) in small.edges:
+                        ebbox = (min(ex1, ex2), min(ey1, ey2),
+                                 max(ex1, ex2), max(ey1, ey2))
+                        cand = _grid_candidates(grid, ebbox, max_thr,
+                                                cell)
+                        cand.update(wide)
+                        for ei in cand:
+                            counters["candidate_checks"] += 1
+                            if counters["candidate_checks"] \
+                                    > MAX_ZONE_CANDIDATE_CHECKS:
+                                return [], counters, True
+                            fx1, fy1, fx2, fy2 = big.edges[ei]
+                            gap = math.hypot(
+                                max(min(fx1, fx2) - ebbox[2],
+                                    ebbox[0] - max(fx1, fx2), 0.0),
+                                max(min(fy1, fy2) - ebbox[3],
+                                    ebbox[1] - max(fy1, fy2), 0.0))
+                            if gap >= thr:
+                                continue
+                            counters["pairs_checked"] += 1
+                            if counters["pairs_checked"] \
+                                    > MAX_ZONE_PAIR_CHECKS:
+                                return [], counters, True
+                            dist = _d_seg_seg(
+                                ("seg", ex1, ey1, ex2, ey2),
+                                ("seg", fx1, fy1, fx2, fy2))
+                            if pair_min is None or dist < pair_min:
+                                pair_min = dist
+                    if pair_min is not None \
+                            and pair_min < thr - ZONE_MEASURE_TOLERANCE:
+                        _record((id(poly_a), id(poly_b)), pair_min,
+                                poly_a.obj, poly_b.obj, layer, thr,
+                                source)
+                        continue
+                    if not counters["containment_abstained"]:
+                        try:
+                            if _zone_point_inside(
+                                    poly_b, poly_a.pts[0][0],
+                                    poly_a.pts[0][1], ops) \
+                                    or _zone_point_inside(
+                                        poly_a, poly_b.pts[0][0],
+                                        poly_b.pts[0][1], ops):
+                                _record((id(poly_a), id(poly_b)), 0.0,
+                                        poly_a.obj, poly_b.obj, layer,
+                                        thr, source)
+                        except _ZoneBudget:
+                            counters["containment_abstained"] = True
+    except _ZoneBudget:
+        counters["containment_abstained"] = True
+    violations = list(best.values())
+    # Deterministic order independent of id(): sort by content.
+    violations.sort(key=lambda v: (v[0], v[1].desc, v[2].desc, v[3]))
+    return violations, counters, False
+
+
+def _zone_edge_pass(polys, outline, grid, wide_pieces, cell, thr):
+    """Zone copper-to-edge: (violating_polygon_count, worst).
+
+    A polygon counts once, at its closest edge's distance to the
+    outline — same per-object semantics as the main edge pass.
+    `grid`/`wide_pieces`/`cell` are the outline index built by
+    run_geometry_checks. Returns worst as (lower, zone _Obj)."""
+    count = 0
+    worst = None
+    for poly in polys:
+        best_poly = None       # (upper, lower), as in the main pass
+        for (ex1, ey1, ex2, ey2) in poly.edges:
+            ebbox = (min(ex1, ex2), min(ey1, ey2),
+                     max(ex1, ex2), max(ey1, ey2))
+            cand = _grid_candidates(grid, ebbox, thr, cell)
+            cand.update(wide_pieces)
+            for pidx in cand:
+                px1, py1, px2, py2, unc = outline[pidx]
+                dist = _d_seg_seg(("seg", ex1, ey1, ex2, ey2),
+                                  ("seg", px1, py1, px2, py2))
+                pair = (dist + unc, dist - unc)
+                if best_poly is None or pair[0] < best_poly[0]:
+                    best_poly = pair
+        if best_poly is not None \
+                and best_poly[0] < thr - ZONE_MEASURE_TOLERANCE:
+            count += 1
+            if worst is None or best_poly[1] < worst[0]:
+                worst = (best_poly[1], poly.obj)
+    return count, worst
 
 
 def _rotate_b(vx, vy, deg):
@@ -1253,6 +1706,7 @@ def run_geometry_checks(project):
         _outline_state(geo.edge_elems)
     objects, outline, total_objects, total_pieces = _build_objects(
         project, legacy_sign if closed is not None else None)
+    zone_polys, zone_stats = _build_zone_polys(project)
     gstats = _Stats(objects=total_objects,
                     outline_elements=len(geo.edge_elems))
 
@@ -1266,7 +1720,17 @@ def run_geometry_checks(project):
         "pads_shape_skipped": geo.pads_shape_skipped,
         "pads_non_copper": geo.pads_non_copper,
         "objects_unplaced": geo.pads_unplaced + geo.items_unplaced,
-        "zones_excluded": geo.zones_total,
+        # v0.6: zones_excluded now counts only zones the zone pass
+        # could NOT model (no readable filled polygon) — it was
+        # the total zone count in v0.4/v0.5, when every zone was
+        # excluded. See zones_modelled / zones_polygons.
+        "zones_excluded": zone_stats["zones_abstained"],
+        "zones_total_geo": zone_stats["zones_total_geo"],
+        "zones_modelled": zone_stats["zones_modelled"],
+        "zones_abstained": zone_stats["zones_abstained"],
+        "zones_polygons": zone_stats["zones_polygons"],
+        "zones_edges": zone_stats["zones_edges"],
+        "zones_fill_unreadable": zone_stats["zones_fill_unreadable"],
         "outline_elements": len(geo.edge_elems),
         "outline_closed": closed,
         "outline_abstained": abstained,
@@ -1303,6 +1767,27 @@ def run_geometry_checks(project):
 
     # --- copper clearance --------------------------------------------------
     violations = _clearance_pass(objects, rules, gstats)
+    # Zone pass (v0.6): filled-zone polygons against the same
+    # thresholds, merged into the same finding — a pair counts
+    # once whether it is pad/track/via or zone copper.
+    zone_budget = False
+    if not gstats.budget_exceeded:
+        zviol, zcounters, zone_budget = _zone_clearance_pass(
+            zone_polys, objects, rules)
+        stats["zones_pairs_checked"] = zcounters["pairs_checked"]
+        stats["zones_pairs_unknown_net"] = \
+            zcounters["pairs_unknown_net"]
+        stats["zones_candidate_checks"] = \
+            zcounters["candidate_checks"]
+        stats["zones_padstack_pairs_skipped"] = \
+            zcounters["padstack_pairs_skipped"]
+        if zcounters["containment_abstained"]:
+            stats["zones_containment_abstained"] = True
+        if zone_budget:
+            stats["zones_budget_exceeded"] = True
+        else:
+            stats["zone_clearance_violations"] = len(zviol)
+            violations = violations + zviol
     stats["pairs_checked"] = gstats.pairs_checked
     stats["pairs_unknown_net"] = gstats.pairs_unknown_net
     if gstats.clearance_threshold is not None:
@@ -1331,9 +1816,10 @@ def run_geometry_checks(project):
             f"{b.desc} ({_net_label(b)}) on {_short(layer, 16)} at "
             f"{_fmt(max(lower, 0.0))} apart, below the "
             f"{_fmt(thr)} minimum from the {source}. Geometry-lite "
-            "subset: pads, tracks, arcs and vias only — zones, "
-            "custom/trapezoid pads and footprint graphics are not "
-            "measured, and this is not a replacement for KiCad DRC.",
+            "subset: pads, tracks, arcs, vias and filled zone "
+            "polygons — custom/trapezoid pads and footprint "
+            "graphics are not measured, and this is not a "
+            "replacement for KiCad DRC.",
             where=pcb_name,
             evidence=f"pairs_below_min={len(violations)} "
                      f"worst={max(lower, 0.0):.3f} "
@@ -1341,6 +1827,19 @@ def run_geometry_checks(project):
         stats["clearance_violations"] = len(violations)
         stats["clearance_threshold"] = thr
         stats["clearance_source"] = source
+    if zone_budget:
+        findings.append(Finding(
+            "GEOMETRY_SKIPPED", CAUTION,
+            "The geometry-lite zone check exceeded its computation "
+            "budget (filled-polygon edges, candidate enumeration "
+            f"or {MAX_ZONE_PAIR_CHECKS} pair measurements) and "
+            "was abandoned rather than reported partially — zone "
+            "clearance and zone copper-to-edge did not run. The "
+            "pad/track/arc/via checks above are unaffected. "
+            "KiCad's own DRC covers this board fully.",
+            where=pcb_name,
+            evidence=f"zone_edges={zone_stats['zones_edges']} "
+                     f"budget_edges={MAX_ZONE_EDGES}"))
 
     # --- copper-to-edge ----------------------------------------------------
     if total_pieces > MAX_OUTLINE_PIECES:
@@ -1408,10 +1907,32 @@ def run_geometry_checks(project):
                 count += 1
                 if worst is None or best[1] < worst[0]:
                     worst = (best[1], obj)
+        # Zone copper-to-edge (v0.6): each filled polygon counts
+        # once at its closest edge, merged into the same finding.
+        # Judged only against a board-STATED edge clearance: a
+        # zone's inset from the outline is chosen by the filler
+        # under the board's own edge rule, so when the project
+        # states none, the fab fallback that the object pass uses
+        # would flag machine-generated insets KiCad's own DRC
+        # accepts (upsy-desky: no stated rule, KiCad reports no
+        # copper_edge_clearance, fallback would flag 5 polygons).
+        # The abstention is counted, not silent.
+        if zone_polys and not zone_budget:
+            if rules.get("min_copper_edge_clearance"):
+                zcount, zworst = _zone_edge_pass(
+                    zone_polys, outline, grid, wide_pieces, cell, thr)
+                if zcount:
+                    stats["zone_edge_violations"] = zcount
+                    count += zcount
+                    if worst is None or zworst[0] < worst[0]:
+                        worst = zworst
+            else:
+                stats["zones_edge_abstained"] = len(zone_polys)
         if worst is not None:
             findings.append(Finding(
                 "GEOMETRY_COPPER_TO_EDGE", CAUTION,
-                f"{count} copper object(s) sit closer than "
+                f"{count} copper object(s)/filled zone polygon(s) "
+                f"sit closer than "
                 f"{_fmt(thr)} to the board outline — worst: "
                 f"{worst[1].desc} ({_net_label(worst[1])}) at "
                 f"{_fmt(max(worst[0], 0.0))} from the edge, below "

@@ -71,7 +71,7 @@ def load_dataset(path=None):
                            f"{path}: {exc}") from exc
     try:
         data = json.loads(raw)
-    except ValueError as exc:
+    except (ValueError, RecursionError) as exc:
         raise DatasetError(f"part-risk dataset {path} is not valid "
                            f"JSON: {exc}") from exc
     if not isinstance(data, dict):

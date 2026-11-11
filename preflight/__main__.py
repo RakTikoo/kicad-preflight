@@ -66,6 +66,16 @@ def build_parser():
                         help="treat the target folder as a fabrication "
                              "output package (Gerbers + drill files) and "
                              "run file-level package checks only")
+    parser.add_argument("--online", action="store_true",
+                        help="opt-in: check BOM parts against live "
+                             "distributor data (DigiKey/Mouser) using "
+                             "API keys from environment variables only; "
+                             "the default is fully offline")
+    parser.add_argument("--online-provider",
+                        choices=["digikey", "mouser"], default=None,
+                        help="with --online: use only this provider "
+                             "(default: DigiKey if its keys are set, "
+                             "else Mouser)")
     return parser
 
 
@@ -127,12 +137,16 @@ def main(argv=None):
             input_paths = {p.resolve() for p in target.iterdir()
                            if p.is_file()}
         elif standalone_bom is not None:
-            report = engine.run_bom_only(standalone_bom,
-                                         dataset_path=args.dataset)
+            report = engine.run_bom_only(
+                standalone_bom, dataset_path=args.dataset,
+                online=args.online,
+                online_provider=args.online_provider)
             input_paths = {standalone_bom.resolve()}
         else:
             report = engine.run(target, bom_override=args.bom,
-                                dataset_path=args.dataset)
+                                dataset_path=args.dataset,
+                                online=args.online,
+                                online_provider=args.online_provider)
             folder = target if target.is_dir() else target.parent
             input_paths = {p.resolve() for p in folder.iterdir()
                            if p.suffix.lower() in _PROTECTED_SUFFIXES}

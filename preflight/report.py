@@ -31,8 +31,17 @@ def _clean(text):
     return _CTRL.sub(" ", str(text)).strip()
 
 
+_TAG_SHAPED = re.compile(r"<(/?[a-zA-Z][^<>\s]*(?:\s[^<>]*)?/?)>")
+
+
 def _md(text):
-    return _clean(text).replace("|", "\\|")
+    # Escape tag-shaped HTML (v0.6 audit L2): catalogue/BOM strings
+    # are third-party data and a Markdown report may be rendered
+    # through pipelines that pass raw HTML through. Only tag-shaped
+    # sequences are escaped, so ordinary comparisons ("0.1 mm <
+    # 0.127 mm") render unchanged.
+    return _TAG_SHAPED.sub(r"&lt;\1&gt;",
+                           _clean(text).replace("|", "\\|"))
 
 
 def _grouped(findings):
@@ -133,7 +142,9 @@ def _coverage_lines(cov):
         bits = [
             f"Geometry-lite (subset — not KiCad DRC): "
             f"{lite.get('objects', 0)} copper object(s) measured "
-            "with exact shapes (pads, tracks, arcs, vias)"]
+            "with exact shapes (pads, tracks, arcs, vias"
+            + (", filled zone polygons)"
+               if lite.get("zones_modelled") else ")")]
         if lite.get("clearance_threshold") is not None:
             bits.append(
                 f"clearance minimum "
@@ -154,10 +165,20 @@ def _coverage_lines(cov):
             skipped.append(
                 f"{lite['pads_shape_skipped']} custom/trapezoid "
                 "pad(s)")
-        if lite.get("zones_excluded"):
+        if lite.get("zones_modelled"):
+            lines.append(
+                f"Geometry-lite zones: {lite['zones_modelled']} "
+                f"zone(s) ({lite.get('zones_polygons', 0)} filled "
+                "polygon(s)) distance-checked against other copper "
+                "and the board outline"
+                + (f"; {lite['zones_edge_abstained']} zone "
+                   "polygon(s) not edge-checked (the project "
+                   "states no edge clearance of its own)"
+                   if lite.get("zones_edge_abstained") else ""))
+        if lite.get("zones_abstained"):
             skipped.append(
-                f"{lite['zones_excluded']} zone(s) (clearance is "
-                "set by KiCad's filler, not netclass rules)")
+                f"{lite['zones_abstained']} zone(s) with no readable "
+                "filled polygon")
         if skipped:
             lines.append(
                 "Geometry-lite exclusions: " + " and ".join(skipped)
@@ -210,17 +231,78 @@ def _coverage_lines(cov):
         lines.append(f"Legacy schematic present (not supported): "
                      f"{legacy}")
     risk = cov.get("part_risk", {})
-    lines.append(
-        f"Part risk: {risk.get('mpns_checked', 0)} MPN(s) checked "
-        f"against {risk.get('dataset')} (snapshot "
-        f"{risk.get('snapshot_date')}, SAMPLE data — not live "
-        f"distributor data); {risk.get('mpns_found', 0)} found in "
-        "dataset")
+    if risk.get("live_data"):
+        lines.append(
+            f"Part risk: {risk.get('mpns_checked', 0)} MPN(s) checked "
+            f"against {risk.get('dataset')} (snapshot "
+            f"{risk.get('snapshot_date')}, SAMPLE data), superseded "
+            "per MPN by live distributor data where the online "
+            "lookup answered (see the Online parts line below); "
+            f"{risk.get('mpns_found', 0)} found in dataset")
+    else:
+        lines.append(
+            f"Part risk: {risk.get('mpns_checked', 0)} MPN(s) checked "
+            f"against {risk.get('dataset')} (snapshot "
+            f"{risk.get('snapshot_date')}, SAMPLE data — not live "
+            f"distributor data); {risk.get('mpns_found', 0)} found in "
+            "dataset")
+    online = cov.get("online") or {}
+    if online.get("status") not in (None, "off"):
+        if online.get("status") == "unavailable":
+            lines.append(
+                "Online parts (opt-in): UNAVAILABLE "
+                f"({online.get('reason') or 'provider error'}) — "
+                "the offline results above stand unchanged")
+        elif online.get("status") == "no-mpns":
+            lines.append(
+                "Online parts (opt-in): no BOM part numbers to "
+                "look up")
+        else:
+            sem = online.get("semantic") or {}
+            lines.append(
+                f"Online parts (opt-in): {online.get('provider')} — "
+                f"{online.get('answered', 0)}/{online.get('mpns', 0)} "
+                f"MPN(s) answered, {online.get('not_found', 0)} not "
+                f"found, {online.get('from_cache', 0)} served from "
+                f"cache; semantic comparison: "
+                f"{sem.get('compared_attributes', 0)} attribute(s) "
+                f"compared, {sem.get('unstated_attributes', 0)} not "
+                "stated by one side or the other (never inferred)")
+    pset = cov.get("project_settings") or {}
+    if pset.get("present") or pset.get("waivers_applied_total"):
+        bits = []
+        if pset.get("drc_severity_overrides") or \
+                pset.get("erc_severity_overrides"):
+            bits.append(
+                f"{pset.get('drc_severity_overrides', 0) + pset.get('erc_severity_overrides', 0)} "
+                "severity override(s)")
+        if pset.get("drc_exclusions_stored") or \
+                pset.get("erc_exclusions_stored"):
+            bits.append(
+                f"{pset.get('drc_exclusions_stored', 0) + pset.get('erc_exclusions_stored', 0)} "
+                "stored exclusion(s)")
+        if pset.get("waivers_applied_total"):
+            bits.append(
+                f"{pset['waivers_applied_total']} finding(s) waived "
+                "by the project's own KiCad settings (see findings "
+                "counts in the JSON report)")
+        if bits:
+            lines.append(
+                "Project KiCad settings (.kicad_pro): "
+                + ", ".join(bits))
+    if pset.get("note") and not pset.get("present") \
+            and pset.get("source"):
+        lines.append(
+            f"Project KiCad settings: {pset['note']}")
     cli = cov.get("kicad_cli", {})
     if cli.get("available"):
         lines.append(f"kicad-cli: found at {cli.get('path')}")
         lines.append(f"  Official ERC: {cli.get('erc')}")
         lines.append(f"  Official DRC: {cli.get('drc')}")
+        if cli.get("drc_parity"):
+            lines.append(
+                f"  Official DRC schematic parity: "
+                f"{cli['drc_parity']}")
     elif cov.get("mode"):
         lines.append("kicad-cli: not applicable — standalone BOM mode")
     else:

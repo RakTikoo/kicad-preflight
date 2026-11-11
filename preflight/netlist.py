@@ -42,6 +42,24 @@ Buses do not create connectivity here: a bus is a bundle of
 unnamed signals, so a pin whose only connection is via a bus
 segment / bus entry (an unnamed wire stub touching a bus) is
 counted as bus-connected and excluded from every rule below.
+v0.6 WS3 sharpening (evidence-based, no behaviour change): the
+corpus and samples contain NO bus segments, bus entries, bus
+aliases or bus-notation labels at all, so bus expansion has no
+real file to validate against. What IS sound without expansion:
+a stub wire carrying a member label already merges by that
+label's name above (KiCad connectivity for a ripped-out member
+is by its label; the bus is graphical grouping), and those nets
+are counted (bus_named_nets), not excluded. What is NOT claimed:
+selecting a member for an UNLABELLED stub from a bus label's
+syntax — vector (NAME[a..b]), group (NAME{a b c} / {a b c}) or
+(bus_alias ...) definitions, whose prefixing rules (members of
+a named group bus are PREFIX.member) and cross-sheet behaviour
+cannot be verified against any file available here. Those pins
+stay excluded + counted exactly as in v0.5; bus_alias
+definitions and bus-notation labels are now counted in Coverage
+(bus_alias_definitions / bus_notation_labels) so a future board
+that does use buses is at least visible. See the v06-ws3
+INTEGRATION.md for the full reasoning.
 
 Abstention is the default failure mode, mirroring the geometry
 layer: no connectivity constructs at all (or no pin definitions
@@ -347,6 +365,13 @@ def extract_netlist(project):
             sum(len(chain) - 1 for chain in sd.buses
                 if len(chain) >= 2) + len(sd.bus_entries)
             for sd in sheets),
+        # v0.6 WS3: bus definitions present in the files, counted
+        # only (not expanded — see the module docstring).
+        "bus_alias_definitions": sum(
+            len(getattr(sd, "bus_aliases", {})) for sd in sheets),
+        "bus_notation_labels": sum(
+            1 for sd in sheets for lab in sd.labels
+            if "{" in lab.name or ".." in lab.name),
     })
     # RT-44 / audit F4: a sheet FILE instantiated by 2+ sheet
     # blocks is two KiCad sheet instances with separate local
@@ -1040,6 +1065,79 @@ def run_erc_checks(project, result):
                 "ERC_OUTPUT_CONFLICT", BLOCK, message,
                 where=f"{sch_name} · {net.display_name}",
                 evidence=f"outputs={n_out} power_outputs={n_pwr}"))
+    # --- ERC_PIN_CONFLICT (BLOCK — KiCad ERC error) --------------------
+    # v0.6 WS3: the remaining ERROR cells of KiCad's documented
+    # pin-conflict matrix that the files' pin types support. The
+    # matrix used is the default ERC pin_map KiCad itself stores
+    # in every corpus project's .kicad_pro (erc.pin_map, values
+    # 0=OK / 1=warning / 2=error; type order input, output,
+    # bidirectional, tri_state, passive, unspecified, power_in,
+    # power_out, open_collector, open_emitter, no_connect, free),
+    # consistent with the Schematic Editor manual's matrix as
+    # reconciled in research-netlist-semantics.md. Error pairs
+    # NOT already covered by ERC_OUTPUT_CONFLICT above:
+    #   output+open_collector, output+open_emitter,
+    #   output+no_connect, tri_state+open_collector,
+    #   open_collector+open_collector,
+    #   open_collector+open_emitter, open_collector+no_connect.
+    # Deliberately NOT shipped: every WARNING cell (value 1).
+    # Measured on the corpus, warning cells are unusable as a
+    # rule — power_in paired with almost any other type is a
+    # warning cell, so a warning rule would fire on essentially
+    # every power net of every healthy board (the same evidence
+    # bar that kept ERC_INPUT_UNDRIVEN unshipped). Also not
+    # shipped: pairs involving the `free` type (matrix rates it
+    # error against everything, but a free pin is explicitly
+    # "no ERC" by definition in KiCad's type list) and
+    # power_out+tri_state (a warning cell, not an error).
+    # Corpus measurement before shipping (2026-11-10): zero nets
+    # on any of the 4 corpus boards — or the netlist samples —
+    # carry any of these pairs (open_collector / open_emitter /
+    # tri_state pins do not occur in the corpus at all), so the
+    # rule is corpus-silent by construction and fixture-verified
+    # in v06-ws3/check_ws3.py.
+    _CONFLICT_PAIRS = [
+        ("output", "open_collector"), ("output", "open_emitter"),
+        ("output", "no_connect"), ("tri_state", "open_collector"),
+        ("open_collector", "open_collector"),
+        ("open_collector", "open_emitter"),
+        ("open_collector", "no_connect"),
+    ]
+    for net in result.nets:
+        if net.bus_excluded:
+            continue
+        from collections import Counter as _Ctr2
+        counts = _Ctr2([m.type for m in net.members]
+                       + list(net.sheetpin_types))
+        hit = None
+        for type_a, type_b in _CONFLICT_PAIRS:
+            if type_a == type_b:
+                if counts.get(type_a, 0) >= 2:
+                    hit = (type_a, type_b)
+                    break
+            elif counts.get(type_a) and counts.get(type_b):
+                hit = (type_a, type_b)
+                break
+        if hit is None:
+            continue
+        type_a, type_b = hit
+        pins = sorted({f"{m.ref}.{m.number}" for m in net.members
+                       if m.type in (type_a, type_b)})[:8]
+        findings.append(Finding(
+            "ERC_PIN_CONFLICT", BLOCK,
+            f"Net '{net.display_name}' connects pin type(s) "
+            f"{type_a} and {type_b} together "
+            f"({', '.join(pins)}). KiCad's documented pin-conflict "
+            "matrix (the default ERC pin_map stored in the "
+            "project's .kicad_pro) rates this pairing as an error "
+            "— the drivers fight, or a pin marked not-connected / "
+            "open-collector is driven by a push-pull output. "
+            "Check the symbols on this net; one of them has the "
+            "wrong electrical type or does not belong here.",
+            where=f"{sch_name} · {net.display_name}",
+            evidence=f"pair={type_a}+{type_b} "
+                     f"count_{type_a}={counts.get(type_a, 0)} "
+                     f"count_{type_b}={counts.get(type_b, 0)}"))
     # --- ERC_DANGLING_LABEL (NOTE) --------------------------------------
     for sheet, name in result.stats.get("dangling_label_list", []):
         findings.append(Finding(
@@ -1085,16 +1183,34 @@ def run_parity_checks(project, result):
         if pad.net_name:
             extra_by_ref[pad.ref] = extra_by_ref.get(pad.ref, 0) + 1
     unmeasurable = set()
+    # v0.6 WS3: the abstention criterion is now membership-based,
+    # not shape-based. project.py records every pad as modelled,
+    # membership-only (NPTH; trapezoid; custom with a modelled
+    # primitive set), or membership-missing (custom with
+    # unmodelled primitives, unplaced, non-positive size).
+    # Membership needs only the (ref, pad name, net) the file
+    # states, so a ref abstains only when at least one of its
+    # pads is membership-missing, or when it has pads but NONE of
+    # them contributed any membership record at all.
+    _missing_by_ref = getattr(geo, "pad_membership_missing_by_ref",
+                              None)
     for ref in pcb_part_refs:
-        issues = geo.pad_issues_by_ref.get(ref, 0)
-        # A ref whose pads exist in the file but produced NO
-        # modelled pad (all custom/trapezoid, all unplaced) has
-        # no measurable membership — abstain per ref rather than
-        # blame it for an empty pad set.
-        if issues > 0 or (geo.pad_total_by_ref.get(ref, 0) > 0
-                          and modelled_by_ref.get(ref, 0) == 0
-                          and extra_by_ref.get(ref, 0) == 0):
+        if _missing_by_ref is not None:
+            missing = _missing_by_ref.get(ref, 0)
+        else:
+            # Project objects built without the v0.6 accounting
+            # (older test doubles): fall back to the v0.5 rule.
+            missing = geo.pad_issues_by_ref.get(ref, 0)
+        if missing > 0 or (geo.pad_total_by_ref.get(ref, 0) > 0
+                           and modelled_by_ref.get(ref, 0) == 0
+                           and extra_by_ref.get(ref, 0) == 0
+                           and sum(1 for pad in
+                                   getattr(geo, "pads_membership_extra",
+                                           ())
+                                   if pad.ref == ref) == 0):
             unmeasurable.add(ref)
+    stats["parity_membership_extra_pads"] = len(
+        getattr(geo, "pads_membership_extra", ()))
     unresolved_refs = set(stats.get("sch_unresolved_refs", ()))
     no_pin_refs = set(stats.get("no_pin_refs", ()))
     scope_refs = {ref for ref, sym in sch_parts.items()
@@ -1405,6 +1521,7 @@ def run_netlist_checks(project):
     # Deterministic report order within the layer.
     order = {"PARITY_NET_MEMBERSHIP": 0, "PARITY_NET_SCH_ONLY": 1,
              "PARITY_NET_PCB_ONLY": 2, "ERC_OUTPUT_CONFLICT": 3,
+             "ERC_PIN_CONFLICT": 3,
              "ERC_POWER_NOT_DRIVEN": 4, "ERC_UNCONNECTED_PIN": 5,
              "PARITY_NET_RENAMED": 6, "ERC_DANGLING_LABEL": 7}
     findings.sort(key=lambda f: (order.get(f.rule, 9), f.where,
