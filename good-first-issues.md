@@ -1,10 +1,14 @@
-# Good first issues — drafts to seed at launch
+# Good first issues — seed list
 
 Each draft has a one-line title and the pointer a new contributor needs.
-Post them as real issues only after the code push lands, so the file
-pointers resolve. (Repo hygiene, not promotion: under the H-1B gate
-in ~/workspace/agentic-spikes/H1B_GATE.md, growth is organic only
-and nothing here is posted yet.)
+(Repo hygiene, not promotion: under the H-1B gate
+in ~/workspace/agentic-spikes/H1B_GATE.md, growth is organic only.)
+
+Status (2026-11-11): the code push landed long ago, so the drafts are
+postable. Item 1 is live as issue #3 and item 2 as issue #4. Item 6
+(hierarchical-sheet sample) is done in substance by
+`samples/netlist-hier/` (v0.5) and is kept below for the record.
+Remaining drafts stay on file until there is a reason to post them.
 
 1. **Add a KiCad 6 sample project to `samples/`**
    The shipped fixtures are KiCad 7/8-style. Add a minimal clean board

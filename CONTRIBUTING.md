@@ -15,6 +15,15 @@ reports with the real board context**, **missed-fault reports**, and
 - **Every check ships with two projects:** one it must catch and one
   clean look-alike it must not BLOCK. A check without both is a guess.
 - Pure Python standard library only. No new dependencies.
+- **Interop facts come from KiCad's official public documentation
+  only** (file-format structure, label scoping, the published ERC
+  pin-type matrix), each semantic decision cited in a research note.
+  KiCad is GPL and this project is MIT: no KiCad code or text may be
+  copied into this repository, ever.
+- **Offline by default.** The shipped tool makes no network calls
+  unless the user passes `--online` and supplies their own provider
+  API keys via environment variables. Keys are never accepted as CLI
+  arguments, never written to files, logs, reports, or the cache.
 - **Open-licence test data only.** Any real board added to `corpus/`
   must come from a public repository with a clear open licence, recorded
   in `corpus/SOURCES.md` with URL, commit, and the licence file read.
