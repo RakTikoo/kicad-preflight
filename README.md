@@ -119,8 +119,9 @@ two different parts sharing one reference, parts with no footprint /
 no value / a placeholder MPN, unannotated symbols. Board furniture —
 mounting holes marked `board_only`, silkscreen logos and labels with
 generated references — is recognised as furniture, not flagged as
-parts. Preflight does not check pins or nets itself; that is what
-DRC/ERC are for (below).
+parts. Since v0.5 Preflight also extracts the schematic netlist
+and checks pins and nets itself (ERC-lite + pin-level parity,
+below); full DRC/ERC still belong to KiCad (below).
 
 **BOM ↔ schematic** (KiCad, JLCPCB and generic header spellings):
 references that don't exist, schematic parts missing from the BOM,
@@ -160,6 +161,20 @@ present, no zero-byte or duplicated layers, a consistent layer
 stack, one naming scheme (KiCad defaults, Protel extensions, or
 generic names). Auto-detected for fab-output folders, or forced
 with `--gerber`. File-level only: Gerber contents are never parsed.
+
+**Netlist: ERC-lite + schematic↔PCB parity** (v0.5): the schematic
+netlist is extracted natively (pin connection points computed from
+library definitions and symbol transforms, nets built from wires,
+junctions, labels and sheet pins, KiCad label/hierarchy semantics).
+On top of it: unconnected pins with no no-connect marker, power
+nets no power-output pin drives (KiCad's documented power-pin
+test), output conflicts per KiCad's pin-conflict matrix, dangling
+labels, and pin-level parity between the schematic netlist and
+the PCB's pads — membership differences, nets present on one side
+only, and renames. What cannot be resolved (missing library
+definitions, unmodelled pad shapes, bus-only pins) abstains and is
+counted in Coverage, never guessed. 83 rules in total; the full
+list is `docs/RULES.md`.
 
 **Part risk (offline)**: obsolete/EOL, out-of-stock, low stock, long
 lead time, single-source, not-recommended-for-new-designs — per BOM

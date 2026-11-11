@@ -32,10 +32,28 @@ CLEAN = {
                         # connector straddles the edge by design);
                         # the board states no edge clearance, so
                         # the published 0.20 mm fab minimum applies.
-                        "GEOMETRY_COPPER_TO_EDGE": 1}),
+                        "GEOMETRY_COPPER_TO_EDGE": 1,
+                        # v0.5, hand-verified (v05-CENSUS.md): +5V,
+                        # GND and VBUS carry only power_in/passive
+                        # pins -- no driver pin exists in the file
+                        # data (contrast +3V3, driven by U2 pin 2
+                        # power_out, which stays silent). TRUE per
+                        # KiCad's pin-type matrix.
+                        "ERC_POWER_NOT_DRIVEN": 3}),
     "projects/esp-rust-board/hardware/esp-rust-board":
         ("CAUTION", 1, {"BOM_MISSING_MPN": 1,
-                        "SCHEMATIC_DATASHEET_MISSING": 1}),
+                        "SCHEMATIC_DATASHEET_MISSING": 1,
+                        # v0.5, hand-verified (v05-CENSUS.md): six
+                        # power nets (+3V3 via passive inductor L1,
+                        # +5V, VBUS, GND, the unnamed USB-C VBUS and
+                        # shield segments) have no power_out pin in
+                        # the file data -- KiCad's power-pin test
+                        # accepts only power_out as a driver; plus
+                        # one SCAN_INCOMPLETE because parity abstains
+                        # per-ref on U3/U4, whose footprints contain
+                        # custom-shaped pads.
+                        "ERC_POWER_NOT_DRIVEN": 6,
+                        "SCAN_INCOMPLETE": 1}),
     "projects/piantor/pcb/left":
         ("BLOCK", 2, {"DUPLICATE_REFERENCE_PCB": 2,
                       "FOOTPRINT_MISMATCH": 4,
@@ -47,13 +65,22 @@ CLEAN = {
                       # fan-out tracks by up to 0.125 mm against the
                       # board's stated 0.3 mm class (the fan-out was
                       # routed against the 1.7 mm thru-hole pads).
-                      "GEOMETRY_CLEARANCE_BELOW_MIN": 1}),
+                      "GEOMETRY_CLEARANCE_BELOW_MIN": 1,
+                      # v0.5, hand-verified (v05-CENSUS.md): VBUS,
+                      # VCC and GND are fed through the TRRS
+                      # connector / resistors; no power_out pin
+                      # exists on them in the file data. TRUE per
+                      # KiCad's documented power-pin test.
+                      "ERC_POWER_NOT_DRIVEN": 3}),
     "projects/piantor/pcb/right":
         ("BLOCK", 2, {"DUPLICATE_REFERENCE_PCB": 2,
                       "FOOTPRINT_MISMATCH": 4,
                       "BOM_MISSING": 1,
                       "SCHEMATIC_DATASHEET_MISSING": 1,
-                      "GEOMETRY_CLEARANCE_BELOW_MIN": 1}),
+                      "GEOMETRY_CLEARANCE_BELOW_MIN": 1,
+                      # v0.5: same hand-verified trio as the left
+                      # half (VBUS, VCC, GND undriven).
+                      "ERC_POWER_NOT_DRIVEN": 3}),
 }
 
 BROKEN = {

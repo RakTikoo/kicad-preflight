@@ -202,6 +202,81 @@ def main():
         print("FAIL geo-open: output was not JSON")
         failures += 1
 
+    # --- v0.5: netlist fixtures -------------------------------------
+    NETLIST_RULES = {"ERC_UNCONNECTED_PIN", "ERC_POWER_NOT_DRIVEN",
+                     "ERC_OUTPUT_CONFLICT", "ERC_DANGLING_LABEL",
+                     "PARITY_NET_MEMBERSHIP", "PARITY_NET_SCH_ONLY",
+                     "PARITY_NET_PCB_ONLY", "PARITY_NET_RENAMED"}
+    # netlist-clean: a fully wired regulator circuit whose PCB pads
+    # match the schematic membership exactly — no findings at all.
+    proc = run_cli(ROOT / "samples/netlist-clean")
+    try:
+        report = parse_report(proc)
+        if report["verdict"] != "PASS" or report["findings"]:
+            print(f"FAIL netlist-clean: verdict={report['verdict']} "
+                  f"findings={[f['rule'] for f in report['findings']]}")
+            failures += 1
+        else:
+            print("PASS netlist-clean: wired circuit + matching PCB "
+                  "produce zero findings")
+    except json.JSONDecodeError:
+        print("FAIL netlist-clean: output was not JSON")
+        failures += 1
+
+    # netlist-hier: sub-sheet via sheet pin <-> hierarchical label,
+    # a global label crossing sheets, a power symbol in the
+    # sub-sheet — clean, no findings.
+    proc = run_cli(ROOT / "samples/netlist-hier")
+    try:
+        report = parse_report(proc)
+        if report["verdict"] != "PASS" or report["findings"]:
+            print(f"FAIL netlist-hier: verdict={report['verdict']} "
+                  f"findings={[f['rule'] for f in report['findings']]}")
+            failures += 1
+        else:
+            print("PASS netlist-hier: hierarchy plumbing is clean")
+    except json.JSONDecodeError:
+        print("FAIL netlist-hier: output was not JSON")
+        failures += 1
+
+    # netlist-broken: each planted fault exactly once — (a) two
+    # outputs on VOUT, (b) VBAT_IN power_in with only a passive
+    # connector, (c) R2 pin 2 open with no NC marker (pin 2 of C1
+    # is the NC-marked control and stays silent), (d) R1 pad 2
+    # moved GND->VOUT on the PCB (membership diff on BOTH shared
+    # nets), (e) AUX in the schematic only, (f) CLK_IN renamed
+    # CLK_OUT on the PCB with identical membership (NOTE only).
+    # The one non-netlist finding is the expected NOTE for U3's
+    # out-of-dataset MPN.
+    proc = run_cli(ROOT / "samples/netlist-broken")
+    try:
+        report = parse_report(proc)
+        got_net = Counter(f["rule"] for f in report["findings"]
+                          if f["rule"] in NETLIST_RULES)
+        want_net = Counter({
+            "ERC_OUTPUT_CONFLICT": 1,
+            "ERC_POWER_NOT_DRIVEN": 1,
+            "ERC_UNCONNECTED_PIN": 1,
+            "PARITY_NET_MEMBERSHIP": 2,
+            "PARITY_NET_SCH_ONLY": 1,
+            "PARITY_NET_RENAMED": 1,
+        })
+        got_other = Counter(f["rule"] for f in report["findings"]
+                            if f["rule"] not in NETLIST_RULES)
+        if got_net != want_net \
+                or got_other != Counter({"PART_NOT_IN_SAMPLE_DATA": 1}) \
+                or report["verdict"] != "BLOCK":
+            print(f"FAIL netlist-broken: netlist={dict(got_net)} "
+                  f"other={dict(got_other)} "
+                  f"verdict={report['verdict']}")
+            failures += 1
+        else:
+            print("PASS netlist-broken: every planted netlist fault "
+                  "fires exactly once, nothing else")
+    except json.JSONDecodeError:
+        print("FAIL netlist-broken: output was not JSON")
+        failures += 1
+
     # --- v0.4: Gerber package fixtures -------------------------------
     proc = run_cli(ROOT / "samples/gerber-good")
     try:
