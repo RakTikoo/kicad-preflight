@@ -163,6 +163,28 @@ def _coverage_lines(cov):
                 "Geometry-lite exclusions: " + " and ".join(skipped)
                 + " not distance-checked; copper objects with no "
                   "stated net are never paired")
+    netlist = cov.get("netlist")
+    if netlist:
+        if netlist.get("ran"):
+            lines.append(
+                f"Netlist (ERC-lite + parity, subset — not KiCad "
+                f"ERC): {netlist.get('pins_resolved', 0)} schematic "
+                f"pin(s) resolved into {netlist.get('nets_total', 0)} "
+                f"net(s) ({netlist.get('nets_named', 0)} named); "
+                f"{netlist.get('pins_unresolved', 0)} pin(s) "
+                f"unresolved, {netlist.get('pins_bus_connected', 0)} "
+                "bus-connected pin(s) excluded")
+            if netlist.get("parity_ran"):
+                lines.append(
+                    f"Net parity: {netlist.get('parity_nets_compared', 0)} "
+                    f"net(s) compared pin-by-pin over "
+                    f"{netlist.get('parity_scope_refs', 0)} part(s); "
+                    f"{len(netlist.get('parity_unmeasurable_refs', []))} "
+                    "part(s) excluded as unmeasurable (see findings)")
+        elif netlist.get("abstained"):
+            lines.append(
+                f"Netlist: not extracted ({netlist['abstained']}) — "
+                "ERC-lite and parity checks did not run")
     placement = cov.get("placement")
     if placement and placement.get("file"):
         files = placement.get("files") or []

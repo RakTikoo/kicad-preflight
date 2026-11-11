@@ -97,6 +97,12 @@ MAX_WIDE_OBJECTS = 256       # wide objects per layer before abstain
 # (audit F1). Past this, the check abstains honestly.
 MAX_CANDIDATE_PAIRS = 5000000
 OUTLINE_NEAR_MISS = 0.1      # mm; fragments of a shattered outline
+# Containment judgement (an open chain next to closed loops is a
+# routed slot only when it lies fully inside a loop's interior):
+# budgets on the geometry built and the point/edge tests spent, so
+# a crafted outline abstains honestly instead of hanging.
+MAX_CONTAINMENT_POINTS = 200000   # subdivided points built
+MAX_CONTAINMENT_OPS = 2000000     # point-to-loop-edge tests
 
 
 # ---------------------------------------------------------------------------
@@ -726,6 +732,269 @@ def _elem_endpoints(elem, legacy_sign):
     return None
 
 
+class _ContainmentAbort(Exception):
+    """The containment geometry budgets ran out: abstain."""
+
+
+def _chain_pieces(pieces, start, end):
+    """Order (segment, unc) pieces into a start→end point list by
+    shared endpoints, or None when they do not chain cleanly (a
+    self-touching curve can make the order ambiguous — callers
+    treat that as unrebuildable rather than guess)."""
+    segs = [seg for seg, _unc in pieces]
+    if not segs:
+        return None
+    by_point = {}
+    for i, (x1, y1, x2, y2) in enumerate(segs):
+        by_point.setdefault((x1, y1), []).append(i)
+        if (x2, y2) != (x1, y1):
+            by_point.setdefault((x2, y2), []).append(i)
+    pts = [start]
+    cur = start
+    used = set()
+    while len(used) < len(segs):
+        cands = [i for i in by_point.get(cur, ()) if i not in used]
+        if not cands:
+            return None
+        # Prefer a piece that actually leaves `cur` (a zero-length
+        # piece is consumed last, never as a stepping stone).
+        pick = None
+        for i in cands:
+            x1, y1, x2, y2 = segs[i]
+            other = (x2, y2) if (x1, y1) == cur else (x1, y1)
+            if other != cur:
+                pick = (i, other)
+                break
+        if pick is None:
+            pick = (cands[0], cur)
+        i, cur = pick
+        used.add(i)
+        pts.append(cur)
+    return pts if cur == end else None
+
+
+def _elem_polyline(elem, legacy_sign, work):
+    """Ordered centreline points for one chainable outline
+    element, in its _elem_endpoints direction, reusing the
+    sagitta-bounded subdivision of the copper-to-edge pass; or
+    None when the geometry cannot be rebuilt: a legacy
+    (angle ...) arc under the endpoints reading (only its chord
+    is knowable), or pieces that do not chain. `work` is the
+    shared [points, ops] containment budget; exceeding the points
+    budget raises _ContainmentAbort."""
+    if elem.kind == "arc" and elem.angle is not None \
+            and legacy_sign not in (1, -1):
+        return None
+    sign = legacy_sign if legacy_sign in (1, -1) else None
+    pieces = _elem_pieces(elem, sign)
+    if not pieces:
+        return None
+    work[0] += len(pieces)
+    if work[0] > MAX_CONTAINMENT_POINTS:
+        raise _ContainmentAbort
+    ends = _elem_endpoints(elem, legacy_sign)
+    if ends is None:
+        return None
+    return _chain_pieces(pieces, ends[0], ends[1])
+
+
+def _chain_test_points(members, edge_elems, legacy_sign, work):
+    """Subdivided points of an open chain: every element's piece
+    endpoints plus segment midpoints (order is irrelevant to the
+    containment test). An element whose curve cannot be rebuilt
+    (a legacy endpoints-reading arc) contributes its chord — the
+    two endpoints and their midpoint; the bulge side is
+    unknowable from the file."""
+    pts = []
+    for idx in members:
+        elem = edge_elems[idx]
+        poly = None
+        if not (elem.kind == "arc" and elem.angle is not None
+                and legacy_sign not in (1, -1)):
+            sign = legacy_sign if legacy_sign in (1, -1) else None
+            pieces = _elem_pieces(elem, sign)
+            if pieces:
+                work[0] += len(pieces)
+                if work[0] > MAX_CONTAINMENT_POINTS:
+                    raise _ContainmentAbort
+                poly = [(x1, y1)
+                        for ((x1, y1, _x2, _y2), _u) in pieces]
+                poly += [(x2, y2)
+                         for ((_x1, _y1, x2, y2), _u) in pieces]
+                poly += [((x1 + x2) / 2.0, (y1 + y2) / 2.0)
+                         for ((x1, y1, x2, y2), _u) in pieces]
+        if poly is None:
+            ends = _elem_endpoints(elem, legacy_sign)
+            if ends is None:
+                continue
+            (ax, ay), (bx, by) = ends
+            poly = [(ax, ay), ((ax + bx) / 2.0, (ay + by) / 2.0),
+                    (bx, by)]
+        pts.extend(poly)
+    return pts
+
+
+def _self_closed_polygon(elem, work):
+    """Ring points for a self-closed element (circle / rect /
+    poly), in the order _elem_pieces generates them — ring order
+    for all three kinds. [] when the element encloses nothing
+    (zero radius, collapsed corners)."""
+    pieces = _elem_pieces(elem, None)
+    work[0] += len(pieces)
+    if work[0] > MAX_CONTAINMENT_POINTS:
+        raise _ContainmentAbort
+    if len(pieces) < 3:
+        return []
+    return [(x1, y1) for ((x1, y1, _x2, _y2), _u) in pieces]
+
+
+def _chained_loop_polygon(members, edge_elems, elem_ends, partner,
+                          endpoints, legacy_sign, work):
+    """Ring points for a closed chained component, walked in
+    cycle order via the endpoint pairing; None when any element's
+    geometry cannot be rebuilt (the caller then abstains rather
+    than judge containment against an unknown interior)."""
+    start = members[0]
+    first_entry = elem_ends[start][0]
+    ring = []
+    elem, entry = start, first_entry
+    for _step in range(len(members) + 1):
+        i, j = elem_ends[elem]
+        exit_idx = j if entry == i else i
+        poly = _elem_polyline(edge_elems[elem], legacy_sign, work)
+        if poly is None:
+            return None
+        if entry == j:
+            poly = poly[::-1]
+        ring.extend(poly[1:] if ring else poly)
+        nxt = partner.get(exit_idx)
+        if nxt is None:
+            return None
+        if nxt == first_entry:
+            return ring
+        elem, entry = endpoints[nxt][2], nxt
+    return None
+
+
+def _loop_container(pts):
+    """(ring, bbox) for a closed loop with a real interior, else
+    None: fewer than 3 points, or a collapsed / zero-area ring —
+    such a loop encloses nothing and can certify no slot."""
+    if pts is None or len(pts) < 3:
+        return None
+    area2 = 0.0
+    n = len(pts)
+    for k in range(n):
+        x1, y1 = pts[k]
+        x2, y2 = pts[(k + 1) % n]
+        area2 += x1 * y2 - x2 * y1
+    if abs(area2) <= 1e-9:
+        return None
+    xs = [p[0] for p in pts]
+    ys = [p[1] for p in pts]
+    return pts, (min(xs), min(ys), max(xs), max(ys))
+
+
+def _point_in_loop(px, py, container, work):
+    """True only when (px, py) is strictly inside the loop:
+    inside by even-odd ray casting AND farther than
+    CHAIN_TOLERANCE from every edge. A point on (or within the
+    chaining tolerance of) the boundary is NOT inside — a chain
+    whose endpoint touches the outline is a notch/tab in the
+    board edge in KiCad semantics, not an interior slot, so the
+    ambiguity resolves in the BLOCK direction."""
+    pts, (x0, y0, x1, y1) = container
+    if px < x0 or px > x1 or py < y0 or py > y1:
+        return False
+    inside = False
+    n = len(pts)
+    for k in range(n):
+        ax, ay = pts[k]
+        bx, by = pts[(k + 1) % n]
+        work[1] += 1
+        if work[1] > MAX_CONTAINMENT_OPS:
+            raise _ContainmentAbort
+        if _d_pt_seg(px, py, ax, ay, bx, by) <= CHAIN_TOLERANCE:
+            return False
+        if (ay > py) != (by > py):
+            xint = ax + (py - ay) * (bx - ax) / (by - ay)
+            if px < xint:
+                inside = not inside
+    return inside
+
+
+def _points_contained(test_points, containers, work):
+    """True when EVERY test point lies strictly inside at least
+    one closed loop."""
+    for px, py in test_points:
+        if not any(_point_in_loop(px, py, c, work)
+                   for c in containers):
+            return False
+    return True
+
+
+def _containment_eval(edge_elems, closed_components,
+                      open_components, doubtful_components,
+                      loose_singles, elem_ends, partner, endpoints,
+                      legacy_sign):
+    """Judge open chains against the closed loops' interiors.
+
+    Returns a (closed, open_points, abstained) verdict, or None
+    when no closed loop encloses anything (every loop collapsed
+    to zero area) — the caller then falls back to the no-loop
+    rules, since no loop can be the board boundary. A chain
+    counts as a routed slot only when every subdivided point
+    lies strictly inside some loop; a certain chain that is not
+    contained is the outline itself, open. Doubtful chains
+    (endpoint pattern too close to the chaining tolerance to
+    judge, RT-14) keep their abstention when not contained
+    rather than being upgraded to a certain BLOCK."""
+    work = [0, 0]
+    containers = []
+    unrebuildable = False
+    try:
+        for elem in edge_elems:
+            if elem.kind in ("circle", "rect", "poly"):
+                box = _loop_container(
+                    _self_closed_polygon(elem, work))
+                if box is not None:
+                    containers.append(box)
+        for members in closed_components:
+            ring = _chained_loop_polygon(
+                members, edge_elems, elem_ends, partner, endpoints,
+                legacy_sign, work)
+            if ring is None:
+                unrebuildable = True
+                continue
+            box = _loop_container(ring)
+            if box is not None:
+                containers.append(box)
+        if unrebuildable:
+            return None, [], True
+        if not containers:
+            return None
+        judged = list(open_components)
+        judged += [([idx], [(endpoints[k][0], endpoints[k][1])
+                            for k in elem_ends[idx]])
+                   for idx in loose_singles]
+        bad = []
+        for members, pts in judged:
+            test = _chain_test_points(members, edge_elems,
+                                      legacy_sign, work)
+            if not _points_contained(test, containers, work):
+                bad.extend(pts)
+        if bad:
+            return False, bad, False
+        for members, _pts in doubtful_components:
+            test = _chain_test_points(members, edge_elems,
+                                      legacy_sign, work)
+            if not _points_contained(test, containers, work):
+                return None, [], True
+        return True, [], False
+    except _ContainmentAbort:
+        return None, [], True
+
+
 def _outline_eval(edge_elems, legacy_sign):
     """One closure evaluation under a legacy-arc sign choice.
 
@@ -736,9 +1005,15 @@ def _outline_eval(edge_elems, legacy_sign):
     opening (RT-03), and pairing is grid-bucketed rather than
     all-pairs (RT-02: 17 s at the element budget). Semantics: an
     open chain alongside a closed loop is a routed slot, a legal
-    Edge.Cuts construct; with NO closed loop anywhere, chained
-    but open elements — and fragments a hair from joining — are
-    the outline itself, broken (RT-12)."""
+    Edge.Cuts construct — but only when the chain lies fully
+    inside a closed loop's interior; a chain anywhere else is
+    the outline itself, open, however many self-closed elements
+    (mounting-hole circles and the like) share the layer (the
+    v0.5 benchmark's esp-rust-board mutation: deleting one side
+    of the outer chain left a 21.6 mm gap that four gr_circles
+    masked into a false PASS). With NO closed loop anywhere,
+    chained but open elements — and fragments a hair from
+    joining — are the outline itself, broken (RT-12)."""
     self_closed_kinds = {"circle", "rect", "poly"}
     has_closed_elem = False
     endpoints = []       # (x, y, elem_idx)
@@ -824,8 +1099,9 @@ def _outline_eval(edge_elems, legacy_sign):
         return False
 
     closed_exists = has_closed_elem
-    open_certain = []
-    abstained_any = False
+    closed_components = []
+    open_components = []        # (members, unmatched points)
+    doubtful_components = []    # (members, unmatched points)
     loose_singles = []
     for members in components.values():
         member_set = set(members)
@@ -833,15 +1109,34 @@ def _outline_eval(edge_elems, legacy_sign):
                      for k in elem_ends[idx] if k not in partner]
         if not unmatched:
             closed_exists = True
+            closed_components.append(members)
             continue
         if len(members) == 1 and len(unmatched) == 2:
             loose_singles.append(members[0])
             continue
+        pts = [(x, y) for x, y, _i in unmatched]
         if any(_near_foreign(x, y, member_set)
                for x, y, _i in unmatched):
-            abstained_any = True
+            doubtful_components.append((members, pts))
         else:
-            open_certain.extend((x, y) for x, y, _i in unmatched)
+            open_components.append((members, pts))
+    open_certain = [p for _m, pts in open_components for p in pts]
+    abstained_any = bool(doubtful_components)
+    if closed_exists and (open_components or doubtful_components
+                          or loose_singles):
+        # Closed loops share the layer with open chains: the
+        # chains are routed slots only if they lie fully inside
+        # a loop's interior (_containment_eval). A verdict of
+        # None means no loop encloses anything, so nothing can
+        # certify a slot — fall through and judge the chains
+        # under the no-loop rules below.
+        verdict = _containment_eval(
+            edge_elems, closed_components, open_components,
+            doubtful_components, loose_singles, elem_ends, partner,
+            endpoints, legacy_sign)
+        if verdict is not None:
+            return verdict
+        closed_exists = False   # no loop can be the boundary
     if closed_exists:
         return True, [], False
     if open_certain:
@@ -987,8 +1282,8 @@ def run_geometry_checks(project):
             f"matching continuation ({where_pts}). An open outline "
             "cannot be cut as drawn — both JLCPCB and PCBWay hold "
             "orders over outline problems. Join the outline into a "
-            "closed loop (open chains alongside a closed loop are "
-            "treated as routed slots and never trigger this).",
+            "closed loop (open chains fully inside a closed loop "
+            "are treated as routed slots and never trigger this).",
             where=pcb_name,
             evidence=f"open_endpoints={len(open_points)}"))
     if total_objects > MAX_OBJECTS:

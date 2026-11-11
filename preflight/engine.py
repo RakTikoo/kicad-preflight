@@ -12,6 +12,10 @@ Layers, in order:
   6. BOM <-> schematic checks (bomchecks.py via checks.run_bom_layer)
   7. Offline part-risk checks against the sample dataset (partrisk.py)
   8. Official kicad-cli DRC/ERC, when installed (kicadcli.py)
+  9. Netlist: ERC-lite (unconnected pins, undriven power nets,
+     output conflicts, dangling labels) and schematic<->PCB
+     pin-level parity against the PCB's modelled pads
+     (netlist.py) — a conservative subset, not KiCad ERC/parity
 
 The report's Coverage section states exactly what each layer did, and
 the verdict accounts for it: anything that exists but could not be
@@ -31,7 +35,8 @@ moment after export and before upload, when no project runs.
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from . import bomchecks, checks, fabchecks, geometry, kicadcli, partrisk
+from . import (bomchecks, checks, fabchecks, geometry, kicadcli,
+               netlist, partrisk)
 from .bom import parse_bom
 from .finding import BLOCK, CAUTION, NOTE, Finding, verdict_for
 from .gerber import run_gerber_checks
@@ -105,6 +110,9 @@ def run(target, bom_override=None, dataset_path=None):
 
     cli_findings, cli_coverage = kicadcli.run_official_checks(project)
     findings.extend(cli_findings)
+
+    net_findings, net_stats = netlist.run_netlist_checks(project)
+    findings.extend(net_findings)
     if cli_coverage.get("failed"):
         findings.append(Finding(
             "KICAD_CLI_FAILED", CAUTION,
@@ -145,6 +153,41 @@ def run(target, bom_override=None, dataset_path=None):
         incomplete.append(
             "the copper-to-edge check did not run (the subdivided "
             "board outline exceeded the geometry budget)")
+    if net_stats.get("budget_exceeded"):
+        incomplete.append(
+            "netlist extraction exceeded its budget (pins/wires/"
+            "labels/bus segments/bus-touch work), so the ERC-lite "
+            "and parity checks did not run")
+    if net_stats.get("sheets_multi_instanced"):
+        incomplete.append(
+            "netlist extraction abstained on multiply-instanced "
+            "sheet file(s) (the same sheet file used by 2+ sheet "
+            "blocks; sheets are resolved per file, not per sheet "
+            "instance): "
+            + ", ".join(
+                f"{m.get('file')} x{m.get('count')}"
+                for m in net_stats["sheets_multi_instanced"])
+            + ", so the ERC-lite and parity checks did not run")
+    if net_stats.get("parity_budget_exceeded"):
+        incomplete.append(
+            "schematic<->PCB parity exceeded its matching work "
+            "budget, so the parity checks did not run (the "
+            "ERC-lite checks are unaffected)")
+    if net_stats.get("zero_pins_resolved"):
+        incomplete.append(
+            "the schematic has connectivity constructs and pin "
+            "definitions, but no placed symbol's pins could be "
+            "resolved from them, so the ERC-lite and parity checks "
+            "did not run")
+    if net_stats.get("parity_ran") \
+            and net_stats.get("parity_unmeasurable_refs"):
+        incomplete.append(
+            f"{len(net_stats['parity_unmeasurable_refs'])} part(s) "
+            "were excluded from schematic<->PCB net parity because "
+            "their PCB pads could not be modelled (custom/trapezoid"
+            " or unplaced pads) or their schematic pins "
+            "could not be resolved: "
+            + ", ".join(net_stats["parity_unmeasurable_refs"][:12]))
     if incomplete:
         findings.append(Finding(
             "SCAN_INCOMPLETE", CAUTION,
@@ -199,6 +242,7 @@ def run(target, bom_override=None, dataset_path=None):
              "dimensions_unreadable": project.geometry.unparsed_dims}
             if project.pcb_path else None),
         "geometry_lite": geo_stats if project.pcb_path else None,
+        "netlist": net_stats if project.sch_path else None,
         "placement": (
             {"file": project.cpl_path.name,
              "files": [Path(p).name for p in project.cpl_files],

@@ -72,6 +72,103 @@ def is_designator(ref):
 
 
 @dataclass
+class LibPin:
+    """One pin of a library symbol definition (v0.5, netlist capture)."""
+
+    type: str = ""               # electrical type: input/output/passive/...
+    name: str = ""
+    number: str = ""
+    x: float = 0.0
+    y: float = 0.0
+    rot: float = 0.0
+    hidden: bool = False
+    # v0.5 fix wave (audit F8/F9): a pin that cannot be resolved --
+    # "" (good), "number" (no (number ...) -- counted unresolved,
+    # never a resolved pin numbered "") or "coords" (its (at ...)
+    # was unreadable/non-finite -- counted, never placed at a guess).
+    bad: str = ""
+
+
+@dataclass
+class LibSymbolDef:
+    """A (lib_symbols ...) definition: pins grouped by unit.
+
+    pins_by_unit[0] holds the pins of the "Name_0_1" sub-symbol
+    (they apply to every unit); pins_by_unit[k] the pins of
+    "Name_k_1" (style 1 only — alternate-body-style pins are not
+    read; a placed symbol does not record which style it uses)."""
+
+    lib_id: str = ""
+    is_power: bool = False       # the definition carries a (power) flag
+    pins_by_unit: dict = field(default_factory=dict)
+
+    def pins_for_unit(self, unit):
+        pins = list(self.pins_by_unit.get(0, ()))
+        # Numberless (bad) pins have no number to dedupe on: each
+        # one is its own unresolved pin.
+        seen = {p.number for p in pins if p.number}
+        for pin in self.pins_by_unit.get(unit, ()):
+            if pin.number and pin.number in seen:
+                continue
+            pins.append(pin)
+            if pin.number:
+                seen.add(pin.number)
+        return pins
+
+
+@dataclass
+class LabelRec:
+    name: str = ""
+    kind: str = ""               # label / global_label / hierarchical_label
+    x: float = 0.0
+    y: float = 0.0
+    rot: float = 0.0
+
+
+@dataclass
+class SheetPinRec:
+    name: str = ""
+    type: str = ""               # electrical type atom after the name
+    x: float = 0.0
+    y: float = 0.0
+    rot: float = 0.0
+
+
+@dataclass
+class SheetBlockRec:
+    """One (sheet ...) block in a parent sheet (v0.5)."""
+
+    name: str = ""
+    file: str = ""
+    pins: list = field(default_factory=list)   # SheetPinRec
+
+
+@dataclass
+class SheetData:
+    """Everything netlist extraction needs from one sheet file (v0.5)."""
+
+    file: str = ""                             # sheet file name
+    lib_symbols: dict = field(default_factory=dict)  # lib_id -> LibSymbolDef
+    wires: list = field(default_factory=list)  # point chains [(x, y), ...]
+    buses: list = field(default_factory=list)  # point chains, as wires
+    bus_entries: list = field(default_factory=list)  # ((x, y), (x, y))
+    labels: list = field(default_factory=list)       # LabelRec
+    junctions: list = field(default_factory=list)    # (x, y)
+    no_connect_pts: list = field(default_factory=list)  # (x, y)
+    sheets: list = field(default_factory=list)       # SheetBlockRec
+    # v0.5 fix wave (audit F7/F8): honesty counters for malformed
+    # input that used to be resolved silently (first/last-wins) or
+    # dropped silently -- surfaced in the netlist Coverage stats.
+    lib_defs_duplicate: int = 0   # lib_id defined 2+ times
+    pins_duplicate: int = 0       # pin numbers dropped as duplicates
+    coords_unreadable: int = 0    # total unreadable coordinate objects
+    coords_unreadable_pins: int = 0
+    coords_unreadable_labels: int = 0
+    coords_unreadable_wire_points: int = 0
+    coords_unreadable_other: int = 0
+
+
+@dataclass
 class Symbol:
     """One placed schematic symbol (a component instance)."""
 
@@ -85,6 +182,12 @@ class Symbol:
     dnp: bool = False
     props: dict = field(default_factory=dict)
     sheet: str = ""              # file the symbol came from
+    # --- v0.5 netlist capture: placement transform + placed pin list --
+    x: float = None
+    y: float = None
+    rot: float = 0.0
+    mirror: str = None           # "x" / "y" / None
+    pin_numbers: tuple = ()      # (pin "N" ...) children of the instance
 
     @property
     def is_power(self):
@@ -235,7 +338,17 @@ class PcbGeometry:
     # root-level graphic items on copper layers (TrackGeo-shaped,
     # net always None): they are copper for edge-distance purposes
     pads_non_copper: int = 0     # np_thru_hole pads (no copper annulus)
+    # v0.5 fix wave (audit F3): np_thru_hole pads are not copper
+    # geometry, but they DO carry (ref, pad name, net) membership in
+    # the file -- recorded here (PadGeo-shaped) for netlist parity
+    # only; the geometry layer never sees this list.
+    pads_membership_extra: list = field(default_factory=list)
     pads_shape_skipped: int = 0  # custom/trapezoid pads: not modelled
+    # v0.5: per-ref count of pads the modelled membership cannot see
+    # (shape-skipped, unplaced, or non-positive size) — schematic<->
+    # PCB parity abstains per footprint ref on this, not globally.
+    pad_issues_by_ref: dict = field(default_factory=dict)
+    pad_total_by_ref: dict = field(default_factory=dict)  # all pad nodes
     pads_unplaced: int = 0       # pads whose position could not be read
     items_unplaced: int = 0      # tracks/vias/edge items unreadable coords
     copper_layers: list = field(default_factory=list)
@@ -283,6 +396,7 @@ class Project:
     cpl_broken: list = field(default_factory=list)
     # (name, error) position-like files that failed while another parsed
     no_connects: int = 0
+    sheet_data: list = field(default_factory=list)  # SheetData, per sheet (v0.5)
     sch_symbols_no_ref: int = 0  # placed symbols skipped: no Reference
     pcb_footprints_no_ref: int = 0
     parse_errors: list = field(default_factory=list)  # (path, error message)
@@ -349,6 +463,25 @@ def _flag(node, name, default):
     return default
 
 
+def _safe_int(value, max_digits=9):
+    """int() from untrusted text, or None (audit F6).
+
+    Python >=3.11 refuses int() on strings over 4,300 digits with a
+    ValueError that used to escape some call sites and kill the
+    whole run with no report.  Any digit string longer than
+    max_digits is treated as unparseable here -- no legitimate
+    KiCad version, unit, style or net id is anywhere near 9 digits.
+    """
+    text = str(value).strip()
+    digits = text[1:] if text[:1] in ("+", "-") else text
+    if digits.isdigit() and len(digits) > max_digits:
+        return None
+    try:
+        return int(text)
+    except (TypeError, ValueError):
+        return None
+
+
 def _file_versions(root):
     """(format_version, generator_version, stamp_raw) from a file root.
 
@@ -364,9 +497,8 @@ def _file_versions(root):
     raw_bits = []
     ver_node = sexpr.child(root, "version")
     if ver_node is not None and len(ver_node) >= 2:
-        try:
-            version = int(str(ver_node[1]).strip())
-        except (TypeError, ValueError):
+        version = _safe_int(ver_node[1])
+        if version is None:
             raw_bits.append(f"version stamp {str(ver_node[1])[:40]!r}")
     generator = ""
     gen_node = sexpr.child(root, "generator_version")
@@ -416,12 +548,146 @@ def _num(value):
     return result if math.isfinite(result) else None
 
 
+def _contains_hide(node):
+    """True when a pin is marked hidden: a bare `hide` atom or a
+    (hide ...) list DIRECTLY under the pin node. (A `hide` inside
+    the pin's (name ...) / (number ...) effects hides the pin's
+    TEXT, not the pin, and must not count.)"""
+    if not isinstance(node, list):
+        return False
+    for item in node[1:]:
+        if isinstance(item, str) and item == "hide":
+            return True
+        if isinstance(item, list) and sexpr.head(item) == "hide":
+            return True
+    return False
+
+
+_UNIT_STYLE = re.compile(r"_(\d+)_(\d+)$")
+
+
+def _parse_lib_symbols(root):
+    """(defs, counters) from a root's (lib_symbols ...) node.
+
+    counters (audit F7/F8): lib_defs_duplicate, pins_duplicate,
+    coords_unreadable_pins -- malformed input that is resolved
+    deterministically (first def / first pin wins, as before) but
+    no longer silently.
+    """
+    defs = {}
+    counters = {"lib_defs_duplicate": 0, "pins_duplicate": 0,
+                "coords_unreadable_pins": 0}
+    libs = sexpr.child(root, "lib_symbols")
+    if libs is None:
+        return defs, counters
+    for sym in sexpr.children(libs, "symbol"):
+        if len(sym) < 2 or not isinstance(sym[1], str):
+            continue
+        lib_id = sym[1]
+        if lib_id in defs:
+            counters["lib_defs_duplicate"] += 1
+        libdef = LibSymbolDef(
+            lib_id=lib_id,
+            is_power=sexpr.child(sym, "power") is not None)
+        by_unit_style = {}       # (unit, style) -> [LibPin]
+        for sub in sexpr.children(sym, "symbol"):
+            if len(sub) < 2 or not isinstance(sub[1], str):
+                continue
+            match = _UNIT_STYLE.search(sub[1])
+            if not match:
+                continue
+            # Audit F6: the unit/style digit strings are untrusted;
+            # a >9-digit one is unparseable, never an int() crash.
+            unit_no = _safe_int(match.group(1))
+            style = _safe_int(match.group(2))
+            if unit_no is None or style is None:
+                continue
+            pins = []
+            for pin in sexpr.children(sub, "pin"):
+                if len(pin) < 2 or not isinstance(pin[1], str):
+                    continue
+                name_node = sexpr.child(pin, "name")
+                num_node = sexpr.child(pin, "number")
+                number = num_node[1] if num_node is not None \
+                    and len(num_node) >= 2 \
+                    and isinstance(num_node[1], str) else ""
+                name = name_node[1] if name_node is not None \
+                    and len(name_node) >= 2 \
+                    and isinstance(name_node[1], str) else ""
+                at = _at_of(pin)
+                if at is None:
+                    # Audit F8: counted, and kept as a bad pin so a
+                    # placed instance counts it unresolved instead
+                    # of the pin vanishing from the file's record.
+                    counters["coords_unreadable_pins"] += 1
+                    pins.append(LibPin(
+                        type=pin[1], name=name, number=number,
+                        x=0.0, y=0.0, rot=0.0,
+                        hidden=_contains_hide(pin), bad="coords"))
+                    continue
+                pins.append(LibPin(
+                    type=pin[1], name=name, number=number,
+                    x=at[0], y=at[1], rot=at[2],
+                    hidden=_contains_hide(pin),
+                    # Audit F9: no (number ...) = unresolved, not a
+                    # resolved pin numbered "".
+                    bad="" if number else "number"))
+            if pins:
+                by_unit_style.setdefault((unit_no, style),
+                                         []).extend(pins)
+        # Style 0 is the body-style-common part and style 1 the
+        # normal body: pins from both apply (corpus boards keep
+        # whole connectors' pins in _0_0). Style 2 is the alternate
+        # (De Morgan) body — its pins duplicate style 1's numbers,
+        # so it is only a fallback for a unit with no 0/1 pins.
+        for unit_no in sorted({u for u, _s in by_unit_style}):
+            merged, seen = [], set()
+            for style in (0, 1):
+                for pin in by_unit_style.get((unit_no, style), ()):
+                    if pin.number and pin.number in seen:
+                        counters["pins_duplicate"] += 1
+                        continue
+                    merged.append(pin)
+                    if pin.number:
+                        seen.add(pin.number)
+            if not merged:
+                merged = list(by_unit_style.get((unit_no, 2), ()))
+            if merged:
+                libdef.pins_by_unit[unit_no] = merged
+        defs[lib_id] = libdef
+    return defs, counters
+
+
+def _pts_of(node):
+    """(points, unreadable) from a (pts (xy ..) ..) child.
+
+    Points whose coordinates are unreadable/non-finite are dropped
+    (as before) but now counted (audit F8), never silently lost."""
+    pts_node = sexpr.child(node, "pts")
+    points = []
+    unreadable = 0
+    if pts_node is None:
+        return points, unreadable
+    for pt in pts_node[1:]:
+        if isinstance(pt, list) and sexpr.head(pt) == "xy" \
+                and len(pt) >= 3:
+            x, y = _num(pt[1]), _num(pt[2])
+            if x is not None and y is not None:
+                points.append((x, y))
+            else:
+                unreadable += 1
+    return points, unreadable
+
+
 def parse_schematic(text, source_name=""):
     """Return (symbols, no_connects, title, sheet_files, skipped_no_ref,
-    format_version, generator_version, stamp_raw) from .kicad_sch text.
-    Every (kicad_sch ...) root in the file is read; placed symbols are
-    the root's direct (symbol ...) children (definitions inside
-    (lib_symbols ...) share the shape and are correctly ignored)."""
+    format_version, generator_version, stamp_raw, sheet_data) from
+    .kicad_sch text. Every (kicad_sch ...) root in the file is read;
+    placed symbols are the root's direct (symbol ...) children
+    (definitions inside (lib_symbols ...) share the shape and are
+    correctly ignored). sheet_data (v0.5) carries the connectivity
+    constructs — lib pin definitions, wires, buses, labels,
+    junctions, no-connect points and sheet blocks — for netlist.py."""
     forms = sexpr.parse(text)
     roots = [f for f in forms if sexpr.head(f) == "kicad_sch"]
     if not roots:
@@ -433,7 +699,27 @@ def parse_schematic(text, source_name=""):
     sheet_files = []
     skipped_no_ref = 0
     format_version, generator, stamp_raw = _file_versions(roots[0])
+    sheet_data = SheetData(file=source_name)
+
+    def _coords(kind, n=1):
+        sheet_data.coords_unreadable += n
+        attr = f"coords_unreadable_{kind}"
+        setattr(sheet_data, attr, getattr(sheet_data, attr) + n)
+
     for root in roots:
+        _defs, _counters = _parse_lib_symbols(root)
+        sheet_data.lib_defs_duplicate += \
+            _counters["lib_defs_duplicate"]
+        sheet_data.pins_duplicate += _counters["pins_duplicate"]
+        if _counters["coords_unreadable_pins"]:
+            _coords("pins", _counters["coords_unreadable_pins"])
+        for lib_id, libdef in _defs.items():
+            if lib_id in sheet_data.lib_symbols:
+                # A second (kicad_sch ...) root redefining a lib_id:
+                # the first root wins (setdefault, as before) and
+                # the duplicate is counted, not silent (audit F7).
+                sheet_data.lib_defs_duplicate += 1
+            sheet_data.lib_symbols.setdefault(lib_id, libdef)
         for node in sexpr.children(root, "symbol"):
             props = _properties(node)
             ref = props.get("Reference", "").strip()
@@ -447,11 +733,19 @@ def parse_schematic(text, source_name=""):
             unit_node = sexpr.child(node, "unit")
             unit = 1
             if unit_node is not None and len(unit_node) >= 2:
-                try:
-                    unit = int(unit_node[1])
-                except (TypeError, ValueError):
-                    unit = 1
+                parsed_unit = _safe_int(unit_node[1])
+                unit = parsed_unit if parsed_unit is not None else 1
             value = props.get("Value", "")
+            at = _at_of(node)
+            mirror_node = sexpr.child(node, "mirror")
+            mirror = None
+            if mirror_node is not None and len(mirror_node) >= 2 \
+                    and isinstance(mirror_node[1], str) \
+                    and mirror_node[1] in ("x", "y"):
+                mirror = mirror_node[1]
+            pin_numbers = tuple(
+                pin[1] for pin in sexpr.children(node, "pin")
+                if len(pin) >= 2 and isinstance(pin[1], str))
             symbols.append(Symbol(
                 ref=ref,
                 value=value,
@@ -467,12 +761,79 @@ def parse_schematic(text, source_name=""):
                     or value.strip().upper() == "DNP",
                 props=props,
                 sheet=source_name,
+                x=at[0] if at else None,
+                y=at[1] if at else None,
+                rot=at[2] if at else 0.0,
+                mirror=mirror,
+                pin_numbers=pin_numbers,
             ))
+        # --- v0.5 connectivity constructs ------------------------------
+        for node in sexpr.children(root, "wire"):
+            points, bad_pts = _pts_of(node)
+            if bad_pts:
+                _coords("wire_points", bad_pts)
+            if len(points) >= 2:
+                sheet_data.wires.append(points)
+        for node in sexpr.children(root, "bus"):
+            points, bad_pts = _pts_of(node)
+            if bad_pts:
+                _coords("wire_points", bad_pts)
+            if len(points) >= 2:
+                sheet_data.buses.append(points)
+        for node in sexpr.children(root, "bus_entry"):
+            at = _at_of(node)
+            size = sexpr.child(node, "size")
+            if at is not None and size is not None and len(size) >= 3:
+                w, h = _num(size[1]), _num(size[2])
+                if w is not None and h is not None:
+                    sheet_data.bus_entries.append(
+                        ((at[0], at[1]), (at[0] + w, at[1] + h)))
+                else:
+                    _coords("other")
+            elif at is None:
+                _coords("other")
+        for kind in ("label", "global_label", "hierarchical_label"):
+            for node in sexpr.children(root, kind):
+                at = _at_of(node)
+                if at is not None and len(node) >= 2 \
+                        and isinstance(node[1], str):
+                    sheet_data.labels.append(LabelRec(
+                        name=node[1], kind=kind,
+                        x=at[0], y=at[1], rot=at[2]))
+                elif at is None:
+                    _coords("labels")
+        for node in sexpr.children(root, "junction"):
+            at = _at_of(node)
+            if at is not None:
+                sheet_data.junctions.append((at[0], at[1]))
+            else:
+                _coords("other")
+        for node in sexpr.children(root, "no_connect"):
+            at = _at_of(node)
+            if at is not None:
+                sheet_data.no_connect_pts.append((at[0], at[1]))
+            else:
+                _coords("other")
         no_connects += sum(1 for _ in sexpr.children(root, "no_connect"))
         for sheet in sexpr.children(root, "sheet"):
             sprops = _properties(sheet)
             if sprops.get("Sheetfile"):
                 sheet_files.append(sprops["Sheetfile"])
+            block = SheetBlockRec(
+                name=sprops.get("Sheetname", ""),
+                file=sprops.get("Sheetfile", ""))
+            for pin in sexpr.children(sheet, "pin"):
+                at = _at_of(pin)
+                if at is not None and len(pin) >= 2 \
+                        and isinstance(pin[1], str):
+                    block.pins.append(SheetPinRec(
+                        name=pin[1],
+                        type=pin[2] if len(pin) >= 3
+                             and isinstance(pin[2], str) else "",
+                        x=at[0], y=at[1], rot=at[2]))
+                elif at is None:
+                    _coords("other")
+            sheet_data.sheets.append(block)
         if not title:
             title_block = sexpr.child(root, "title_block")
             if title_block is not None:
@@ -481,7 +842,7 @@ def parse_schematic(text, source_name=""):
                         and isinstance(title_node[1], str):
                     title = title_node[1]
     return symbols, no_connects, title, sheet_files, skipped_no_ref, \
-        format_version, generator, stamp_raw
+        format_version, generator, stamp_raw, sheet_data
 
 
 def _layer_of(node):
@@ -533,10 +894,7 @@ def _net_of(node):
     net = sexpr.child(node, "net")
     if net is None or len(net) < 2:
         return None, ""
-    try:
-        net_id = int(str(net[1]).strip())
-    except (TypeError, ValueError):
-        net_id = None
+    net_id = _safe_int(net[1])
     name = net[2] if len(net) >= 3 and isinstance(net[2], str) else ""
     return net_id, name
 
@@ -603,11 +961,32 @@ def _pad_geo(pad, ref, fp_at, fp_flipped, all_copper, geo):
     pad_type = pad_type.strip().lower()
     if pad_type == "np_thru_hole":
         geo.pads_non_copper += 1
+        # Audit F3: an NPTH pad is not copper geometry, but KiCad
+        # does assign it a net (grounded mounting/shield holes) and
+        # parity membership needs no shape modelling -- record the
+        # stated (ref, pad name, net) on the side list for netlist
+        # parity only.  NOT a pad issue: the geometry layer is
+        # unchanged and the ref is not made unmeasurable by this.
+        if ref:
+            _nid, _nname = _net_of(pad)
+            geo.pads_membership_extra.append(PadGeo(
+                ref=ref,
+                name=pad[1] if len(pad) >= 2
+                and isinstance(pad[1], str) else "",
+                shape="np_thru_hole",
+                net_id=_nid, net_name=_nname))
         return
+
+    def _issue():
+        if ref:
+            geo.pad_issues_by_ref[ref] = \
+                geo.pad_issues_by_ref.get(ref, 0) + 1
+
     shape = pad[3] if len(pad) >= 4 and isinstance(pad[3], str) else ""
     shape = shape.strip().lower()
     if shape not in _PAD_MODELLED_SHAPES:
         geo.pads_shape_skipped += 1
+        _issue()
         return
     at = _at_of(pad)
     size = sexpr.child(pad, "size")
@@ -616,6 +995,7 @@ def _pad_geo(pad, ref, fp_at, fp_flipped, all_copper, geo):
         sx, sy = _num(size[1]), _num(size[2])
     if fp_at is None or at is None or sx is None or sy is None:
         geo.pads_unplaced += 1
+        _issue()
         return
     if sx <= 0 or sy <= 0:
         # A non-positive pad size is not a copper shape (audit
@@ -623,6 +1003,7 @@ def _pad_geo(pad, ref, fp_at, fp_flipped, all_copper, geo):
         # negative radius). Counted with the other excluded
         # objects so Coverage stays honest.
         geo.pads_unplaced += 1
+        _issue()
         return
     fx, fy, frot = fp_at
     lx, ly, prot = at
@@ -877,11 +1258,10 @@ def parse_pcb(text):
     nets = {}
     for node in sexpr.children(root, "net"):
         if len(node) >= 3:
-            try:
-                nets[int(str(node[1]).strip())] = \
+            _nid = _safe_int(node[1])
+            if _nid is not None:
+                nets[_nid] = \
                     node[2] if isinstance(node[2], str) else ""
-            except (TypeError, ValueError):
-                continue
     layers_node = sexpr.child(root, "layers")
     if layers_node is not None:
         for entry in layers_node[1:]:
@@ -906,6 +1286,9 @@ def parse_pcb(text):
         fp_at = _at_of(node)
         fp_flipped = fp_layer.lower().startswith("b.")
         for pad in sexpr.children(node, "pad"):
+            if ref:
+                geo.pad_total_by_ref[ref] = \
+                    geo.pad_total_by_ref.get(ref, 0) + 1
             _pad_geometry(pad, ref, geo)
             _pad_geo(pad, ref, fp_at, fp_flipped, geo.copper_layers, geo)
         if not ref:
@@ -1278,10 +1661,11 @@ def load_project(target, bom_override=None):
         project.sch_paths_loaded.append(sch_path)
         try:
             symbols, no_connects, title, sheet_files, skipped, \
-                fmt_version, generator, stamp_raw = \
+                fmt_version, generator, stamp_raw, sheet_data = \
                 parse_schematic(read_project_file(sch_path),
                                 source_name=sch_path.name)
             project.symbols.extend(symbols)
+            project.sheet_data.append(sheet_data)
             project.no_connects += no_connects
             project.sch_symbols_no_ref += skipped
             if sch_path == project.sch_path:

@@ -306,7 +306,15 @@ def run_bom_layer(project):
         return findings + rows_findings, stats
 
     expected = _bom_parts(project)
-    all_refs = set(_sch_parts(project))
+    # Existence for BOM purposes (FP-tester fix, v0.5 fix wave): a
+    # ref exists if ANY non-power symbol carries it -- including
+    # on_board=no symbols (e.g. a mating connector ordered via the
+    # BOM), which _sch_parts (physical parts only) excludes.  The
+    # "expected in BOM" set above stays _bom_parts, so DNP /
+    # not-in-BOM / not-on-board handling is otherwise as before:
+    # such a ref is not "unknown", it is at most not-orderable.
+    all_refs = {sym.ref for sym in project.symbols
+                if not sym.is_power}
     rows_findings, stats = bomchecks.run_bom_checks(
         project.bom_rows, bom_name=bom_name, expected=expected,
         all_refs=all_refs, sch_name=sch_name)

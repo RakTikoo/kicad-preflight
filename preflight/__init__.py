@@ -5,4 +5,4 @@ KiCad in-app plugin (next). Pure Python 3 standard library, deterministic
 checks, plain-English findings.
 """
 
-__version__ = "0.4.0"
+__version__ = "0.5.0"
