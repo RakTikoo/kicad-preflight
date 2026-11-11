@@ -100,11 +100,27 @@ and Coverage reports the zero counts.
 ## Geometry-lite (v0.4)
 
 A conservative distance-checking subset over the copper objects the
-parser extracts (pads, tracks, arcs, vias) — explicitly NOT KiCad
+parser extracts (pads, tracks, arcs, vias, and — since v0.6 — the
+stored filled polygons of copper zones) — explicitly NOT KiCad
 DRC. Shapes are exact (circles, rectangles at their real rotation,
 ovals, arcs subdivided with a bounded error that is only ever
 counted against the measurement, roundrects as their true core
-rectangle + corner radius). Thresholds come first from the board
+rectangle + corner radius). Zone fills: a zone's stored
+filled_polygon rings are measured against different-net objects
+and other zones on the same layer, and (only when the project
+states its own edge clearance) against the outline. Two
+evidence-based scopings, both established against kicad-cli DRC
+as the reference implementation (experiments in the project's
+review record): zone-involving pairs are judged with a 0.006 mm
+certainty tolerance, because stored fill boundaries are chord
+approximations whose distance undershoots true clearance by up
+to ~0.005 mm — encroachments inside that band are a documented
+miss, never a coin-flip finding; and pads written as multiple
+padstack entries are not measured against zone fills (KiCad's
+filler clears around one entry's shape and legitimately leaves
+sibling-entry copper inside the stored fill), those pairs are
+skipped and counted in Coverage. A zone with no readable filled
+polygon abstains individually and is counted. Thresholds come first from the board
 itself — the `.kicad_pro` design-rule `min_clearance` /
 `min_copper_edge_clearance` and per-netclass clearances with KiCad's
 pattern assignments (the pattern list is priority-ordered: the
@@ -119,9 +135,9 @@ threshold by more than 0.002 mm, so boards routed exactly at their
 design rule (whose file coordinates are decimal roundings) do not
 drown in sub-micron noise.
 
-Never measured, always stated in Coverage: zones (their clearance
-is set by KiCad's zone filler, not netclass rules), custom and
-trapezoid pads (no exact outline is derivable), footprint-internal
+Never measured, always stated in Coverage: custom and
+trapezoid pad SHAPES (no exact outline is derivable; their net
+membership IS used by parity), footprint-internal
 graphics, and any pair where either object's net is unknown — an
 unstated net or net 0 is never guessed, so same-footprint pins with
 no assigned net cannot produce a finding. Pad positions and
@@ -132,10 +148,10 @@ endpoints and design-clearance landings on real boards.
 
 | Rule | Severity | Trigger |
 | --- | --- | --- |
-| GEOMETRY_CLEARANCE_BELOW_MIN | CAUTION | Copper objects on the same layer belonging to different nets sit closer than the applicable clearance (board rules first, else the 0.10 mm fab minimum). One aggregated finding naming the worst pair. |
-| GEOMETRY_COPPER_TO_EDGE | CAUTION | A copper object sits closer to the Edge.Cuts outline than the applicable minimum (board's stated edge clearance, else 0.20 mm). Edge-mounted connectors are the classic intentional case — the finding asks for a look, it does not claim an error. |
+| GEOMETRY_CLEARANCE_BELOW_MIN | CAUTION | Copper objects on the same layer belonging to different nets sit closer than the applicable clearance (board rules first, else the 0.10 mm fab minimum). Measured objects: pads, tracks, arcs, vias and filled zone polygons (zone pairs judged with the 0.006 mm certainty tolerance described above). One aggregated finding naming the worst pair. |
+| GEOMETRY_COPPER_TO_EDGE | CAUTION | A copper object sits closer to the Edge.Cuts outline than the applicable minimum (board's stated edge clearance, else 0.20 mm). Zone polygons are edge-checked only when the board states its own edge clearance (their fills are generated under that rule; against a fallback they would false-fire). Edge-mounted connectors are the classic intentional case — the finding asks for a look, it does not claim an error. |
 | BOARD_OUTLINE_OPEN | BLOCK | Root-level Edge.Cuts lines/arcs/curves whose endpoints do not pair up within 0.01 mm and whose chain is not a routed slot — the outline does not close and cannot be cut as drawn (this includes an outline shattered at every corner into near-miss fragments). An open chain counts as a routed slot only when every subdivided point of it lies strictly inside a closed loop's interior (a self-closed circle/rect/poly, or a chained loop); a point on or within 0.01 mm of a loop boundary is not inside, so a chain touching the outline fires as a notch. Self-closed items always pass as elements, but they never mask an unrelated open chain: deleting one side of an outer outline fires even when mounting-hole circles share the layer. With no closed loop anywhere, a lone open element still abstains rather than guessing, and an endpoint pattern too close to the tolerance to judge abstains instead of firing. Legacy `(angle ...)` arcs are chained under every reading real files use (centre-in-`(start)`, both sweep directions, and endpoints-in-`(start)`); conflicting readings abstain. |
-| GEOMETRY_SKIPPED | CAUTION | The geometry layer abstained: more than 40,000 copper objects, or the pair-measurement budget (2,000,000) was exceeded. The other layers are unaffected; KiCad DRC covers the board. |
+| GEOMETRY_SKIPPED | CAUTION | The geometry layer abstained: more than 40,000 copper objects, or the pair-measurement budget (2,000,000) was exceeded; the zone pass has its own budgets (200,000 fill edges, 5,000,000 candidate examinations, 2,000,000 pair checks, 2,000,000 containment tests) and abstains separately, counted in Coverage. The other layers are unaffected; KiCad DRC covers the board. |
 
 ## Gerber package (v0.4)
 
@@ -209,7 +225,8 @@ SCAN_INCOMPLETE rather than a partial guess.
 | Rule | Severity | Trigger |
 | --- | --- | --- |
 | ERC_UNCONNECTED_PIN | CAUTION | A resolved pin joins no net and carries no no-connect marker at its point (aggregated per reference, pin numbers listed). Unit-common pins (drawn in every unit, `_0_1`) are ONE physical pin: connectivity is evaluated per (reference, pin number) across all unit instances, so a common pin wired or NC-marked on any instance counts as connected. KiCad ERC rates "pin not connected" an error; Preflight reports CAUTION — no-connect discipline in real libraries is inconsistent, and the pin may be intentionally open. No-connect-type pins never fire; pins of power symbols do (a floating power symbol is a real defect). Pins with no pin number in the library definition are unresolved (counted in Coverage), never reported here. |
-| ERC_POWER_NOT_DRIVEN | CAUTION | A net carries at least one power_in pin but no power_out pin. KiCad's documented power-pin test accepts ONLY a power_out pin as a driver — a regulator pin typed power_out, or a PWR_FLAG — never passive, output or bidirectional pins ("Input Power pin not driven by any Output Power pins", Schematic Editor manual, ERC section). KiCad rates it an error; CAUTION here, because real boards routinely feed rails through connectors/passives and KiCad users exclude this item per project — Preflight does not read ERC exclusions. One finding per net. |
+| ERC_POWER_NOT_DRIVEN | CAUTION | A net carries at least one power_in pin but no power_out pin. KiCad's documented power-pin test accepts ONLY a power_out pin as a driver — a regulator pin typed power_out, or a PWR_FLAG — never passive, output or bidirectional pins ("Input Power pin not driven by any Output Power pins", Schematic Editor manual, ERC section). KiCad rates it an error; CAUTION here, because real boards routinely feed rails through connectors/passives. Since v0.6 the project's own `.kicad_pro` ERC settings apply to this rule like the others (see "Project KiCad settings" below): a project that ignores or re-maps `power_pin_not_driven` is honoured. One finding per net. |
+| ERC_PIN_CONFLICT | BLOCK | A net carries one of the remaining ERROR pairings of KiCad's documented pin-conflict matrix not covered by ERC_OUTPUT_CONFLICT: output+open_collector, output+open_emitter, output+no_connect, tri_state+open_collector, open_collector+open_collector, open_collector+open_emitter, open_collector+no_connect. (Matrix source: the Schematic Editor manual's ERC pin table, identical to the default `erc.pin_map` KiCad stores in project files.) The matrix's WARNING cells are deliberately not reported — power_in pairs warn against almost everything, so a warning rule would fire on nearly every power net of every healthy board (the same evidence bar that rejected ERC_INPUT_UNDRIVEN); `free` pins are "no ERC" by definition, and power_out+tri_state is a warning cell. One finding per net. |
 | ERC_OUTPUT_CONFLICT | BLOCK | A net ties together two output pins, an output and a power_out pin, or two power_out pins. All three pairings are errors in KiCad's documented pin-conflict matrix (Schematic Editor manual, ERC section) — including the two-PWR_FLAG case, since a PWR_FLAG's pin is power_out. When every conflicting driver is a power_out pin, the message names the overwhelmingly likely cause — duplicate PWR_FLAGs ("use one PWR_FLAG per net; remove the extra flag(s)") — instead of the outputs-shorted wording. BLOCK mirrors the severity of KICAD_ERC_VIOLATION for the same KiCad ERC error. One finding per net. |
 | ERC_DANGLING_LABEL | NOTE | A label (local, global or hierarchical) whose point touches no wire and no pin — it names nothing. KiCad ERC warns on these ("label not connected to anything"). One finding per label. |
 | PARITY_NET_MEMBERSHIP | BLOCK | A net matched between schematic and PCB (by name, or by sheet-qualified name for sub-sheet nets) whose in-scope pin/pad membership differs: pins present on one side only are listed (up to ~10 per side). Refs outside the shared part scope and unmeasurable refs (below) are suppressed, never blamed. |
@@ -228,12 +245,15 @@ reported in Coverage (`input_only_nets`) instead.
 Parity scope and abstentions: parts must be non-power, on-board,
 carry a footprint, and exist on both sides (reference presence is
 owned by SCH_PART_NOT_ON_PCB / PCB_PART_NOT_IN_SCHEMATIC, never
-re-blamed here). Membership counts only MODELLED pads — a
-footprint containing custom/trapezoid, unplaced or non-positive
-pads makes that reference unmeasurable: parity abstains for it
-and the engine reports SCAN_INCOMPLETE with the ref list.
-Non-plated (np_thru_hole) pads are not copper geometry, but they
-DO carry membership (pad name + net) and are counted here.
+re-blamed here). Membership needs only the stated (reference, pad
+name, net), so it covers modelled pads, non-plated pads,
+trapezoid pads and custom pads whose primitive set is modelled
+(v0.6); a footprint containing a custom pad with UNMODELLED
+primitives, or an unplaced/non-positive pad, makes that
+reference unmeasurable: parity abstains for it and the engine
+reports SCAN_INCOMPLETE with the ref list. (Clearance GEOMETRY
+for trapezoid/custom pads is still not modelled — membership is
+exact, shapes are not.)
 KiCad's per-pad `unconnected-(REF-PadN)` pseudo-nets are not
 nets and are excluded (counted). Single-pin schematic nets are
 excluded from parity membership, and symbols whose library
@@ -260,10 +280,68 @@ MPN lookup is exact first, then case-insensitive; a case-insensitive
 hit is disclosed in the finding's evidence. One finding per MPN,
 aggregating every BOM row that uses it.
 
+## Part risk — online (opt-in, `--online`) ◆ (v0.6)
+
+With `--online`, BOM part numbers are looked up at a live
+distributor (DigiKey or Mouser) and the live result SUPERSEDES the
+sample-dataset result for that MPN — as far as the live answer
+actually speaks. An answer stating usable lifecycle/stock/lead
+data replaces the whole offline part-risk family for the MPN
+(including when the live part is healthy and the dataset flagged
+it); an answer that states none of those fields replaces only
+PART_NOT_IN_SAMPLE_DATA — silence about a field is not evidence
+about it. Per-run budgets apply (200 MPNs, 120 s) and are counted
+in Coverage when they bite. API keys come from
+environment variables ONLY (`PREFLIGHT_DIGIKEY_CLIENT_ID`,
+`PREFLIGHT_DIGIKEY_CLIENT_SECRET`, `PREFLIGHT_MOUSER_API_KEY`);
+they are never accepted as flags, written to disk, logged or
+printed. Responses are cached on disk (parsed fields only, 24 h)
+and findings cite the data age. If the provider cannot answer
+(no key, network failure, auth, rate limit), Coverage says
+"online checks unavailable" with the reason class and the
+offline verdict stands untouched. Without `--online` the online
+module is never imported and a run makes zero network calls —
+offline output is byte-identical.
+
+| Rule | Severity | Trigger |
+| --- | --- | --- |
+| PART_OBSOLETE / PART_OUT_OF_STOCK / PART_NOT_RECOMMENDED / PART_LOW_STOCK / PART_LONG_LEAD_TIME | as offline | **Online variants:** the same rules and thresholds as the offline family, computed from live provider status/stock/lead time for the MPN (lead times stated in days are converted to weeks). Each supersedes the dataset finding for the same MPN. |
+| ONLINE_PRICE | NOTE | Live unit price at the BOM order quantity; evidence gives the price, currency, the price break used and the quantity. A snapshot, not a quote. |
+| ONLINE_PART_NOT_FOUND | NOTE | The MPN is not in the chosen provider's catalogue. Supersedes nothing — the offline dataset result for that MPN stands unchanged. |
+| SEMANTIC_VALUE_MISMATCH | CAUTION | For a passive (R/C/L) BOM row, an attribute stated by BOTH the BOM and the live catalogue disagrees: the value (resistance/capacitance/inductance), tolerance, or chip package. Attributes stated on only one side are never compared — they are counted in Coverage as unstated, never inferred. |
+
 ## Official checks (kicad-cli, when installed)
 
 | Rule | Severity | Trigger |
 | --- | --- | --- |
 | KICAD_ERC_VIOLATION | BLOCK/CAUTION | `kicad-cli sch erc` violation: error → BLOCK, warning → CAUTION. |
-| KICAD_DRC_VIOLATION | BLOCK/CAUTION | `kicad-cli pcb drc` violation, same mapping. |
+| KICAD_DRC_VIOLATION | BLOCK/CAUTION | `kicad-cli pcb drc` violation (including unconnected items / missing connections), same mapping. |
+| KICAD_PARITY_CONFLICT | BLOCK/CAUTION | `kicad-cli pcb drc --schematic-parity` net-conflict: error → BLOCK, warning → CAUTION. Distinct from the native PARITY_* rules: KiCad's parity also fires on renamed nets, which the native layer reports separately as PARITY_NET_RENAMED (NOTE). If the parity run itself fails, Coverage + SCAN_INCOMPLETE say so. |
 | KICAD_CLI_FAILED | CAUTION | kicad-cli is installed but a run failed (non-zero exit, no/invalid report, timeout). Its output is never trusted. Excluded/unrecognised severities are counted in Coverage, not mapped to findings. |
+
+## Project KiCad settings (.kicad_pro) (v0.6)
+
+Preflight reads the project's own KiCad settings — the ERC/DRC
+severity maps and the per-instance exclusions stored in
+`.kicad_pro` — and honours them in BOTH the official-checks layer
+above and the corresponding native checks (ERC-lite via their
+KiCad types: `pin_not_connected`, `power_pin_not_driven`,
+`pin_to_pin`, `label_dangling`; geometry-lite via `clearance`,
+`copper_edge_clearance`, `invalid_outline`; parity, severity
+half only, via `net_conflict` — a project `net_conflict: ignore`
+drops ALL native parity findings including PARITY_NET_RENAMED
+notes: the project has turned KiCad's parity reporting off, and
+the note is part of that reporting). A type the project set to
+`ignore`, and an exclusion that matches a violation's item UUID
+(and position, when the exclusion records one), waive the
+finding; exclusions are never reinterpreted onto native findings
+without item identity. Severity overrides remap native ERC-lite
+severities (error → BLOCK, warning → CAUTION) — but ONLY where
+the stated severity deviates from KiCad's factory default for
+that type: KiCad writes the full default map into every project
+file, and a default is not a project decision (the factory
+`power_pin_not_driven = error`, for example, does not override
+ERC_POWER_NOT_DRIVEN's documented CAUTION mapping). Every waiver
+actually applied is counted and disclosed in Coverage
+(`project_settings`); a `.kicad_pro` that exists but cannot be
+read or parsed is reported, never silently treated as settings.
