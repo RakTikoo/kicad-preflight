@@ -15,10 +15,14 @@ file only adapts it to KiCad's Action Plugin API:
 Per the official KiCad developer docs (PCB Python Bindings):
 https://dev-docs.KiCad.org/en/apis-and-binding/pcbnew/index.html
 
-STATUS: SKELETON. The wiring is complete but it has NOT been run inside
-a real KiCad yet (there is no KiCad on the build machine). Test plan is
-in ../README.md. The engine it calls is fully tested headless via the
-CLI and the repo test suites.
+STATUS: RUN INSIDE KICAD (probe 2026-11-10). The built package was
+installed PCM-style and Run() executed inside a real KiCad 8.0.9 PCB
+Editor (on a VM under a virtual display), producing the report dialog
+with live findings on a real board; register() executes cleanly
+in-app. Not yet verified: automatic discovery by a stock desktop PCM
+install (the menu entry appearing after a Plugin and Content Manager
+install). Status detail in ../README.md. The engine it calls is fully
+tested headless via the CLI and the repo test suites.
 """
 
 import os
