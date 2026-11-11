@@ -1,0 +1,115 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "00000000-0000-4000-8000-000000009036")
+	(paper "A4")
+	(title_block (title "Sub"))
+
+	(lib_symbols
+		(symbol "Connector_Generic:Conn_01x02"
+			(property "Reference" "J" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "Conn_01x02" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(symbol "Conn_01x02_1_1"
+				(pin passive line (at -5.08 2.54 0) (length 2.54) (name "Pin_1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -5.08 -2.54 0) (length 2.54) (name "Pin_2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			)
+		)
+		(symbol "Test:Regulator"
+			(property "Reference" "U" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "Regulator" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(symbol "Regulator_1_1"
+				(pin input line (at -5.08 2.54 0) (length 2.54) (name "IN" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin power_in line (at -5.08 -2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin power_out line (at 5.08 0 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			)
+		)
+		(symbol "Test:Driver"
+			(property "Reference" "U" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "Driver" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(symbol "Driver_1_1"
+				(pin input line (at -5.08 2.54 0) (length 2.54) (name "IN" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin power_in line (at -5.08 -2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 5.08 0 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			)
+		)
+		(symbol "Test:Sensor"
+			(property "Reference" "U" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "Sensor" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(symbol "Sensor_1_1"
+				(pin power_in line (at -5.08 2.54 0) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin power_in line (at -5.08 -2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin output line (at 5.08 0 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			)
+		)
+		(symbol "Device:R"
+			(property "Reference" "R" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "R" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(symbol "R_1_1"
+				(pin passive line (at 0 3.81 270) (length 1.27) (name "~" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at 0 -3.81 90) (length 1.27) (name "~" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			)
+		)
+		(symbol "Device:C"
+			(property "Reference" "C" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "C" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(symbol "C_1_1"
+				(pin passive line (at 0 3.81 270) (length 1.27) (name "~" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at 0 -3.81 90) (length 1.27) (name "~" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			)
+		)
+		(symbol "power:GND"
+			(power)
+			(property "Reference" "#PWR" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "GND" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(symbol "GND_1_1"
+				(pin power_in line (at 0 0 270) (length 0) (name "GND" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			)
+		)
+		(symbol "power:PWR_FLAG"
+			(power)
+			(property "Reference" "#FLG" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "PWR_FLAG" (at 0 0 0) (effects (font (size 1.27 1.27))))
+			(symbol "PWR_FLAG_1_1"
+				(pin power_out line (at 0 0 270) (length 0) (name "FLAG" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			)
+		)
+	)
+
+	(symbol
+		(lib_id "Test:Regulator")
+		(at 50.8 50.8 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-4000-8000-000000009023")
+		(property "Reference" "U1" (at 50.8 50.8 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "Reg 3V3" (at 50.8 50.8 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 50.8 50.8 0) (effects (font (size 1.27 1.27)) hide))
+		(property "Datasheet" "~" (at 50.8 50.8 0) (effects (font (size 1.27 1.27)) hide))
+		(pin "1" (uuid "00000000-0000-4000-8000-000000009020"))
+		(pin "2" (uuid "00000000-0000-4000-8000-000000009021"))
+		(pin "3" (uuid "00000000-0000-4000-8000-000000009022"))
+	)
+	(wire (pts (xy 35.56 48.26) (xy 45.72 48.26)) (stroke (width 0) (type default)) (uuid "00000000-0000-4000-8000-000000009024"))
+	(hierarchical_label "FEED" (at 35.56 48.26 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "00000000-0000-4000-8000-000000009025"))
+	(wire (pts (xy 35.56 53.34) (xy 45.72 53.34)) (stroke (width 0) (type default)) (uuid "00000000-0000-4000-8000-000000009026"))
+	(symbol
+		(lib_id "power:GND")
+		(at 35.56 53.34 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-4000-8000-000000009028")
+		(property "Reference" "#PWR01" (at 35.56 53.34 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 35.56 53.34 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 35.56 53.34 0) (effects (font (size 1.27 1.27)) hide))
+		(property "Datasheet" "~" (at 35.56 53.34 0) (effects (font (size 1.27 1.27)) hide))
+		(pin "1" (uuid "00000000-0000-4000-8000-000000009027"))
+	)
+	(wire (pts (xy 55.88 50.8) (xy 66.04 50.8)) (stroke (width 0) (type default)) (uuid "00000000-0000-4000-8000-000000009029"))
+	(global_label "SENSE_G" (at 60.96 50.8 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "00000000-0000-4000-8000-000000009030"))
+	(sheet_instances (path "/" (page "1")))
+)
