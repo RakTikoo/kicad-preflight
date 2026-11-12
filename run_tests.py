@@ -60,6 +60,10 @@ def parse_report(proc):
 def main():
     failures = 0
 
+    pro_tests = subprocess.run(
+        [sys.executable, "-m", "unittest", "test_easyeda_bom"], cwd=ROOT)
+    failures += int(pro_tests.returncode != 0)
+
     for rel, (want_verdict, want_code) in EXPECTED.items():
         proc = run_cli(ROOT / rel)
         try:
