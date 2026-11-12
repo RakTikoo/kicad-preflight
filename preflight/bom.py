@@ -35,7 +35,14 @@ _HEADER_ALIASES = {
              "lcscpartnumber1", "jlcpcbpart", "jlcpcbpartno",
              "jlcpcbpartnumber"},
     "description": {"description", "desc"},
+    # Supplier Part is not a global LCSC alias: the supplier is per row.
+    "supplier": {"supplier"},
+    "supplier_part": {"supplierpart"},
 }
+
+_PRO_TSV_HEADERS = {"no", "quantity", "comment", "designator", "footprint",
+                    "value", "manufacturerpart", "manufacturer",
+                    "supplierpart", "supplier"}
 
 
 @dataclass
@@ -107,10 +114,22 @@ def _parse_qty(qty_raw):
     return None
 
 
+def _bom_delimiter(text):
+    """Only recognize tab-separated text with the documented Pro header set."""
+    header = next((row for row in csv.reader(io.StringIO(text))
+                   if any(cell.strip() for cell in row)), [])
+    if len(header) == 1 and "\t" in header[0]:
+        tab_header = next((row for row in csv.reader(io.StringIO(text), delimiter="\t")
+                           if any(cell.strip() for cell in row)), [])
+        if _PRO_TSV_HEADERS <= {_norm_header(cell) for cell in tab_header}:
+            return "\t"
+    return ","
+
+
 def parse_bom(text):
     """Parse BOM CSV text into BomRow objects. Raises ValueError on bad shape."""
     try:
-        reader = csv.reader(io.StringIO(text))
+        reader = csv.reader(io.StringIO(text), delimiter=_bom_delimiter(text))
         rows = [r for r in reader if any((c or "").strip() for c in r)]
     except csv.Error as exc:
         raise ValueError(f"CSV parse error: {exc}") from exc
@@ -139,6 +158,9 @@ def parse_bom(text):
             return (raw[idx] or "").strip()
 
         qty_raw = cell("qty")
+        lcsc = cell("lcsc")
+        if "lcsc" not in colmap and cell("supplier").casefold() == "lcsc":
+            lcsc = cell("supplier_part")
         bom_rows.append(BomRow(
             line_no=offset + 2,
             refs=parse_designators(cell("refs")),
@@ -148,6 +170,6 @@ def parse_bom(text):
             footprint=cell("footprint"),
             mpn=cell("mpn"),
             manufacturer=cell("manufacturer"),
-            lcsc=cell("lcsc"),
+            lcsc=lcsc,
         ))
     return bom_rows

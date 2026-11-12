@@ -10,6 +10,13 @@ fabricate. They exist so Preflight's checks can be tested end-to-end with
 hand-verifiable expectations, the same discipline as SkillScan's sample
 skills. Nothing here is executed; the files are only parsed.
 
+## `easyeda-pro/` — synthetic standalone Pro BOMs
+
+Comma-separated Pro-style header fixtures with known good and missing-part-number
+outcomes; see [the fixture notes](easyeda-pro/README.md) for exact findings,
+supplier mapping and the first-party format reference. The focused tests also
+cover the documented tab-separated Pro header set. No real board/export data.
+
 ## `good/` — expected PASS (exit 0, zero findings)
 
 A tiny battery LED board: J1 (battery connector), R1 (330R), D1/D2 (red

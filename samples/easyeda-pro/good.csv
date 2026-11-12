@@ -1,0 +1,4 @@
+No.,Quantity,Comment,Designator,Footprint,Value,Manufacturer Part,Manufacturer,Supplier Part,Supplier
+1,2,330R,"R1,R2",R0805,330R,RC0805FR-07330RL,Yageo,C990000001,LCSC
+2,1,LED Red,D1,LED0805,LED Red,LTST-C170KRKT,Lite-On,C990000002,Other Supplier
+3,1,100nF,C1,C0603,100nF,,,C990000003,LCSC
