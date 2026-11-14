@@ -1,5 +1,7 @@
 # KiCad Preflight
 
+[![Tests](https://github.com/RakTikoo/kicad-preflight/actions/workflows/tests.yml/badge.svg)](https://github.com/RakTikoo/kicad-preflight/actions/workflows/tests.yml)
+
 Check a KiCad project *before* you export Gerbers and order the board —
 and check a BOM from any EDA tool before you order the parts.
 
