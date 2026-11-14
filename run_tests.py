@@ -9,6 +9,7 @@ Exit code: 0 if every expectation holds, 1 otherwise.
 """
 
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -329,6 +330,90 @@ def main():
     except json.JSONDecodeError:
         print("FAIL gerber-inner-broken: output was not JSON")
         failures += 1
+
+    # --- SARIF output -------------------------------------------------
+    # The SARIF run must cross-check 1:1 against the JSON findings for
+    # the same project (ids, order, severity mapping), carry metadata
+    # for every rule it references, and resolve file/line locations
+    # from the findings' `where` strings.
+    proc = subprocess.run(
+        [sys.executable, "-m", "preflight", str(ROOT / "samples/broken"),
+         "--format", "sarif"], cwd=ROOT, capture_output=True, text=True)
+    try:
+        doc = json.loads(proc.stdout)
+        run = doc["runs"][0]
+        driver = run["tool"]["driver"]
+        json_report = parse_report(run_cli(ROOT / "samples/broken"))
+        problems = []
+        if doc.get("version") != "2.1.0" or "sarif-2.1.0" not in \
+                doc.get("$schema", ""):
+            problems.append("not a SARIF 2.1.0 document")
+        if proc.returncode != 2:
+            problems.append(f"exit {proc.returncode} != 2 (BLOCK)")
+        sarif_pairs = [(r["ruleId"], r["level"]) for r in run["results"]]
+        level_of = {"BLOCK": "error", "CAUTION": "warning",
+                    "NOTE": "note"}
+        json_pairs = [(f["rule"], level_of[f["severity"]])
+                      for f in json_report["findings"]]
+        if sarif_pairs != json_pairs:
+            problems.append(f"results {sarif_pairs} != JSON {json_pairs}")
+        rule_ids = {r["id"] for r in driver["rules"]}
+        if rule_ids != {f["rule"] for f in json_report["findings"]}:
+            problems.append("driver rules do not match result rule ids")
+        for r in driver["rules"]:
+            if not r["fullDescription"]["text"] or \
+                    r["defaultConfiguration"]["level"] not in \
+                    ("error", "warning", "note"):
+                problems.append(f"rule {r['id']} lacks metadata")
+        locs = {r["ruleId"]: r.get("locations") for r in run["results"]}
+        bom_loc = (locs.get("BOM_QUANTITY_MISMATCH") or [{}])[0] \
+            .get("physicalLocation", {})
+        if bom_loc.get("artifactLocation", {}).get("uri") != "bom.csv" \
+                or bom_loc.get("region", {}).get("startLine") != 5:
+            problems.append(f"BOM location wrong: {bom_loc}")
+        sch_loc = (locs.get("SCH_PART_NOT_ON_PCB") or [{}])[0] \
+            .get("physicalLocation", {})
+        if sch_loc.get("artifactLocation", {}).get("uri") != \
+                "led-board.kicad_sch":
+            problems.append(f"schematic location wrong: {sch_loc}")
+        if problems:
+            print("FAIL sarif: " + "; ".join(problems))
+            failures += 1
+        else:
+            print("PASS sarif: 2.1.0 doc, results cross-check JSON, "
+                  "rules carry metadata, locations resolve")
+    except json.JSONDecodeError:
+        print("FAIL sarif: output was not JSON")
+        failures += 1
+
+    # Rule metadata (preflight/ruleinfo.py) must match docs/RULES.md
+    # exactly — the two are pinned so they cannot drift silently.
+    sys.path.insert(0, str(ROOT))
+    from preflight.ruleinfo import RULE_INFO
+    doc_rules = {}
+    for line in (ROOT / "docs" / "RULES.md").read_text(
+            encoding="utf-8").splitlines():
+        if not line.startswith("| "):
+            continue
+        parts = line.split("|")
+        if len(parts) != 5:
+            continue
+        m = re.fullmatch(r"\s*([A-Z][A-Z0-9_]+)(\s+◆.*)?\s*", parts[1])
+        sev = re.search(r"(BLOCK|CAUTION|NOTE)", parts[2])
+        if m and sev and m.group(1) not in doc_rules:
+            doc_rules[m.group(1)] = (sev.group(1), parts[3].strip())
+    if doc_rules != RULE_INFO:
+        only_doc = sorted(set(doc_rules) - set(RULE_INFO))
+        only_info = sorted(set(RULE_INFO) - set(doc_rules))
+        changed = sorted(k for k in set(doc_rules) & set(RULE_INFO)
+                         if doc_rules[k] != RULE_INFO[k])
+        print(f"FAIL ruleinfo: RULES.md and ruleinfo.py disagree "
+              f"(doc-only={only_doc} info-only={only_info} "
+              f"changed={changed})")
+        failures += 1
+    else:
+        print(f"PASS ruleinfo: {len(RULE_INFO)} rules match "
+              "docs/RULES.md exactly")
 
     # Real third-party projects: smoke only, no verdict assertions.
     for folder in sorted(ROOT.glob(SMOKE_ONLY_GLOB)):

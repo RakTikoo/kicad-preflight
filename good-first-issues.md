@@ -23,10 +23,9 @@ Remaining drafts stay on file until there is a reason to post them.
 3. **Altium BOM header aliases**
    Same table, Altium Designer BOM export spellings + sample CSV.
 
-4. **`--format sarif` renderer**
-   Reports already render text / md / json. Add SARIF output so
-   findings can land in GitHub code-scanning. Keep other formats
-   byte-identical.
+4. ~~**`--format sarif` renderer**~~ — **done (unreleased)**:
+   `--format sarif` emits SARIF 2.1.0 with rule metadata generated
+   from `docs/RULES.md`; the other formats are byte-identical.
 
 5. **A `--quiet` flag**
    Print only the verdict line (exit codes unchanged) for CI scripts.

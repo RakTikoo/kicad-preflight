@@ -1,7 +1,7 @@
 """KiCad Preflight CLI.
 
 Usage:
-    python3 -m preflight <project-folder-or-file> [--format text|md|json]
+    python3 -m preflight <project-folder-or-file> [--format text|md|json|sarif]
                          [--bom PATH] [--dataset PATH] [--output PATH]
                          [--gerber]
     python3 -m preflight <bom.csv>   — standalone BOM mode (any EDA tool)

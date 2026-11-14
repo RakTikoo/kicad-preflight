@@ -98,6 +98,7 @@ dependencies. KiCad itself is **not** required — see "Official checks".
 python3 -m preflight <project-folder>                 # text report
 python3 -m preflight <project-folder> --format md     # one-page Markdown
 python3 -m preflight <project-folder> --format json   # machine-readable
+python3 -m preflight <project-folder> --format sarif  # SARIF 2.1.0 for code scanning
 python3 -m preflight <project-folder> --output report.md --format md
 python3 -m preflight <bom.csv>                        # standalone BOM mode
 python3 preflight.py <project-folder>                 # shim, same thing

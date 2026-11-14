@@ -375,4 +375,99 @@ def render_json(report):
     return json.dumps(report.to_dict(), indent=2) + "\n"
 
 
-RENDERERS = {"text": render_text, "md": render_markdown, "json": render_json}
+_SARIF_LEVELS = {BLOCK: "error", CAUTION: "warning", NOTE: "note"}
+_WHERE_FILE_RE = re.compile(r"^(\S+\.\S+?)(?: line (\d+))?$")
+
+
+def _sarif_locations(where):
+    """Best-effort SARIF location for a finding's `where` string.
+
+    `where` looks like "led-board.kicad_sch · R3" or "bom.csv line 5"
+    (optionally with more " · "-separated context). When the head
+    segment is a plain filename, it becomes the artifact URI, with a
+    region when a line number is stated. Anything else yields no
+    location — the full `where` still travels in the result message,
+    so nothing is lost, and no location is ever invented.
+    """
+    if not where:
+        return []
+    head = where.split(" · ")[0]
+    m = _WHERE_FILE_RE.match(head)
+    if not m:
+        return []
+    physical = {"artifactLocation": {"uri": m.group(1)}}
+    if m.group(2):
+        physical["region"] = {"startLine": int(m.group(2))}
+    return [{"physicalLocation": physical}]
+
+
+def render_sarif(report):
+    """SARIF 2.1.0 for code-scanning consumers (e.g. GitHub code
+    scanning). Results cross-check 1:1 against the JSON renderer's
+    findings: same order, same rule ids, severity mapped
+    BLOCK->error, CAUTION->warning, NOTE->note. Rule metadata comes
+    from preflight/ruleinfo.py (generated from docs/RULES.md and
+    pinned to it by the test suite); a rule missing from the table
+    still renders, with its id as its description."""
+    from . import __version__
+    from .ruleinfo import RULE_INFO
+
+    rules = []
+    seen = set()
+    for f in report.findings:
+        if f.rule in seen:
+            continue
+        seen.add(f.rule)
+        info = RULE_INFO.get(f.rule)
+        severity = info[0] if info else f.severity
+        desc = info[1] if info else f.rule
+        short = desc if len(desc) <= 120 \
+            else desc[:117].rsplit(" ", 1)[0] + "…"
+        rules.append({
+            "id": f.rule,
+            "name": f.rule,
+            "shortDescription": {"text": short},
+            "fullDescription": {"text": desc},
+            "defaultConfiguration": {
+                "level": _SARIF_LEVELS.get(severity, "warning")},
+            "properties": {"severity": severity},
+        })
+    results = []
+    for f in report.findings:
+        text = f.message
+        if f.where:
+            text += f" [{f.where}]"
+        if f.evidence:
+            text += f" Evidence: {f.evidence}"
+        result = {
+            "ruleId": f.rule,
+            "level": _SARIF_LEVELS.get(f.severity, "warning"),
+            "message": {"text": text},
+        }
+        locations = _sarif_locations(f.where)
+        if locations:
+            result["locations"] = locations
+        results.append(result)
+    doc = {
+        "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+        "version": "2.1.0",
+        "runs": [{
+            "tool": {"driver": {
+                "name": "KiCad Preflight",
+                "version": __version__,
+                "semanticVersion": __version__,
+                "informationUri":
+                    "https://github.com/RakTikoo/kicad-preflight",
+                "rules": rules,
+            }},
+            "invocations": [{"executionSuccessful": True}],
+            "results": results,
+            "properties": {"verdict": report.verdict,
+                           "project": report.project_name},
+        }],
+    }
+    return json.dumps(doc, indent=2) + "\n"
+
+
+RENDERERS = {"text": render_text, "md": render_markdown,
+             "json": render_json, "sarif": render_sarif}

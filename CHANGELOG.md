@@ -3,6 +3,19 @@
 All notable changes to KiCad Preflight, newest first. Versions are the
 `__version__` in `preflight/__init__.py` and the PCM package metadata.
 
+## Unreleased
+
+- **SARIF output** (`--format sarif`): SARIF 2.1.0 for GitHub code
+  scanning and other SARIF consumers. Results cross-check 1:1 against
+  the `--format json` findings (same order, same rule ids; severity
+  maps BLOCK → error, CAUTION → warning, NOTE → note), rule metadata
+  (documented severity + trigger text) comes from
+  `preflight/ruleinfo.py`, generated from `docs/RULES.md` and pinned
+  to it by the test suite, and locations are resolved from each
+  finding's `where` (artifact URI, plus a line region for BOM rows)
+  when it names a file — never invented when it doesn't. The text,
+  Markdown and JSON renderers are byte-identical to before.
+
 ## 0.6.0 — 2026-11-10
 
 - KiCad bridge hardened against real `kicad-cli` 8.0.9 output,
