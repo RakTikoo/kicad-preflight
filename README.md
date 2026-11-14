@@ -328,3 +328,8 @@ in the project's review record.
 ## Licence
 
 MIT — see `LICENSE`. Copyright (c) 2026 RakTikoo.
+
+
+---
+
+**More from this workshop:** [SkillScan](https://github.com/RakTikoo/skillscan) · [Expiry Radar](https://github.com/RakTikoo/expiry-radar) · [CI Command Truth](https://github.com/RakTikoo/ci-command-truth) · [PhantomDep PR Gate](https://github.com/RakTikoo/phantomdep-pr-gate) · [Stranger Suite](https://github.com/RakTikoo/stranger-suite) · [Living Contract Diff](https://github.com/RakTikoo/living-contract-diff) · [Handoff Reconciler](https://github.com/RakTikoo/handoff-reconciler)
