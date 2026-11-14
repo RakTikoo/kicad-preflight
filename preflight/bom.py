@@ -23,9 +23,9 @@ csv.field_size_limit(CSV_FIELD_LIMIT)
 
 _HEADER_ALIASES = {
     "refs": {"reference", "references", "ref", "refs", "designator",
-             "designators", "refdes"},
+             "designators", "refdes", "components"},
     "qty": {"quantity", "qty", "qnty", "count"},
-    "value": {"value", "val", "component", "comment"},
+    "value": {"value", "val", "component", "comment", "name"},
     "footprint": {"footprint", "package"},
     "mpn": {"mpn", "manufacturerpartnumber", "manufacturerpartno",
             "mfrpartnumber", "mfrpart", "partnumber", "mpartno",

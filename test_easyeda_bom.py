@@ -57,12 +57,35 @@ class EasyEdaBomTest(unittest.TestCase):
         row = parse_bom('Designator,Quantity,Value,Footprint,Supplier\nR1,1,330R,R0805,LCSC\n')[0]
         self.assertEqual(row.lcsc, '')
 
-    def test_generic_tab_separated_and_legacy_headers_are_unchanged(self):
-        for text in ('Designator\tValue\nR1\t330R\n',
-                     'Components,Name\nR1,330R\n'):
+    def test_generic_tab_separated_headers_are_unchanged(self):
+        for text in ('Designator\tValue\nR1\t330R\n',):
             with self.subTest(text=text):
                 with self.assertRaisesRegex(ValueError, 'no recognisable reference'):
                     parse_bom(text)
+
+    def test_legacy_headers_preserve_supplier_boundary(self):
+        for supplier in ('LCSC', ' lcsc ', 'Other Supplier', ''):
+            with self.subTest(supplier=supplier):
+                text = ('Components,Name,Package,Quantity,Supplier Part,Supplier\n'
+                        '"R1,R2",330R,R0805,2,C990000001,' + supplier + '\n')
+                row = parse_bom(text)[0]
+                self.assertEqual(row.refs, ['R1', 'R2'])
+                self.assertEqual(row.value, '330R')
+                self.assertEqual(row.footprint, 'R0805')
+                self.assertEqual(row.qty, 2)
+                self.assertEqual(row.lcsc, 'C990000001' if supplier.strip().lower() == 'lcsc' else '')
+
+    def test_legacy_samples_scan_standalone(self):
+        for name, expected_code, expected_verdict in (
+            ('good', 0, 'PASS'), ('broken', 1, 'CAUTION'),
+        ):
+            with self.subTest(name=name):
+                result = subprocess.run(
+                    [sys.executable, '-m', 'preflight', str(ROOT / 'samples' / 'easyeda-legacy' / (name + '.csv')), '--format', 'json'],
+                    cwd=ROOT, capture_output=True, text=True,
+                )
+                self.assertEqual(result.returncode, expected_code, result.stderr)
+                self.assertEqual(json.loads(result.stdout)['verdict'], expected_verdict)
 
     def test_tabs_inside_comma_separated_fields_stay_literal(self):
         row = parse_bom('Designator,Value,Description\nR1,"330R\tprecision",note\n')[0]

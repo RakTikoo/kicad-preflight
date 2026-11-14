@@ -1,0 +1,3 @@
+Components,Name,Package,Quantity,Manufacturer Part,Manufacturer,Supplier Part,Supplier
+"R1,R2",330R,R0805,2,RC0805FR-07330RL,Yageo,C990000001,LCSC
+C1,100nF,C0603,1,,,C990000002,Other Supplier
