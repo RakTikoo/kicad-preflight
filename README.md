@@ -195,7 +195,7 @@ An opt-in `--online` mode (API keys from environment variables
 only) checks live lifecycle/stock/lead time and price at DigiKey
 or Mouser, superseding the sample dataset per part, plus a
 semantic value↔part-number check for passives; without the flag
-the tool makes zero network calls and output is unchanged. 88
+the tool makes zero network calls and output is unchanged. 90
 rules in total; the full list is `docs/RULES.md`.
 
 **Part risk (offline)**: obsolete/EOL, out-of-stock, low stock, long
