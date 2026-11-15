@@ -18,6 +18,24 @@ and Content Manager, following the official KiCad addons guide
   (`repository.json` / `packages.json`) under `dist/`.
   It uploads and submits nothing.
 
+## Installing the release zip (end users)
+
+1. Download `com.github.RakTikoo.kicad-preflight-<version>.zip`
+   from a release — for example the
+   [v0.7.0 release](https://github.com/RakTikoo/kicad-preflight/releases/tag/v0.7.0).
+   Do not unzip it; KiCad reads the zip as-is.
+2. Open KiCad and choose **Tools → Plugin and Content Manager**.
+3. Click **Install from File…** and select the downloaded zip.
+4. Restart KiCad.
+5. In the PCB Editor, run **Tools → External Plugins → KiCad
+   Preflight** with a board open; the report appears in a dialog.
+
+Honest status: the plugin is proven running inside a real KiCad
+8.0.9 PCB Editor (see the Status section below); automatic
+discovery on a stock desktop install is the one check still
+pending (issue #7). The package is not in KiCad's official PCM
+repository — the release zip above is the install route for now.
+
 ## Status (2026-11-10 probe) and remaining test plan
 
 Proven inside a real KiCad 8.0.9 PCB Editor (VM, virtual display): the
