@@ -1,0 +1,79 @@
+name: "KiCad Preflight"
+description: "Run KiCad Preflight checks (BOM, Gerber package, netlist/ERC-lite and schematic-PCB parity) on a KiCad project — catch what DRC misses before you order."
+author: "RakTikoo"
+branding:
+  icon: "check-circle"
+  color: "blue"
+
+inputs:
+  path:
+    description: "Project folder (or a single .kicad_pro / .kicad_sch / .kicad_pcb file, or a BOM CSV) to check, relative to the workspace."
+    required: true
+    default: "."
+  format:
+    description: "Report format printed to the log: text, md, json, or sarif."
+    required: false
+    default: "text"
+  fail-on-block:
+    description: "Fail the job when the verdict is BLOCK. CAUTION never fails the job."
+    required: false
+    default: "true"
+  python-version:
+    description: "Python version to run Preflight with."
+    required: false
+    default: "3.12"
+
+outputs:
+  verdict:
+    description: "The check verdict: PASS, CAUTION, or BLOCK."
+    value: ${{ steps.check.outputs.verdict }}
+  exit-code:
+    description: "The Preflight exit code (0 PASS, 1 CAUTION, 2 BLOCK, 3 usage/IO error)."
+    value: ${{ steps.check.outputs.exit-code }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Run KiCad Preflight
+      id: check
+      shell: bash
+      env:
+        CHECK_PATH: ${{ inputs.path }}
+        CHECK_FORMAT: ${{ inputs.format }}
+        FAIL_ON_BLOCK: ${{ inputs.fail-on-block }}
+      run: |
+        set +e
+        # JSON is captured for the verdict outputs; the chosen format is
+        # what gets printed to the job log.
+        python3 "${{ github.action_path }}/preflight.py" "$CHECK_PATH" --format json > preflight-report.json
+        code=$?
+        python3 "${{ github.action_path }}/preflight.py" "$CHECK_PATH" --format "$CHECK_FORMAT"
+        verdict=$(python3 -c "import json; print(json.load(open('preflight-report.json'))['verdict'])" 2>/dev/null || echo "ERROR")
+        echo "verdict=$verdict" >> "$GITHUB_OUTPUT"
+        echo "exit-code=$code" >> "$GITHUB_OUTPUT"
+        echo "KiCad Preflight verdict: $verdict (exit $code)"
+        fail_on_block=$(printf '%s' "$FAIL_ON_BLOCK" | tr '[:upper:]' '[:lower:]')
+        if [ "$code" -eq 1 ]; then
+          echo "::warning::KiCad Preflight verdict is CAUTION — read the findings before ordering."
+          exit 0
+        fi
+        if [ "$code" -eq 0 ]; then
+          exit 0
+        fi
+        if [ "$code" -eq 2 ]; then
+          if [ "$fail_on_block" = "true" ]; then
+            echo "::error::KiCad Preflight verdict is BLOCK and fail-on-block is true."
+            exit 1
+          fi
+          exit 0
+        fi
+        # Catch-all: exit 3 (usage / IO error) and ANY other unexpected
+        # code mean the checks did not run — fail the job loudly rather
+        # than letting a broken run read as a pass.
+        echo "::error::KiCad Preflight could not run (exit $code)."
+        exit 1
