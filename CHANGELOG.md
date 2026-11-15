@@ -3,7 +3,7 @@
 All notable changes to KiCad Preflight, newest first. Versions are the
 `__version__` in `preflight/__init__.py` and the PCM package metadata.
 
-## Unreleased
+## 0.7.0 — 2026-11-14
 
 - **SARIF output** (`--format sarif`): SARIF 2.1.0 for GitHub code
   scanning and other SARIF consumers. Results cross-check 1:1 against
