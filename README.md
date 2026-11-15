@@ -91,10 +91,40 @@ $ python3 -m preflight production-bom.csv     # standalone BOM mode
 
 ## Install / usage
 
-Pure Python 3 standard library (3.10+). No `pip install`, no
-dependencies. KiCad itself is **not** required — see "Official checks".
+Pure Python 3 standard library (3.10+), no dependencies. KiCad
+itself is **not** required for the command-line checks — see
+"Official checks". Three ways in:
+
+**Inside KiCad (the plugin):** download
+`com.github.RakTikoo.kicad-preflight-0.7.0.zip` from the
+[v0.7.0 release](https://github.com/RakTikoo/kicad-preflight/releases/tag/v0.7.0).
+In KiCad, open **Tools → Plugin and Content Manager**, click
+**Install from File…**, and choose the zip. Restart KiCad, and
+Preflight appears under **Tools → External Plugins** in the PCB
+Editor. (Details and honest status notes: [`pcm/README.md`](pcm/README.md).)
+
+**As a command (pip):**
 
 ```bash
+pip install git+https://github.com/RakTikoo/kicad-preflight
+kicad-preflight <project-folder>
+```
+
+**In CI (GitHub Action):**
+
+```yaml
+- uses: RakTikoo/kicad-preflight@v0.7.0
+  with:
+    path: ./my-board        # project folder to check
+    fail-on-block: "true"   # default: BLOCK fails the job
+```
+
+**From a clone:**
+
+```bash
+git clone https://github.com/RakTikoo/kicad-preflight
+cd kicad-preflight
+
 python3 -m preflight <project-folder>                 # text report
 python3 -m preflight <project-folder> --format md     # one-page Markdown
 python3 -m preflight <project-folder> --format json   # machine-readable
@@ -112,6 +142,25 @@ mistaken for the BOM (or pass `--bom`).
 
 Exit codes: `0` PASS · `1` CAUTION · `2` BLOCK · `3` usage error.
 The CLI never prints a traceback; bad inputs exit 3 with a message.
+
+### Use as a library
+
+The engine is importable — the KiCad plugin itself calls it
+in-process inside KiCad:
+
+```python
+from preflight import run
+
+report = run("samples/broken")
+print(report.verdict)        # "BLOCK"
+for finding in report.findings:
+    print(finding.rule, finding.severity, finding.where)
+```
+
+`run` returns a `Report` (verdict, findings, coverage, and a
+`to_dict()` for the JSON report shape). `run_bom_only` checks a lone
+BOM CSV; `run_gerber_package` checks a folder of exported Gerbers +
+drill files.
 
 ## What it checks
 
