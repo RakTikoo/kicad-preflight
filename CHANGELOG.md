@@ -3,6 +3,26 @@
 All notable changes to KiCad Preflight, newest first. Versions are the
 `__version__` in `preflight/__init__.py` and the PCM package metadata.
 
+## Unreleased
+
+- **Installable with pip from GitHub.** A `pyproject.toml` makes
+  `pip install git+https://github.com/RakTikoo/kicad-preflight` work
+  and provides the `kicad-preflight` command; the README's Install
+  section now leads with the clone / pip routes it previously
+  skipped.
+- **GitHub Action.** A composite `action.yml` at the repo root runs
+  Preflight in CI (`path`, `format`, `fail-on-block`,
+  `python-version` inputs; `verdict` / `exit-code` outputs) — the
+  last of the workshop's public tools to gain one. CAUTION warns
+  but never fails; a run that could not execute fails loudly.
+- **PCM install walkthrough.** The README and `pcm/README.md` now
+  tell a KiCad user exactly how to install the release PCM zip
+  (Plugin and Content Manager → Install from File…), with the
+  stock-install discovery check still honestly marked pending.
+- **Public library API.** `preflight/__init__.py` now re-exports
+  `run`, `run_bom_only`, `run_gerber_package` and `Report`, with a
+  "Use as a library" section in the README.
+
 ## 0.7.0 — 2026-11-14
 
 - **SARIF output** (`--format sarif`): SARIF 2.1.0 for GitHub code
