@@ -18,6 +18,8 @@ verify it by hand in seconds.
 Preflight is free and open source (MIT). There is no hosted tier and no
 paid version — the whole tool lives in this repository.
 
+**First contribution?** Start with a [good first issue](https://github.com/RakTikoo/kicad-preflight/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
+
 ## 30-second demo
 
 ```console
