@@ -1,6 +1,6 @@
 ---
 name: kicad-preflight
-description: Check a KiCad project before exporting Gerbers or ordering a board — schematic versus PCB mismatches, parts with no footprint, footprint disagreements, BOM quantity and reference errors, missing part numbers, obsolete or low-stock parts. Use when asked to check, review or preflight a KiCad project (.kicad_sch, .kicad_pcb, .kicad_pro), when checking a BOM CSV from any EDA tool (KiCad, Altium, Eagle, EasyEDA, JLCPCB) before ordering parts, or before a PCB order.
+description: Check a KiCad project before exporting Gerbers or ordering a board — schematic versus PCB mismatches, parts with no footprint, footprint disagreements, BOM quantity and reference errors, missing part numbers, obsolete or low-stock parts. Use when asked to check, review or preflight a KiCad project (.kicad_sch, .kicad_pcb, .kicad_pro), when checking a BOM CSV from any EDA tool (KiCad, Altium, Eagle, EasyEDA, JLCPCB) before ordering parts, or before a PCB order. Not for general electronics or circuit design review, for checking AI-agent skills (use skillscan), or for live distributor stock and price lookups.
 license: MIT
 compatibility: Requires Python 3.10+ and pip. KiCad itself is not required. Installing needs network access to GitHub; the checks run fully offline by default.
 ---

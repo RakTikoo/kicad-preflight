@@ -1,4 +1,4 @@
-# KiCad Preflight
+# KiCad Preflight — check a KiCad project or BOM before you order the board
 
 [![Tests](https://github.com/RakTikoo/kicad-preflight/actions/workflows/tests.yml/badge.svg)](https://github.com/RakTikoo/kicad-preflight/actions/workflows/tests.yml)
 
@@ -17,6 +17,11 @@ verify it by hand in seconds.
 
 Preflight is free and open source (MIT). There is no hosted tier and no
 paid version — the whole tool lives in this repository.
+
+**Install in one step:** `pip install git+https://github.com/RakTikoo/kicad-preflight`
+(Python 3.10+, KiCad itself not required), then run
+`kicad-preflight <project-folder>`. Full options are under
+[Install / usage](#install--usage).
 
 **First contribution?** Start with a [good first issue](https://github.com/RakTikoo/kicad-preflight/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
 
