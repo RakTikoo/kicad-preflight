@@ -164,6 +164,15 @@ for finding in report.findings:
 BOM CSV; `run_gerber_package` checks a folder of exported Gerbers +
 drill files.
 
+## Use with an AI agent
+
+This repo ships a [SKILL.md](SKILL.md) written to the Agent Skills open
+standard. If your coding agent supports skills, point it at this repo
+and it can install KiCad Preflight, check your project or BOM before
+you order, and read the verdict for you. The skill works as promised
+when the repo is cloned under its real name (`kicad-preflight`) — the
+standard ties the skill's name to its folder.
+
 ## What it checks
 
 The full rule list with severities is in `docs/RULES.md`. In short:
