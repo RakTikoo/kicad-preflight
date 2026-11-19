@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - name: RakTikoo
+title: "kicad-preflight: check a KiCad project or BOM before you order the board"
+version: 0.7.0
+date-released: 2026-11-14
+license: MIT
+url: "https://github.com/RakTikoo/kicad-preflight"
+repository-code: "https://github.com/RakTikoo/kicad-preflight"
+abstract: >-
+  Reads a KiCad project (or a standalone BOM CSV from any EDA tool) before
+  the board or parts are ordered and gives one plain-English report — PASS,
+  CAUTION, or BLOCK — from deterministic checks: schematic-to-PCB agreement,
+  BOM sanity, and offline part-risk flags.
+keywords:
+  - KiCad
+  - PCB
+  - BOM
+  - preflight
+  - electronics

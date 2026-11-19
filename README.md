@@ -1,5 +1,7 @@
 # KiCad Preflight — check a KiCad project or BOM before you order the board
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/RakTikoo/kicad-preflight)
+
 [![Tests](https://github.com/RakTikoo/kicad-preflight/actions/workflows/tests.yml/badge.svg)](https://github.com/RakTikoo/kicad-preflight/actions/workflows/tests.yml)
 
 Check a KiCad project *before* you export Gerbers and order the board —
@@ -156,6 +158,8 @@ mistaken for the BOM (or pass `--bom`).
 
 Exit codes: `0` PASS · `1` CAUTION · `2` BLOCK · `3` usage error.
 The CLI never prints a traceback; bad inputs exit 3 with a message.
+
+**For agent users:** this repository ships a `SKILL.md` for AI agents. Install it with `npx skills add RakTikoo/kicad-preflight`.
 
 ### Use as a library
 
