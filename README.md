@@ -117,6 +117,13 @@ pip install git+https://github.com/RakTikoo/kicad-preflight
 kicad-preflight <project-folder>
 ```
 
+The same command via pipx or uv:
+
+```bash
+pipx install git+https://github.com/RakTikoo/kicad-preflight
+uv tool install git+https://github.com/RakTikoo/kicad-preflight
+```
+
 **In CI (GitHub Action):**
 
 ```yaml
