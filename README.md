@@ -119,6 +119,13 @@ pip install git+https://github.com/RakTikoo/kicad-preflight
 kicad-preflight <project-folder>
 ```
 
+Or install the wheel straight from this repo's release assets (no package
+registry involved):
+
+```sh
+pip install https://github.com/RakTikoo/kicad-preflight/releases/download/v0.7.1/kicad_preflight-0.7.1-py3-none-any.whl
+```
+
 The same command via pipx or uv:
 
 ```bash
@@ -129,7 +136,7 @@ uv tool install git+https://github.com/RakTikoo/kicad-preflight
 **In CI (GitHub Action):**
 
 ```yaml
-- uses: RakTikoo/kicad-preflight@v0.7.0
+- uses: RakTikoo/kicad-preflight@v0.7.1
   with:
     path: ./my-board        # project folder to check
     fail-on-block: "true"   # default: BLOCK fails the job

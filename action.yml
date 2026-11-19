@@ -1,5 +1,5 @@
 name: "KiCad Preflight"
-description: "Run KiCad Preflight checks (BOM, Gerber package, netlist/ERC-lite and schematic-PCB parity) on a KiCad project — catch what DRC misses before you order."
+description: "Check a KiCad project or BOM before you order the board: BOM, Gerber, netlist/ERC-lite and schematic-PCB parity checks."
 author: "RakTikoo"
 branding:
   icon: "check-circle"

@@ -10,7 +10,7 @@ project folder (or a single project file) and returns a Report;
 folder of exported Gerbers + drill files.
 """
 
-__version__ = "0.7.0"
+__version__ = "0.7.1"
 
 from .engine import Report, run, run_bom_only, run_gerber_package
 

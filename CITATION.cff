@@ -3,8 +3,8 @@ message: "If you use this software, please cite it as below."
 authors:
   - name: RakTikoo
 title: "kicad-preflight: check a KiCad project or BOM before you order the board"
-version: 0.7.0
-date-released: 2026-11-14
+version: 0.7.1
+date-released: 2026-11-19
 license: MIT
 url: "https://github.com/RakTikoo/kicad-preflight"
 repository-code: "https://github.com/RakTikoo/kicad-preflight"

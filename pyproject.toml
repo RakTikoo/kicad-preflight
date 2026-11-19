@@ -7,7 +7,7 @@ name = "kicad-preflight"
 # Keep in step with preflight/__init__.py's __version__ at release time.
 # (Not setuptools-dynamic: the repo-root preflight.py shim makes
 # attr-based version lookup load the shim instead of the package.)
-version = "0.7.0"
+version = "0.7.1"
 description = "Pre-order checks for KiCad PCB projects — BOM, Gerber package, netlist/ERC-lite and schematic-PCB parity checks that catch what DRC misses before you order."
 readme = "README.md"
 requires-python = ">=3.10"

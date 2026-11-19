@@ -3,7 +3,12 @@
 All notable changes to KiCad Preflight, newest first. Versions are the
 `__version__` in `preflight/__init__.py` and the PCM package metadata.
 
-## Unreleased
+## 0.7.1 — 2026-11-19
+
+- **GitHub Marketplace:** the Action's `action.yml` description is
+  shortened to fit the Marketplace 125-character limit, so the
+  Action can be listed on the GitHub Marketplace. No check
+  behaviour changes.
 
 - **Installable with pip from GitHub.** A `pyproject.toml` makes
   `pip install git+https://github.com/RakTikoo/kicad-preflight` work
