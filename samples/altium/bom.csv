@@ -1,0 +1,4 @@
+Designator,Comment,Footprint,Quantity,Manufacturer Part Number,Manufacturer,Supplier Part Number 1,Supplier 1
+"R1,R2",330R,R0805,2,RC0805FR-07330RL,Yageo,C123456,LCSC
+D1,LED Red,LED0805,1,LTST-C170KRKT,Lite-On,296-1465-5-ND,Digi-Key
+C1,100nF,C0603,1,CL05B104KO5NNNC,Samsung Electro-Mechanics,,

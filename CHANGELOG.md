@@ -3,6 +3,12 @@
 All notable changes to KiCad Preflight, newest first. Versions are the
 `__version__` in `preflight/__init__.py` and the PCM package metadata.
 
+## Unreleased
+
+- Standalone BOM parsing now recognises Altium Designer's primary supplier
+  columns (`Supplier 1` / `Supplier Part Number 1`) and keeps the per-row
+  supplier rule intact, with a synthetic sample and focused tests.
+
 ## 0.7.1 — 2026-11-19
 
 - **GitHub Marketplace:** the Action's `action.yml` description is

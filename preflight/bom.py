@@ -36,8 +36,11 @@ _HEADER_ALIASES = {
              "jlcpcbpartnumber"},
     "description": {"description", "desc"},
     # Supplier Part is not a global LCSC alias: the supplier is per row.
-    "supplier": {"supplier"},
-    "supplier_part": {"supplierpart"},
+    # Altium Designer exports the primary supplier as `Supplier 1` and its
+    # part number as `Supplier Part Number 1`; the normalised forms below
+    # map them onto the same per-row fields as EasyEDA's unnumbered columns.
+    "supplier": {"supplier", "supplier1"},
+    "supplier_part": {"supplierpart", "supplierpartnumber1"},
 }
 
 _PRO_TSV_HEADERS = {"no", "quantity", "comment", "designator", "footprint",
