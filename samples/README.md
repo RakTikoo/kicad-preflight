@@ -10,6 +10,13 @@ fabricate. They exist so Preflight's checks can be tested end-to-end with
 hand-verifiable expectations, the same discipline as SkillScan's sample
 skills. Nothing here is executed; the files are only parsed.
 
+## `altium/` — synthetic standalone Altium BOM
+
+A small comma-separated Designer-style BOM using the primary supplier columns
+Altium actually exports (`Supplier 1` / `Supplier Part Number 1`). It shows the
+per-row supplier rule: a supplier part number is only treated as an LCSC part
+when that same row names LCSC as its supplier. No real board/export data.
+
 ## `easyeda-pro/` — synthetic standalone Pro BOMs
 
 Comma-separated Pro-style header fixtures with known good and missing-part-number
